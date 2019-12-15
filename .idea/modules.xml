@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ruoyi-admin/RongSystem.iml" filepath="$PROJECT_DIR$/ruoyi-admin/RongSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ruoyi.iml" filepath="$PROJECT_DIR$/ruoyi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ruoyi-check/ruoyi-check.iml" filepath="$PROJECT_DIR$/ruoyi-check/ruoyi-check.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ruoyi-common/ruoyi-common.iml" filepath="$PROJECT_DIR$/ruoyi-common/ruoyi-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ruoyi-framework/ruoyi-framework.iml" filepath="$PROJECT_DIR$/ruoyi-framework/ruoyi-framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ruoyi-generator/ruoyi-generator.iml" filepath="$PROJECT_DIR$/ruoyi-generator/ruoyi-generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ruoyi-quartz/ruoyi-quartz.iml" filepath="$PROJECT_DIR$/ruoyi-quartz/ruoyi-quartz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ruoyi-system/ruoyi-system.iml" filepath="$PROJECT_DIR$/ruoyi-system/ruoyi-system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sx-api/sx-api.iml" filepath="$PROJECT_DIR$/sx-api/sx-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sx-broad/sx-broad.iml" filepath="$PROJECT_DIR$/sx-broad/sx-broad.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sx-broadStreamSocket/sx-broadStreamSocket.iml" filepath="$PROJECT_DIR$/sx-broadStreamSocket/sx-broadStreamSocket.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sx-iot/sx-iot.iml" filepath="$PROJECT_DIR$/sx-iot/sx-iot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sx-rivervis/sx-rivervis.iml" filepath="$PROJECT_DIR$/sx-rivervis/sx-rivervis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sx-village/sx-village.iml" filepath="$PROJECT_DIR$/sx-village/sx-village.iml" />
+    </modules>
+  </component>
+</project>
