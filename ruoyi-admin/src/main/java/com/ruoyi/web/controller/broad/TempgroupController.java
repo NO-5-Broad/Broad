@@ -18,6 +18,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -135,6 +137,15 @@ public class TempgroupController<addtemp> extends BaseController{
 //        int i = iTempgroupService.insertTempgroup(tempgroup);
 //        return "success";
 //    }
+@PostMapping("/addtemp")
+@ResponseBody
+public String addTemp(Tempgroup tempgroup){
+    Date d = new Date();
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    tempgroup.setCreatetime(sdf.format(d));
+    int i = iTempgroupService.insertTempgroup(tempgroup);
+    return "success";
+}
 
     @PostMapping("/tempgroup_ter")
     @ResponseBody
