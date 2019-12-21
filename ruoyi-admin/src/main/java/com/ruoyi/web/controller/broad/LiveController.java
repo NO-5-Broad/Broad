@@ -51,56 +51,52 @@ public class LiveController extends BaseController {
 
     /**
      * 直播页面控制器
-     *
-     * @param
-     * @return java.lang.String
      * @author 张超 teavamc
      * @date 2019/2/17
+     * @param
+     * @return java.lang.String
      */
     @RequiresPermissions("broad:live:view")
     @GetMapping("/view")
-    public String liveview(ModelMap mmap) {
+    public String liveview(ModelMap mmap){
         //传给前台流媒体地址 传给 /streamlive 页面
-        mmap.put("rtmpAddress", rtmpAddress);
+        mmap.put("rtmpAddress",rtmpAddress);
         return prefix + "/streamlive";
     }
 
     /**
      * 本地直播页面控制器 - 直播测试
-     *
-     * @param
-     * @return java.lang.String
      * @author 张超 teavamc
      * @date 2019/2/17
+     * @param
+     * @return java.lang.String
      */
     @RequiresPermissions("broad:live:testview")
     @GetMapping("/testview")
-    public String testliveview(ModelMap mmap) {
+    public String testliveview(ModelMap mmap){
         //传给前台流媒体地址 传给 /streamlive 页面
-        mmap.put("rtmpAddress", rtmpAddress);
+        mmap.put("rtmpAddress",rtmpAddress);
         return prefix + "/streamlivetest";
     }
 
     /**
      * 返回节目单选择界面
-     *
      * @param mmap
      * @return
      */
     @GetMapping("/getdofile")
-    public String doFile(ModelMap mmap) {
-        return prefix + "/listfile";
+    public String doFile(ModelMap mmap){
+        return prefix+"/listfile";
     }
-
     /**
      * 获取节目单数据
-     *
      * @param program
      * @return
      */
     @PostMapping("/listfile")
     @ResponseBody
-    public TableDataInfo listFile(Program program) {
+    public TableDataInfo listFile(Program program)
+    {
         startPage();
         List<Program> list = iProgramService.selectProList(program);
         return getDataTable(list);
@@ -113,7 +109,7 @@ public class LiveController extends BaseController {
 //        * @param [tid]
 //        * @return com.ruoyi.api.domain.RongApiRes
 //        */
-//        @RequiresPermissions("broad:live:setStreamTer")
+//    @RequiresPermissions("broad:live:setStreamTer")
 //    @GetMapping("/setStreamTer")
 //    public String  setStreamTer(String tid)
 //            throws Exception{
@@ -122,15 +118,14 @@ public class LiveController extends BaseController {
 //        return prefix + "/selecttree";
 //    }
 
-
     @RequiresPermissions("broad:live:getTerByTidTest")
     @PostMapping("/getTerByTidTest")
-    public RongApiRes getTerByTidTest(String tids) throws Exception {
+    public RongApiRes  getTerByTidTest(String tids) throws Exception{
 //        将前端回传的 tids 按照， 分割成Array 再填充List
         List<String> idlist = new ArrayList<String>();
-        if (tids != null && !tids.equals("")) {
+        if(tids!=null && !tids.equals("")){
             String[] idarr = tids.split(",");
-            for (int i = 0; i < idarr.length; i++) {
+            for(int i=0;i<idarr.length;i++){
                 idlist.add(idarr[i]);
             }
         }
