@@ -87,15 +87,15 @@ public class ProreApplyController extends BaseController
 //	/**
 //	 * 查询节目申请列表
 //	 */
-//	@RequiresPermissions("broad:proreApply:list")
-//	@PostMapping("/list")
-//	@ResponseBody
-//	public TableDataInfo list(ProreApply proreApply)
-//	{
-//		startPage();
-//		List<ProreApply> list = proreApplyService.selectProreApplyList(proreApply);
-//		return getDataTable(list);
-//	}
+	@RequiresPermissions("broad:proreApply:list")
+	@PostMapping("/list")
+	@ResponseBody
+	public TableDataInfo list(ProreApply proreApply)
+	{
+		startPage();
+		List<ProreApply> list = proreApplyService.selectProreApplyList(proreApply);
+		return getDataTable(list);
+	}
 
 
 	/**
