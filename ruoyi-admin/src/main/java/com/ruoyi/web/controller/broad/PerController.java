@@ -1,6 +1,8 @@
 package com.ruoyi.web.controller.broad;
 
 import com.ruoyi.common.config.Global;
+import com.ruoyi.common.utils.ExcelUtil;
+import com.ruoyi.common.utils.ViodeoUtil;
 import com.ruoyi.framework.util.ShiroUtils;
 import com.ruoyi.system.domain.SysUser;
 import org.slf4j.Logger;
@@ -106,32 +108,60 @@ public class PerController extends BaseController {
     @Log(title = "新增节目单", businessType = BusinessType.INSERT)
     @PostMapping(value = "/add")
     @ResponseBody
-    public AjaxResult addSave(@RequestParam(value = "files") MultipartFile file,
-                              @RequestParam(value = "filename1", required = false) String fname,
-                              @RequestParam(value = "flenth", required = false) String flenth, //时长
-                              @RequestParam(value = "fsize", required = false) String fsize,
-                              @RequestParam(value = "uname", required = false) String uname) throws IOException {//大小
-
-        String year = DateUtil.getYear();
-        String maxfileid = iProgramService.getMaxFileidofYear(year); //获取当年文件最大编号
-
-        //图片上传调用工具类
-
-        //保存图片
-        //String path =  bFileUtil.saveImg(file,filename);
+    public AjaxResult addSave(@RequestParam(value = "files") List<MultipartFile> files,@RequestParam(value = "uname", required = false) String uname) throws IOException {//大小
         String userid =  ShiroUtils.getSysUser().getUserId().toString();
-        Program g = bFileUtil.uplodeFile(maxfileid, file, fname, flenth, fsize, year, userid);
-        System.out.println(g.toString());
-        iProgramService.insertProgram(g);
+        for(int i=0;i<files.size();i++){
+            String duration = VideoUtil.ReadVideoTimeMs(files.get(i));
+            String year = DateUtil.getYear();
+            String maxfileid = iProgramService.getMaxFileidofYear(year);
+            Program g = bFileUtil.uplodeFile(maxfileid, files.get(i), files.get(i).getOriginalFilename(),duration, String.valueOf(files.get(i).getSize()), year, userid);
+            iProgramService.insertProgram(g);
+        };
         return toAjax(1);
     }
 
-//    @PostMapping("/remove")
-//    @Log(title = "节目单删除",businessType = BusinessType.DELETE)
+
+    @PostMapping("/remove")
+    @Log(title = "节目单删除",businessType = BusinessType.DELETE)
+    @ResponseBody
+    public AjaxResult removeProgram(String ids)
+    {
+        return toAjax(iProgramService.deleteProgram(ids));
+    }
+
+    /**
+     //     * 导出节目单运转列表
+     //     */
+//    @PostMapping("/export")
 //    @ResponseBody
-//    public AjaxResult removeProgram(String ids)
+//    public AjaxResult export(Program program)
 //    {
-//        return toAjax(iProgramService.deleteProgram(ids));
+//        List<Program> list = iProgramService.selectProList(program);
+//        ExcelUtil<Program> util = new ExcelUtil<Program>(Program.class);
+//        return util.exportExcel(list, "Program");
 //    }
+
+    /** @author qwerty
+     * @description 导出√中的数据
+     *
+     * @param sfids
+     * @return
+     */
+    @Log(title = "节目库记录导出", businessType = BusinessType.EXPORT)
+//    @RequiresPermissions("broad:per:export")
+    @PostMapping("/exportbysingle")
+    @ResponseBody
+    public AjaxResult exportProgramByIds(@RequestParam("sjids") List<String> sfids) {
+        List<Program> list = iProgramService.selectProgramListByids(sfids);
+        ExcelUtil<Program> util = new ExcelUtil<Program>(Program.class);
+        return util.exportExcel(list, "Organization");
+    }
+
+    @Log(title = "节目库是否公共状态转换", businessType = BusinessType.UPDATE)
+    @GetMapping("/setispublic/{fid}")
+    @ResponseBody
+    public int setIsPublic(@PathVariable("fid") String fid) {
+        return iProgramService.setIsPublic(fid);
+    }
 
 }
