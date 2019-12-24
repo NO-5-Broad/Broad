@@ -1,18 +1,12 @@
 package com.ruoyi.web.controller.broad;
 
-
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import com.ruoyi.broad.domain.ProApplyUser;
-import com.ruoyi.broad.domain.Program;
-import com.ruoyi.broad.service.IProgramService;
-import com.ruoyi.broad.utils.bConst;
 import com.ruoyi.broad.utils.bFileUtil;
-import com.ruoyi.common.utils.DateUtil;
-import com.ruoyi.common.utils.VideoUtil;
 import com.ruoyi.framework.util.ShiroUtils;
 import com.ruoyi.system.domain.SysUser;
 import com.ruoyi.system.service.ISysUserService;
@@ -47,10 +41,6 @@ public class ProreApplyController extends BaseController
 	private IProreApplyService proreApplyService;
 	@Autowired
 	private ISysUserService sysUserService;
-	@Autowired
-	private IProgramService iProgramService;
-	private Object VideoUtil;
-
 	//	@RequiresPermissions("broad:proreApply:view")
 	@GetMapping()
 	public String proreApply()
@@ -63,7 +53,7 @@ public class ProreApplyController extends BaseController
 	 */
 	@RequiresPermissions("broad:proreApply:list")
 	@PostMapping("/list")
-
+	@Log(title = "查询节目申请",businessType = BusinessType.DELETE)
 	@ResponseBody
 	public TableDataInfo list(ProApplyUser proapplyuser)
 	{
@@ -84,7 +74,7 @@ public class ProreApplyController extends BaseController
 
 	}
 
-//	/**
+	//	/**
 //	 * 查询节目申请列表
 //	 */
 	@RequiresPermissions("broad:proreApply:list")
@@ -123,6 +113,29 @@ public class ProreApplyController extends BaseController
 	/**
 	 * 新增保存节目申请
 	 */
+	@RequiresPermissions("broad:proreApply:add")
+	@Log(title = "新增节目申请", businessType = BusinessType.INSERT)
+	@PostMapping("/add")
+	@ResponseBody
+	public AjaxResult addSave(ProreApply proreApply)
+	{
+		return toAjax(proreApplyService.insertProreApply(proreApply));
+	}
+
+	/**
+	 * 修改节目申请
+	 */
+	@GetMapping("/edit/{paid}")
+	public String edit(@PathVariable("paid") Integer paid, ModelMap mmap)
+	{
+		ProreApply proreApply = proreApplyService.selectProreApplyById(paid);
+		mmap.put("proreApply", proreApply);
+		return prefix + "/edit";
+	}
+
+	/**
+	 * 新增保存节目申请
+	 */
 //	@RequiresPermissions("broad:proreApply:add")
 	@Log(title = "新增节目申请", businessType = BusinessType.INSERT)
 	@PostMapping("/add")
@@ -150,38 +163,6 @@ public class ProreApplyController extends BaseController
 		proreApply.setSubmittime(time);
 		return toAjax(proreApplyService.insertProreApply(proreApply));
 	}
-
-	/**
-	 * 修改节目申请
-	 */
-	@GetMapping("/edit/{paid}")
-	public String edit(@PathVariable("paid") Integer paid, ModelMap mmap)
-	{
-		ProreApply proreApply = proreApplyService.selectProreApplyById(paid);
-		mmap.put("proreApply", proreApply);
-		return prefix + "/edit";
-	}
-
-	/**
-	 * 修改节目申请
-	 */
-	@GetMapping("/reply")
-	public String reply(){
-		return prefix + "/reply";
-	}
-
-	/**
-	 * 修改保存节目申请
-	 */
-	@RequiresPermissions("broad:proreApply:edit")
-	@Log(title = "修改节目申请", businessType = BusinessType.UPDATE)
-	@PostMapping("/edit")
-	@ResponseBody
-	public AjaxResult editSave(ProreApply proreApply)
-	{
-		return toAjax(proreApplyService.updateProreApply(proreApply));
-	}
-
 	/**
 	 * 删除节目申请
 	 */
@@ -192,44 +173,6 @@ public class ProreApplyController extends BaseController
 	public AjaxResult remove(String ids)
 	{
 		return toAjax(proreApplyService.deleteProreApplyByIds(ids));
-	}
-
-	@Log(title = "节目撤回", businessType = BusinessType.UPDATE)
-	@GetMapping("/recall/{fid}")
-	@ResponseBody
-	public int recall(@PathVariable("fid") String fid) {
-		return proreApplyService.recall(fid);
-	}
-
-	/**
-	 * 修改节目申请
-	 */
-	@Log(title = "修改节目申请", businessType = BusinessType.UPDATE)
-	@PostMapping("/reply")
-	@ResponseBody
-	public AjaxResult replyfile(String paid,String replyperson,MultipartFile file,String userid){
-		SimpleDateFormat sim=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String time=sim.format(new Date());
-
-		ProreApply  proreApply = new ProreApply();
-		String duration = VideoUtil.ReadVideoTimeMs(file);
-		String year = DateUtil.getYear();
-
-		String maxfileid = iProgramService.getMaxFileidofYear(year);
-		Program g = bFileUtil.uplodeFile(maxfileid, file, file.getOriginalFilename(),duration, String.valueOf(file.getSize()), year, userid);
-		g.setPtype(true);
-		g.setCreatedtime(time);
-		g.setIspublic(false);
-		iProgramService.insertProgram(g);
-
-
-		System.out.println(Integer.valueOf(paid));
-		proreApply.setPaid(Integer.parseInt(paid));
-		proreApply.setReplyperson(replyperson);
-		proreApply.setReplytime(time);
-		proreApply.setFileurl(g.getUrls());
-		proreApply.setIsreply(true);
-		return toAjax(proreApplyService.updateProreApply(proreApply));
 	}
 
 }
