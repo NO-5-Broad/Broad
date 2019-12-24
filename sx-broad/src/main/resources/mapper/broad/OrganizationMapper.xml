@@ -362,6 +362,7 @@
             <if test="parentaid != null and parentaid != '' ">and area.parentaid = #{parentaid}</if>
             <if test="hbtime != null and hbtime != '' ">and t.hbtime = #{hbtime}</if>
         </where>
+        ORDER BY createdtime DESC
     </select>
 
     <select id="selectAllOrganization" resultMap="AreatreeResult">
@@ -607,4 +608,99 @@
     <delete id="deletephoneedit" parameterType="String">
         delete from `broad`.`terminaltels` where telid = #{telid}
     </delete>
+
+    <select id="selectOrganizationListByids" parameterType="java.util.List" resultMap="OrganizationResult">
+        SELECT
+        t.tid,
+        t.tname,
+        userinfo.uname,
+        area.aname,
+        t.lastaccesstime,
+        t.mflowusing,
+        t.irfrequency,
+        t.intertime,
+        t.terminaltype,
+        t.longitude,
+        t.latitude,
+        ter_conditions.basestation,
+        t.phone,
+        terminal_management.maintenanceFunds,
+        t.ypowerconsumption,
+        terminal_traffic.usetraffic,
+        t.onlinestate,
+        t.dcs,
+        t.rds,
+        t.pdmode,
+        t.chargecurrent,
+        t.brfrequency,
+        t.transmitpower,
+        t.reflectedpower,
+        t.workvoltage,
+        t.batteryvoltage,
+        t.loadcurrent,
+        t.fmfrequency,
+        t.manager,
+        t.managertel,
+        t.createdtime,
+        t.isuse,
+        t.address,
+        t.aid,
+        ter_conditions.nettype,
+        t.note,
+        t.atphone,
+        t.facid,
+        t.mflowusing,
+        t.eovolume,
+        t.poscene,
+        t.hbtime,
+        area.parentaid,
+        t.transmitfrequency
+        from (
+        ((((terminals t left join userinfo on t.userid = userinfo.userid)
+        left join area on t.aid = area.aid)
+        left join terminal_management on t.tid = terminal_management.tid)
+        left join ter_conditions on t.tid = ter_conditions.tid)
+        left join terminal_traffic on t.tid = terminal_traffic.tid
+        )
+        where t.tid in
+        <foreach collection="list" item="sfid" open="(" close=")" separator=",">
+            #{sfid}
+        </foreach>
+    </select>
+
+    <update id="terinfoedittime">
+        update terminals set intertime = #{param1} where tid in
+        <foreach collection="arg1" item="arg" open="(" close=")" separator=",">
+            #{arg}
+        </foreach>
+    </update>
+
+    <update id="terinfoeditrds">
+        update terminals set rds = #{param1} where tid in
+        <foreach collection="arg1" item="arg" open="(" close=")" separator=",">
+            #{arg}
+        </foreach>
+    </update>
+
+    <update id="terinfoeditfrequency">
+        update terminals set brfrequency = #{param1} where tid in
+        <foreach collection="arg1" item="arg" open="(" close=")" separator=",">
+            #{arg}
+        </foreach>
+    </update>
+
+    <insert id="terinfoeditphone">
+        insert into terminaltels (tid, Tel, telperson)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.tid}, #{item.atphone}, #{item.manager})
+        </foreach>
+    </insert>
+
+    <update id="terinfoeditphonedelete">
+        delete from terminaltels where Tel = #{param1} and tid in
+        <foreach collection="arg1" item="arg" open="(" close=")" separator=",">
+            #{arg}
+        </foreach>
+    </update>
 </mapper>
