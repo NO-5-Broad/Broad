@@ -163,7 +163,19 @@ public class ProreApplyController extends BaseController
 		proreApply.setSubmittime(time);
 		return toAjax(proreApplyService.insertProreApply(proreApply));
 	}
-	/**
+    /**
+     * 修改保存节目申请
+     */
+    @RequiresPermissions("broad:proreApply:edit")
+    @Log(title = "修改节目申请", businessType = BusinessType.UPDATE)
+    @PostMapping("/edit")
+    @ResponseBody
+    public AjaxResult editSave(ProreApply proreApply)
+    {
+        return toAjax(proreApplyService.updateProreApply(proreApply));
+    }
+
+    /**
 	 * 删除节目申请
 	 */
 	@RequiresPermissions("broad:proreApply:remove")
