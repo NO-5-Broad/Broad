@@ -110,17 +110,6 @@ public class ProreApplyController extends BaseController
 		return prefix + "/add";
 	}
 
-	/**
-	 * 新增保存节目申请
-	 */
-	@RequiresPermissions("broad:proreApply:add")
-	@Log(title = "新增节目申请", businessType = BusinessType.INSERT)
-	@PostMapping("/add")
-	@ResponseBody
-	public AjaxResult addSave(ProreApply proreApply)
-	{
-		return toAjax(proreApplyService.insertProreApply(proreApply));
-	}
 
 	/**
 	 * 修改节目申请
@@ -175,7 +164,7 @@ public class ProreApplyController extends BaseController
         return toAjax(proreApplyService.updateProreApply(proreApply));
     }
 
-    /**
+	/**
 	 * 删除节目申请
 	 */
 	@RequiresPermissions("broad:proreApply:remove")
@@ -185,6 +174,13 @@ public class ProreApplyController extends BaseController
 	public AjaxResult remove(String ids)
 	{
 		return toAjax(proreApplyService.deleteProreApplyByIds(ids));
+	}
+
+	@Log(title = "节目撤回", businessType = BusinessType.UPDATE)
+	@GetMapping("/recall/{fid}")
+	@ResponseBody
+	public int recall(@PathVariable("fid") String fid) {
+		return proreApplyService.recall(fid);
 	}
 
 }
