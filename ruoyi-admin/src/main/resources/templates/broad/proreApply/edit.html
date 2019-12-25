@@ -22,7 +22,8 @@
         <div class="form-group">
             <label class="col-sm-3 control-label">要求文稿路径：</label>
             <div class="col-sm-8">
-                <input id="fileurl" name="fileurl" th:field="*{fileurl}" class="form-control" type="text">
+                <a th:href="@{'http://localhost:5050/profile/applyfile/'+${proreApply.fileurl}}"
+                   th:text="*{fileurl}"></a>
                 <!--					<a th:href="@{${fileurl}}" th:text="${fileurl}"></a>-->
             </div>
         </div>
