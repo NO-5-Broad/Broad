@@ -16,7 +16,6 @@ import java.util.List;
 
 /**
  * Created by ASUS on 2019/8/11.
- *
  * @author cx
  * @description 节目省听业务层实现
  */
@@ -33,7 +32,8 @@ public class ProListenServiceImpl implements IProListenService {
      */
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public ProListen selectProListenById(Integer paid) {
+    public ProListen selectProListenById(Integer paid)
+    {
         return proListenMapper.selectProListenById(paid);
     }
 
@@ -45,7 +45,8 @@ public class ProListenServiceImpl implements IProListenService {
      */
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public List<ProListen> selectProListenList(ProListen proListen) {
+    public List<ProListen> selectProListenList(ProListen proListen)
+    {
         return proListenMapper.selectProListenList(proListen);
     }
 
@@ -57,7 +58,8 @@ public class ProListenServiceImpl implements IProListenService {
      */
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public int insertProListen(ProListen proListen) {
+    public int insertProListen(ProListen proListen)
+    {
         return proListenMapper.insertProListen(proListen);
     }
 
@@ -69,7 +71,8 @@ public class ProListenServiceImpl implements IProListenService {
      */
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public int updateProListen(ProListen proListen) {
+    public int updateProListen(ProListen proListen)
+    {
         return proListenMapper.updateProListen(proListen);
     }
 
@@ -81,20 +84,30 @@ public class ProListenServiceImpl implements IProListenService {
      */
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public int deleteProListenByIds(String ids) {
+    public int deleteProListenByIds(String ids)
+    {
         return proListenMapper.deleteProListenByIds(Convert.toStrArray(ids));
     }
 
     /**
      * 该方法只提供节目申请表中的目录
-     *
      * @param proApplyUser
      * @return java.util.List<com.ruoyi.broad.domain.ProApplyUser>
      */
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public List<ProApplyUser> selectProrApplyUserList(ProApplyUser proApplyUser) {
+    public List<ProApplyUser> selectProrApplyUserList(ProApplyUser proApplyUser){
         return proListenMapper.selectProrApplyUserList(proApplyUser);
     }
 
+    /**
+     * 该方法设置节目审听通过
+     * @param paid
+     * @return java.util.List<com.ruoyi.broad.domain.ProApplyUser>
+     */
+    @Override
+    @DataSource(value = DataSourceType.SLAVE)
+    public int checkpass(String paid) {
+        return proListenMapper.checkpass(paid);
+    }
 }
