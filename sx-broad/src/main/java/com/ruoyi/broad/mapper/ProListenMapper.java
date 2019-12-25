@@ -68,4 +68,6 @@ public interface ProListenMapper {
      * @date 2019/3/2
      */
     public List<ProApplyUser> selectProrApplyUserList(ProApplyUser proApplyUser);
+
+    int checkpass(String paid);
 }

@@ -30,10 +30,11 @@ import java.util.List;
  * @author cx
  * @Description: 节目审听
  * @ClassName ProListenController
+ *
  **/
 @Controller
-@RequestMapping(value = "/broad/prolisten")
-public class ProListenController extends BaseController {
+@RequestMapping(value="/broad/prolisten")
+public class ProListenController extends BaseController{
     private String prefix = "broad/prolisten";
 
     @Autowired
@@ -43,7 +44,8 @@ public class ProListenController extends BaseController {
 
     @GetMapping()
     @RequiresPermissions("broad:prolisten:view")
-    public String proreApply() {
+    public String proreApply()
+    {
         return prefix + "/prolisten";
     }
 
@@ -51,9 +53,36 @@ public class ProListenController extends BaseController {
     @RequiresPermissions("broad:prolisten:list")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(ProListen proListen) {
+    public TableDataInfo list(ProListen proListen){
         startPage();
         List<ProListen> list = iProListenService.selectProListenList(proListen);
         return getDataTable(list);
+    }
+
+    @GetMapping("/play")
+    @RequiresPermissions("broad:prolisten:view")
+    public String proreApplyplay() {
+        return prefix + "/play";
+    }
+
+
+    @GetMapping("/pass/{paid}")
+    @RequiresPermissions("broad:prolisten:view")
+    @ResponseBody
+    public AjaxResult checkpass(@PathVariable("paid") String paid) {
+        return toAjax(iProListenService.checkpass(paid));
+    }
+
+    @GetMapping("/nopassreason")
+    @RequiresPermissions("broad:prolisten:view")
+    public String nopassreason() {
+        return prefix + "/nopassreason";
+    }
+
+    @PostMapping("/nopassreason")
+    @RequiresPermissions("broad:prolisten:view")
+    @ResponseBody
+    public AjaxResult nopassreason(ProListen proListen) {
+        return toAjax(iProListenService.updateProListen(proListen));
     }
 }
