@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-proList-add">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">节目ID：</label>
+            <div class="col-sm-8">
+                <input id="ptp" name="ptp" class="form-control" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">节目名称：</label>
+            <div class="col-sm-8">
+                <input id="fN" name="fN" class="form-control" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">申请用户：</label>
+            <div class="col-sm-8">
+                <input id="fid" name="fid" class="form-control" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">申请时间：</label>
+            <div class="col-sm-8">
+                <input id="bt" name="bt" class="form-control" type="text">
+            </div>
+        </div>
+<div class="form-group">
+    <label class="col-sm-3 control-label">是否紧急：</label>
+    <div class="col-sm-8">
+        <!--<input id="isemergency" name="isemergency" class="form-control" type="text">-->
+        <div class="radio" style="display: inline">
+            <label>
+                <input id="isemergency" name="isemergency" th:value="true" type="radio">
+                紧急
+            </label>
+        </div>
+        <div class="radio" style="display: inline">
+            <label>
+                <input id="unemergency" name="isemergency" th:value="false" type="radio">
+                不紧急
+            </label>
+        </div>
+    </div>
+</div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">是否回复：</label>
+            <div class="col-sm-8">
+                <!--<input id="isemergency" name="isemergency" class="form-control" type="text">-->
+                <div class="radio" style="display: inline">
+                    <label>
+                        <input id="isreply" name="isreply" th:value="true" type="radio">
+                        已回复
+                    </label>
+                </div>
+                <div class="radio" style="display: inline">
+                    <label>
+                        <input id="unreply" name="unrepaly" th:value="false" type="radio">
+                        未回复
+                    </label>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div th:include="include::footer"></div>
+<script type="text/javascript">
+    var prefix = ctx + "broad/proList"
+    $("#form-proList-add").validate({
+        rules: {
+            xxxx: {
+                required: true,
+            },
+        }
+    });
+
+    function submitHandler() {
+        if ($.validate.form()) {
+
+            var ptp = $("#ptp").val();
+            var fN = $("#fN").val();
+            var fid = $("#fid").val();
+            var bt = $("#bt").val();
+            var broadtime = $("#broadtime").val();
+            var remark = $("#remark").val();
+
+            var info = {
+                "ptp": ptp,
+                "fN": fN,
+                "fid": fid,
+                "bt": bt,
+                "broadtime": broadtime,
+                "remark": remark
+            }
+
+            $.operate.save(prefix + "/add", info);
+        }
+    }
+</script>
+<script th:
+</body>
+</html>
