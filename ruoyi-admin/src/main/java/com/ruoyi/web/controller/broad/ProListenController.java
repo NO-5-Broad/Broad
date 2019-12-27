@@ -74,6 +74,17 @@ public class ProListenController extends BaseController{
     }//新增添加功能
 
 
+    @RequiresPermissions("broad:proreApply:export")
+    @PostMapping("/export")
+    @ResponseBody
+    public AjaxResult export(ProListen proListen) {
+        List<ProListen> list = iProListenService.selectProListenList(proListen);
+        ExcelUtil<ProListen> util = new ExcelUtil<ProListen>(ProListen.class);
+        return util.exportExcel(list, "prolisten");
+    }//新增导出功能
+
+
+
     @GetMapping("/pass/{paid}")
     @RequiresPermissions("broad:prolisten:view")
     @ResponseBody
