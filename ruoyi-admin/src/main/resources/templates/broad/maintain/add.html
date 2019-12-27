@@ -48,9 +48,16 @@
 
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">备注：</label>
+                    <label class="col-sm-3 control-label">故障原因：</label>
                     <div class="col-sm-8">
-                        <input id="remark" name="remark" class="form-control" type="text" placeholder="请输入备注">
+                        <input id="remark" name="remark" class="form-control" type="text" placeholder="请输入故障原因">
+                        <datalist id="datalistid">
+                            <option>开关电源板烧坏</option>
+                            <option>4G板烧坏</option>
+                            <option>功放板烧坏</option>
+                            <option>TF卡故障</option>
+                            <option>雷击</option>
+                        </datalist>
                     </div>
                 </div>
 
@@ -64,7 +71,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">维护人员：</label>
                     <div class="col-sm-8">
-                        <input id="mstaff" name="fname" th:value="*{fname}" class="form-control" type="text"
+                        <input id="mstaff" name="mstaff" th:value="*{fname}" class="form-control" type="text"
                                placeholder="请输入项目负责人">
                     </div>
                 </div>
@@ -86,7 +93,8 @@
         }
     });
 
-    function currentTime() {
+    $(function currentTime() {
+
         var now = new Date();
 
         var year = now.getFullYear();       //年
@@ -120,54 +128,41 @@
         clock += ss;
 
         $("#createtime").val(clock);
-    }
+    })
 
-    currentTime(); //调用函数显示时间
+    // currentTime(); //调用函数显示时间
 
     function submitHandler() {
+        debugger
+        var a = $("#tid").val()
 
-        //获取选择终端
-        var terids = $.tree.getCheckedNodes('aid');
-        /*terids = terids.toString().substring(0, terids.length - 2);*/
-        terids = terids.substring(terids.indexOf(",") + 1).trim();//逗号后面
-        tid = terids.substring(terids.indexOf(",") + 1).trim();//逗号后面
-        if (terids == "") {
-            window.alert('请选择终端');
+        if ($("#tid").val() == "" || $("#tid").val() == null) {
+            alert('请选择终端');
             return false;
         }
 
-        var tid = $("#tid").val();
-        var fault = $("#fault").val();
-        var mstaff = $("#mstaff").val();
-        var remark = $("#remark").val();
-        var createtime = $("#createtime").val();
-
-        var info = {
-            "tid": tid,
-            "fault": fault,
-            "mstaff": mstaff,
-            "remark": remark,
-            "createtime": createtime,
-        }
+        // var tid = $("#tid").val();
+        // var fault = $("#fault").val();
+        // var mstaff = $("#mstaff").val();
+        // var remark = $("#remark").val();
+        // var createtime = $("#createtime").val();
+        //
+        // var info = {
+        //     "tid": tid,
+        //     "fault": fault,
+        //     "mstaff": mstaff,
+        //     "remark": remark,
+        //     "createtime": createtime,
+        // }
 
 
         if ($.validate.form()) {
-            $.operate.save(prefix + "/add", info);
 
-            // // 保存信息
-            // save: function(url, data) {
-            // 	$.modal.loading("正在处理中，请稍后...");
-            // 	var config = {
-            // 		url: url,
-            // 		type: "post",
-            // 		dataType: "json",
-            // 		data: data,
-            // 		success: function(result) {
-            // 			$.operate.successCallback(result);
-            // 		}
-            // 	};
-            // 	$.ajax(config)
-            // },
+            $.operate.save(prefix + "/add", $("#Form").serialize(), function (data) {
+                if (data.code == 0) {
+                    alert("操作成功")
+                }
+            });
         }
     }
 </script>
@@ -177,14 +172,30 @@
     $(function () {
         $('body').layout({west__size: 185});
         queryAreaTree();
-        submitHandler();
+        // submitHandler();
 //        CurrentTime();
     });
 
     function queryAreaTree() {
         var url = ctx + "broad/maintain/treeData";
+
+        function zTreeOnCheck(event, treeId, treeNode) {
+            var treeObj = $.fn.zTree.getZTreeObj("tree");
+            var nodes = [];
+            var tids = []
+            nodes = treeObj.getCheckedNodes(true);
+            if (nodes.length > 0) {
+                nodes.forEach(function (item, index) {
+                    if (item.aid.length == 15) {
+                        tids.push(item.aid)
+                    }
+                })
+            }
+            $("#tid").val(tids.toString())
+        }
         var options = {
             url: url,
+            onCheck: zTreeOnCheck,
             check: {
                 enable: true,
                 nocheckInherit: true,
