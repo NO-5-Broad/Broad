@@ -74,7 +74,7 @@ public class ProListenController extends BaseController{
     }//新增添加功能
 
 
-    @RequiresPermissions("broad:proreApply:export")
+    @RequiresPermissions("broad:proLiten:export")
     @PostMapping("/export")
     @ResponseBody
     public AjaxResult export(ProListen proListen) {
@@ -82,7 +82,6 @@ public class ProListenController extends BaseController{
         ExcelUtil<ProListen> util = new ExcelUtil<ProListen>(ProListen.class);
         return util.exportExcel(list, "prolisten");
     }//新增导出功能
-
 
 
     @GetMapping("/pass/{paid}")
