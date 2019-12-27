@@ -1,8 +1,10 @@
 package com.ruoyi.web.controller.broad;
 
 import com.ruoyi.broad.domain.ProApplyUser;
+import com.ruoyi.broad.domain.ProList;
 import com.ruoyi.broad.domain.ProListen;
 import com.ruoyi.broad.service.IProListenService;
+import com.ruoyi.broad.service.impl.ProListServiceImpl;
 import com.ruoyi.framework.util.ShiroUtils;
 import com.ruoyi.system.domain.SysUser;
 import com.ruoyi.system.service.ISysUserService;
@@ -64,6 +66,12 @@ public class ProListenController extends BaseController{
     public String proreApplyplay() {
         return prefix + "/play";
     }
+
+
+    @GetMapping("/add")
+    public String add() {
+        return prefix + "/add";
+    }//新增添加功能
 
 
     @GetMapping("/pass/{paid}")
