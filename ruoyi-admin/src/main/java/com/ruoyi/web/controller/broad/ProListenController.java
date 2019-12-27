@@ -65,7 +65,7 @@ public class ProListenController extends BaseController{
     @RequiresPermissions("broad:prolisten:view")
     public String proreApplyplay() {
         return prefix + "/play";
-    }
+    }//
 
 
     @GetMapping("/add")
@@ -95,7 +95,8 @@ public class ProListenController extends BaseController{
     @RequiresPermissions("broad:prolisten:view")
     public String nopassreason() {
         return prefix + "/nopassreason";
-    }
+    }//
+
 
     @PostMapping("/nopassreason")
     @RequiresPermissions("broad:prolisten:view")
