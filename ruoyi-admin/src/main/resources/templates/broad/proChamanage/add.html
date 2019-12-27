@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="white-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form class="form-horizontal m" id="form-proChamanage-add">
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">节目：</label>
+				<div class="col-sm-8">
+					<input id="cname" name="cname" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">频道：</label>
+				<div class="col-sm-8">
+					<input id="frequencies" name="frequencies" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">所属用户：</label>
+				<div class="col-sm-8">
+					<select class="form-control" id="userinfo" name="userid">
+						<option value="">--请选择所属用户--</option>
+						 <div class="form-group">
+						                        <option value="会展经济区">会展经济区</option>
+						                        <option value="peng">peng</option>
+						                        <option value="农大张鸿权测试">农大张鸿权测试</option>
+						                        <option value="山灾预警">山灾预警</option>
+						                        <option value="暮云街道许兴村">暮云街道许兴村</option>
+						                        <option value="石城">石城</option>
+						                        <option value="暮云新村">暮云新村</option>
+						                        <option value="黎江平">黎江平</option>
+						                        <option value="节目">节目</option>
+						                        <option value="江文">江文</option>
+						                        <option value="岛石村">岛石村</option>
+						                        <option value="夏乡">夏乡</option>
+						                        <option value="江背镇">江背镇</option>
+						                        <option value="青山铺镇">青山铺镇</option>
+						                        <option value="长沙气象局">长沙气象局</option>
+						                        <option value="山洪灾害易发区">山洪灾害易发区</option>
+						                        <option value="春化镇">春化镇</option>
+						                        <option value="开慧镇">开慧镇</option>
+						                        <option value="路口镇">路口镇</option>
+						                        <option value="黄花镇">黄花镇</option>
+						                        <option value="金景镇">金景镇</option>
+						                        <option value="高桥镇">高桥镇</option>
+						                        <option value="安沙镇">安沙镇</option>
+						                        <option value="果园镇">果园镇</option>
+						                        <option value="黄兴镇">黄兴镇</option>
+						                        <option value="北山镇">北山镇</option>
+						                        <option value="是否V">是否V</option>
+						                        <option value="ceshi1">ceshi1</option>
+						                        <option value="安徽">安徽</option>
+						                        <option value="jiemu">jiemu</option>
+						                        <option value="福临镇">福临镇</option>
+						                        <option value="天天">天天</option>
+						                        <option value="管理员">管理员</option>
+						        </div>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">节目备注：</label>
+				<div class="col-sm-8">
+					<input id="pronote" name="pronote" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">备注：</label>
+				<div class="col-sm-8">
+					<input id="remark" name="remark" class="form-control" type="text">
+				</div>
+			</div>
+			<!--<div class="form-group">	-->
+				<!--<label class="col-sm-3 control-label">节目备注：</label>-->
+				<!--<div class="col-sm-8">-->
+					<!--<input id="pronote" name="pronote" class="form-control" type="text">-->
+				<!--</div>-->
+			<!--</div>-->
+			<!--<div class="form-group">	-->
+				<!--<label class="col-sm-3 control-label">备注：</label>-->
+				<!--<div class="col-sm-8">-->
+					<!--<input id="remark" name="remark" class="form-control" type="text">-->
+				<!--</div>-->
+			<!--</div>-->
+		</form>
+	</div>
+    <div th:include="include::footer"></div>
+    <script type="text/javascript">
+		var prefix = ctx + "broad/proChamanage"
+		$("#form-proChamanage-add").validate({
+			rules:{
+				xxxx:{
+					required:true,
+				},
+			}
+		});
+
+		function submitHandler() {
+	        if ($.validate.form()) {
+	            $.operate.save(prefix + "/add", $('#form-proChamanage-add').serialize());
+	        }
+	    }
+		// 新增特殊分组弹窗人员下拉框调取人员信息组件
+		$(function getUserInfo(ele,msg) {
+			$.get("/broad/dto/userinfos",function getmsg(params1,params2) {
+				console.log(params1 )
+				for (let index = 0; index < params1.length; index++) {
+					let text = params1[index].uname;
+					let value1 = params1[index].userid;
+					$("#userinfo").append("<option value='"+value1+"'>"+text+"</option>")
+					$("#userinfo1").append("<option value='"+value1+"'>"+text+"</option>")
+				}
+			});
+		})
+	</script>
+</body>
+</html>
