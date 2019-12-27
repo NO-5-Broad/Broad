@@ -24,7 +24,6 @@ public class ProgramServiceImpl implements IProgramService {
 
     /**
      * 查询节目库数据
-     *
      * @param program 节目实体类
      * @return 结果
      */
@@ -42,7 +41,6 @@ public class ProgramServiceImpl implements IProgramService {
 
     /**
      * 上传节目单
-     *
      * @param program 节目单
      * @return
      */
@@ -60,7 +58,19 @@ public class ProgramServiceImpl implements IProgramService {
 
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public int deleteProgram(String fid) {
+    public int deleteProgram(String fid){
         return programMapper.deleteProgram(Convert.toStrArray(fid));
+    }
+
+    @Override
+    @DataSource(value = DataSourceType.SLAVE)
+    public List<Program> selectProgramListByids(List<String> sfids) {
+        return programMapper.selectProgramListByids(sfids);
+    }
+
+    @Override
+    @DataSource(value = DataSourceType.SLAVE)
+    public int setIsPublic(String fid){
+        return programMapper.setIsPublic(fid);
     }
 }
