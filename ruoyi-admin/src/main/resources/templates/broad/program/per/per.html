@@ -208,8 +208,8 @@
                     align: 'center',
                     visible: true,
                     formatter: function (value, row, index) {
-                        var msg = '<a class="btn btn-xs btn-primary" >设为公共</a> ';
-                        var actions = '<a class="btn btn-xs btn-success">设为非公共</a>';
+                        var msg = '<a class="btn btn-xs btn-primary" onclick=setIsPublic(\'' + row.fid + '\') >设为公共</a> ';
+                        var actions = '<a class="btn btn-xs btn-success" onclick=setIsPublic(\'' + row.fid + '\')>设为非公共</a>';
                         if (row.ispublic == 0) {
                             return msg;
                         } else {
@@ -268,6 +268,14 @@
         console.log(value);
     }
 
+    function setIsPublic(rowid) {
+        $.get("/broad/per/setispublic/"+rowid, function(data){
+            if(data==1){
+                alert("修改成功");
+                $.table.refresh();
+            }
+        });
+    }
 </script>
 
 <script th:src="@{/js/plugins/layer/laydate/laydate.js}"></script>

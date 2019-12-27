@@ -1,6 +1,7 @@
 package com.ruoyi.web.controller.broad;
 
 import com.ruoyi.common.config.Global;
+import com.ruoyi.common.utils.ExcelUtil;
 import com.ruoyi.framework.util.ShiroUtils;
 import com.ruoyi.system.domain.SysUser;
 import org.slf4j.Logger;
@@ -131,5 +132,22 @@ public class PerController extends BaseController {
     @ResponseBody
     public AjaxResult removeProgram(String ids) {
         return toAjax(iProgramService.deleteProgram(ids));
+    }
+
+//    @Log(title = "节目库记录导出", businessType = BusinessType.EXPORT)
+//////    @RequiresPermissions("broad:per:export")
+////    @PostMapping("/exportbysingle")
+////    @ResponseBody
+////    public AjaxResult exportProgramByIds(@RequestParam("sjids") List<String> sfids) {
+////        List<Program> list = iProgramService.selectProgramListByids(sfids);
+////        ExcelUtil<Program> util = new ExcelUtil<Program>(Program.class);
+////        return util.exportExcel(list, "Organization");
+////    }
+////
+    @Log(title = "节目库是否公共状态转换", businessType = BusinessType.UPDATE)
+    @GetMapping("/setispublic/{fid}")
+    @ResponseBody
+    public int setIsPublic(@PathVariable("fid") String fid) {
+        return iProgramService.setIsPublic(fid);
     }
 }
