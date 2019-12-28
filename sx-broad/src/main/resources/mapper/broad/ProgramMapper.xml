@@ -65,10 +65,10 @@
         select
         fid,fname,g.userid as userid,remark,ispublic,filename,urls,address,createdtime,ptype,flenth,fsize,ui.uname
         from
-        <include refid="tableName"></include>
-        g
+        <include refid="tableName"></include> g
         LEFT JOIN <include refid="userstable"></include> ui on g.userid=ui.userid
         <where>
+            <if test="fid != null and fid != '' ">and fid like '%${fid}%'</if>
             <if test="uname != null and uname != '' ">and ui.uname like '%${uname}%'</if>
             <if test="fname != null  and fname != '' ">and fname like '%${fname}%'</if>
             <if test="ispublic != null ">and ispublic = ${ispublic}</if>
@@ -84,8 +84,7 @@
     <!--得到当年最大的文件标号-->
     <select id="getMaxFileidofYear" parameterType="String" resultType="String">
         SELECT SUBSTRING(MAX(SUBSTRING(filename,3)),1,5)
-        FROM
-        <include refid="tableName"></include>
+        FROM<include refid="tableName"></include>
         where SUBSTRING(filename,1,2) = SUBSTRING(#{year},3)
     </select>
 
