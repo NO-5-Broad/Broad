@@ -61,7 +61,8 @@
             <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="broad:broaduser:export">
                 <i class="fa fa-download"></i> 导出
             </a>
-            <a class="btn btn-success" onclick="$.operate.add()">
+            <a class="btn btn-success" onclick="$.operate.add()"
+               shiro:hasPermission="broad:broaduser:add">
                 <i class="fa fa-plus"></i> 添加
             </a>
         </div>

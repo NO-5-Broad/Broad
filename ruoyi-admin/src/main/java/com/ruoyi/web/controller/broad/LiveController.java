@@ -102,21 +102,21 @@ public class LiveController extends BaseController {
         return getDataTable(list);
     }
 
-    /**
-        * 选择终端的弹出树
-        * @author 张超 teavamc
-        * @date 2019/2/22
-        * @param [tid]
-        * @return com.ruoyi.api.domain.RongApiRes
-        */
-    @RequiresPermissions("broad:live:setStreamTer")
-    @GetMapping("/setStreamTer")
-    public String  setStreamTer(String tid)
-            throws Exception{
-        String selecttid = tid;
-        String lastjson;
-        return prefix + "/selecttree";
-    }
+//    /**
+//        * 选择终端的弹出树
+//        * @author 张超 teavamc
+//        * @date 2019/2/22
+//        * @param [tid]
+//        * @return com.ruoyi.api.domain.RongApiRes
+//        */
+//    @RequiresPermissions("broad:live:setStreamTer")
+//    @GetMapping("/setStreamTer")
+//    public String  setStreamTer(String tid)
+//            throws Exception{
+//        String selecttid = tid;
+//        String lastjson;
+//        return prefix + "/selecttree";
+//    }
 
     @RequiresPermissions("broad:live:getTerByTidTest")
     @PostMapping("/getTerByTidTest")
