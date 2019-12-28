@@ -63,4 +63,5 @@ public interface IProreApplyService {
      */
     public List<ProApplyUser> selectProrApplyUserList(ProApplyUser proApplyUser);
 
+    int recall(String fid);
 }
