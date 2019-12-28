@@ -200,5 +200,9 @@
             #{paid}
         </foreach>
     </delete>
+    <update id="recall">
+        update prore_apply set iscancel=b'1'
+        where paid=#{fid}
+    </update>
 
 </mapper>
