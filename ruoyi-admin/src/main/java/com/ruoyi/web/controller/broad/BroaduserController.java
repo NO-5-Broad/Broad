@@ -34,6 +34,8 @@ public class BroaduserController extends BaseController {
     @Autowired
     private IBroaduserService broaduserService;
 
+    private IBroaduserService broaduser1;
+
     @RequiresPermissions("broad:broaduser:view")
     @GetMapping()
     public String broaduser() {
@@ -97,14 +99,15 @@ public class BroaduserController extends BaseController {
         return toAjax(broaduserService.deleteBroaduserByIds(ids));
     }
 
-//	/**
-//	 * 新增广播用户
-//	 */
-//	@Log(title = "广播用户", businessType = BusinessType.INSERT)
-//	@PostMapping("/add")
-//	@ResponseBody
-//	public void add()
-//	{
-//		broaduserService.insertBroaduser();
-//	}
+
+    //	  新增广播用户
+    @RequiresPermissions("broad:broaduser:add")
+    @Log(title = "广播用户", businessType = BusinessType.INSERT)
+    @GetMapping("/add")
+    //@PostMapping("/add")
+    @ResponseBody
+    public AjaxResult add(Broaduser broaduser1) {
+        return toAjax(broaduserService.insertBroaduser(broaduser1));
+    }
 }
+
