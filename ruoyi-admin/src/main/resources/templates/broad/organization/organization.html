@@ -102,7 +102,10 @@
                shiro:hasPermission="broad:organization:remove">
                 <i class="fa fa-remove"></i> 批量删除
             </a>
-            <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="broad:organization:export">
+            <a class="btn btn-warning" onclick="$.operate.exportExcelBySingle()" shiro:hasPermission="broad:organization:export">
+
+
+
                 <i class="fa fa-download"></i> 导出
             </a>
         </div>
@@ -135,6 +138,7 @@
             removeUrl: prefix + "/remove",
             rdsSetUrl: prefix + "/rdsSet",
             fmfrequencyUrl: prefix + "/fmfrequencySet",
+            exportBySingleUrl: prefix + "/exportbysingle",
             striped: true,
             modalName: "终端管理",
             showExport: true,
@@ -153,7 +157,7 @@
                         actions.push('<a class="btn btn-success btn-xs ' + '" href="#" onclick="phoneEdit(\'' + row.tid + '\')"><i class="fa fa-edit" ></i>修改授权号码</a> ');
                         actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="$.operate.edit(\'' + row.tid + '\')"><i class="fa fa-edit" ></i>编辑</a> ');
                         actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="#" onclick="$.operate.remove(\'' + row.tid + '\')"><i class="fa fa-remove"></i>删除</a>');
-                        return actions.join('');
+                        return  $.table.dropdownToggle(actions.join(''));
                     }
                 },
                 {

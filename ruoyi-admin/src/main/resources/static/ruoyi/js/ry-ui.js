@@ -1027,8 +1027,78 @@
                     $.modal.alertError(result.msg);
                 }
                 $.modal.closeLoading();
+            },
+
+            //节目单管理界面---->导出单个节目单详情
+
+            exportExcelDetial: function(formId) {
+
+                $.modal.confirm("确定导出节目单详情数据吗？", function() {
+
+                    var currentId = $.common.isEmpty(formId) ? $('form').attr('id') : formId;
+
+                    $.modal.loading("正在导出数据，请稍后...");
+
+                    $.get($.table._option.exportUrlDetial+"/"+currentId, function(result) {
+
+                        if (result.code == web_status.SUCCESS) {
+
+                            window.location.href = ctx + "common/download?fileName=" + encodeURI(result.msg) + "&delete=" + true;
+
+                        } else if (result.code == web_status.WARNING) {
+
+                            $.modal.alertWarning(result.msg)
+
+                        } else {
+
+                            $.modal.alertError(result.msg);
+
+                        }
+
+                        $.modal.closeLoading();
+
+                    });
+
+                });
+
+            },
+
+            //节目单管理界面---->导出勾选中的节目单
+
+            exportExcelBySingle: function() {
+
+                var rows = $.common.isEmpty($.table._option.uniqueId) ? $.table.selectFirstColumns() : $.table.selectColumns($.table._option.uniqueId);
+
+                var sjids = rows.toString();
+
+                $.modal.loading("正在导出数据，请稍后...");
+
+                $.post($.table._option.exportBySingleUrl,{"sjids": sjids}, function(result) {
+
+                    if (result.code == web_status.SUCCESS) {
+
+                        window.location.href = ctx + "common/download?fileName=" + encodeURI(result.msg) + "&delete=" + true;
+
+                    } else if (result.code == web_status.WARNING) {
+
+                        $.modal.alertWarning(result.msg)
+
+                    } else {
+
+                        $.modal.alertError(result.msg);
+
+                    }
+
+                    $.modal.closeLoading();
+
+                });
+
+
+
             }
+
         },
+
         // 校验封装处理
         validate: {
             // 判断返回标识是否唯一 false 不存在 true 存在

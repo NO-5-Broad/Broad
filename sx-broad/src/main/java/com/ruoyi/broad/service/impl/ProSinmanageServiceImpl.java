@@ -134,4 +134,21 @@ public class ProSinmanageServiceImpl implements IProSinmanageService {
     public int addProTerminals(List<ProTerminal> proTerminal) {
         return proSinmanageMapper.addProTerminals(proTerminal);
     }
+    @Override
+
+
+
+    @DataSource(value = DataSourceType.SLAVE)
+
+
+
+    public List<ProSinmanage> selectProSinmanageListByids(List<String> sfids) {
+
+
+
+        return proSinmanageMapper.selectProSinmanageListByids(sfids);
+
+
+
+    }
 }
