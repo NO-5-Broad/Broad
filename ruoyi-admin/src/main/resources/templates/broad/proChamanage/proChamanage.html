@@ -11,14 +11,14 @@
                 <div class="select-list">
                     <ul>
                         <li>
-                            转播频道管理：<input type="text" name="cid"/>
+                            转播频道ID：<input type="text" name="cid"/>
                         </li>
                         <li>
-                            节目：<input type="text" name="cname"/>
+                            节目名称：<input type="text" name="cname"/>
                         </li>
 
                         <li>
-                            频道：<input type="text" name="frequencies"/>
+                            电台频率：<input type="text" name="frequencies"/>
                         </li>
 
                         <li>
@@ -42,7 +42,7 @@
             <!--<a class="btn btn-danger btn-del btn-del disabled" onclick="$.operate.removeAll()" shiro:hasPermission="broad:proChamanage:remove">-->
             <!--<i class="fa fa-remove"></i> 删除-->
             <!--</a>-->
-            <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="broad:proChamanage:export">
+            <a class="btn btn-warning" onclick="$.table.exportExcel()">
                 <i class="fa fa-download"></i> 导出
             </a>
         </div>
