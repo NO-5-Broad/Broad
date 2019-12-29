@@ -359,5 +359,24 @@ public class ProSinmanageController extends BaseController {
         return map;
     }
 
+    @Log(title = "节目播出单管理", businessType = BusinessType.EXPORT)
+    @RequiresPermissions("broad:proSinmanage:export")
+    @GetMapping("/export/{sjid}")
+    @ResponseBody
+    public AjaxResult export(@PathVariable("sjid")String sjid){
+        List<ProList> list = proListService.selectProListListByPid(sjid);
+        ExcelUtil<ProList> util = new ExcelUtil<ProList>(ProList.class);
+        return util.exportExcel(list, "节目播出列表");
+    }//导出节目单详情数据
+
+    @Log(title = "节目播出单", businessType = BusinessType.EXPORT)
+    @RequiresPermissions("broad:proSinmanage:export")
+    @PostMapping("/exportbysingle")
+    @ResponseBody
+    public AjaxResult exportProSinmanageByIds(@RequestParam("sjids") List<String> sfids) {
+        List<ProSinmanage> list = proSinmanageService.selectProSinmanageListByids(sfids);
+        ExcelUtil<ProSinmanage> util = new ExcelUtil<ProSinmanage>(ProSinmanage.class);
+        return util.exportExcel(list, "proSinmanage");
+    }//导出√中的数据
 
 }
