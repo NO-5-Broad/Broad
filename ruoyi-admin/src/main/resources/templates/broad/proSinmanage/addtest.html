@@ -61,7 +61,7 @@
             </tr>
         </table>
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <div class="ibox">
                     <div class="ibox-content">
                         <table id="simple-tables" class="table" style="margin-top:5px;">
@@ -82,10 +82,27 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="ui-layout-content">
                     <div id="tree" class="ztree treeselect"></div>
                 </div>
+            </div>
+            <div class="col-md-3">
+
+
+
+                <div class="ui-layout-content">
+
+
+
+                    <div id="tree1" class="ztree treeselect"></div>
+
+
+
+                </div>
+
+
+
             </div>
         </div>
     </div>
@@ -175,7 +192,41 @@
             onCheck: zTreeOnCheck,
             onClick: zOnClick
         };
+        var options1 = {
+
+
+
+            url: url,
+
+
+
+            check: {
+
+
+
+                enable: true,
+
+
+
+                chkStyle: "checkbox"
+
+
+
+            },
+
+
+
+            onCheck: zTreeOnCheck,
+
+
+
+            onClick : zOnClick
+
+
+
+        };
         $.tree.init(options);
+        $.tree.init(options1);
     }
 
     queryAreaTree()

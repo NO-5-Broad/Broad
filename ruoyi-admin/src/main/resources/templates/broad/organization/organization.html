@@ -43,44 +43,61 @@
                         <!--父地域id：<input type="text" name="parentaid" id="parentaid" style="width: 100px"/>-->
                         <!--</li>-->
 
-                        <li>
-                            终端名称：<input type="text" name="tname" id="tname" style="width: 100px"/>
+                        <li class="form-group" style="display: inline-flex">
+                            <select class="form-control noselect2 selectpicker" id="form-group11"
+                                    style="width: 120px;padding: 0">
+                                <option value="tname">终端名称</option>
+                                <option value="tid">终端IMEI</option>
+                                <option value="username">所属用户</option>
+                                <option value="aname">所属分组</option>
+                                <!--								<option value="lastaccesstime">终端最后访问日期</option>-->
+                                <!--								<option value="intertime">终端交互时间</option>-->
+                                <option value="phone">终端手机号码</option>
+                                <option value="facid">终端出产编号</option>
+                                <option value="manager">终端管理员名称</option>
+                                <option value="managertel">管理员电话</option>
+                            </select>
+                            <input type="text" name="tname" id="form-group1" style="width: 100px"/>
                         </li>
-
-                        <li>
-                            终端IMEI：<input type="text" name="tid" id="tid" style="width: 100px"/>
+                        <li class="form-group" style="display: inline-flex">
+                            <select class="form-control noselect2 selectpicker" id="form-group22"
+                                    style="width: 120px;padding: 0">
+                                <option value="aname">所属分组</option>
+                                <option value="username">所属用户</option>
+                                <option value="tname">终端名称</option>
+                                <option value="tid">终端IMEI</option>
+                                <!--								<option value="lastaccesstime">终端最后访问日期</option>-->
+                                <!--								<option value="intertime">终端交互时间</option>-->
+                                <option value="phone">终端手机号码</option>
+                                <option value="facid">终端出产编号</option>
+                                <option value="manager">终端管理员名称</option>
+                                <option value="managertel">管理员电话</option>
+                            </select>
+                            <input type="text" name="aname" id="form-group2" style="width: 100px"/>
                         </li>
-
-                        <li>
-                            所属用户：<input type="text" name="username" id="username" style="width: 100px"/>
+                        <li class="form-group" style="display: inline-flex">
+                            <select class="form-control noselect2 selectpicker" id="form-group33"
+                                    style="width: 120px;padding: 0">
+                                <option value="username">所属用户</option>
+                                <option value="aname">所属分组</option>
+                                <option value="tname">终端名称</option>
+                                <option value="tid">终端IMEI</option>
+                                <!--								<option value="lastaccesstime">终端最后访问日期</option>-->
+                                <!--								<option value="intertime">终端交互时间</option>-->
+                                <option value="phone">终端手机号码</option>
+                                <option value="facid">终端出产编号</option>
+                                <option value="manager">终端管理员名称</option>
+                                <option value="managertel">管理员电话</option>
+                            </select>
+                            <input type="text" name="username" id="form-group3" style="width: 100px"/>
                         </li>
-
-                        <li>
-                            所属分组：<input type="text" name="aname" id="aname" style="width: 100px"/>
-                        </li>
-
-                        <li>
-                            终端最后访问日期：<input type="text" name="lastaccesstime" id="lastaccesstime" style="width: 100px"/>
-                        </li>
-
-                        <li>
-                            终端交互时间：<input type="text" name="intertime" id="intertime" style="width: 100px"/>
-                        </li>
-
-                        <li>
-                            终端手机号码：<input type="text" name="phone" id="phone" style="width: 100px"/>
-                        </li>
-
-                        <li>
-                            终端出产编号：<input type="text" name="facid" id="facid" style="width: 100px"/>
-                        </li>
-
-                        <li>
-                            终端管理员名称：<input type="text" name="manager" id="manager" style="width: 100px"/>
-                        </li>
-
-                        <li>
-                            管理员电话：<input type="text" name="managertel" id="managertel" style="width: 100px"/>
+                        <li class="form-group" style="display: inline-flex">
+                            <select class="form-control noselect2 selectpicker" id="form-group44" name="isused"
+                                    style="width: 80px;padding: 0">
+                                <option value="">全部</option>
+                                <option value="true">是</option>
+                                <option value="false">否</option>
+                            </select>
                         </li>
 
                         <li>
@@ -102,7 +119,7 @@
                shiro:hasPermission="broad:organization:remove">
                 <i class="fa fa-remove"></i> 批量删除
             </a>
-            <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="broad:organization:export">
+            <a class="btn btn-warning" onclick="$.operate.exportExcelBySingle()" shiro:hasPermission="broad:organization:export">
                 <i class="fa fa-download"></i> 导出
             </a>
         </div>
@@ -135,6 +152,7 @@
             removeUrl: prefix + "/remove",
             rdsSetUrl: prefix + "/rdsSet",
             fmfrequencyUrl: prefix + "/fmfrequencySet",
+            exportBySingleUrl: prefix + "/exportbysingle",
             striped: true,
             modalName: "终端管理",
             showExport: true,
@@ -153,7 +171,7 @@
                         actions.push('<a class="btn btn-success btn-xs ' + '" href="#" onclick="phoneEdit(\'' + row.tid + '\')"><i class="fa fa-edit" ></i>修改授权号码</a> ');
                         actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="$.operate.edit(\'' + row.tid + '\')"><i class="fa fa-edit" ></i>编辑</a> ');
                         actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="#" onclick="$.operate.remove(\'' + row.tid + '\')"><i class="fa fa-remove"></i>删除</a>');
-                        return actions.join('');
+                        return  $.table.dropdownToggle(actions.join(''));
                     }
                 },
                 {

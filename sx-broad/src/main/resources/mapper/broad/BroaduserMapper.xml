@@ -75,17 +75,18 @@
     </delete>
 
     <!-- 新增终端用户信息 -->
-    <!--<insert id="insertBroaduser" parameterType="String" >
-        insert into userinfo (
-        userid,
-        username,
-        uname,
-        uphone,
-        aid
-        ) values (
-        "11",#{username},#{uname},#{uphone},#{aid}
-        )
-    </insert>-->
+<!--    <insert id="insertBroaduser" parameterType="String" >-->
+<!--        insert into userinfo (-->
+<!--        userid,-->
+<!--        username,-->
+<!--        uname,-->
+<!--        uphone,-->
+<!--        aid-->
+<!--        ) values (-->
+<!--        "11",#{username},#{uname},#{uphone},#{aid}-->
+<!--        )-->
+<!--    </insert>-->
+
     <insert id="insertBroaduser" parameterType="Broaduser">
        insert into userinfo (
         userid,

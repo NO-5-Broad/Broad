@@ -17,5 +17,8 @@
         select * from userinfo_view where userid=#{userid};
     </select>
 
+    <select id="findUserByName" parameterType="String" resultMap="UserInfoDTOResult">
+        select * from userinfo_view where uname=#{uname}
+    </select>
 
 </mapper>

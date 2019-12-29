@@ -1,7 +1,6 @@
 package com.ruoyi.broad.service;
 
 import com.ruoyi.broad.domain.Broaduser;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -51,6 +50,7 @@ public interface IBroaduserService {
      * @param uphone
      * @return
      */
-    public void insertBroaduser(Broaduser broaduser1);
+    public int insertBroaduser(Broaduser broaduser);
 
+    //void insertBroaduser(BroaduserServiceImpl.);
 }
