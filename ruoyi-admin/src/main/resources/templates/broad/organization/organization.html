@@ -202,7 +202,8 @@
 						actions.push('<a class="btn btn-success btn-xs ' + '" href="#" onclick="phoneEdit(\'' + row.tid + '\')"><i class="fa fa-edit" ></i>修改授权号码</a> ');
                         actions.push('<a class="btn btn-success btn-xs '+editFlag + '" href="#" onclick="$.operate.edit(\'' + row.tid + '\')"><i class="fa fa-edit" ></i>编辑</a> ');
                         actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="#" onclick="$.operate.remove(\'' + row.tid + '\')"><i class="fa fa-remove"></i>删除</a>');
-                        return actions.join('');
+                        // return actions.join('');
+						return  $.table.dropdownToggle(actions.join(''));
                     }
                 },
                 {
