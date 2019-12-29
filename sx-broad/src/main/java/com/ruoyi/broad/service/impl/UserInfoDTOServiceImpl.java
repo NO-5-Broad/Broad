@@ -28,4 +28,10 @@ public class UserInfoDTOServiceImpl implements IUserInfoDTOService {
         return userInfoDTOMapper.findById(userid);
     }
 
+    @Override
+    @DataSource(value = DataSourceType.SLAVE)
+    public List<UserInfoDTO> findUserByName(String uname) {
+        return userInfoDTOMapper.findUserByName(uname);
+    }
+
 }
