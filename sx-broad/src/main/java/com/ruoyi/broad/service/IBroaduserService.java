@@ -50,7 +50,7 @@ public interface IBroaduserService {
      * @param uphone
      * @return
      */
-    public int insertBroaduser(Broaduser broaduser1);
+    public int insertBroaduser(Broaduser broaduser);
 
     //void insertBroaduser(BroaduserServiceImpl.);
 }
