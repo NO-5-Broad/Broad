@@ -183,11 +183,12 @@
             removeUrl: prefix + "/remove",
             rdsSetUrl: prefix + "/rdsSet",
             fmfrequencyUrl: prefix + "/fmfrequencySet",
+			uniqueId: "tid",
             striped:true,
             modalName: "终端管理",
             showExport: true,
             search: false,
-            height: 800,
+            // height: 800,
             columns: [{
                 checkbox: true
 
@@ -433,7 +434,80 @@
 
 <!--终端列表树-->
 <script	>
-    function queryAreaTree()
+	function timeedit() {
+		layer.open({
+			type: 2,
+			maxmin: false,
+			shade: 0.3,
+			title: '添加终端',
+			fix: false,
+			area: ["800" + 'px', ($(window).height() - 50) + 'px'],
+			content: "/broad/organization/add",
+			shadeClose: false,
+			btn: ['<i class="fa fa-chat"></i> 确认', '<i class="fa fa-close"></i> 关闭'],
+			success:function(layero, index){
+				$(layero).find("iframe")[0].contentWindow.$("#aid").val(aid1);
+			},
+			yes: function (index, layero) {
+				var selected = $(layero).find("iframe")[0].contentWindow.$("#form-tbOrganization-add");
+				//对表单数据校验
+				selected.validate({
+					rules:{
+						aid:"required",
+						userinfo:"required",
+						terminaltype:"required",
+						tid:"required",
+						tname:"required",
+						intertime:"required",
+						phone:"required",
+						address:"required",
+						lastaccesstime:"required",
+						ypowerconsumption:"required",
+						MaintenanceFunds:"required",
+						basestation:"required",
+						// poscenepic:"required",
+						atphone:"required",
+						facid:"required",
+						irfrequency:"required",
+						dcs:"required",
+						fmfrequency:"required",
+						// rds:"required",
+						// transmitfrequency:"required",
+						// eovolume:"required",
+						manager:"required",
+						managertel:"required",
+						note:"required",
+						// eovolume:"required",
+
+					}
+				});
+				//提交表单数据
+				var formData = new FormData(selected[0]);
+				if ($.validate.form()) {
+					$.ajax({
+								type : "POST",
+								url : prefix +"/add",
+								data : formData,
+								async: false,
+								cache: false,
+								contentType: false,
+								processData: false,
+								success : function(msg) {
+									if(msg){
+										alert('提交成功！');
+									}
+								}
+							}
+					);
+				}
+				layer.close(index);
+				$.table.refresh();
+			},
+			cancel: function () {return true;}
+		});
+	}
+
+	function queryAreaTree()
     {
         var url = ctx + "broad/area/treeData";
         var options = {
@@ -451,6 +525,19 @@
     function phoneEdit(data) {
 		$.modal.openTab("添加" + "授权管理号码","broad/organization/phoneEdit/"+data);
 	}
+
+	$('#form-group11').on('change', function (e) {
+		$("#form-group1").attr("name",$("#form-group11").val())
+	});
+	$('#form-group22').on('change', function (e) {
+		$("#form-group2").attr("name",$("#form-group22").val())
+	});
+	$('#form-group33').on('select2:select', function (e) {
+		$("#form-group3").attr("name",$("#form-group33").val())
+	});
+	$('#form-group44').on('change', function (e) {
+		$("#form-group4").attr("value",$("#form-group44").val());
+	});
 </script>
 
 </body>
