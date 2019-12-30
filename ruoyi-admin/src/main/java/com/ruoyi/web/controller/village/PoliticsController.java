@@ -33,27 +33,28 @@ public class PoliticsController extends BaseController {
 
     @RequiresPermissions("village:politics:view")
     @GetMapping()
-    public String Politic(){
-        return prefix+"/politics";
+    public String Politic() {
+        return prefix + "/politics";
     }
 
     /**
      * 政策列表
+     *
      * @param politics
      * @return
      */
     //@RequiresPermissions("village:politics:list")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(Politics politics){
+    public TableDataInfo list(Politics politics) {
         startPage();
         List<Politics> list = politicsService.selectPoliticsList(politics);
         return getDataTable(list);
     }
 
     @GetMapping("/add")
-    public String add(){
-        return prefix+"/add";
+    public String add() {
+        return prefix + "/add";
     }
 
     /**
@@ -63,20 +64,20 @@ public class PoliticsController extends BaseController {
     @Log(title = "政策信息", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
-    public AjaxResult addSave(Politics politics)
-    {
+    public AjaxResult addSave(Politics politics) {
         return toAjax(politicsService.insertpolitics(politics));
     }
+
     /**
      * 修改政策信息
      */
     @GetMapping("/edit/{shiid}")
-    public String edit(@PathVariable("shiid") Integer shiid, ModelMap mmap)
-    {
+    public String edit(@PathVariable("shiid") Integer shiid, ModelMap mmap) {
         Politics politics = politicsService.selectByshiid(shiid);
         mmap.put("politics", politics);
         return prefix + "/edit";
     }
+
     /**
      * 修改保存政策
      */
@@ -84,20 +85,19 @@ public class PoliticsController extends BaseController {
     @Log(title = "政策信息", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
-    public AjaxResult editSave(Politics politics)
-    {
+    public AjaxResult editSave(Politics politics) {
         return toAjax(politicsService.updatePolitics(politics));
     }
+
     /**
      * 删除政策信息
      */
     @RequiresPermissions("village:politics:remove")
     @Log(title = "删除政策信息", businessType = BusinessType.DELETE)
-    @PostMapping( "/remove/{shiid}")
+    @PostMapping("/remove/{shiid}")
     @ResponseBody
-    public AjaxResult remove(@PathVariable("shiid") String shiid)
-    {
-        System.out.println("*******"+shiid);
+    public AjaxResult remove(@PathVariable("shiid") String shiid) {
+        System.out.println("*******" + shiid);
         return toAjax(politicsService.deletePoliticsByIds(shiid));
     }
 }

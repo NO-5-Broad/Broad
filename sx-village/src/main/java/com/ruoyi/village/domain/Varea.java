@@ -6,66 +6,68 @@ import com.ruoyi.common.base.BaseEntity;
 
 /**
  * 地域表 tb_varea
- * 
+ *
  * @author 张超
  * @date 2019-01-20
  */
-public class Varea extends BaseEntity
-{
-	private static final long serialVersionUID = 1L;
-	
-	/** 地域编号 */
-	private String aid;
-	/** 父地域编号 */
-	private String parentaid;
-	/** 地域昵称 */
-	private String aname;
-	/** 备注 */
-	private String note;
+public class Varea extends BaseEntity {
+    private static final long serialVersionUID = 1L;
 
-	public void setAid(String aid) 
-	{
-		this.aid = aid;
-	}
+    /**
+     * 地域编号
+     */
+    private String aid;
+    /**
+     * 父地域编号
+     */
+    private String parentaid;
+    /**
+     * 地域昵称
+     */
+    private String aname;
+    /**
+     * 备注
+     */
+    private String note;
 
-	public String getAid() 
-	{
-		return aid;
-	}
-	public void setParentaid(String parentaid) 
-	{
-		this.parentaid = parentaid;
-	}
+    public void setAid(String aid) {
+        this.aid = aid;
+    }
 
-	public String getParentaid() 
-	{
-		return parentaid;
-	}
-	public void setAname(String aname) 
-	{
-		this.aname = aname;
-	}
+    public String getAid() {
+        return aid;
+    }
 
-	public String getAname() 
-	{
-		return aname;
-	}
-	public void setNote(String note) 
-	{
-		this.note = note;
-	}
+    public void setParentaid(String parentaid) {
+        this.parentaid = parentaid;
+    }
 
-	public String getNote() 
-	{
-		return note;
-	}
+    public String getParentaid() {
+        return parentaid;
+    }
+
+    public void setAname(String aname) {
+        this.aname = aname;
+    }
+
+    public String getAname() {
+        return aname;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public String getNote() {
+        return note;
+    }
 
     public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("aid", getAid())
-            .append("parentaid", getParentaid())
-            .append("aname", getAname())
-            .append("note", getNote())
-            .toString();
+        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
+                .append("aid", getAid())
+                .append("parentaid", getParentaid())
+                .append("aname", getAname())
+                .append("note", getNote())
+                .toString();
     }
 }

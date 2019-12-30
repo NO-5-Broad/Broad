@@ -39,7 +39,7 @@ public class ChatController extends BaseController {
         Jedis jedis = new Jedis(redisHost);
         jedis.auth(redisPassword);
         int n = Integer.valueOf(jedis.get(redisNumber));
-        Set<String> set = jedis.zrange(redisSocketSet, 0, n+1);
+        Set<String> set = jedis.zrange(redisSocketSet, 0, n + 1);
         return set;
     }
 }

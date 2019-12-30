@@ -5,11 +5,11 @@
 <mapper namespace="com.ruoyi.village.mapper.AndrpicMapper">
 
     <resultMap type="Andrpic" id="AndrpicResult">
-        <result property="aid"    column="aid"    />
-        <result property="tname"    column="tname"    />
-        <result property="pic"    column="pic"    />
-        <result property="creadate"    column="creadate"    />
-        <result property="remark"    column="remark"    />
+        <result property="aid" column="aid"/>
+        <result property="tname" column="tname"/>
+        <result property="pic" column="pic"/>
+        <result property="creadate" column="creadate"/>
+        <result property="remark" column="remark"/>
     </resultMap>
 
     <sql id="selectAndrpicVo">
@@ -19,11 +19,11 @@
     <select id="selectAndrpicList" parameterType="Andrpic" resultMap="AndrpicResult">
         <include refid="selectAndrpicVo"/>
         <where>
-            <if test="aid != null "> and aid = #{aid}</if>
-            <if test="tname != null  and tname != '' "> and tname LIKE CONCAT(CONCAT('%', #{tname}),'%')</if>
-            <if test="pic != null  and pic != '' "> and pic = #{pic}</if>
-            <if test="creadate != null  and creadate != '' "> and creadate LIKE CONCAT(CONCAT('%', #{creadate}),'%')</if>
-            <if test="remark != null "> and remark = #{remark}</if>
+            <if test="aid != null ">and aid = #{aid}</if>
+            <if test="tname != null  and tname != '' ">and tname LIKE CONCAT(CONCAT('%', #{tname}),'%')</if>
+            <if test="pic != null  and pic != '' ">and pic = #{pic}</if>
+            <if test="creadate != null  and creadate != '' ">and creadate LIKE CONCAT(CONCAT('%', #{creadate}),'%')</if>
+            <if test="remark != null ">and remark = #{remark}</if>
         </where>
         ORDER BY aid ASC
     </select>
@@ -39,8 +39,9 @@
             <if test="aid != null  and aid != '' ">aid in
                 <foreach collection="listaid" item="item" separator="," open="(" close=")">
                     #{item}
-                </foreach></if>
-            <if test="tname != null  and tname != '' "> and tname LIKE CONCAT(CONCAT('%', #{tname}),'%')</if>
+                </foreach>
+            </if>
+            <if test="tname != null  and tname != '' ">and tname LIKE CONCAT(CONCAT('%', #{tname}),'%')</if>
         </where>
         ORDER BY aid ASC
         limit #{pageSize} offset #{pageIndex}

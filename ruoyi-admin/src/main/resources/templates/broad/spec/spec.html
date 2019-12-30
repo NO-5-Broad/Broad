@@ -9,9 +9,6 @@
 <body class="gray-bg">
 
 
-
-
-
 <div class="container-div ui-layout-center">
     <div class="row">
         <div class="col-sm-12 search-collapse">
@@ -28,8 +25,10 @@
                             节目名称：<input type="text" name="fname"/>
                         </li>
                         <li>
-                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
-                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i
+                                    class="fa fa-search"></i>&nbsp;搜索</a>
+                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i
+                                    class="fa fa-refresh"></i>&nbsp;重置</a>
                         </li>
                     </ul>
                 </div>
@@ -52,8 +51,8 @@
 
     var prefix = ctx + "broad/spec";
 
-    $(function() {
-        $('body').layout({ west__size: 185 });
+    $(function () {
+        $('body').layout({west__size: 185});
         queryAreaList();
     });
 
@@ -65,38 +64,38 @@
             showExport: true,
             columns: [
                 {
-                    field : 'fid',
-                    title : '节目ID',
+                    field: 'fid',
+                    title: '节目ID',
                     sortable: true
                 },
                 {
-                    field : 'fname',
-                    title : '节目名称',
+                    field: 'fname',
+                    title: '节目名称',
                     sortable: true
                 },
                 {
-                    field : 'filename',
-                    title : '保存名称',
+                    field: 'filename',
+                    title: '保存名称',
                     sortable: true
                 },
                 {
-                    field : 'flenth',
-                    title : '时长',
+                    field: 'flenth',
+                    title: '时长',
                     sortable: true
                 },
                 {
-                    field : 'fsize',
-                    title : '文件大小',
+                    field: 'fsize',
+                    title: '文件大小',
                     sortable: true
                 },
                 {
-                    field : 'uname',
-                    title : '上传者',
+                    field: 'uname',
+                    title: '上传者',
                     sortable: true
                 },
                 {
-                    field : 'createdtime',
-                    title : '创建时间',
+                    field: 'createdtime',
+                    title: '创建时间',
                     sortable: true
                 },
                 {
@@ -104,7 +103,7 @@
                     title: '试听',
                     align: 'center',
                     visible: true,
-                    formatter: function(value, row, index) {
+                    formatter: function (value, row, index) {
                         var actions = '<a class=\"btn btn-xs btn-success\"  onclick=func(\'' + value + '\')>试听</a>';
                         return actions;
                     }
@@ -114,13 +113,14 @@
     }
 
     function func(value) {
-        value = "../"+value;
-        var audio=$(".recPlay")[0];
-        audio.controls=true;
-        if(!(audio.ended || audio.paused)){
+        value = "../" + value;
+        var audio = $(".recPlay")[0];
+        audio.controls = true;
+        if (!(audio.ended || audio.paused)) {
             audio.pause();
-        };
-        audio.src=value;
+        }
+        ;
+        audio.src = value;
         console.log(audio);
         audio.play();
     }

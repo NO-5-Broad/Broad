@@ -20,12 +20,14 @@ import java.util.List;
  * @Date: $
  */
 @Service
-public class TextmessagesServiceImpl  implements ITextmessagesService {
+public class TextmessagesServiceImpl implements ITextmessagesService {
 
     @Autowired
     private TextmessagesMapper textmessagesMapper;
+
     /**
      * 获取所有类型及数量
+     *
      * @return
      */
     @Override
@@ -33,7 +35,10 @@ public class TextmessagesServiceImpl  implements ITextmessagesService {
     public List<typenum> selectTypeNum() {
         return textmessagesMapper.selectTypeNum();
     }
+
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public List<Textmessages> selectTextMessages(){ return  textmessagesMapper.selectTextMessages();}
+    public List<Textmessages> selectTextMessages() {
+        return textmessagesMapper.selectTextMessages();
+    }
 }

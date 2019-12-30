@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by ASUS on 2019/8/11.
+ *
  * @author cx
  */
 public interface ProListenMapper {
@@ -61,9 +62,12 @@ public interface ProListenMapper {
 
     /**
      * 该方法只提供节目申请表中的目录
-     * @date 2019/3/2
+     *
      * @param proApplyUser
      * @return java.util.List<com.ruoyi.broad.domain.ProApplyUser>
+     * @date 2019/3/2
      */
     public List<ProApplyUser> selectProrApplyUserList(ProApplyUser proApplyUser);
+
+    int checkpass(String paid);
 }

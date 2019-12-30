@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <meta charset="utf-8">
 <head th:include="include :: header"></head>
 <body class="white-bg">
@@ -29,12 +29,13 @@
 <script type="text/javascript">
     var prefix = ctx + "broad/areaGrouping"
     $("#form-areaGrouping-edit").validate({
-        rules:{
-            xxxx:{
-                required:true,
+        rules: {
+            xxxx: {
+                required: true,
             },
         }
     });
+
     function submitHandler() {
         if ($.validate.form()) {
             $.operate.save(prefix + "/edit", $('#form-areaGrouping-edit').serialize());

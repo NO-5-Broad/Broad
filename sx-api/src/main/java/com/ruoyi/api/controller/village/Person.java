@@ -34,30 +34,28 @@ public class Person {
     @GetMapping("/all")
     @CrossOrigin
     @ApiOperation(value = "查询个人详细信息")
-    public RongApiRes searchPerson(Integer pdid)
-    {
+    public RongApiRes searchPerson(Integer pdid) {
         return RongApiService.get_bean(personalDetailService.selectPersonalDetailById(pdid));
     }
 
     @GetMapping("/perAllInfo")
     @CrossOrigin
     @ApiOperation(value = "查询个人详细信息")
-    public RongApiRes selectPersonAll(PersonApi person)
-    {
-        person.setPageIndex((person.getPageIndex()-1)*person.getPageSize());
+    public RongApiRes selectPersonAll(PersonApi person) {
+        person.setPageIndex((person.getPageIndex() - 1) * person.getPageSize());
         List<VillagerInfo> res;
         List<String> allaid = vareaService.listNextAid(person.getAid());
-        if (allaid.isEmpty()){
+        if (allaid.isEmpty()) {
             allaid.add(person.getAid());
             person.setListaid(allaid);
             res = villagerInfoService.selectPersonAllByApi(person);
-        }else {
+        } else {
             //获得所有的子 aid 放入 list
             List<String> temp;
             temp = vareaService.listNextAid(allaid.get(0));
-            for (int i = 1; i < allaid.size(); i++){
+            for (int i = 1; i < allaid.size(); i++) {
                 List<String> l = vareaService.listNextAid(allaid.get(i));
-                if (!l.isEmpty()){
+                if (!l.isEmpty()) {
                     temp.addAll(l);
                 }
             }
@@ -72,21 +70,21 @@ public class Person {
     @GetMapping("/cadreinfo")
     @CrossOrigin
     @ApiOperation(value = "村工作人员列表")
-    public RongApiRes selectbycadre(PersonApi person){
-        person.setPageIndex((person.getPageIndex()-1)*person.getPageSize());
+    public RongApiRes selectbycadre(PersonApi person) {
+        person.setPageIndex((person.getPageIndex() - 1) * person.getPageSize());
         List<VillagerInfo> res;
         List<String> allaid = vareaService.listNextAid(person.getAid());
-        if (allaid.isEmpty()){
+        if (allaid.isEmpty()) {
             allaid.add(person.getAid());
             person.setListaid(allaid);
             res = villagerInfoService.selectbycadre(person);
-        }else {
+        } else {
             //获得所有的子 aid 放入 list
             List<String> temp;
             temp = vareaService.listNextAid(allaid.get(0));
-            for (int i = 1; i < allaid.size(); i++){
+            for (int i = 1; i < allaid.size(); i++) {
                 List<String> l = vareaService.listNextAid(allaid.get(i));
-                if (!l.isEmpty()){
+                if (!l.isEmpty()) {
                     temp.addAll(l);
                 }
             }

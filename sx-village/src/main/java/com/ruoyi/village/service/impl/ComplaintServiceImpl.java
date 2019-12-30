@@ -28,8 +28,8 @@ public class ComplaintServiceImpl implements IComplaintService {
     @DataSource(value = DataSourceType.SXVILLAGE)
     public List<Complaint> selectComplaintsList(Complaint complaintmessages) {
         List<Complaint> list = complaintMapper.selectComplaintsList(complaintmessages);
-        for(Complaint complaints : list){
-            if(complaints.getContent().length()>0)
+        for (Complaint complaints : list) {
+            if (complaints.getContent().length() > 0)
                 complaints.setContent(FilterText.delHTMLTag(complaints.getContent()));
         }
         return list;

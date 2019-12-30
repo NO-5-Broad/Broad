@@ -33,27 +33,28 @@ public class EducationController extends BaseController {
 
     @RequiresPermissions("village:education:view")
     @GetMapping()
-    public String Education(){
-        return prefix+"/education";
+    public String Education() {
+        return prefix + "/education";
     }
 
     /**
-     *党员在线学习列表
+     * 党员在线学习列表
+     *
      * @param education
      * @return
      */
     //@RequiresPermissions("village:education:list")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(Education education){
+    public TableDataInfo list(Education education) {
         startPage();
         List<Education> list = educationService.selectEducationList(education);
         return getDataTable(list);
     }
 
     @GetMapping("/add")
-    public String add(){
-        return prefix+"/add";
+    public String add() {
+        return prefix + "/add";
     }
 
     /**
@@ -63,20 +64,20 @@ public class EducationController extends BaseController {
     @Log(title = "党员在线学习", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
-    public AjaxResult addSave(Education education)
-    {
+    public AjaxResult addSave(Education education) {
         return toAjax(educationService.inserteducation(education));
     }
+
     /**
      * 修改党员在线学习
      */
     @GetMapping("/edit/{id}")
-    public String edit(@PathVariable("id") Integer eid, ModelMap mmap)
-    {
+    public String edit(@PathVariable("id") Integer eid, ModelMap mmap) {
         Education education = educationService.selectByeid(eid);
         mmap.put("education", education);
         return prefix + "/edit";
     }
+
     /**
      * 修改保存政策
      */
@@ -84,20 +85,19 @@ public class EducationController extends BaseController {
     @Log(title = "党员在线学习", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
-    public AjaxResult editSave(Education education)
-    {
+    public AjaxResult editSave(Education education) {
         return toAjax(educationService.updateEducation(education));
     }
+
     /**
      * 删除党员在线学习课程
      */
     @RequiresPermissions("village:education:remove")
     @Log(title = "删除党员在线学习课程", businessType = BusinessType.DELETE)
-    @PostMapping( "/remove/{id}")
+    @PostMapping("/remove/{id}")
     @ResponseBody
-    public AjaxResult remove(@PathVariable("id") String eid)
-    {
-        System.out.println("*******"+eid);
+    public AjaxResult remove(@PathVariable("id") String eid) {
+        System.out.println("*******" + eid);
         return toAjax(educationService.deleteEducationByids(eid));
     }
 }

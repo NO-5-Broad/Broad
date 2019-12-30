@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * Created by ASUS on 2019/7/12.
+ *
  * @author 陈霞
  */
 @Service
@@ -23,31 +24,37 @@ public class MaintainApplyServiceImpl implements IMaintainApplyService {
 
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public MaintainApply selectMaintainApplyById(String maid){
+    public MaintainApply selectMaintainApplyById(String maid) {
         return maintainApplyMapper.selectMaintainApplyById(maid);
     }
 
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public List<MaintainApply> selectMaintainApplyList(MaintainApply maintainApply){
+    public List<MaintainApply> selectMaintainApplyList(MaintainApply maintainApply) {
         return maintainApplyMapper.selectMaintainApplyList(maintainApply);
     }
 
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public List<MaintainApply> selectAllMaintainApply(){
+    public List<MaintainApply> selectAllMaintainApply() {
         return maintainApplyMapper.selectAllMaintainApply();
     }
 
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public int deleteMaintainApplyById(String maid){return maintainApplyMapper.deleteMaintainApplyById(Convert.toStrArray(maid));}
+    public int deleteMaintainApplyById(String maid) {
+        return maintainApplyMapper.deleteMaintainApplyById(Convert.toStrArray(maid));
+    }
 
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public int insertMaintainApply(MaintainApply maintainApply){return maintainApplyMapper.insertMaintainApply(maintainApply);}
+    public int insertMaintainApply(MaintainApply maintainApply) {
+        return maintainApplyMapper.insertMaintainApply(maintainApply);
+    }
 
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public int updateMaintainApply(MaintainApply maintainApply){return maintainApplyMapper.updateMaintainApply(maintainApply);}
+    public int updateMaintainApply(MaintainApply maintainApply) {
+        return maintainApplyMapper.updateMaintainApply(maintainApply);
+    }
 }

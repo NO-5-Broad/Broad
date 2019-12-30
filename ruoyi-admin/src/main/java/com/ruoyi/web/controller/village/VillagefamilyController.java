@@ -32,12 +32,15 @@ public class VillagefamilyController extends BaseController {
 
     @RequiresPermissions("village:villageFamily:view")
     @GetMapping()
-    public String VillageFamily(){return prefix+"/villagefamily";}
+    public String VillageFamily() {
+        return prefix + "/villagefamily";
+    }
 
     @GetMapping("/add")
-    public String add(){
-        return prefix+"/add";
+    public String add() {
+        return prefix + "/add";
     }
+
     /**
      * 新增保存小村家事
      */
@@ -45,23 +48,24 @@ public class VillagefamilyController extends BaseController {
     @Log(title = "小村家事", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
-    public AjaxResult addSave(Villagefamily villagefamily)
-    {
+    public AjaxResult addSave(Villagefamily villagefamily) {
         return toAjax(villagefamilyService.insertvillagefamily(villagefamily));
     }
 
     /**
      * 修改小村家事数据
+     *
      * @param jsid
      * @param mmap
      * @return
      */
     @GetMapping("/edit/{jsid}")
-    public String edit(@PathVariable("jsid") Integer jsid , ModelMap mmap){
+    public String edit(@PathVariable("jsid") Integer jsid, ModelMap mmap) {
         Villagefamily villagefamily = villagefamilyService.selectByfbid(jsid);
         mmap.put("villagefamily", villagefamily);
         return prefix + "/edit";
     }
+
     /**
      * 修改保存小村家事
      */
@@ -71,16 +75,18 @@ public class VillagefamilyController extends BaseController {
     @ResponseBody
     public AjaxResult editSave(Villagefamily villagefamily) {
         System.out.println(villagefamily.toString());
-        return toAjax(villagefamilyService.updatevillagefamily(villagefamily));}
+        return toAjax(villagefamilyService.updatevillagefamily(villagefamily));
+    }
 
     /**
      * 获取小村家事数据
+     *
      * @return
      */
     //@RequiresPermissions("village:villagefamily:list")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo List(Villagefamily villagefamily){
+    public TableDataInfo List(Villagefamily villagefamily) {
         startPage();
         List<Villagefamily> list = villagefamilyService.selectvillagefamilylist(villagefamily);
         return getDataTable(list);
@@ -91,10 +97,9 @@ public class VillagefamilyController extends BaseController {
      */
     @RequiresPermissions("village:villageFamily:remove")
     @Log(title = "删除小村家事", businessType = BusinessType.DELETE)
-    @PostMapping( "/remove/{jsid}")
+    @PostMapping("/remove/{jsid}")
     @ResponseBody
-    public AjaxResult remove(@PathVariable("jsid") String jsid)
-    {
+    public AjaxResult remove(@PathVariable("jsid") String jsid) {
         return toAjax(villagefamilyService.deletevillagefamilybyids(jsid));
     }
 }

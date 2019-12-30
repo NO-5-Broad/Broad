@@ -21,12 +21,14 @@ public interface ComplaintMapper {
 
     /**
      * 根据fbid删除数据
+     *
      * @param fbid
      */
     int deleteComplaintsByids(String[] fbid);
 
     /**
      * 添加投诉咨询
+     *
      * @param complaint
      * @return
      */
@@ -34,6 +36,7 @@ public interface ComplaintMapper {
 
     /**
      * 根据fbid选择数据
+     *
      * @param fbid
      * @return
      */
@@ -41,6 +44,7 @@ public interface ComplaintMapper {
 
     /**
      * 保存用户修改
+     *
      * @param complaint
      * @return
      */

@@ -4,20 +4,20 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.broad.mapper.AreaGroupingMapper">
     <resultMap type="AreaGrouping" id="AreaGroupingResult">
-        <result property="aid"    column="aid"    />
-        <result property="parentaid"    column="parentaid"    />
-        <result property="aname"    column="aname"    />
-        <result property="note"    column="note"    />
-        <result property="parentaname"    column="parentaname"    />
+        <result property="aid" column="aid"/>
+        <result property="parentaid" column="parentaid"/>
+        <result property="aname" column="aname"/>
+        <result property="note" column="note"/>
+        <result property="parentaname" column="parentaname"/>
     </resultMap>
 
 
-    <select id="listAreaGrouping"  parameterType="AreaGrouping" resultMap="AreaGroupingResult">
+    <select id="listAreaGrouping" parameterType="AreaGrouping" resultMap="AreaGroupingResult">
         select
-			a.aid as aid,
-			a.parentaid as parentaid,
-			a.aname as aname,
-			a.note as note
+        a.aid as aid,
+        a.parentaid as parentaid,
+        a.aname as aname,
+        a.note as note
         from area a
         <where>
             <if test="aid != null  and aid != '' ">and a.aid like CONCAT(#{aid},'%')</if>

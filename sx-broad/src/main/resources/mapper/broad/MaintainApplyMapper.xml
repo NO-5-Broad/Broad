@@ -35,14 +35,14 @@
         <include refid="selectMaintainApplyVo"/>
 
         <where>
-        <if test="maid != null  and maid != '' ">and maid like CONCAT('%',#{maid},'%')</if>
-        <if test="teraddress != null  and teraddress != '' ">and teraddress like CONCAT('%',#{teraddress},'%')</if>
-        <if test="linkman != null  and linkman != '' ">and linkman like CONCAT('%',#{linkman},'%')</if>
-        <if test="linkphone != null  and linkphone != '' ">and linkphone like CONCAT('%',#{linkphone},'%')</if>
-        <if test="downtime != null  and downtime != '' ">and downtime like CONCAT('%',#{downtime},'%')</if>
-        <if test="applytime != null  and applytime != '' ">and applytime like CONCAT('%',#{applytime},'%')</if>
-        <if test="status != null  and status != '' ">and status like CONCAT('%',#{status},'%')</if>
-        <if test="remark != null  and remark != '' ">and remark like CONCAT('%',#{remark},'%')</if>
+            <if test="maid != null  and maid != '' ">and maid like CONCAT('%',#{maid},'%')</if>
+            <if test="teraddress != null  and teraddress != '' ">and teraddress like CONCAT('%',#{teraddress},'%')</if>
+            <if test="linkman != null  and linkman != '' ">and linkman like CONCAT('%',#{linkman},'%')</if>
+            <if test="linkphone != null  and linkphone != '' ">and linkphone like CONCAT('%',#{linkphone},'%')</if>
+            <if test="downtime != null  and downtime != '' ">and downtime like CONCAT('%',#{downtime},'%')</if>
+            <if test="applytime != null  and applytime != '' ">and applytime like CONCAT('%',#{applytime},'%')</if>
+            <if test="status != null  and status != '' ">and status like CONCAT('%',#{status},'%')</if>
+            <if test="remark != null  and remark != '' ">and remark like CONCAT('%',#{remark},'%')</if>
         </where>
         ORDER BY downtime DESC
     </select>
@@ -72,7 +72,7 @@
             #{maid}
         </foreach>
     </delete>
-    
+
     <insert id="insertMaintainApply" parameterType="MaintainApply">
         insert into maintain_apply
         <trim prefix="(" suffix=")" suffixOverrides=",">

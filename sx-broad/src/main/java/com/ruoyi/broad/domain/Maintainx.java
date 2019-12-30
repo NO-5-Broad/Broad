@@ -10,15 +10,25 @@ public class Maintainx {
 
     private static final long serialVersionUID = 1L;
 
-    /** 设备ID */
+    /**
+     * 设备ID
+     */
     private String tid;
-    /** 设备保修内容 */
+    /**
+     * 设备保修内容
+     */
     private String content;
-    /** 保修时间 */
+    /**
+     * 保修时间
+     */
     private String ctime;
-    /** 经度 */
+    /**
+     * 经度
+     */
     private Double lo;
-    /** 纬度 */
+    /**
+     * 纬度
+     */
     private Double la;
 
     public String getTid() {

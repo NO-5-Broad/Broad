@@ -9,20 +9,29 @@ package com.ruoyi.village.domain;
 public class Mcount {
     private static final long serialVersionUID = 1L;
 
-    /** 地区分组 */
+    /**
+     * 地区分组
+     */
     private String marea;
 
-    /** 村民总数 */
+    /**
+     * 村民总数
+     */
     private int msum;
 
-    /** 男 */
+    /**
+     * 男
+     */
     private int man;
 
-    /** 女 */
+    /**
+     * 女
+     */
     private int woman;
 
     private int sum2;
     private int sum3;
+
     public String getMarea() {
         return marea;
     }

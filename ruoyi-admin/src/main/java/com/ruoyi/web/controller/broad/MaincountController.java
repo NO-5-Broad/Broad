@@ -26,68 +26,64 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/broad/maincount")
-public class MaincountController extends BaseController
-{
+public class MaincountController extends BaseController {
     private String prefix = "broad/maincount";
 
-	@Autowired
-	private IMaincountService maincountService;
-	@Autowired
-	private ISysUserService sysUserService;
-	@Autowired
-	private IMessageService messageService;
-//	@RequiresPermissions("broad:maincount:view")
-	@GetMapping()
-	public String maincount()
-	{
-	    return prefix + "/maincount";
-	}
+    @Autowired
+    private IMaincountService maincountService;
+    @Autowired
+    private ISysUserService sysUserService;
+    @Autowired
+    private IMessageService messageService;
 
-	/**
-	 * 查询终端维护记录列表
-	 */
+    //	@RequiresPermissions("broad:maincount:view")
+    @GetMapping()
+    public String maincount() {
+        return prefix + "/maincount";
+    }
+
+    /**
+     * 查询终端维护记录列表
+     */
 //	@RequiresPermissions("broad:maincount:list")
-	@PostMapping("/list")
-	@ResponseBody
-	public TableDataInfo list(Maincount maincount)
-	{
-		SysUser currentUser = ShiroUtils.getSysUser();//从session中获取当前登陆用户的userid
-		Long userid =  currentUser.getUserId();
-		int returnId = new Long(userid).intValue();
-		int roleid = sysUserService.selectRoleid(returnId);//通过所获取的userid去广播用户表中查询用户所属区域的Roleid
-		if(roleid != 1){
-			String aid;
-			aid = sysUserService.selectAid(returnId);//通过所获取的userid去广播用户表中查询用户所属区域的Aid
-			maincount.setAid(aid);
-		}
-		startPage();
+    @PostMapping("/list")
+    @ResponseBody
+    public TableDataInfo list(Maincount maincount) {
+        SysUser currentUser = ShiroUtils.getSysUser();//从session中获取当前登陆用户的userid
+        Long userid = currentUser.getUserId();
+        int returnId = new Long(userid).intValue();
+        int roleid = sysUserService.selectRoleid(returnId);//通过所获取的userid去广播用户表中查询用户所属区域的Roleid
+        if (roleid != 1) {
+            String aid;
+            aid = sysUserService.selectAid(returnId);//通过所获取的userid去广播用户表中查询用户所属区域的Aid
+            maincount.setAid(aid);
+        }
+        startPage();
         List<Maincount> list = maincountService.selectMaincountList(maincount);
-		return getDataTable(list);
-	}
+        return getDataTable(list);
+    }
 
 
-	/**
-	 * 导出终端维护记录列表
-	 */
+    /**
+     * 导出终端维护记录列表
+     */
 //	@RequiresPermissions("broad:maincount:export")
     @PostMapping("/export")
     @ResponseBody
-    public AjaxResult export(Maincount maincount)
-    {
-    	List<Maincount> list = maincountService.selectMaincountList(maincount);
+    public AjaxResult export(Maincount maincount) {
+        List<Maincount> list = maincountService.selectMaincountList(maincount);
         ExcelUtil<Maincount> util = new ExcelUtil<Maincount>(Maincount.class);
         return util.exportExcel(list, "maincount");
     }
 
-	/**
-	 * 打开终端维护记录详情页
-	 */
-	@GetMapping("/detail/{tid}")
-	public String detail(@PathVariable("tid")String tid,ModelMap mmap)
-	{
+    /**
+     * 打开终端维护记录详情页
+     */
+    @GetMapping("/detail/{tid}")
+    public String detail(@PathVariable("tid") String tid, ModelMap mmap) {
 //		mmap.put("tid",tid);
-		mmap.put("listBySjid",maincountService.selectMaincountById(tid));
-		return prefix + "/detail";
-	}
+        mmap.put("listBySjid", maincountService.selectMaincountById(tid));
+        return prefix + "/detail";
+    }
 
 }

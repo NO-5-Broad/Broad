@@ -5,12 +5,12 @@
 <mapper namespace="com.ruoyi.broad.mapper.TrafficMapper">
 
     <resultMap type="Traffic" id="TrafficResult">
-        <result property="ttid"    column="ttid"    />
-        <result property="tid"    column="tid"    />
-        <result property="usetraffic"    column="usetraffic"    />
-        <result property="trafficlimit"    column="trafficlimit"    />
-        <result property="lasttime"    column="lasttime"    />
-        <result property="remark"    column="remark"    />
+        <result property="ttid" column="ttid"/>
+        <result property="tid" column="tid"/>
+        <result property="usetraffic" column="usetraffic"/>
+        <result property="trafficlimit" column="trafficlimit"/>
+        <result property="lasttime" column="lasttime"/>
+        <result property="remark" column="remark"/>
     </resultMap>
 
 
@@ -40,13 +40,13 @@
     <select id="selectTrafficList" parameterType="Traffic" resultMap="TrafficResult">
         <include refid="selectTrafficVo"/>
         <where>
-            <if test="ttid != null "> and ttid like '%${ttid}%'</if>
-            <if test="tid != null  and tid != '' "> and t.tid like '%${tid}%'</if>
+            <if test="ttid != null ">and ttid like '%${ttid}%'</if>
+            <if test="tid != null  and tid != '' ">and t.tid like '%${tid}%'</if>
             <if test="aid != null  and aid != ''  ">and t.aid = #{aid}</if>
-            <if test="usetraffic != null "> and usetraffic like '%${usetraffic}%'</if>
-            <if test="trafficlimit != null  and trafficlimit != '' "> and a.trafficlimit like '%${trafficlimit}%'</if>
-            <if test="tname != null  and tname != '' "> and tname like '%${tname}%'</if>
-            <if test="aname != null  and aname != '' "> and aname like '%${aname}%'</if>
+            <if test="usetraffic != null ">and usetraffic like '%${usetraffic}%'</if>
+            <if test="trafficlimit != null  and trafficlimit != '' ">and a.trafficlimit like '%${trafficlimit}%'</if>
+            <if test="tname != null  and tname != '' ">and tname like '%${tname}%'</if>
+            <if test="aname != null  and aname != '' ">and aname like '%${aname}%'</if>
             <if test="minNum != null  and minNum != ''  ">and usetraffic >= #{minNum}</if>
             <if test="maxNum != null  and maxNum != ''  ">and usetraffic &lt;=#{maxNum}</if>
         </where>
@@ -106,15 +106,15 @@
         </foreach>
     </delete>
 
-    <update id="updateRdsByIds" >
-        update  terminals set trafficlimit = #{number} where tid in
+    <update id="updateRdsByIds">
+        update terminals set trafficlimit = #{number} where tid in
         <foreach item="tid" collection="ids" open="(" separator="," close=")">
             #{tid}
         </foreach>
     </update>
 
-    <update id="updateFmfrequencyByIds" >
-        update  terminals set isuse = 1 where tid in
+    <update id="updateFmfrequencyByIds">
+        update terminals set isuse = 1 where tid in
         <foreach item="tid" collection="ids" open="(" separator="," close=")">
             #{tid}
         </foreach>

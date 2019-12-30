@@ -14,39 +14,51 @@ public class Progchannel {
     private String frequencies;//fm地址
     private String remark;//备注
     private String pronote;
+
     public String getCid() {
         return cid;
     }
+
     public void setCid(String cid) {
         this.cid = cid;
     }
+
     public String getCname() {
         return cname;
     }
+
     public void setCname(String cname) {
         this.cname = cname;
     }
+
     public String getUserid() {
         return userid;
     }
+
     public void setUserid(String userid) {
         this.userid = userid;
     }
+
     public String getFrequencies() {
         return frequencies;
     }
+
     public void setFrequencies(String frequencies) {
         this.frequencies = frequencies;
     }
+
     public String getRemark() {
         return remark;
     }
+
     public void setRemark(String remark) {
         this.remark = remark;
     }
+
     public String getPronote() {
         return pronote;
     }
+
     public void setPronote(String pronote) {
         this.pronote = pronote;
     }

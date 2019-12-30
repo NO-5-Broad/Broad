@@ -4,30 +4,30 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.broad.mapper.ManageMapper">
     <resultMap type="Manage" id="ManageResult">
-        <result property="tid"    column="tid"    />
-        <result property="Longitude"    column="Longitude"    />
-        <result property="Latitude"    column="Latitude"    />
-        <result property="Families"    column="Families"    />
-        <result property="Population"    column="Population"    />
-        <result property="TwoOverlayMode"    column="TwoOverlayMode"    />
-        <result property="TwoTransmitFrequency"    column="TwoTransmitFrequency"    />
-        <result property="TwoOverlayNumber"    column="TwoOverlayNumber"    />
-        <result property="TwoOverlayFamiles"    column="TwoOverlayFamiles"    />
-        <result property="TwoOverlayPopulations"    column="TwoOverlayPopulations"    />
-        <result property="PowerConsumption"    column="PowerConsumption"    />
-        <result property="OtherTechnology"    column="OtherTechnology"    />
-        <result property="DrillingPeriod"    column="DrillingPeriod"    />
-        <result property="StandbyBattery"    column="StandbyBattery"    />
-        <result property="PlaybacksMode"    column="PlaybacksMode"    />
-        <result property="MaintenanceFunds"    column="MaintenanceFunds"    />
-        <result property="Remark"    column="Remark"    />
-        <result property="tname"    column="tname"    />
-        <result property="userid"    column="userid"    />
-        <result property="aid"    column="aid"    />
-        <result property="aname"    column="aname"    />
-        <result property="createdtime"    column="createdtime"    />
-        <result property="supervisionunit"    column="supervisionunit"    />
-        <result property="Accountabilityunit"    column="Accountabilityunit"    />
+        <result property="tid" column="tid"/>
+        <result property="Longitude" column="Longitude"/>
+        <result property="Latitude" column="Latitude"/>
+        <result property="Families" column="Families"/>
+        <result property="Population" column="Population"/>
+        <result property="TwoOverlayMode" column="TwoOverlayMode"/>
+        <result property="TwoTransmitFrequency" column="TwoTransmitFrequency"/>
+        <result property="TwoOverlayNumber" column="TwoOverlayNumber"/>
+        <result property="TwoOverlayFamiles" column="TwoOverlayFamiles"/>
+        <result property="TwoOverlayPopulations" column="TwoOverlayPopulations"/>
+        <result property="PowerConsumption" column="PowerConsumption"/>
+        <result property="OtherTechnology" column="OtherTechnology"/>
+        <result property="DrillingPeriod" column="DrillingPeriod"/>
+        <result property="StandbyBattery" column="StandbyBattery"/>
+        <result property="PlaybacksMode" column="PlaybacksMode"/>
+        <result property="MaintenanceFunds" column="MaintenanceFunds"/>
+        <result property="Remark" column="Remark"/>
+        <result property="tname" column="tname"/>
+        <result property="userid" column="userid"/>
+        <result property="aid" column="aid"/>
+        <result property="aname" column="aname"/>
+        <result property="createdtime" column="createdtime"/>
+        <result property="supervisionunit" column="supervisionunit"/>
+        <result property="Accountabilityunit" column="Accountabilityunit"/>
     </resultMap>
 
     <!--表名 -->
@@ -84,7 +84,8 @@
         MaintenanceFunds,
         remark
         from
-        ((<include refid="tableName"></include> ma   JOIN <include refid="terminaltableName"></include> t on t.tid=ma.tid	)
+        ((<include refid="tableName"></include> ma JOIN <include refid="terminaltableName"></include> t on t.tid=ma.tid
+        )
         left join <include refid="areatable"></include> a on t.aid = a.aid)
         left join <include refid="usertable"></include> ui on ui.userid = t.userid
         <where>

@@ -26,11 +26,11 @@ public class Vcomment extends BaseController {
     @GetMapping("/infoAll")
     @CrossOrigin
     @ApiOperation(value = "返回最近五条公告评论信息")
-    public RongApiRes searchinfofive(pubObjApi info){
-        info.setPageIndex((info.getPageIndex()-1)*info.getPageSize());
-        List<Comment> commentlist =policyinfoService.selectinfocommentListlimit(info);
+    public RongApiRes searchinfofive(pubObjApi info) {
+        info.setPageIndex((info.getPageIndex() - 1) * info.getPageSize());
+        List<Comment> commentlist = policyinfoService.selectinfocommentListlimit(info);
         // 遍历存储回复的评论
-        for(Comment comment : commentlist){
+        for (Comment comment : commentlist) {
             comment.setRecomment(policyinfoService.selectinforecommentList(comment.getCoid()));
         }
         return RongApiService.get_list(commentlist);
@@ -39,7 +39,7 @@ public class Vcomment extends BaseController {
     @PostMapping("/insertInfoCM")
     @CrossOrigin
     @ApiOperation(value = "新增公告评论")
-    public AjaxResult insertInfoCM(Comment comment){
+    public AjaxResult insertInfoCM(Comment comment) {
 
         System.out.println(comment.getPcid());
         return toAjax(policyinfoService.insertInfoCM(comment));

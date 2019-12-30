@@ -1,6 +1,7 @@
 package com.ruoyi.web.controller.broad;
 
 import java.util.List;
+
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,96 +22,98 @@ import com.ruoyi.common.utils.ExcelUtil;
 
 /**
  * 广播用户 信息操作处理
- * 
+ *
  * @author 张鸿权
  * @date 2019-01-18
  */
 @Controller
 @RequestMapping("/broad/broaduser")
-public class BroaduserController extends BaseController
-{
+public class BroaduserController extends BaseController {
     private String prefix = "broad/broaduser";
-	
-	@Autowired
-	private IBroaduserService broaduserService;
-	
-	@RequiresPermissions("broad:broaduser:view")
-	@GetMapping()
-	public String broaduser()
-	{
-	    return prefix + "/broaduser";
-	}
-	
-	/**
-	 * 查询广播用户列表
-	 */
-	@RequiresPermissions("broad:broaduser:list")
-	@PostMapping("/list")
-	@ResponseBody
-	public TableDataInfo list(Broaduser broaduser)
-	{
-		startPage();
+
+    @Autowired
+    private IBroaduserService broaduserService;
+
+    private IBroaduserService broaduser;
+
+    @RequiresPermissions("broad:broaduser:view")
+    @GetMapping()
+    public String broaduser() {
+        return prefix + "/broaduser";
+    }
+
+    /**
+     * 查询广播用户列表
+     */
+    @RequiresPermissions("broad:broaduser:list")
+    @PostMapping("/list")
+    @ResponseBody
+    public TableDataInfo list(Broaduser broaduser) {
+        startPage();
         List<Broaduser> list = broaduserService.selectBroaduserList(broaduser);
-		return getDataTable(list);
-	}
-	
-	
-	/**
-	 * 导出广播用户列表
-	 */
-	@RequiresPermissions("broad:broaduser:export")
+        return getDataTable(list);
+    }
+
+
+    /**
+     * 导出广播用户列表
+     */
+    @RequiresPermissions("broad:broaduser:export")
     @PostMapping("/export")
     @ResponseBody
-    public AjaxResult export(Broaduser broaduser)
-    {
-    	List<Broaduser> list = broaduserService.selectBroaduserList(broaduser);
+    public AjaxResult export(Broaduser broaduser) {
+        List<Broaduser> list = broaduserService.selectBroaduserList(broaduser);
         ExcelUtil<Broaduser> util = new ExcelUtil<Broaduser>(Broaduser.class);
         return util.exportExcel(list, "broaduser");
     }
 
-	/**
-	 * 修改广播用户
-	 */
-	@GetMapping("/edit/{userid}")
-	public String edit(@PathVariable("userid") String userid, ModelMap mmap)
-	{
-		Broaduser broaduser = broaduserService.selectBroaduserById(userid);
-		mmap.put("broaduser", broaduser);
-	    return prefix + "/edit";
-	}
-	
-	/**
-	 * 修改保存广播用户
-	 */
-	@RequiresPermissions("broad:broaduser:edit")
-	@Log(title = "广播用户", businessType = BusinessType.UPDATE)
-	@PostMapping("/edit")
-	@ResponseBody
-	public AjaxResult editSave(Broaduser broaduser)
-	{		
-		return toAjax(broaduserService.updateBroaduser(broaduser));
-	}
-	
-	/**
-	 * 删除广播用户
-	 */
-	@RequiresPermissions("broad:broaduser:remove")
-	@Log(title = "广播用户", businessType = BusinessType.DELETE)
-	@PostMapping( "/remove")
-	@ResponseBody
-	public AjaxResult remove(String ids)
-	{		
-		return toAjax(broaduserService.deleteBroaduserByIds(ids));
-	}
+    /**
+     * 修改广播用户
+     */
+    @GetMapping("/edit/{userid}")
+    public String edit(@PathVariable("userid") String userid, ModelMap mmap) {
+        Broaduser broaduser = broaduserService.selectBroaduserById(userid);
+        mmap.put("broaduser", broaduser);
+        return prefix + "/edit";
+    }
 
-//	/**
-//	 * 新增广播用户
-//	 */
-//	@Log(title = "广播用户", businessType = BusinessType.INSERT)
-//	@PostMapping("/add")
-//	@ResponseBody
-//	public void add()
-//	{
-//		broaduserService.insertBroaduser();
-//	}
+    /**
+     * 修改保存广播用户
+     */
+    @RequiresPermissions("broad:broaduser:edit")
+    @Log(title = "广播用户", businessType = BusinessType.UPDATE)
+    //@GetMapping("/edit")
+    @PostMapping("/edit")
+    @ResponseBody
+    public AjaxResult editSave(Broaduser broaduser) {
+        return toAjax(broaduserService.updateBroaduser(broaduser));
+    }
+
+    /**
+     * 删除广播用户
+     */
+    @RequiresPermissions("broad:broaduser:remove")
+    @Log(title = "广播用户", businessType = BusinessType.DELETE)
+    @PostMapping("/remove")
+    @ResponseBody
+    public AjaxResult remove(String ids) {
+        return toAjax(broaduserService.deleteBroaduserByIds(ids));
+    }
+
+
+    //	  新增广播用户
+    @RequiresPermissions("broad:broaduser:add")
+    @Log(title = "广播用户", businessType = BusinessType.INSERT)
+    @GetMapping("/add")
+    public String add(){
+        return prefix + "/add";
+    }
+    @PostMapping("/add")
+    @ResponseBody
+    public AjaxResult add(Broaduser broaduser) {
+        return toAjax(broaduserService.insertBroaduser(broaduser));
+    }
+
+
 }
+

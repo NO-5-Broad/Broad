@@ -12,58 +12,52 @@ import com.ruoyi.system.service.ISysLogininforService;
 
 /**
  * 系统访问日志情况信息 服务层处理
- * 
+ *
  * @author ruoyi
  */
 @Service
-public class SysLogininforServiceImpl implements ISysLogininforService
-{
+public class SysLogininforServiceImpl implements ISysLogininforService {
 
     @Autowired
     private SysLogininforMapper logininforMapper;
 
     /**
      * 新增系统登录日志
-     * 
+     *
      * @param logininfor 访问日志对象
      */
     @Override
-    public void insertLogininfor(SysLogininfor logininfor)
-    {
+    public void insertLogininfor(SysLogininfor logininfor) {
         logininforMapper.insertLogininfor(logininfor);
     }
 
     /**
      * 查询系统登录日志集合
-     * 
+     *
      * @param logininfor 访问日志对象
      * @return 登录记录集合
      */
     @Override
-    public List<SysLogininfor> selectLogininforList(SysLogininfor logininfor)
-    {
+    public List<SysLogininfor> selectLogininforList(SysLogininfor logininfor) {
         return logininforMapper.selectLogininforList(logininfor);
     }
 
     /**
      * 批量删除系统登录日志
-     * 
+     *
      * @param ids 需要删除的数据
      * @return
      */
     @Override
-    public int deleteLogininforByIds(String ids)
-    {
+    public int deleteLogininforByIds(String ids) {
         return logininforMapper.deleteLogininforByIds(Convert.toStrArray(ids));
     }
 
     /**
      * 清空系统登录日志
-     *
      */
     @Override
-    public void cleanLogininfor()
-    {
+    public void cleanLogininfor() {
         logininforMapper.cleanLogininfor();
     }
 
@@ -73,8 +67,7 @@ public class SysLogininforServiceImpl implements ISysLogininforService
      * @return 结果
      */
     @Override
-    public List<PageData> selectLoginLogforIndex()
-    {
+    public List<PageData> selectLoginLogforIndex() {
         return logininforMapper.selectLoginLogforIndex();
     }
 
@@ -83,7 +76,7 @@ public class SysLogininforServiceImpl implements ISysLogininforService
      *
      * @return 结果
      */
-    public List<PageData> CountLoLogDescMonth(){
+    public List<PageData> CountLoLogDescMonth() {
         return logininforMapper.CountLoLogDescMonth();
     }
 
@@ -93,25 +86,29 @@ public class SysLogininforServiceImpl implements ISysLogininforService
      *
      * @return 结果
      */
-    public List<PageData> CountHotLocal(){
+    public List<PageData> CountHotLocal() {
         return logininforMapper.CountHotLocal();
-    };
+    }
+
+    ;
 
     /**
      * 获取所有登陆地点
      *
      * @return 结果
      */
-    public List<PageData> CountLocal(){
+    public List<PageData> CountLocal() {
         return logininforMapper.CountLocal();
-    };
+    }
+
+    ;
 
     /**
      * 获取最近创建的三个用户
      *
      * @return 结果
      */
-    public List<PageData> recentCreatUser(){
+    public List<PageData> recentCreatUser() {
         return logininforMapper.recentCreatUser();
     }
 

@@ -33,27 +33,28 @@ public class PolicyinfoController extends BaseController {
 
     @RequiresPermissions("village:policyinfo:view")
     @GetMapping()
-    public String Politic(){
-        return prefix+"/policyinfo";
+    public String Politic() {
+        return prefix + "/policyinfo";
     }
 
     /**
      * 公告信息列表
+     *
      * @param policyinfo
      * @return
      */
     //@RequiresPermissions("village:policyinfo:list")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(Policyinfo policyinfo){
+    public TableDataInfo list(Policyinfo policyinfo) {
         startPage();
         List<Policyinfo> list = policyinfoService.selectPolicyinfoList(policyinfo);
         return getDataTable(list);
     }
 
     @GetMapping("/add")
-    public String add(){
-        return prefix+"/add";
+    public String add() {
+        return prefix + "/add";
     }
 
     /**
@@ -63,20 +64,20 @@ public class PolicyinfoController extends BaseController {
     @Log(title = "公告信息", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
-    public AjaxResult addSave(Policyinfo policyinfo)
-    {
+    public AjaxResult addSave(Policyinfo policyinfo) {
         return toAjax(policyinfoService.insertpolicyinfo(policyinfo));
     }
+
     /**
      * 修改公告信息
      */
     @GetMapping("/edit/{poinid}")
-    public String edit(@PathVariable("poinid") Integer poinid, ModelMap mmap)
-    {
+    public String edit(@PathVariable("poinid") Integer poinid, ModelMap mmap) {
         Policyinfo policyinfo = policyinfoService.selectBypoinid(poinid);
         mmap.put("policyinfo", policyinfo);
         return prefix + "/edit";
     }
+
     /**
      * 修改保存公告
      */
@@ -84,20 +85,19 @@ public class PolicyinfoController extends BaseController {
     @Log(title = "公告信息", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
-    public AjaxResult editSave(Policyinfo policyinfo)
-    {
+    public AjaxResult editSave(Policyinfo policyinfo) {
         return toAjax(policyinfoService.updatePolicyinfo(policyinfo));
     }
+
     /**
      * 删除公告信息
      */
     @RequiresPermissions("village:policyinfo:remove")
     @Log(title = "删除公告信息", businessType = BusinessType.DELETE)
-    @PostMapping( "/remove/{poinid}")
+    @PostMapping("/remove/{poinid}")
     @ResponseBody
-    public AjaxResult remove(@PathVariable("poinid") String poinid)
-    {
-        System.out.println("*******"+poinid);
+    public AjaxResult remove(@PathVariable("poinid") String poinid) {
+        System.out.println("*******" + poinid);
         return toAjax(policyinfoService.deletePolicyinfoByIds(poinid));
     }
 }

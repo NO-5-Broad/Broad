@@ -9,4 +9,6 @@ public interface IUserInfoDTOService {
     List<UserInfoDTO> findAll();
 
     UserInfoDTO findById(String userid);
+
+    List<UserInfoDTO> findUserByName(String uname);
 }

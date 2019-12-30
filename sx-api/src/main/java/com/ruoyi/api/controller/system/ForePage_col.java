@@ -24,7 +24,7 @@ public class ForePage_col {
     @CrossOrigin
     @GetMapping("/pagestatus")
     @ApiOperation(value = "统计所有山洪数据")
-    public RongApiRes getForePageStatus(){
+    public RongApiRes getForePageStatus() {
         return RongApiService.get_list(sysForePagecolService.selectForePageStatus());
     }
 }

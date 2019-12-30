@@ -6,94 +6,97 @@ import com.ruoyi.common.base.BaseEntity;
 
 /**
  * 节目转播管理表 pro_chamanage
- * 
+ *
  * @author 张超
  * @date 2019-03-02
  */
-public class ProChamanage extends BaseEntity
-{
-	private static final long serialVersionUID = 1L;
-	
-	/** 转播频道管理 */
-	private Integer cid;
-	/** 节目 */
-	private String cname;
-	/** 频道 */
-	private String frequencies;
-	/** 所属用户 */
-	private String userid;
-	/** 节目备注 */
-	private String pronote;
-	/** 备注 */
-	private String remark;
+public class ProChamanage extends BaseEntity {
+    private static final long serialVersionUID = 1L;
 
-	public void setCid(Integer cid) 
-	{
-		this.cid = cid;
-	}
+    /**
+     * 转播频道管理
+     */
+    private Integer cid;
+    /**
+     * 节目
+     */
+    private String cname;
+    /**
+     * 频道
+     */
+    private String frequencies;
+    /**
+     * 所属用户
+     */
+    private String userid;
+    /**
+     * 节目备注
+     */
+    private String pronote;
+    /**
+     * 备注
+     */
+    private String remark;
 
-	public Integer getCid() 
-	{
-		return cid;
-	}
-	public void setCname(String cname) 
-	{
-		this.cname = cname;
-	}
+    public void setCid(Integer cid) {
+        this.cid = cid;
+    }
 
-	public String getCname() 
-	{
-		return cname;
-	}
-	public void setFrequencies(String frequencies) 
-	{
-		this.frequencies = frequencies;
-	}
+    public Integer getCid() {
+        return cid;
+    }
 
-	public String getFrequencies() 
-	{
-		return frequencies;
-	}
-	public void setUserid(String userid) 
-	{
-		this.userid = userid;
-	}
+    public void setCname(String cname) {
+        this.cname = cname;
+    }
 
-	public String getUserid() 
-	{
-		return userid;
-	}
-	public void setPronote(String pronote) 
-	{
-		this.pronote = pronote;
-	}
+    public String getCname() {
+        return cname;
+    }
 
-	public String getPronote() 
-	{
-		return pronote;
-	}
+    public void setFrequencies(String frequencies) {
+        this.frequencies = frequencies;
+    }
 
-	@Override
-	public void setRemark(String remark) 
-	{
-		this.remark = remark;
-	}
+    public String getFrequencies() {
+        return frequencies;
+    }
 
-	@Override
-	public String getRemark() 
-	{
-		return remark;
-	}
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
 
-	@Override
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setPronote(String pronote) {
+        this.pronote = pronote;
+    }
+
+    public String getPronote() {
+        return pronote;
+    }
+
+    @Override
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    @Override
+    public String getRemark() {
+        return remark;
+    }
+
+    @Override
     public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("cid", getCid())
-            .append("cname", getCname())
-            .append("frequencies", getFrequencies())
-            .append("userid", getUserid())
-            .append("pronote", getPronote())
-            .append("remark", getRemark())
-            .toString();
+        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
+                .append("cid", getCid())
+                .append("cname", getCname())
+                .append("frequencies", getFrequencies())
+                .append("userid", getUserid())
+                .append("pronote", getPronote())
+                .append("remark", getRemark())
+                .toString();
     }
 }

@@ -17,11 +17,12 @@ import java.util.List;
 public class TerminalCountService implements ITerminalCountService {
     @Autowired
     private TerminalCountMapper terminalCountMapper;
+
     /*统计终端维护量
-    * */
+     * */
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public List<TerminalCount> getAllTerminal(){
+    public List<TerminalCount> getAllTerminal() {
         return terminalCountMapper.getAllTerminal();
 
     }

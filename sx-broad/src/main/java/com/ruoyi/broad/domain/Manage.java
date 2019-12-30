@@ -7,7 +7,7 @@ import com.ruoyi.common.base.BaseEntity;
  * @Time 2019/8/20 15:15
  * @Description 管理参数列表
  */
-public class Manage extends BaseEntity{
+public class Manage extends BaseEntity {
 
     /*IEME码*/
     private String tid;

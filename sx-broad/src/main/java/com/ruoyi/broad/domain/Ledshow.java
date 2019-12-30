@@ -6,93 +6,97 @@ import com.ruoyi.common.base.BaseEntity;
 
 /**
  * led显示表 ledshow
- * 
+ *
  * @author 张超
  * @date 2019-01-14
  */
-public class Ledshow extends BaseEntity
-{
-	private static final long serialVersionUID = 1L;
-	
-	/** led显示编号 */
-	private Integer lsid;
-	/** 用户编号 */
-	private String userid;
-	/** led显示信息文字 */
-	private String content;
-	/** 终端接收信息后开始显示时间 */
-	private String showtime;
-	/** 创建时间 */
-	private String createtime;
-	/** 备注 */
-	private String remark;
+public class Ledshow extends BaseEntity {
+    private static final long serialVersionUID = 1L;
 
-	public void setLsid(Integer lsid) 
-	{
-		this.lsid = lsid;
-	}
+    /**
+     * led显示编号
+     */
+    private Integer lsid;
+    /**
+     * 用户编号
+     */
+    private String userid;
+    /**
+     * led显示信息文字
+     */
+    private String content;
+    /**
+     * 终端接收信息后开始显示时间
+     */
+    private String showtime;
+    /**
+     * 创建时间
+     */
+    private String createtime;
+    /**
+     * 备注
+     */
+    private String remark;
 
-	public Integer getLsid() 
-	{
-		return lsid;
-	}
-	public void setUserid(String userid) 
-	{
-		this.userid = userid;
-	}
+    public void setLsid(Integer lsid) {
+        this.lsid = lsid;
+    }
 
-	public String getUserid() 
-	{
-		return userid;
-	}
-	public void setContent(String content) 
-	{
-		this.content = content;
-	}
+    public Integer getLsid() {
+        return lsid;
+    }
 
-	public String getContent() 
-	{
-		return content;
-	}
-	public void setShowtime(String showtime) 
-	{
-		this.showtime = showtime;
-	}
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
 
-	public String getShowtime() 
-	{
-		return showtime;
-	}
-	public void setCreatetime(String createtime) 
-	{
-		this.createtime = createtime;
-	}
+    public String getUserid() {
+        return userid;
+    }
 
-	public String getCreatetime() 
-	{
-		return createtime;
-	}
-	@Override
-	public void setRemark(String remark) 
-	{
-		this.remark = remark;
-	}
+    public void setContent(String content) {
+        this.content = content;
+    }
 
-	@Override
-	public String getRemark() 
-	{
-		return remark;
-	}
+    public String getContent() {
+        return content;
+    }
 
-	@Override
+    public void setShowtime(String showtime) {
+        this.showtime = showtime;
+    }
+
+    public String getShowtime() {
+        return showtime;
+    }
+
+    public void setCreatetime(String createtime) {
+        this.createtime = createtime;
+    }
+
+    public String getCreatetime() {
+        return createtime;
+    }
+
+    @Override
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    @Override
+    public String getRemark() {
+        return remark;
+    }
+
+    @Override
     public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("lsid", getLsid())
-            .append("userid", getUserid())
-            .append("content", getContent())
-            .append("showtime", getShowtime())
-            .append("createtime", getCreatetime())
-            .append("remark", getRemark())
-            .toString();
+        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
+                .append("lsid", getLsid())
+                .append("userid", getUserid())
+                .append("content", getContent())
+                .append("showtime", getShowtime())
+                .append("createtime", getCreatetime())
+                .append("remark", getRemark())
+                .toString();
     }
 }

@@ -20,33 +20,37 @@ public class ManageServiceImpl implements IManageService {
 
     @Autowired
     private ManageMapper manageMapper;
+
     /**
-     * @author cx
      * @param manage
-     *
+     * @author cx
      * @Description 查询管理参数列表
      */
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public List<Manage> selectManagelist(Manage manage){return manageMapper.selectManagelist(manage);}
+    public List<Manage> selectManagelist(Manage manage) {
+        return manageMapper.selectManagelist(manage);
+    }
 
     /**
-     * @author cx
      * @param manage
-     *
+     * @author cx
      * @Description 更新参数列表
      */
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public int updateManage(Manage manage){return manageMapper.updateManage(manage);}
+    public int updateManage(Manage manage) {
+        return manageMapper.updateManage(manage);
+    }
 
     /**
-     * @author cx
      * @param manage
-     *
+     * @author cx
      * @Description 插入参数列表
      */
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public int insertManage(Manage manage){return manageMapper.insertManage(manage);}
+    public int insertManage(Manage manage) {
+        return manageMapper.insertManage(manage);
+    }
 }

@@ -83,7 +83,7 @@ public class FilesServiceImpl implements IFilesService {
                     file.delete();
                 } else {
                     String url = FileUploadUtils2.getDefaultBaseDir() + files.getFileName() + "." + oldFiles.getSuffix();
-                    file.renameTo(new File(url ));
+                    file.renameTo(new File(url));
                 }
             }
         }

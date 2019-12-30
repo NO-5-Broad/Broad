@@ -12,10 +12,11 @@ public interface BindexMapper {
 
     /**
      * 统计终端数，运行数，停止运行数
-     * @author 张超 teavamc
-     * @date 2019/1/26
+     *
      * @param []
      * @return com.ruoyi.broad.mapper.BindexMapper
+     * @author 张超 teavamc
+     * @date 2019/1/26
      */
     public Bindex count();
 

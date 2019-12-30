@@ -48,29 +48,29 @@
     <!--根据用户查询节目申请列表 -->
     <select id="selectProListenList" parameterType="ProListen" resultMap="ProListenResult">
         select
-            paid,
-            pname,
-            pa.userid as userid,
-            ui.uname as uname,
-            requires,
-            isemergency,
-            timelimit,
-            pa.filename as filename,
-            fileurl,
-            submittime,
-            iscancel,
-            isreply,
-            replytime,
-            replyperson,
-            replyprogramid,
-            pa.islisten as islisten,
-            nopassreason,
-            listenpass,
-            nopasstimes,
-            isread,fid,urls,fname,p.filename as profilename
+        paid,
+        pname,
+        pa.userid as userid,
+        ui.uname as uname,
+        requires,
+        isemergency,
+        timelimit,
+        pa.filename as filename,
+        fileurl,
+        submittime,
+        iscancel,
+        isreply,
+        replytime,
+        replyperson,
+        replyprogramid,
+        pa.islisten as islisten,
+        nopassreason,
+        listenpass,
+        nopasstimes,
+        isread,fid,urls,fname,p.filename as profilename
         from
-    (<include refid="tableName"></include> pa LEFT JOIN <include refid="userstable"></include> ui on pa.userid=ui.userid)
-    left join <include refid="programtable"></include> p on pa.replyprogramid=p.fid
+        (<include refid="tableName"></include> pa LEFT JOIN <include refid="userstable"></include> ui on pa.userid=ui.userid)
+        left join <include refid="programtable"></include> p on pa.replyprogramid=p.fid
         <where>
             <if test="paid != null  and paid != '' ">and paid like CONCAT('%',#{paid},'%')</if>
             <if test="pname != null  and pname != '' ">and pname like CONCAT('%',#{pname},'%')</if>
@@ -84,6 +84,24 @@
             <if test="submittime != null  and submittime != '' ">and submittime like CONCAT('%',#{submittime},'%')</if>
             <if test="iscancel != null  and iscancel != '' ">and iscancel like CONCAT('%',#{iscancel},'%')</if>
         </where>
+        order by paid desc
     </select>
+
+    <update id="checkpass" >
+        update prore_apply set listenpass=true where paid =#{paid}
+    </update>
+
+    <update id="updateProListen" parameterType="ProListen">
+        update prore_apply
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="nopassreason != null  and nopassreason != ''  ">nopassreason = #{nopassreason},</if>
+            <if test="replyperson != null  and replyperson != ''  ">replyperson = #{replyperson},</if>
+            <if test="islisten != islisten  ">islisten = #{islisten},</if>
+            <if test="listenpass != listenpass  and listenpass != ''  ">listenpass = #{listenpass},</if>
+            <if test="requires != null  and requires != ''  ">requires = #{requires},</if>
+            <if test="iscancel != null  and iscancel != ''  ">iscancel = #{iscancel},</if>
+        </trim>
+        where paid = #{paid}
+    </update>
 
 </mapper>

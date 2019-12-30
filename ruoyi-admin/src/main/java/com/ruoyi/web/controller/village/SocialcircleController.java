@@ -42,49 +42,49 @@ public class SocialcircleController extends BaseController {
 
     @RequiresPermissions("village:socialCircle:view")
     @RequestMapping()
-    public String list(ModelMap mmap){
+    public String list(ModelMap mmap) {
         int index = 4;
-        List<Socialcircle> list = socialCircleService.selectSocialCircleList(0,index);
-        List<Socialcircle> list1 = socialCircleService.selectSocialCircleList_Heat(0,index);
+        List<Socialcircle> list = socialCircleService.selectSocialCircleList(0, index);
+        List<Socialcircle> list1 = socialCircleService.selectSocialCircleList_Heat(0, index);
 
-        for (int i =0 ;i<index;i++){
+        for (int i = 0; i < index; i++) {
             list.get(i).setChild(socialCircleCommentService.selectAllByPcid(list.get(i).getPcid()));
             list1.get(i).setChild(socialCircleCommentService.selectAllByPcid(list1.get(i).getPcid()));
         }
-        mmap.put("socialCircleOne",list);
-        mmap.put("index",index);
-        mmap.put("socialCircleTwo",list1);
-        return prefix+"/socialCircle";
+        mmap.put("socialCircleOne", list);
+        mmap.put("index", index);
+        mmap.put("socialCircleTwo", list1);
+        return prefix + "/socialCircle";
     }
 
     @RequestMapping("/addindex")
     @ResponseBody
-    public Map<String,Object> Ajax_list(ModelMap mmp, @PathParam("index") int index){
+    public Map<String, Object> Ajax_list(ModelMap mmp, @PathParam("index") int index) {
         int in = index + 1;
-        List<Socialcircle> list = socialCircleService.selectSocialCircleList(in,2);
-        List<Socialcircle> list1 = socialCircleService.selectSocialCircleList_Heat(in,2);
-        for (int i =0 ;i<2;i++){
+        List<Socialcircle> list = socialCircleService.selectSocialCircleList(in, 2);
+        List<Socialcircle> list1 = socialCircleService.selectSocialCircleList_Heat(in, 2);
+        for (int i = 0; i < 2; i++) {
             list.get(i).setChild(socialCircleCommentService.selectAllByPcid(list.get(i).getPcid()));
             list1.get(i).setChild(socialCircleCommentService.selectAllByPcid(list1.get(i).getPcid()));
         }
         System.out.println(in);
-        mmp.put("index",in);
-        Map<String,Object> map = new HashMap<String, Object>();
-        map.put("socialCircleOne2",list);
-        map.put("socialCircleTwo2",list1);
-        map.put("index",in);
+        mmp.put("index", in);
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("socialCircleOne2", list);
+        map.put("socialCircleTwo2", list1);
+        map.put("index", in);
         return map;
     }
 
     //@RequiresPermissions("village:socialCircle:list")
     @PostMapping("/list")
     @ResponseBody
-    public Map<String, Object> List(String pcid){
-        Map<String,Object> map = new HashMap<String, Object>();
+    public Map<String, Object> List(String pcid) {
+        Map<String, Object> map = new HashMap<String, Object>();
         String[] list = pcid.split(",");
-        for(int i=0;i<list.length;i++){
+        for (int i = 0; i < list.length; i++) {
             List<SocialcircleComment> scc = socialCircleCommentService.selectAllByPcid(Integer.valueOf(list[i]));
-            map.put(list[i],scc);
+            map.put(list[i], scc);
         }
 
 

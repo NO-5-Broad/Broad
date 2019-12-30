@@ -19,29 +19,26 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(value = "应急广播模块 - 节目播出单")
 public class Prosin {
     @Autowired
-    private IProSinmanageService proSinmanageService ;
+    private IProSinmanageService proSinmanageService;
 
     @GetMapping("/warn")
     @CrossOrigin
     @ApiOperation(value = "查询紧急节目播出单列表")
-    public RongApiRes selectProSinmanageListForWarning(int userid)
-    {
+    public RongApiRes selectProSinmanageListForWarning(int userid) {
         return RongApiService.get_list(proSinmanageService.selectProSinmanageListForWarning(userid));
     }
 
     @GetMapping("/all")
     @CrossOrigin
     @ApiOperation(value = "查询节目播出单列表")
-    public RongApiRes selectProSinmanageList(ProSinmanage proSinmanage)
-    {
+    public RongApiRes selectProSinmanageList(ProSinmanage proSinmanage) {
         return RongApiService.get_list(proSinmanageService.selectProSinmanageList(proSinmanage));
     }
 
     @GetMapping("/proOne")
     @CrossOrigin
     @ApiOperation(value = "查询节目播出单列表")
-    public RongApiRes selectProSinmanagebyoneday()
-    {
+    public RongApiRes selectProSinmanagebyoneday() {
         return RongApiService.get_list(proSinmanageService.selectProSinmanagebyoneday());
     }
 

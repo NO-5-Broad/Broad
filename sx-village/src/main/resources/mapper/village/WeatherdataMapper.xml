@@ -5,28 +5,28 @@
 <mapper namespace="com.ruoyi.village.mapper.WeatherdataMapper">
 
     <resultMap type="Weatherdata" id="WeatherdataResult">
-        <result property="id"    column="id"    />
-        <result property="tid"    column="tid"    />
-        <result property="addrid"    column="addrid"    />
-        <result property="aname"    column="aname"    />
-        <result property="colltime"    column="colltime"    />
-        <result property="surrtemp"    column="surrtemp"    />
-        <result property="surrhumi"    column="surrhumi"    />
-        <result property="surrlight"    column="surrlight"    />
-        <result property="soiltemp"    column="soiltemp"    />
-        <result property="soilhumi"    column="soilhumi"    />
-        <result property="atmopress"    column="atmopress"    />
-        <result property="windspeed"    column="windspeed"    />
-        <result property="windire"    column="windire"    />
-        <result property="weathertype"    column="weathertype"    />
-        <result property="pm25"    column="pm25"    />
-        <result property="co2"    column="co2"    />
-        <result property="co"    column="co"    />
-        <result property="so2"    column="so2"    />
-        <result property="ch4"    column="ch4"    />
-        <result property="rainfall"    column="rainfall"    />
-        <result property="ph"    column="ph"    />
-        <result property="remark"    column="remark"    />
+        <result property="id" column="id"/>
+        <result property="tid" column="tid"/>
+        <result property="addrid" column="addrid"/>
+        <result property="aname" column="aname"/>
+        <result property="colltime" column="colltime"/>
+        <result property="surrtemp" column="surrtemp"/>
+        <result property="surrhumi" column="surrhumi"/>
+        <result property="surrlight" column="surrlight"/>
+        <result property="soiltemp" column="soiltemp"/>
+        <result property="soilhumi" column="soilhumi"/>
+        <result property="atmopress" column="atmopress"/>
+        <result property="windspeed" column="windspeed"/>
+        <result property="windire" column="windire"/>
+        <result property="weathertype" column="weathertype"/>
+        <result property="pm25" column="pm25"/>
+        <result property="co2" column="co2"/>
+        <result property="co" column="co"/>
+        <result property="so2" column="so2"/>
+        <result property="ch4" column="ch4"/>
+        <result property="rainfall" column="rainfall"/>
+        <result property="ph" column="ph"/>
+        <result property="remark" column="remark"/>
 
     </resultMap>
 
@@ -37,7 +37,7 @@
     <select id="selectWeatherdataList" parameterType="Weatherdata" resultMap="WeatherdataResult">
         <include refid="selectWeatherdataVo"/>
         <where>
-            <if test="addrid != null and addrid != '' "> addrid = #{addrid}</if>
+            <if test="addrid != null and addrid != '' ">addrid = #{addrid}</if>
         </where>
         ORDER BY id desc
     </select>

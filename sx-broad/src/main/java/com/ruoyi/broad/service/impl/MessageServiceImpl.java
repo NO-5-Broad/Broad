@@ -34,7 +34,7 @@ public class MessageServiceImpl implements IMessageService {
 
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public List<Map<String, Object>>  selectMessageList(BroadMessage broadMessage) {
+    public List<Map<String, Object>> selectMessageList(BroadMessage broadMessage) {
         List<Map<String, Object>> trees = new ArrayList<Map<String, Object>>();
         List<BroadMessage> areaList = messageMapper.selectMessageList(broadMessage);
         trees = getTrees(areaList);
@@ -47,12 +47,10 @@ public class MessageServiceImpl implements IMessageService {
         return messageMapper.selectMessageExampleList();
     }
 
-    public List<Map<String, Object>> getTrees(List<BroadMessage> broadMessages)
-    {
+    public List<Map<String, Object>> getTrees(List<BroadMessage> broadMessages) {
 
         List<Map<String, Object>> trees = new ArrayList<Map<String, Object>>();
-        for (BroadMessage broadMessage : broadMessages)
-        {
+        for (BroadMessage broadMessage : broadMessages) {
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("id", broadMessage.getAid());
             map.put("aid", broadMessage.getAid());
@@ -67,13 +65,13 @@ public class MessageServiceImpl implements IMessageService {
     @SuppressWarnings("unchecked")
     public List<PageData> listSendMessage(Page page) throws Exception {
         // TODO Auto-generated method stub
-        return (List<PageData>)dao.findForList("MessageMapper.getSendMessagelistPage", page);
+        return (List<PageData>) dao.findForList("MessageMapper.getSendMessagelistPage", page);
     }
 
     @SuppressWarnings("unchecked")
     public List<PageData> listReceiveMessage(Page page) throws Exception {
         // TODO Auto-generated method stub
-        return (List<PageData>)dao.findForList("MessageMapper.getReceiveMessagelistPage", page);
+        return (List<PageData>) dao.findForList("MessageMapper.getReceiveMessagelistPage", page);
     }
 
     @Override
@@ -84,7 +82,7 @@ public class MessageServiceImpl implements IMessageService {
     @SuppressWarnings("unchecked")
     @Override
     public List<PageData> getUnSendMessage(String str) throws Exception {
-        return (List<PageData>)dao.findForList("MessageMapper.getUnSendMessage", str);
+        return (List<PageData>) dao.findForList("MessageMapper.getUnSendMessage", str);
     }
 
     @Override
@@ -99,11 +97,11 @@ public class MessageServiceImpl implements IMessageService {
 
     @Override
     public PageData getSendBySmid(String smid) throws Exception {
-        return (PageData)dao.findForObject("MessageMapper.getSendBySmid", smid);
+        return (PageData) dao.findForObject("MessageMapper.getSendBySmid", smid);
     }
 
     @Override
     public PageData getReceiveByRmid(String rmid) throws Exception {
-        return (PageData)dao.findForObject("MessageMapper.getReceiveByRmid", rmid);
+        return (PageData) dao.findForObject("MessageMapper.getReceiveByRmid", rmid);
     }
 }

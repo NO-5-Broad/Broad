@@ -13,28 +13,28 @@
 
     <select id="select" resultMap="BroadCountResult">
         select
-          a.sfid,
-          a.createtime as broaddate,
-          b.uname,
-          (
-            select count(c.Pid)
-            from pro_list as c
-            where
-              c.Pid = a.sfid
-          )as count
+        a.sfid,
+        a.createtime as broaddate,
+        b.uname,
+        (
+        select count(c.Pid)
+        from pro_list as c
+        where
+        c.Pid = a.sfid
+        )as count
         from
-          pro_sinmanage as a
+        pro_sinmanage as a
         left join
-          userinfo as b
+        userinfo as b
         on
-          a.userid = b.userid
+        a.userid = b.userid
         order by
-          broaddate desc
+        broaddate desc
         <where>
-            <if test="uname != null  and uname != '' "> and uname = #{uname}</if>
-            <if test="sfid != null  and sfid != '' "> and sfid = #{sfid}</if>
-            <if test="count != null  and aname != '' "> and count = #{count}</if>
-            <if test="broaddate != null  and broaddate != '' "> and broaddate = #{broaddate}</if>
+            <if test="uname != null  and uname != '' ">and uname = #{uname}</if>
+            <if test="sfid != null  and sfid != '' ">and sfid = #{sfid}</if>
+            <if test="count != null  and aname != '' ">and count = #{count}</if>
+            <if test="broaddate != null  and broaddate != '' ">and broaddate = #{broaddate}</if>
         </where>
     </select>
 

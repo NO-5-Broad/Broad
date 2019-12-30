@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head th:include="include :: header"></head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link th:href="@{favicon.ico}" rel="shortcut icon"/>
-    <link th:href="@{../../../css/bootstrap.min14ed.css?v=3.3.6}" rel="stylesheet"/>
-    <link th:href="@{../../../css/font-awesome.min93e3.css?v=4.4.0}" rel="stylesheet"/>
-    <link th:href="@{../../../css/animate.min.css}" rel="stylesheet"/>
-    <link th:href="@{../../../css/plugins/simditor/simditor.css}" rel="stylesheet" type="text/css"/>
-    <link th:href="@{../../../css/style.min862f.css?v=4.1.0}" rel="stylesheet"/>
-    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link th:href="@{favicon.ico}" rel="shortcut icon"/>
+<link th:href="@{../../../css/bootstrap.min14ed.css?v=3.3.6}" rel="stylesheet"/>
+<link th:href="@{../../../css/font-awesome.min93e3.css?v=4.4.0}" rel="stylesheet"/>
+<link th:href="@{../../../css/animate.min.css}" rel="stylesheet"/>
+<link th:href="@{../../../css/plugins/simditor/simditor.css}" rel="stylesheet" type="text/css"/>
+<link th:href="@{../../../css/style.min862f.css?v=4.1.0}" rel="stylesheet"/>
+<link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
 </head>
 
-<body class="gray-bg" >
+<body class="gray-bg">
 <div class="wrapper wrapper-content  animated fadeInRight article">
     <div class="row">
         <div class="col-lg-10 col-lg-offset-1">
@@ -21,7 +21,7 @@
                     <div class="pull-right">
                         <button class="btn btn-white btn-xs" type="button">[[${listByid.uname}]]</button>
                         <button class="btn btn-white btn-xs" type="button">[[${listByid.pushdate}]]</button>
-                        <input id="mpic" name="mpic" th:value="${listByid.mpic}"  type="hidden">
+                        <input id="mpic" name="mpic" th:value="${listByid.mpic}" type="hidden">
                     </div>
                     <div class="text-center article-title">
                         <h1 th:text="${listByid.mtitle}"></h1>
@@ -33,10 +33,10 @@
                     </div>
                 </div>
 
-                </div>
             </div>
         </div>
     </div>
+</div>
 
 </div>
 <script src="../../../js/jquery.min.js?v=2.1.4"></script>
@@ -46,13 +46,13 @@
 
 <script th:src="@{/layui/layui.js}"></script>
 <script>
-    layui.use('carousel', function(){
+    layui.use('carousel', function () {
         var carousel = layui.carousel;
         //建造实例
         carousel.render({
             elem: '#test1'
-            ,width: '100%' //设置容器宽度
-            ,arrow: 'always' //始终显示箭头
+            , width: '100%' //设置容器宽度
+            , arrow: 'always' //始终显示箭头
             //,anim: 'updown' //切换动画方式
         });
     });
@@ -65,8 +65,9 @@
     var str = '';
     var num = imgdata.length - 1;
     var j;
-    for (j=0;j<num;j++) {
-        str += '<img id="lun" src="'+ imgdata[j] +'" width="400px" height="300px" />';}
+    for (j = 0; j < num; j++) {
+        str += '<img id="lun" src="' + imgdata[j] + '" width="400px" height="300px" />';
+    }
     oBox.innerHTML = str;
 </script>
 </body>

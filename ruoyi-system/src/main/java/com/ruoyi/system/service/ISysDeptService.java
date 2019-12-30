@@ -12,8 +12,7 @@ import java.util.Map;
  *
  * @author ruoyi
  */
-public interface ISysDeptService
-{
+public interface ISysDeptService {
     /**
      * 查询部门管理数据
      *
@@ -91,6 +90,7 @@ public interface ISysDeptService
     public SysDept selectDeptById(Long deptId);
 
     public SysDept selectDeptById2(Long deptId);
+
     /**
      * 校验部门名称是否唯一
      *

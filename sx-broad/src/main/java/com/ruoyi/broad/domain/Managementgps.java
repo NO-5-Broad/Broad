@@ -7,11 +7,17 @@ public class Managementgps {
 
     private static final long serialVersionUID = 1L;
 
-    /**Tid*/
+    /**
+     * Tid
+     */
     private String tid;
-    /** 安装点经度 */
+    /**
+     * 安装点经度
+     */
     private Double longitude;
-    /** 纬度 */
+    /**
+     * 纬度
+     */
     private Double latitude;
 
     public String getTid() {

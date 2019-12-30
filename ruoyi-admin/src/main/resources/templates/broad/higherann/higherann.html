@@ -39,8 +39,10 @@
                         <!--</li>-->
 
                         <li>
-                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
-                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i
+                                    class="fa fa-search"></i>&nbsp;搜索</a>
+                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i
+                                    class="fa fa-refresh"></i>&nbsp;重置</a>
                         </li>
                     </ul>
                 </div>
@@ -48,21 +50,22 @@
         </div>
 
         <!--<div class="btn-group-sm hidden-xs" id="toolbar" role="group">-->
-            <!--<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="broad:high:add">-->
-                <!--<i class="fa fa-plus"></i> 添加-->
-            <!--</a>-->
-            <!--&lt;!&ndash;<a class="btn btn-primary btn-edit disabled" onclick="$.operate.edit()" shiro:hasPermission="broad:high:edit">&ndash;&gt;-->
-            <!--&lt;!&ndash;<i class="fa fa-edit"></i> 修改&ndash;&gt;-->
-            <!--&lt;!&ndash;</a>&ndash;&gt;-->
-            <!--&lt;!&ndash;<a class="btn btn-danger btn-del btn-del disabled" onclick="$.operate.removeAll()" shiro:hasPermission="broad:high:remove">&ndash;&gt;-->
-            <!--&lt;!&ndash;<i class="fa fa-remove"></i> 删除&ndash;&gt;-->
-            <!--&lt;!&ndash;</a>&ndash;&gt;-->
-            <!--&lt;!&ndash;<a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="broad:high:export">&ndash;&gt;-->
-            <!--&lt;!&ndash;<i class="fa fa-download"></i> 导出&ndash;&gt;-->
-            <!--&lt;!&ndash;</a>&ndash;&gt;-->
+        <!--<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="broad:high:add">-->
+        <!--<i class="fa fa-plus"></i> 添加-->
+        <!--</a>-->
+        <!--&lt;!&ndash;<a class="btn btn-primary btn-edit disabled" onclick="$.operate.edit()" shiro:hasPermission="broad:high:edit">&ndash;&gt;-->
+        <!--&lt;!&ndash;<i class="fa fa-edit"></i> 修改&ndash;&gt;-->
+        <!--&lt;!&ndash;</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a class="btn btn-danger btn-del btn-del disabled" onclick="$.operate.removeAll()" shiro:hasPermission="broad:high:remove">&ndash;&gt;-->
+        <!--&lt;!&ndash;<i class="fa fa-remove"></i> 删除&ndash;&gt;-->
+        <!--&lt;!&ndash;</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="broad:high:export">&ndash;&gt;-->
+        <!--&lt;!&ndash;<i class="fa fa-download"></i> 导出&ndash;&gt;-->
+        <!--&lt;!&ndash;</a>&ndash;&gt;-->
         <!--</div>-->
         <div class="col-sm-12 select-table table-striped">
-            <table id="bootstrap-table" data-mobile-responsive="true" style="table-layout: fixed;word-break: break-all"></table>
+            <table id="bootstrap-table" data-mobile-responsive="true"
+                   style="table-layout: fixed;word-break: break-all"></table>
         </div>
     </div>
 </div>
@@ -72,7 +75,7 @@
     var removeFlag = [[${@permission.hasPermi('broad:high:remove')}]];
     var prefix = ctx + "broad/higherann";
 
-    $(function() {
+    $(function () {
         var options = {
             url: prefix + "/list",
             createUrl: prefix + "/add",
@@ -93,35 +96,34 @@
 //					visible: false
 //				},
                 {
-                    field : 'title',
-                    title : '标题',
+                    field: 'title',
+                    title: '标题',
                     sortable: true
                 },
                 {
-                    field : 'uname',
-                    title : '发送人',
+                    field: 'uname',
+                    title: '发送人',
                     sortable: true,
                 },
                 {
-                    field : 'content',
-                    title : '内容',
+                    field: 'content',
+                    title: '内容',
                     sortable: true,
                     formatter: function (value, row, index) {
-                        if(value.length >= 8)
-                        {
-                            return (value.slice(0,8) + '...');
-                        }else
+                        if (value.length >= 8) {
+                            return (value.slice(0, 8) + '...');
+                        } else
                             return value;
                     }
                 },
                 {
-                    field : 'sendtime',
-                    title : '发送时间',
+                    field: 'sendtime',
+                    title: '发送时间',
                     sortable: true
                 },
                 {
-                    field : 'isread',
-                    title : '是否已读',
+                    field: 'isread',
+                    title: '是否已读',
                     sortable: true,
                     formatter: function (value, row, index) {
                         if (value == 1)

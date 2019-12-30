@@ -18,6 +18,7 @@ function bonLoad() {
     //首页图表 二维广播分布可视化
     init_ec_bt();
 }
+
 function init_bt_mbygroup() {
     var bt_mbygroup = echarts.init(document.getElementById('bt_mbygroup'));
     $.ajax({
@@ -566,7 +567,7 @@ function init_3d_bt() {
     var area_group = new Array();
     var data_group = new Array();
     var xyz_data = new Array();
-    var ec_3d_bt= echarts.init(document.getElementById('3d_bt'));
+    var ec_3d_bt = echarts.init(document.getElementById('3d_bt'));
 
     $.ajax({
         type: "GET",
@@ -574,47 +575,47 @@ function init_3d_bt() {
         dataType: "json",
         success: function (data_bt) {
             pre_data = data_bt.data;
-            var dp_temp = ['down','req','run','sum'];
+            var dp_temp = ['down', 'req', 'run', 'sum'];
             //确定area_group
-            for ( area_name in pre_data){
+            for (area_name in pre_data) {
                 area_group.push(pre_data[area_name].aname);
             }
             //确定xyz_data
-            for( pg_name in pre_data){
+            for (pg_name in pre_data) {
                 var ag = area_group.indexOf(pre_data[pg_name].aname);
                 var temp_data = pre_data[pg_name];
                 delete temp_data["aname"];
                 var temp_keys = Object.keys(temp_data);
-                for(i=0;i<temp_keys.length;i++){
+                for (i = 0; i < temp_keys.length; i++) {
                     var this_key = temp_keys[i];
                     var pg = dp_temp.indexOf(temp_keys[i]);
                     var z_value = temp_data[this_key];
-                    xyz_data.push([pg,ag,z_value])
+                    xyz_data.push([pg, ag, z_value])
                 }
             }
 
             // 英文 - 中文替换
-            for ( item in dp_temp){
-                if(dp_temp[item].indexOf('sum') >= 0 ){
-                    dp_temp[item] = dp_temp[item].replace('sum','设备总数');
-                }else if(dp_temp[item].indexOf('run') >= 0 ){
-                    dp_temp[item] = dp_temp[item].replace('run','运行数');
-                }else if (dp_temp[item].indexOf('down') >= 0 ) {
-                    dp_temp[item] = dp_temp[item].replace('down','停止数');
-                }else if(dp_temp[item].indexOf('req') >= 0){
-                    dp_temp[item] = dp_temp[item].replace('req','维修数');
+            for (item in dp_temp) {
+                if (dp_temp[item].indexOf('sum') >= 0) {
+                    dp_temp[item] = dp_temp[item].replace('sum', '设备总数');
+                } else if (dp_temp[item].indexOf('run') >= 0) {
+                    dp_temp[item] = dp_temp[item].replace('run', '运行数');
+                } else if (dp_temp[item].indexOf('down') >= 0) {
+                    dp_temp[item] = dp_temp[item].replace('down', '停止数');
+                } else if (dp_temp[item].indexOf('req') >= 0) {
+                    dp_temp[item] = dp_temp[item].replace('req', '维修数');
                 }
                 data_group = dp_temp;
             }
 
             //确定3D_EC 坐标系与数据
-            var a_cg =area_group;
+            var a_cg = area_group;
             var data_cg = data_group;
             var data = xyz_data;
             ec_3d_bt_option = {
                 tooltip: {
-                    axisPointer :{
-                        label:{
+                    axisPointer: {
+                        label: {
                             show: true
                         }
                     }
@@ -622,7 +623,7 @@ function init_3d_bt() {
                 visualMap: {
                     max: 260,
                     inRange: {
-                        color: ['#00868B','#00CD00', '#00FA9A', '#00CED1','#00F5FF','#00FFFF']
+                        color: ['#00868B', '#00CD00', '#00FA9A', '#00CED1', '#00F5FF', '#00FFFF']
                     }
                 },
                 xAxis3D: {
@@ -703,7 +704,7 @@ function init_ec_bt() {
         success: function (data_bt) {
             pre_data = data_bt.data;
             //确定area_group
-            for ( area_name in pre_data){
+            for (area_name in pre_data) {
                 area_group.push(pre_data[area_name].aname);
             }
 
@@ -711,15 +712,15 @@ function init_ec_bt() {
             var x_data = area_group;
             var y_data = new Array();
 
-            for (y in pre_data){
+            for (y in pre_data) {
                 y_data.push(pre_data[y].sum);
             }
             ec_bt_sum_option = {
                 color: ['#9B30FF'],
-                tooltip : {
+                tooltip: {
                     trigger: 'axis',
-                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                        type : 'cross'        // 默认为直线，可选为：'line' | 'shadow'
+                    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                        type: 'cross'        // 默认为直线，可选为：'line' | 'shadow'
                     }
                 },
                 grid: {
@@ -729,26 +730,26 @@ function init_ec_bt() {
                     bottom: '0%',
                     containLabel: true
                 },
-                xAxis : [
+                xAxis: [
                     {
-                        type : 'category',
-                        data : x_data,
+                        type: 'category',
+                        data: x_data,
                         axisTick: {
                             alignWithLabel: true
                         }
                     }
                 ],
-                yAxis : [
+                yAxis: [
                     {
-                        type : 'value'
+                        type: 'value'
                     }
                 ],
-                series : [
+                series: [
                     {
-                        name:'终端数量',
-                        type:'bar',
+                        name: '终端数量',
+                        type: 'bar',
                         barWidth: '60%',
-                        data:y_data
+                        data: y_data
                     }
                 ]
             };
@@ -764,7 +765,7 @@ function sort_3d_bt() {
     var area_group = new Array();
     var data_group = new Array();
     var xyz_data = new Array();
-    var ec_3d_bt= echarts.init(document.getElementById('3d_bt'));
+    var ec_3d_bt = echarts.init(document.getElementById('3d_bt'));
 
     $.ajax({
         type: "GET",
@@ -772,47 +773,47 @@ function sort_3d_bt() {
         dataType: "json",
         success: function (data_bt) {
             pre_data = data_bt.data;
-            var dp_temp = ['down','req','run','sum'];
+            var dp_temp = ['down', 'req', 'run', 'sum'];
             //确定area_group
-            for ( area_name in pre_data){
+            for (area_name in pre_data) {
                 area_group.push(pre_data[area_name].aname);
             }
             //确定xyz_data
-            for( pg_name in pre_data){
+            for (pg_name in pre_data) {
                 var ag = area_group.indexOf(pre_data[pg_name].aname);
                 var temp_data = pre_data[pg_name];
                 delete temp_data["aname"];
                 var temp_keys = Object.keys(temp_data);
-                for(i=0;i<temp_keys.length;i++){
+                for (i = 0; i < temp_keys.length; i++) {
                     var this_key = temp_keys[i];
                     var pg = dp_temp.indexOf(temp_keys[i]);
                     var z_value = temp_data[this_key];
-                    xyz_data.push([pg,ag,z_value])
+                    xyz_data.push([pg, ag, z_value])
                 }
             }
 
             // 英文 - 中文替换
-            for ( item in dp_temp){
-                if(dp_temp[item].indexOf('sum') >= 0 ){
-                    dp_temp[item] = dp_temp[item].replace('sum','设备总数');
-                }else if(dp_temp[item].indexOf('run') >= 0 ){
-                    dp_temp[item] = dp_temp[item].replace('run','运行数');
-                }else if (dp_temp[item].indexOf('down') >= 0 ) {
-                    dp_temp[item] = dp_temp[item].replace('down','停止数');
-                }else if(dp_temp[item].indexOf('req') >= 0){
-                    dp_temp[item] = dp_temp[item].replace('req','维修数');
+            for (item in dp_temp) {
+                if (dp_temp[item].indexOf('sum') >= 0) {
+                    dp_temp[item] = dp_temp[item].replace('sum', '设备总数');
+                } else if (dp_temp[item].indexOf('run') >= 0) {
+                    dp_temp[item] = dp_temp[item].replace('run', '运行数');
+                } else if (dp_temp[item].indexOf('down') >= 0) {
+                    dp_temp[item] = dp_temp[item].replace('down', '停止数');
+                } else if (dp_temp[item].indexOf('req') >= 0) {
+                    dp_temp[item] = dp_temp[item].replace('req', '维修数');
                 }
                 data_group = dp_temp;
             }
 
             //确定3D_EC 坐标系与数据
-            var a_cg =area_group;
+            var a_cg = area_group;
             var data_cg = data_group;
             var data = xyz_data;
             ec_3d_bt_option = {
                 tooltip: {
-                    axisPointer :{
-                        label:{
+                    axisPointer: {
+                        label: {
                             show: true
                         }
                     }
@@ -820,7 +821,7 @@ function sort_3d_bt() {
                 visualMap: {
                     max: 260,
                     inRange: {
-                        color: ['#00868B','#00CD00', '#00FA9A', '#00CED1','#00F5FF','#00FFFF']
+                        color: ['#00868B', '#00CD00', '#00FA9A', '#00CED1', '#00F5FF', '#00FFFF']
                     }
                 },
                 xAxis3D: {
@@ -901,7 +902,7 @@ function sort_ec_bt() {
         success: function (data_bt) {
             pre_data = data_bt.data;
             //确定area_group
-            for ( area_name in pre_data){
+            for (area_name in pre_data) {
                 area_group.push(pre_data[area_name].aname);
             }
 
@@ -909,15 +910,15 @@ function sort_ec_bt() {
             var x_data = area_group;
             var y_data = new Array();
 
-            for (y in pre_data){
+            for (y in pre_data) {
                 y_data.push(pre_data[y].sum);
             }
             ec_bt_sum_option = {
                 color: ['#9B30FF'],
-                tooltip : {
+                tooltip: {
                     trigger: 'axis',
-                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                        type : 'cross'        // 默认为直线，可选为：'line' | 'shadow'
+                    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                        type: 'cross'        // 默认为直线，可选为：'line' | 'shadow'
                     }
                 },
                 grid: {
@@ -927,26 +928,26 @@ function sort_ec_bt() {
                     bottom: '0%',
                     containLabel: true
                 },
-                xAxis : [
+                xAxis: [
                     {
-                        type : 'category',
-                        data : x_data,
+                        type: 'category',
+                        data: x_data,
                         axisTick: {
                             alignWithLabel: true
                         }
                     }
                 ],
-                yAxis : [
+                yAxis: [
                     {
-                        type : 'value'
+                        type: 'value'
                     }
                 ],
-                series : [
+                series: [
                     {
-                        name:'终端数量',
-                        type:'bar',
+                        name: '终端数量',
+                        type: 'bar',
                         barWidth: '60%',
-                        data:y_data
+                        data: y_data
                     }
                 ]
             };

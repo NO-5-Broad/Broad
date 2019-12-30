@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * Created by ASUS on 2019/7/29.
+ *
  * @author 陈霞
  */
 
@@ -20,7 +21,6 @@ public interface ITempgroupService {
 
     /**
      * 查询终端列表 详细
-     *
      *
      * @return 单条终端列表记录
      */

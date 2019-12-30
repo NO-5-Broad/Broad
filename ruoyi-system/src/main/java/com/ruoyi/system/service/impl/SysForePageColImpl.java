@@ -16,8 +16,7 @@ public class SysForePageColImpl implements ISysForePagecolService {
     private SysForePageColMapper sysForePagecolMapper;
 
     @Override
-    public List<SysForePage> selectForePageStatus()
-    {
+    public List<SysForePage> selectForePageStatus() {
         return sysForePagecolMapper.selectForePageStatus();
     }
 }

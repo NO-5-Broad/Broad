@@ -15,33 +15,32 @@ import java.util.List;
 
 /**
  * 广播用户 终端信息操作处理
- * 
+ *
  * @author 戴誉琪
  * @date 2019-01-18
  */
 @Controller
 @RequestMapping("/broad/textmessages")
-public class TextmessagesController extends BaseController
-{
+public class TextmessagesController extends BaseController {
     private String prefix = "broad/textmessages";
-	
-	@Autowired
-	private ITextmessagesService iTextmessagesService;
-	//private IBroaduserService broaduserService;
-	
-	//@RequiresPermissions("broad:broaduser:view")
-	@GetMapping()
-	public String broaduser(ModelMap mmap)
-	{
-		mmap.put("typeNum",iTextmessagesService.selectTypeNum());
-	    return prefix + "/textmessages";
-	}
-	@PostMapping("/list")
-	@ResponseBody
-	public TableDataInfo list(){
-		startPage();
-		List<Textmessages> list = iTextmessagesService.selectTextMessages();
-		return getDataTable(list);
-	}
+
+    @Autowired
+    private ITextmessagesService iTextmessagesService;
+    //private IBroaduserService broaduserService;
+
+    //@RequiresPermissions("broad:broaduser:view")
+    @GetMapping()
+    public String broaduser(ModelMap mmap) {
+        mmap.put("typeNum", iTextmessagesService.selectTypeNum());
+        return prefix + "/textmessages";
+    }
+
+    @PostMapping("/list")
+    @ResponseBody
+    public TableDataInfo list() {
+        startPage();
+        List<Textmessages> list = iTextmessagesService.selectTextMessages();
+        return getDataTable(list);
+    }
 
 }

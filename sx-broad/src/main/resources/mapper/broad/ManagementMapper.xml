@@ -5,39 +5,39 @@
 <mapper namespace="com.ruoyi.broad.mapper.ManagementMapper">
 
     <resultMap type="Management" id="ManagementResult">
-        <result property="tname"         column="tname"        />
-        <result property="tid"       column="tid"      />
-        <result property="address"     column="address"    />
-        <result property="uname"       column="uname"      />
-        <result property="aname"       column="aname"      />
-        <result property="phone"            column="phone"            />
-        <result property="basestation"       column="basestation"      />
-        <result property="latitude"        column="latitude"        />
-        <result property="longitude"          column="longitude"          />
-        <result property="receivetime"           column="receivetime"           />
-        <result property="createdtime"       column="createdtime"      />
-        <result property="manageruserid"     column="manageruserid"    />
-        <result property="managername"     column="managername"    />
-        <result property="isuse"     column="isuse"    />
+        <result property="tname" column="tname"/>
+        <result property="tid" column="tid"/>
+        <result property="address" column="address"/>
+        <result property="uname" column="uname"/>
+        <result property="aname" column="aname"/>
+        <result property="phone" column="phone"/>
+        <result property="basestation" column="basestation"/>
+        <result property="latitude" column="latitude"/>
+        <result property="longitude" column="longitude"/>
+        <result property="receivetime" column="receivetime"/>
+        <result property="createdtime" column="createdtime"/>
+        <result property="manageruserid" column="manageruserid"/>
+        <result property="managername" column="managername"/>
+        <result property="isuse" column="isuse"/>
     </resultMap>
 
     <resultMap type="Tersga" id="TersgaResult">
-        <result property="tid"    column="tid"    />
-        <result property="sum"    column="sum"    />
-        <result property="run"    column="run"    />
-        <result property="down"    column="down"    />
-        <result property="req" column="req" />
+        <result property="tid" column="tid"/>
+        <result property="sum" column="sum"/>
+        <result property="run" column="run"/>
+        <result property="down" column="down"/>
+        <result property="req" column="req"/>
     </resultMap>
 
     <resultMap type="Termap" id="ManagementgpsResult">
-        <result property="tid"    column="tid"    />
-        <result property="longitude"    column="Longitude"    />
-        <result property="latitude"    column="Latitude"    />
-        <result property="uname"       column="uname"      />
-        <result property="aname"       column="aname"      />
-        <result property="address"     column="address"    />
-        <result property="phone"            column="phone"            />
-        <result property="isuse"     column="isuse"    />
+        <result property="tid" column="tid"/>
+        <result property="longitude" column="Longitude"/>
+        <result property="latitude" column="Latitude"/>
+        <result property="uname" column="uname"/>
+        <result property="aname" column="aname"/>
+        <result property="address" column="address"/>
+        <result property="phone" column="phone"/>
+        <result property="isuse" column="isuse"/>
     </resultMap>
 
     <sql id="tableName">
@@ -77,22 +77,36 @@
     <!--</if>-->
     <!--</select>-->
     <select id="selectManagementList" parameterType="String" resultMap="ManagementResult">
-        SELECT DISTINCT tname,m.tid as tid,t.address as address,ui.uname as uname,a.aname,phone,basestation,latitude,longitude,manageruserid,managername,t.isuse as isuse
-        from (((((<include refid="tableName"/> m  JOIN <include refid="terminaltableName"/> t on m.tid=t.tid)
-        LEFT JOIN <include refid="areatable"/> a on t.aid= a.aid)
-        LEFT JOIN <include refid="usertable"/> ui on t.userid = ui.userid)
-        LEFT JOIN <include refid="terconditiontable"/> tc on m.tid=tc.tid))
+        SELECT DISTINCT tname,m.tid as tid,t.address as address,ui.uname as
+        uname,a.aname,phone,basestation,latitude,longitude,manageruserid,managername,t.isuse as isuse
+        from (((((
+        <include refid="tableName"/>
+        m JOIN
+        <include refid="terminaltableName"/>
+        t on m.tid=t.tid)
+        LEFT JOIN
+        <include refid="areatable"/>
+        a on t.aid= a.aid)
+        LEFT JOIN
+        <include refid="usertable"/>
+        ui on t.userid = ui.userid)
+        LEFT JOIN
+        <include refid="terconditiontable"/>
+        tc on m.tid=tc.tid))
         left join (SELECT GROUP_CONCAT(tmt.userid) as manageruserid,GROUP_CONCAT(uname) as managername,tid from
-        <include refid="managertertable"/> tmt LEFT JOIN <include refid="userinfotable"/> ui on tmt.userid=ui.userid  GROUP BY tid ) manager on m.tid=manager.tid
+        <include refid="managertertable"/>
+        tmt LEFT JOIN
+        <include refid="userinfotable"/>
+        ui on tmt.userid=ui.userid GROUP BY tid ) manager on m.tid=manager.tid
         <where>
-            <if test="tid != null  and tid != '' "> and t.tid like '%${tid}%'</if>
-            <if test="tname != null  and tname != '' "> and tname like '%${tname}%'</if>
-            <if test="aid != null  and aid != '' "> and t.aid = #{aid}</if>
-            <if test="aname != null  and aname != '' "> and a.aname  like '%${aname}%'</if>
-            <if test="uname != null  and uname != '' "> and ui.uname like '%${uname}%'</if>
-            <if test="address != null  and address != '' "> and t.address like '%${address}%'</if>
-            <if test="latitude != null  and latitude != '' "> and latitude = #{latitude}</if>
-            <if test="longitude != null  and longitude != '' "> and longitude = #{longitude}</if>
+            <if test="tid != null  and tid != '' ">and t.tid like '%${tid}%'</if>
+            <if test="tname != null  and tname != '' ">and tname like '%${tname}%'</if>
+            <if test="aid != null  and aid != '' ">and t.aid = #{aid}</if>
+            <if test="aname != null  and aname != '' ">and a.aname like '%${aname}%'</if>
+            <if test="uname != null  and uname != '' ">and ui.uname like '%${uname}%'</if>
+            <if test="address != null  and address != '' ">and t.address like '%${address}%'</if>
+            <if test="latitude != null  and latitude != '' ">and latitude = #{latitude}</if>
+            <if test="longitude != null  and longitude != '' ">and longitude = #{longitude}</if>
 
         </where>
     </select>
@@ -169,13 +183,17 @@
         update terminal_management
         <trim prefix="SET" suffixOverrides=",">
             <if test="supervisionUnit != null  and supervisionUnit != ''  ">SupervisionUnit = #{supervisionUnit},</if>
-            <if test="accountabilityUnit != null  and accountabilityUnit != ''  ">AccountabilityUnit = #{accountabilityUnit},</if>
+            <if test="accountabilityUnit != null  and accountabilityUnit != ''  ">AccountabilityUnit =
+                #{accountabilityUnit},
+            </if>
             <if test="longitude != null  ">Longitude = #{longitude},</if>
             <if test="latitude != null  ">Latitude = #{latitude},</if>
             <if test="families != null  ">Families = #{families},</if>
             <if test="population != null  ">Population = #{population},</if>
             <if test="twoOverlayMode != null  and twoOverlayMode != ''  ">TwoOverlayMode = #{twoOverlayMode},</if>
-            <if test="twoTransmitFrequency != null  and twoTransmitFrequency != ''  ">TwoTransmitFrequency = #{twoTransmitFrequency},</if>
+            <if test="twoTransmitFrequency != null  and twoTransmitFrequency != ''  ">TwoTransmitFrequency =
+                #{twoTransmitFrequency},
+            </if>
             <if test="twoOverlayNumber != null  ">TwoOverlayNumber = #{twoOverlayNumber},</if>
             <if test="twoOverlayFamiles != null  ">TwoOverlayFamiles = #{twoOverlayFamiles},</if>
             <if test="twoOverlayPopulations != null  ">TwoOverlayPopulations = #{twoOverlayPopulations},</if>

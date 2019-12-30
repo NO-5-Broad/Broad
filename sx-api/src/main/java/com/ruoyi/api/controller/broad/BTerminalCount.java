@@ -14,6 +14,7 @@ import java.util.List;
 
 /**
  * Created by ASUS on 2019/3/21.
+ *
  * @author 陈霞
  * 统计终端维护量
  */
@@ -26,7 +27,7 @@ public class BTerminalCount {
     @CrossOrigin
     @GetMapping("/bt")
     @ApiOperation(value = "根据时间统计终端维护量")
-    public RongApiRes getAllTerminal(){
+    public RongApiRes getAllTerminal() {
         List pre = iTerminalCountService.getAllTerminal();
         RongApiRes test = RongApiService.get_list(pre);
         return test;

@@ -41,52 +41,53 @@ public class Pwork extends BaseController {
     private ISuggestService suggestService;
     @Autowired
     private IFileinfoService fileinfoService;
+
     /**
-        * 返回最近五条党员值班信息
-        * @author 张超 teavamc
-        * @date 2019/1/25
-        * @param []
-        * @return com.ruoyi.api.domain.RongApiRes
-        */
+     * 返回最近五条党员值班信息
+     *
+     * @param []
+     * @return com.ruoyi.api.domain.RongApiRes
+     * @author 张超 teavamc
+     * @date 2019/1/25
+     */
     @GetMapping("/five")
     @CrossOrigin
     @ApiOperation(value = "返回最近五条党员值班信息")
-    public RongApiRes searchfive(){
+    public RongApiRes searchfive() {
         return RongApiService.get_list(partyworkService.selectPartyworkListlimit5());
     }
 
     @GetMapping("/ListWorkLog")
     @CrossOrigin
     @ApiOperation(value = "工作记录列表")
-    public RongApiRes selectWorkLog(pubObjApi worklog){
-        worklog.setPageIndex((worklog.getPageIndex()-1)*worklog.getPageSize());
+    public RongApiRes selectWorkLog(pubObjApi worklog) {
+        worklog.setPageIndex((worklog.getPageIndex() - 1) * worklog.getPageSize());
         return RongApiService.get_list(worklogService.selectWorklogListByid(worklog));
     }
 
     @PostMapping("/insertWorkLog")
     @CrossOrigin
     @ApiOperation(value = "新增工作记录")
-    public AjaxResult insertWorkLog(Worklog worklog,@RequestParam(value = "files", required = false) MultipartFile[] files,
+    public AjaxResult insertWorkLog(Worklog worklog, @RequestParam(value = "files", required = false) MultipartFile[] files,
                                     @RequestParam(value = "filename", required = false) String[] fnames,
-                                    @RequestParam(value = "flenth" ,required = false)String[] flenth, //时长
-                                    @RequestParam(value = "fsize",required = false) String[] fsize )
-    {
+                                    @RequestParam(value = "flenth", required = false) String[] flenth, //时长
+                                    @RequestParam(value = "fsize", required = false) String[] fsize) {
         String year = DateUtil.getYear();
 
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
         System.out.println(dateFormat.format(date));
         String maxfileid = dateFormat.format(date); //获取文件上传时的时间参数字符串作为文件名
-        String address="";
+        String address = "";
         //判断file数组不能为空并且长度大于0
         if (files != null && files.length > 0) {
             //循环获取file数组中得文件
             for (int i = 0; i < files.length; i++) {
                 MultipartFile file = files[i];
-                try{
+                try {
                     //保存图片
                     Files g = bFileUtil1.uplodeFile(maxfileid, file, fnames[i], flenth[i], fsize[i], year);
-                    address +=g.getAddress()+";";
+                    address += g.getAddress() + ";";
 
                 } catch (Exception e) {
                     //return "上传图片失败";
@@ -103,35 +104,34 @@ public class Pwork extends BaseController {
     @GetMapping("/ListMemorial")
     @CrossOrigin
     @ApiOperation(value = "备忘录列表")
-    public RongApiRes selectMemorial(pubObjApi memorial){
-        memorial.setPageIndex((memorial.getPageIndex()-1)*memorial.getPageSize());
+    public RongApiRes selectMemorial(pubObjApi memorial) {
+        memorial.setPageIndex((memorial.getPageIndex() - 1) * memorial.getPageSize());
         return RongApiService.get_list(memorialService.selectMemorialListById(memorial));
     }
 
     @PostMapping("/insertMemorial")
     @CrossOrigin
     @ApiOperation(value = "新增备忘录")
-    public AjaxResult insertMemorial(Memorial memorial,@RequestParam(value = "files", required = false) MultipartFile[] files,
+    public AjaxResult insertMemorial(Memorial memorial, @RequestParam(value = "files", required = false) MultipartFile[] files,
                                      @RequestParam(value = "filename", required = false) String[] fnames,
-                                     @RequestParam(value = "flenth" ,required = false)String[] flenth, //时长
-                                     @RequestParam(value = "fsize",required = false) String[] fsize  )
-    {
+                                     @RequestParam(value = "flenth", required = false) String[] flenth, //时长
+                                     @RequestParam(value = "fsize", required = false) String[] fsize) {
         String year = DateUtil.getYear();
 
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
         System.out.println(dateFormat.format(date));
         String maxfileid = dateFormat.format(date); //获取文件上传时的时间参数字符串作为文件名
-        String address="";
+        String address = "";
         //判断file数组不能为空并且长度大于0
         if (files != null && files.length > 0) {
             //循环获取file数组中得文件
             for (int i = 0; i < files.length; i++) {
                 MultipartFile file = files[i];
-                try{
+                try {
                     //保存图片
                     Files g = bFileUtil1.uplodeFile(maxfileid, file, fnames[i], flenth[i], fsize[i], year);
-                    address +=g.getAddress()+";";
+                    address += g.getAddress() + ";";
 
                 } catch (Exception e) {
                     //return "上传图片失败";
@@ -148,35 +148,34 @@ public class Pwork extends BaseController {
     @GetMapping("/ListMeeting")
     @CrossOrigin
     @ApiOperation(value = "会议记录列表")
-    public RongApiRes selectMeeting(pubObjApi meet){
-        meet.setPageIndex((meet.getPageIndex()-1)*meet.getPageSize());
+    public RongApiRes selectMeeting(pubObjApi meet) {
+        meet.setPageIndex((meet.getPageIndex() - 1) * meet.getPageSize());
         return RongApiService.get_list(meetingService.selectMeetingListById(meet));
     }
 
     @PostMapping("/insertMeeting")
     @CrossOrigin
     @ApiOperation(value = "新增会议记录")
-    public AjaxResult insertMeeting(Meeting meeting,@RequestParam(value = "files", required = false) MultipartFile[] files,
+    public AjaxResult insertMeeting(Meeting meeting, @RequestParam(value = "files", required = false) MultipartFile[] files,
                                     @RequestParam(value = "filename", required = false) String[] fnames,
-                                    @RequestParam(value = "flenth" ,required = false)String[] flenth, //时长
-                                    @RequestParam(value = "fsize",required = false) String[] fsize )
-    {
+                                    @RequestParam(value = "flenth", required = false) String[] flenth, //时长
+                                    @RequestParam(value = "fsize", required = false) String[] fsize) {
         String year = DateUtil.getYear();
 
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
         System.out.println(dateFormat.format(date));
         String maxfileid = dateFormat.format(date); //获取文件上传时的时间参数字符串作为文件名
-        String address="";
+        String address = "";
         //判断file数组不能为空并且长度大于0
         if (files != null && files.length > 0) {
             //循环获取file数组中得文件
             for (int i = 0; i < files.length; i++) {
                 MultipartFile file = files[i];
-                try{
+                try {
                     //保存图片
                     Files g = bFileUtil1.uplodeFile(maxfileid, file, fnames[i], flenth[i], fsize[i], year);
-                    address +=g.getAddress()+";";
+                    address += g.getAddress() + ";";
 
                 } catch (Exception e) {
                     //return "上传图片失败";
@@ -191,30 +190,28 @@ public class Pwork extends BaseController {
     }
 
 
-
     @PostMapping("/insertSuggest")
     @CrossOrigin
     @ApiOperation(value = "新增我的建议")
-    public AjaxResult insertSuggest(Suggest suggest,@RequestParam(value = "files", required = false) MultipartFile[] files,
+    public AjaxResult insertSuggest(Suggest suggest, @RequestParam(value = "files", required = false) MultipartFile[] files,
                                     @RequestParam(value = "filename", required = false) String[] fnames,
-                                    @RequestParam(value = "flenth" ,required = false)String[] flenth, //时长
-                                    @RequestParam(value = "fsize",required = false) String[] fsize )
-    {
+                                    @RequestParam(value = "flenth", required = false) String[] flenth, //时长
+                                    @RequestParam(value = "fsize", required = false) String[] fsize) {
         String year = DateUtil.getYear();
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
         System.out.println(dateFormat.format(date));
         String maxfileid = dateFormat.format(date); //获取文件上传时的时间参数字符串作为文件名
-        String address="";
+        String address = "";
         //判断file数组不能为空并且长度大于0
         if (files != null && files.length > 0) {
             //循环获取file数组中得文件
             for (int i = 0; i < files.length; i++) {
                 MultipartFile file = files[i];
-                try{
+                try {
                     //保存图片
                     Files g = bFileUtil1.uplodeFile(maxfileid, file, fnames[i], flenth[i], fsize[i], year);
-                    address +=g.getAddress()+";";
+                    address += g.getAddress() + ";";
 
                 } catch (Exception e) {
                     //return "上传图片失败";
@@ -231,16 +228,16 @@ public class Pwork extends BaseController {
     @GetMapping("/ListSuggest")
     @CrossOrigin
     @ApiOperation(value = "我的建议列表")
-    public RongApiRes selectSuggest(pubObjApi meet){
-        meet.setPageIndex((meet.getPageIndex()-1)*meet.getPageSize());
+    public RongApiRes selectSuggest(pubObjApi meet) {
+        meet.setPageIndex((meet.getPageIndex() - 1) * meet.getPageSize());
         return RongApiService.get_list(suggestService.selectSuggestListById(meet));
     }
 
     @GetMapping("/ListMyFile")
     @CrossOrigin
     @ApiOperation(value = "我的文件夹列表")
-    public RongApiRes selectMyFile(pubObjApi myfile){
-        myfile.setPageIndex((myfile.getPageIndex()-1)*myfile.getPageSize());
+    public RongApiRes selectMyFile(pubObjApi myfile) {
+        myfile.setPageIndex((myfile.getPageIndex() - 1) * myfile.getPageSize());
         return RongApiService.get_list(fileinfoService.selectMyFileListById(myfile));
     }
 

@@ -2,6 +2,7 @@ package com.ruoyi.broad.domain;
 
 /**
  * Created by ASUS on 2019/7/29.
+ *
  * @author cx
  */
 public class Tempgroup {

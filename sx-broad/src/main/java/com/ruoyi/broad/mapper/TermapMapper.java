@@ -11,15 +11,14 @@ import java.util.List;
  * @author 张鸿权
  * @date 2019-01-15
  */
-public interface TermapMapper
-{
-	/**
-	 * 获取所有经纬度信息(不分页,用于excel导出)
-	 *
-	 * @param @param pd
-	 * @return List<MapInfo>
-	 */
-	public List<Termap> getAllMapInfo(String aid);
+public interface TermapMapper {
+    /**
+     * 获取所有经纬度信息(不分页,用于excel导出)
+     *
+     * @param @param pd
+     * @return List<MapInfo>
+     */
+    public List<Termap> getAllMapInfo(String aid);
 
-	public List<Termap> getAllMapInfoForIot();
+    public List<Termap> getAllMapInfoForIot();
 }

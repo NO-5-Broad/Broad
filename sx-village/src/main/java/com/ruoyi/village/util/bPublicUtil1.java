@@ -5,7 +5,6 @@ import java.net.UnknownHostException;
 
 /**
  * 说明：IP处理
- * @version
  */
 public class bPublicUtil1 {
 
@@ -13,18 +12,19 @@ public class bPublicUtil1 {
 //		System.out.println("本机的ip=" + PublicUtil.getIp());
     }
 
-    public static String getPorjectPath(){
+    public static String getPorjectPath() {
         String nowpath = "";
-        nowpath=System.getProperty("user.dir")+"/";
+        nowpath = System.getProperty("user.dir") + "/";
 
         return nowpath;
     }
 
     /**
      * 获取本机访问地址
+     *
      * @return
      */
-    public static String getIp(){
+    public static String getIp() {
         String ip = "";
         try {
             InetAddress inet = InetAddress.getLocalHost();

@@ -14,10 +14,10 @@ import java.util.List;
 
 /**
  * Created by ASUS on 2019/8/19.
- *
+ * <p>
  * 上级公告 控制层
- * @author cx
  *
+ * @author cx
  */
 @Controller
 @RequestMapping("/broad/higherann")
@@ -30,14 +30,16 @@ public class HigherAnnController extends BaseController {
     private IHigherAnnService iHigherAnnService;
 
     @GetMapping()
-    private String high(){return prefix + "/higherann";}
+    private String high() {
+        return prefix + "/higherann";
+    }
 
     /**
      * 查询上级公告列表
      */
     @RequestMapping("/list")
     @ResponseBody
-    public TableDataInfo list(HigherAnn higherAnn){
+    public TableDataInfo list(HigherAnn higherAnn) {
         startPage();
         List<HigherAnn> list = iHigherAnnService.selectHigherAnnList(higherAnn);
         return getDataTable(list);

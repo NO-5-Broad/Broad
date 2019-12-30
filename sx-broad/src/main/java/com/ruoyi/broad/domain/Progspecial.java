@@ -19,69 +19,91 @@ public class Progspecial {
     private String uptime;//上传时间
     private Boolean replacetime;//替换时间
     private String remark;//备注
+
     public String getSid() {
         return sid;
     }
+
     public void setSid(String sid) {
         this.sid = sid;
     }
+
     public String getFid() {
         return fid;
     }
+
     public void setFid(String fid) {
         this.fid = fid;
     }
+
     public String getSname() {
         return sname;
     }
+
     public void setSname(String sname) {
         this.sname = sname;
     }
+
     public String getAddress() {
         return address;
     }
+
     public void setAddress(String address) {
         this.address = address;
     }
+
     public String getUrls() {
         return urls;
     }
+
     public void setUrls(String urls) {
         this.urls = urls;
     }
+
     public String getUserid() {
         return userid;
     }
+
     public void setUserid(String userid) {
         this.userid = userid;
     }
+
     public String getFlenth() {
         return flenth;
     }
+
     public void setFlenth(String flenth) {
         this.flenth = flenth;
     }
+
     public String getUptime() {
         return uptime;
     }
+
     public void setUptime(String uptime) {
         this.uptime = uptime;
     }
+
     public String getRemark() {
         return remark;
     }
+
     public void setRemark(String remark) {
         this.remark = remark;
     }
+
     public Boolean getReplacetime() {
         return replacetime;
     }
+
     public void setReplacetime(Boolean replacetime) {
         this.replacetime = replacetime;
     }
+
     public Double getFsize() {
         return fsize;
     }
+
     public void setFsize(Double fsize) {
         this.fsize = fsize;
     }

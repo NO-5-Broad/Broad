@@ -40,7 +40,8 @@
             <if test="fsize != null  and fsize != '' ">and fsize like CONCAT('%',#{fsize},'%')</if>
             <if test="uname != null  and uname != '' ">and b.uname = like CONCAT('%',#{uname},'%')</if>
             <if test="userid != null  and userid != '' ">and a.userid = #{userid}</if>
-            <if test="createdtime != null  and createdtime != '' ">and createdtime like CONCAT('%',#{createdtime},'%')</if>
+            <if test="createdtime != null  and createdtime != '' ">and createdtime like CONCAT('%',#{createdtime},'%')
+            </if>
             and ispublic = 1
             and a.userid = b.userid
             order by fid DESC

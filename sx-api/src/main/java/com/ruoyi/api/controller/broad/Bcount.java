@@ -28,17 +28,18 @@ public class Bcount {
     private IManagementService managementService;
 
     /**
-        * 返回首页需要的统计数据
-        * @author 张超 teavamc
-        * @date 2019/1/26
-        * @param []
-        * @return com.ruoyi.api.domain.RongApiRes
-        */
+     * 返回首页需要的统计数据
+     *
+     * @param []
+     * @return com.ruoyi.api.domain.RongApiRes
+     * @author 张超 teavamc
+     * @date 2019/1/26
+     */
 
     @GetMapping(value = "/bindex")
     @CrossOrigin
     @ApiOperation(value = "返回首页需要的统计数据")
-    public RongApiRes bindex(){
+    public RongApiRes bindex() {
         return RongApiService.get_bean(managementService.count());
     }
 

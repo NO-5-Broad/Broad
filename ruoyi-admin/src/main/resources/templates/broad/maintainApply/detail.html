@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <meta charset="utf-8">
 <head th:include="include :: header"></head>
 <body class="white-bg">
@@ -13,7 +13,7 @@
             <th>联系电话</th>
             <th>故障时间</th>
         </tr>
-        <tr  th:each="list : ${listById}">
+        <tr th:each="list : ${listById}">
             <td th:text="${list.teraddress}"></td>
             <td th:text="${list.linkman}"></td>
             <td th:text="${list.linkphone}"></td>

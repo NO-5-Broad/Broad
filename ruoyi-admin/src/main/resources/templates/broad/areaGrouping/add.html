@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <meta charset="utf-8">
 <!--①注意head是否有样式冲突，引入需要的css文件-->
 <head>
@@ -32,7 +32,7 @@
         <div class="form-group">
             <label class="col-sm-3 control-label">备注：</label>
             <div class="col-sm-8">
-                <textarea id="note" name="note"  autofocus></textarea>
+                <textarea id="note" name="note" autofocus></textarea>
             </div>
         </div>
 
@@ -45,9 +45,9 @@
 <script type="text/javascript">
     var prefix = ctx + "broad/areaGrouping";
     $("#form-areaGrouping-add").validate({
-        rules:{
-            xxxx:{
-                required:true,
+        rules: {
+            xxxx: {
+                required: true,
             },
         }
     });
@@ -68,7 +68,7 @@
 <script th:src="@{/js/plugins/simditor/simditor.js}"></script>
 <!--设置富文本插件-->
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         var editor = new Simditor({
             placeholder: "请输入故障原因", // 编辑器默认值（默认为’’）
             toolbar: [

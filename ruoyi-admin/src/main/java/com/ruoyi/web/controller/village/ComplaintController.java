@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-
 /**
  * @program: lyb_RongSys
  * @description: 投诉咨询 信息操作处理
@@ -34,27 +33,28 @@ public class ComplaintController extends BaseController {
 
     @RequiresPermissions("village:complaint:view")
     @GetMapping()
-    public String Complaintsmessages(){
-        return prefix+"/complaint";
+    public String Complaintsmessages() {
+        return prefix + "/complaint";
     }
 
     /**
      * 投诉咨询列表
+     *
      * @param complaintmessages
      * @return
      */
     @RequiresPermissions("village:complaint:list")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(Complaint complaintmessages){
+    public TableDataInfo list(Complaint complaintmessages) {
         startPage();
         List<Complaint> list = complaintService.selectComplaintsList(complaintmessages);
         return getDataTable(list);
     }
 
     @GetMapping("/add")
-    public String add(){
-        return prefix+"/add";
+    public String add() {
+        return prefix + "/add";
     }
 
     /**
@@ -64,20 +64,20 @@ public class ComplaintController extends BaseController {
     @Log(title = "投诉咨询", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
-    public AjaxResult addSave(Complaint complaint)
-    {
+    public AjaxResult addSave(Complaint complaint) {
         return toAjax(complaintService.insertcomplaintsmessages(complaint));
     }
+
     /**
      * 修改投诉咨询
      */
     @GetMapping("/edit/{fbid}")
-    public String edit(@PathVariable("fbid") Integer fbid, ModelMap mmap)
-    {
+    public String edit(@PathVariable("fbid") Integer fbid, ModelMap mmap) {
         Complaint complaint = complaintService.selectByfbid(fbid);
         mmap.put("complaint", complaint);
         return prefix + "/edit";
     }
+
     /**
      * 修改保存投诉咨询
      */
@@ -85,19 +85,18 @@ public class ComplaintController extends BaseController {
     @Log(title = "投诉咨询", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
-    public AjaxResult editSave(Complaint complaint)
-    {
+    public AjaxResult editSave(Complaint complaint) {
         return toAjax(complaintService.updateComplaintsmessages(complaint));
     }
+
     /**
      * 删除投诉咨询
      */
     @RequiresPermissions("village:complaint:remove")
     @Log(title = "删除投诉咨询", businessType = BusinessType.DELETE)
-    @PostMapping( "/remove/{id}")
+    @PostMapping("/remove/{id}")
     @ResponseBody
-    public AjaxResult remove(@PathVariable("id") String fbid)
-    {
+    public AjaxResult remove(@PathVariable("id") String fbid) {
         return toAjax(complaintService.deleteComplaintsByids(fbid));
     }
 

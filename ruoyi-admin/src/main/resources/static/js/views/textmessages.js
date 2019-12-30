@@ -7,7 +7,6 @@ function onload() {
 }
 
 
-
 function init_bt_tel_freq() {
     var bt_tel_freq = echarts.init(document.getElementById('tel_freq'));
     $.ajax({
@@ -20,17 +19,17 @@ function init_bt_tel_freq() {
             var x_data = new Array();
             var y_data = new Array();
 
-           for (i in pre){
-               x_data.push(pre[i].textnum);
-               y_data.push(pre[i].num);
-           }
+            for (i in pre) {
+                x_data.push(pre[i].textnum);
+                y_data.push(pre[i].num);
+            }
 
             tel_freq_option = {
                 color: ['#db4e2b'],
-                tooltip : {
+                tooltip: {
                     trigger: 'axis',
-                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                        type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                     }
                 },
                 grid: {
@@ -40,24 +39,24 @@ function init_bt_tel_freq() {
                     top: '2%',
                     containLabel: true
                 },
-                xAxis : [
+                xAxis: [
                     {
-                        type : 'category',
-                        data : x_data,
+                        type: 'category',
+                        data: x_data,
                         axisTick: {
                             alignWithLabel: true
                         }
                     }
                 ],
-                yAxis : [
+                yAxis: [
                     {
-                        type : 'value'
+                        type: 'value'
                     }
                 ],
-                series : [
+                series: [
                     {
-                        name:'频率',
-                        type:'bar',
+                        name: '频率',
+                        type: 'bar',
                         barWidth: '60%',
                         data: y_data
                     }

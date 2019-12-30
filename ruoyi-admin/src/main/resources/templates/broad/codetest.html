@@ -28,22 +28,22 @@
                         </div>
                         <div class="text-center article-title">
                             <h1>
-                               数据临时测试
+                                数据临时测试
                             </h1>
                         </div>
                         <script>
                             $.ajax({
                                 type: "get",
-                                url:  "http://www.teavamc.com/api/gps",
+                                url: "http://www.teavamc.com/api/gps",
                                 datatype: "json",
                                 success: function (data) {
                                     document.writeln("经度：<br/>")
                                     for (var x in data.longitude) {
-                                        document.writeln(data.longitude[x]+"<br/>")
+                                        document.writeln(data.longitude[x] + "<br/>")
                                     }
                                     document.writeln("<p/>纬度：<br/>")
                                     for (var x in data.latitude) {
-                                        document.writeln(data.latitude[x]+"<br/>")
+                                        document.writeln(data.latitude[x] + "<br/>")
 
                                     }
                                 },
@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-</div>
+    </div>
 
 
 </body>

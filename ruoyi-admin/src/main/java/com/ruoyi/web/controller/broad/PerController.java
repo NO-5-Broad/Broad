@@ -1,6 +1,7 @@
 package com.ruoyi.web.controller.broad;
 
 import com.ruoyi.common.config.Global;
+import com.ruoyi.common.utils.ExcelUtil;
 import com.ruoyi.framework.util.ShiroUtils;
 import com.ruoyi.system.domain.SysUser;
 import org.slf4j.Logger;
@@ -34,6 +35,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
 /**
  * @author 张超 teavamc
  * @Description: 节目库管理
@@ -41,7 +43,7 @@ import java.util.Map;
  * @date 2019/2/17 20:37
  **/
 @Controller
-@RequestMapping(value="/broad/per")
+@RequestMapping(value = "/broad/per")
 public class PerController extends BaseController {
     private String prefix = "broad/program/per";
 
@@ -49,14 +51,13 @@ public class PerController extends BaseController {
     private IProgramService iProgramService;
 
 
-
-//    @RequiresPermissions("broad:per:view")
+    //    @RequiresPermissions("broad:per:view")
     @GetMapping()
     public String per(ModelMap mmp) {
         String path = System.getProperty("user.home");
-        path = path.replace("\\","/");
+        path = path.replace("\\", "/");
         System.out.println(path);
-        mmp.put("path",path);
+        mmp.put("path", path);
         return prefix + "/per";
     }
 
@@ -119,7 +120,7 @@ public class PerController extends BaseController {
 
         //保存图片
         //String path =  bFileUtil.saveImg(file,filename);
-        String userid =  ShiroUtils.getSysUser().getUserId().toString();
+        String userid = ShiroUtils.getSysUser().getUserId().toString();
         Program g = bFileUtil.uplodeFile(maxfileid, file, fname, flenth, fsize, year, userid);
         System.out.println(g.toString());
         iProgramService.insertProgram(g);
@@ -127,10 +128,26 @@ public class PerController extends BaseController {
     }
 
     @PostMapping("/remove")
-    @Log(title = "节目单删除",businessType = BusinessType.DELETE)
+    @Log(title = "节目单删除", businessType = BusinessType.DELETE)
     @ResponseBody
-    public AjaxResult removeProgram(String ids)
-    {
+    public AjaxResult removeProgram(String ids) {
         return toAjax(iProgramService.deleteProgram(ids));
+    }
+
+//    @Log(title = "节目库记录导出", businessType = BusinessType.EXPORT)
+//////    @RequiresPermissions("broad:per:export")
+////    @PostMapping("/exportbysingle")
+////    @ResponseBody
+////    public AjaxResult exportProgramByIds(@RequestParam("sjids") List<String> sfids) {
+////        List<Program> list = iProgramService.selectProgramListByids(sfids);
+////        ExcelUtil<Program> util = new ExcelUtil<Program>(Program.class);
+////        return util.exportExcel(list, "Organization");
+////    }
+////
+    @Log(title = "节目库是否公共状态转换", businessType = BusinessType.UPDATE)
+    @GetMapping("/setispublic/{fid}")
+    @ResponseBody
+    public int setIsPublic(@PathVariable("fid") String fid) {
+        return iProgramService.setIsPublic(fid);
     }
 }

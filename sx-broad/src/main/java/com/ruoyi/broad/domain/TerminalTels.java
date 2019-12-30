@@ -2,6 +2,7 @@ package com.ruoyi.broad.domain;
 
 /**
  * Created by ASUS on 2019/7/28.
+ *
  * @author 朱恒玉
  * @function 终端与其维护授权的维护号码
  */
@@ -11,27 +12,35 @@ public class TerminalTels {
     private String tel;//电话号码
     private String telperson;//用户名
     private boolean isuse;//是否使用
+
     public Integer getTelid() {
         return telid;
     }
+
     public void setTelid(int telid) {
         this.telid = telid;
     }
+
     public String getTid() {
         return tid;
     }
+
     public void setTid(String tid) {
         this.tid = tid;
     }
+
     public String getTel() {
         return tel;
     }
+
     public void setTel(String tel) {
         this.tel = tel;
     }
+
     public boolean getIsuse() {
         return isuse;
     }
+
     public void setIsuse(boolean isuse) {
         this.isuse = isuse;
     }

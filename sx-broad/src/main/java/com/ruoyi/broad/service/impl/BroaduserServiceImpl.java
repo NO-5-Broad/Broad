@@ -13,77 +13,71 @@ import com.ruoyi.common.support.Convert;
 
 /**
  * 广播用户 服务层实现
- * 
+ *
  * @author 张鸿权
  * @date 2019-01-18
  */
 @Service
-public class BroaduserServiceImpl implements IBroaduserService 
-{
-	@Autowired
-	private BroaduserMapper broaduserMapper;
+public class BroaduserServiceImpl implements IBroaduserService {
+    @Autowired
+    private BroaduserMapper broaduserMapper;
 
-	/**
+    /**
      * 查询广播用户信息
-     * 
+     *
      * @param userid 广播用户ID
      * @return 广播用户信息
      */
     @Override
-	@DataSource(value = DataSourceType.SLAVE)
-	public Broaduser selectBroaduserById(String userid)
-	{
-	    return broaduserMapper.selectBroaduserById(userid);
-	}
-	
-	/**
+    @DataSource(value = DataSourceType.SLAVE)
+    public Broaduser selectBroaduserById(String userid) {
+        return broaduserMapper.selectBroaduserById(userid);
+    }
+
+    /**
      * 查询广播用户列表
-     * 
+     *
      * @param broaduser 广播用户信息
      * @return 广播用户集合
      */
-	@Override
-	@DataSource(value = DataSourceType.SLAVE)
-	public List<Broaduser> selectBroaduserList(Broaduser broaduser)
-	{
-	    return broaduserMapper.selectBroaduserList(broaduser);
-	}
+    @Override
+    @DataSource(value = DataSourceType.SLAVE)
+    public List<Broaduser> selectBroaduserList(Broaduser broaduser) {
+        return broaduserMapper.selectBroaduserList(broaduser);
+    }
 
-	/**
+    /**
      * 修改广播用户
-     * 
+     *
      * @param broaduser 广播用户信息
      * @return 结果
      */
-	@Override
-	@DataSource(value = DataSourceType.SLAVE)
-	public int updateBroaduser(Broaduser broaduser)
-	{
-	    return broaduserMapper.updateBroaduser(broaduser);
-	}
+    @Override
+    @DataSource(value = DataSourceType.SLAVE)
+    public int updateBroaduser(Broaduser broaduser) {
+        return broaduserMapper.updateBroaduser(broaduser);
+    }
 
-	/**
+    /**
      * 删除广播用户对象
-     * 
+     *
      * @param ids 需要删除的数据ID
      * @return 结果
      */
-	@Override
-	@DataSource(value = DataSourceType.SLAVE)
-	public int deleteBroaduserByIds(String ids)
-	{
-		return broaduserMapper.deleteBroaduserByIds(Convert.toStrArray(ids));
-	}
+    @Override
+    @DataSource(value = DataSourceType.SLAVE)
+    public int deleteBroaduserByIds(String ids) {
+        return broaduserMapper.deleteBroaduserByIds(Convert.toStrArray(ids));
+    }
 
-	/**
-	 * 新增广播用户信息
-	 *
-	 * @return 结果
-	 */
-	@Override
-	@DataSource(value = DataSourceType.SLAVE)
-	public void insertBroaduser(Broaduser broaduser1)
-	{
-		 broaduserMapper.insertBroaduser(broaduser1);
-	}
+    /**
+     * 新增广播用户信息
+     *
+     * @return 结果
+     */
+    @Override
+    @DataSource(value = DataSourceType.SLAVE)
+    public int insertBroaduser(Broaduser broaduser) {
+        return broaduserMapper.insertBroaduser(broaduser);
+    }
 }

@@ -7,8 +7,10 @@ import com.ruoyi.common.annotation.DataSource;
 import com.ruoyi.common.enums.DataSourceType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.LinkedList;
 import java.util.List;
+
 /**
  * 地图管理 服务层
  *
@@ -16,28 +18,27 @@ import java.util.List;
  * @date 2019-01-18
  */
 @Service
-public class TermapServiceImpl implements ITermapService
-{
-	@Autowired
-	private TermapMapper termapMapper;
-	/**
-	 * 获取所有经纬度信息
-	 * @param @param pd
-	 * @return List<MapInfo>
-	 */
-	@Override
-	@DataSource(value = DataSourceType.SLAVE)
-	public List<Termap> selectMap(String aid)
-	{
-		List<Termap> menus = new LinkedList<Termap>();
-			menus = termapMapper.getAllMapInfo(aid);
-		return menus;
-	}
+public class TermapServiceImpl implements ITermapService {
+    @Autowired
+    private TermapMapper termapMapper;
 
-	@Override
-	@DataSource(value = DataSourceType.SLAVE)
-	public List<Termap> getAllMapInfoForIot()
-	{
-		return termapMapper.getAllMapInfoForIot();
-	}
+    /**
+     * 获取所有经纬度信息
+     *
+     * @param @param pd
+     * @return List<MapInfo>
+     */
+    @Override
+    @DataSource(value = DataSourceType.SLAVE)
+    public List<Termap> selectMap(String aid) {
+        List<Termap> menus = new LinkedList<Termap>();
+        menus = termapMapper.getAllMapInfo(aid);
+        return menus;
+    }
+
+    @Override
+    @DataSource(value = DataSourceType.SLAVE)
+    public List<Termap> getAllMapInfoForIot() {
+        return termapMapper.getAllMapInfoForIot();
+    }
 }

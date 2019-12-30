@@ -15,7 +15,7 @@ import java.util.List;
  * Created by ASUS on 2019/8/19.
  *
  * @author cx
- *
+ * <p>
  * 上级公告列表 业务层实现
  */
 @Service
@@ -26,31 +26,37 @@ public class HigherAnnServiceImpl implements IHigherAnnService {
 
     /**
      * 查询上级公告列表
-     * @param higherAnn
      *
+     * @param higherAnn
      * @return 上级公告列表集合
      */
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public List<HigherAnn> selectHigherAnnList(HigherAnn higherAnn){return higherAnnMapper.selectHigherAnnList(higherAnn);}
+    public List<HigherAnn> selectHigherAnnList(HigherAnn higherAnn) {
+        return higherAnnMapper.selectHigherAnnList(higherAnn);
+    }
 
     /**
      * 批量删除上级公告列表
-     * @param mhid
      *
+     * @param mhid
      * @return 被删除的上级公告列表的所在行序数
      */
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public int deleteHigherAnn(String mhid){return higherAnnMapper.deleteHigherAnn(Convert.toStrArray(mhid));}
+    public int deleteHigherAnn(String mhid) {
+        return higherAnnMapper.deleteHigherAnn(Convert.toStrArray(mhid));
+    }
 
     /**
      * 修改上级公告列表
-     * @param higherAnn
      *
+     * @param higherAnn
      * @return 修改后的上级公告信息行
      */
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public HigherAnn updateHigherAnn(HigherAnn higherAnn){return higherAnnMapper.updateHigherAnn(higherAnn);}
+    public HigherAnn updateHigherAnn(HigherAnn higherAnn) {
+        return higherAnnMapper.updateHigherAnn(higherAnn);
+    }
 }

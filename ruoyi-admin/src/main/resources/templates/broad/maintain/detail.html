@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <meta charset="utf-8">
 <head th:include="include :: header"></head>
 <body class="white-bg">
@@ -13,7 +13,7 @@
             <th>维护时间</th>
             <th>备注</th>
         </tr>
-        <tr  th:each="list : ${listById}">
+        <tr th:each="list : ${listById}">
             <td th:text="${list.fault}"></td>
             <td th:text="${list.mstaff}"></td>
             <td th:text="${list.createtime}"></td>

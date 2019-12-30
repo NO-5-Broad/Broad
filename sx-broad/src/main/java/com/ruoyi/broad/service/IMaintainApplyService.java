@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * Created by ASUS on 2019/7/12.
+ *
  * @author 陈霞
  */
 public interface IMaintainApplyService {
@@ -20,35 +21,34 @@ public interface IMaintainApplyService {
     /**
      * 查询申请维护记录信息
      *
-     *
      * @return 所有申请维护记录信息
      */
     public List<MaintainApply> selectMaintainApplyList(MaintainApply maintainApply);
+
     /**
      * 查询申请维护记录信息
-     *
      *
      * @return 申请维护记录信息
      */
     public List<MaintainApply> selectAllMaintainApply();
+
     /**
      * 删除申请维护记录信息
-     *
      *
      * @return 申请维护记录信息
      */
 
     public int deleteMaintainApplyById(String maid);
+
     /**
      * 插入申请维护记录信息
-     *
      *
      * @return 申请维护记录信息
      */
     public int insertMaintainApply(MaintainApply maintainApply);
+
     /**
      * 更新申请维护记录信息
-     *
      *
      * @return 申请维护记录信息
      */

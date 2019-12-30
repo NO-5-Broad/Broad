@@ -29,8 +29,7 @@ public class AnalysisController extends BaseController {
 
     @RequiresPermissions("village:analysis:view")
     @GetMapping()
-    public String villagerInfo()
-    {
+    public String villagerInfo() {
         return prefix + "/analysis";
     }
 
@@ -40,22 +39,21 @@ public class AnalysisController extends BaseController {
     @RequiresPermissions("village:analysis:list")
     @PostMapping("/count")
     @ResponseBody
-    public String Groupsexy(String grouptype)
-    {
+    public String Groupsexy(String grouptype) {
 
         List<VillagerInfo> list = villagerInfoService.selectVillagerInfoListBygrouptype(grouptype);
-        Integer count=list.size();//总数
-        Integer fnum=0;//男数量
-        Integer fmnum=0;//女数量
-        for(int i=0;i<count;i++){
-            if("男".equals(list.get(i).getSex())) {
+        Integer count = list.size();//总数
+        Integer fnum = 0;//男数量
+        Integer fmnum = 0;//女数量
+        for (int i = 0; i < count; i++) {
+            if ("男".equals(list.get(i).getSex())) {
                 fnum++;
-            }else{
+            } else {
                 fmnum++;
-          }
+            }
 
         }
-        String result=count.toString()+'|'+fnum.toString()+'|'+ fmnum.toString();
+        String result = count.toString() + '|' + fnum.toString() + '|' + fmnum.toString();
 
         return result;
     }

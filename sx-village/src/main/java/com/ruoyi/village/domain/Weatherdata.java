@@ -11,52 +11,96 @@ import java.util.Date;
  * @author hfz
  * @date 2019-10-16
  */
-public class Weatherdata extends BaseEntity{
+public class Weatherdata extends BaseEntity {
     private static final long serialVersionUID = 1L;
-    /**编号*/
+    /**
+     * 编号
+     */
     private Integer id;
-    /**终端设备IMEI*/
+    /**
+     * 终端设备IMEI
+     */
     private String tid;
-    /**采集地址编号*/
+    /**
+     * 采集地址编号
+     */
     private String addrid;
-    /**采集地区区域名*/
+    /**
+     * 采集地区区域名
+     */
     private String aname;
-    /**采集时间*/
+    /**
+     * 采集时间
+     */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date colltime;
-    /**环境温度*/
+    /**
+     * 环境温度
+     */
     private float surrtemp;
-    /**环境湿度*/
+    /**
+     * 环境湿度
+     */
     private float surrhumi;
-    /**环境照度*/
+    /**
+     * 环境照度
+     */
     private float surrlight;
-    /**土壤温度*/
+    /**
+     * 土壤温度
+     */
     private float soiltemp;
-    /**土壤湿度*/
+    /**
+     * 土壤湿度
+     */
     private float soilhumi;
-    /**大气压力*/
+    /**
+     * 大气压力
+     */
     private float atmopress;
-    /**风速*/
+    /**
+     * 风速
+     */
     private float windspeed;
-    /**风向*/
+    /**
+     * 风向
+     */
     private String windire;
-    /**天气类型*/
+    /**
+     * 天气类型
+     */
     private String weathertype;
-    /**PM2.5浓度*/
+    /**
+     * PM2.5浓度
+     */
     private float pm25;
-    /**二氧化碳浓度*/
+    /**
+     * 二氧化碳浓度
+     */
     private float co2;
-    /**一氧化碳浓度*/
+    /**
+     * 一氧化碳浓度
+     */
     private float co;
-    /**二氧化硫浓度*/
+    /**
+     * 二氧化硫浓度
+     */
     private float so2;
-    /**氨气浓度*/
+    /**
+     * 氨气浓度
+     */
     private float ch4;
-    /**下雨量*/
+    /**
+     * 下雨量
+     */
     private float rainfall;
-    /**雨水PH值*/
+    /**
+     * 雨水PH值
+     */
     private float ph;
-    /**信息状态 */
+    /**
+     * 信息状态
+     */
     private String remark;
 
 

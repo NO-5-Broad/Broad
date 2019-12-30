@@ -5,8 +5,8 @@ import com.ruoyi.common.base.BaseEntity;
 /**
  * Created by ASUS on 2019/8/19.
  *
+ * @author cx
  * @description
- * @author  cx
  */
 public class HigherAnn extends BaseEntity {
 

@@ -6,78 +6,81 @@ import com.ruoyi.common.base.BaseEntity;
 
 /**
  * 耕地表 plowland_info
- * 
+ *
  * @author 张鸿权
  * @date 2019-05-02
  */
-public class PlowlandInfo extends BaseEntity
-{
-	private static final long serialVersionUID = 1L;
-	
-	/** 耕地数据编号 */
-	private Integer pid;
-	/** 地域编号 */
-	private String aid;
-	/** 组名 */
-	private String grouptype;
-	/** 集体经营 */
-	private String collective;
-	/** 承包到户 */
-	private String contracted;
+public class PlowlandInfo extends BaseEntity {
+    private static final long serialVersionUID = 1L;
 
-	public void setPid(Integer pid) 
-	{
-		this.pid = pid;
-	}
+    /**
+     * 耕地数据编号
+     */
+    private Integer pid;
+    /**
+     * 地域编号
+     */
+    private String aid;
+    /**
+     * 组名
+     */
+    private String grouptype;
+    /**
+     * 集体经营
+     */
+    private String collective;
+    /**
+     * 承包到户
+     */
+    private String contracted;
 
-	public Integer getPid() 
-	{
-		return pid;
-	}
-	public void setAid(String aid) 
-	{
-		this.aid = aid;
-	}
+    public void setPid(Integer pid) {
+        this.pid = pid;
+    }
 
-	public String getAid() 
-	{
-		return aid;
-	}
-	public void setGrouptype(String grouptype) 
-	{
-		this.grouptype = grouptype;
-	}
+    public Integer getPid() {
+        return pid;
+    }
 
-	public String getGrouptype() 
-	{
-		return grouptype;
-	}
-	public void setCollective(String collective) 
-	{
-		this.collective = collective;
-	}
+    public void setAid(String aid) {
+        this.aid = aid;
+    }
 
-	public String getCollective() 
-	{
-		return collective;
-	}
-	public void setContracted(String contracted) 
-	{
-		this.contracted = contracted;
-	}
+    public String getAid() {
+        return aid;
+    }
 
-	public String getContracted() 
-	{
-		return contracted;
-	}
+    public void setGrouptype(String grouptype) {
+        this.grouptype = grouptype;
+    }
+
+    public String getGrouptype() {
+        return grouptype;
+    }
+
+    public void setCollective(String collective) {
+        this.collective = collective;
+    }
+
+    public String getCollective() {
+        return collective;
+    }
+
+    public void setContracted(String contracted) {
+        this.contracted = contracted;
+    }
+
+    public String getContracted() {
+        return contracted;
+    }
 
     public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("pid", getPid())
-            .append("aid", getAid())
-            .append("grouptype", getGrouptype())
-            .append("collective", getCollective())
-            .append("contracted", getContracted())
-            .toString();
+        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
+                .append("pid", getPid())
+                .append("aid", getAid())
+                .append("grouptype", getGrouptype())
+                .append("collective", getCollective())
+                .append("contracted", getContracted())
+                .toString();
     }
 }

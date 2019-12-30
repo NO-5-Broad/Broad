@@ -12,7 +12,7 @@
 </head>
 <body class="gray-bg">
 <div class="wrapper wrapper-content">
-    <form  id="form-filemanager-add" enctype="multipart/form-data" th:action="@{add}" method="post" >
+    <form id="form-filemanager-add" enctype="multipart/form-data" th:action="@{add}" method="post">
 
         <div class="row">
             <div class="col-sm-3">
@@ -176,12 +176,16 @@
 <script src="../../js/bootstrap.min.js?v=3.3.6"></script>
 <script src="../../js/content.min.js?v=1.0.0"></script>
 <script>
-    $(document).ready(function(){$(".file-box").each(function(){animationHover(this,"pulse")})});
+    $(document).ready(function () {
+        $(".file-box").each(function () {
+            animationHover(this, "pulse")
+        })
+    });
 </script>
 <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
 <script th:inline="javascript">
 
-    var cc =  [[${fileMap.furl}]];
+    var cc = [[${fileMap.furl}]];
     alert();
 
 </script>

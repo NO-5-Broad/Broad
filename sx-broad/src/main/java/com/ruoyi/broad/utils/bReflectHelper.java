@@ -11,6 +11,7 @@ import java.lang.reflect.Field;
 public class bReflectHelper {
     /**
      * 获取obj对象fieldName的Field
+     *
      * @param obj
      * @param fieldName
      * @return
@@ -28,6 +29,7 @@ public class bReflectHelper {
 
     /**
      * 获取obj对象fieldName的属性值
+     *
      * @param obj
      * @param fieldName
      * @return
@@ -41,7 +43,7 @@ public class bReflectHelper {
             IllegalArgumentException, IllegalAccessException {
         Field field = getFieldByFieldName(obj, fieldName);
         Object value = null;
-        if(field!=null){
+        if (field != null) {
             if (field.isAccessible()) {
                 value = field.get(obj);
             } else {
@@ -55,6 +57,7 @@ public class bReflectHelper {
 
     /**
      * 设置obj对象fieldName的属性值
+     *
      * @param obj
      * @param fieldName
      * @param value

@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <meta charset="utf-8">
 <head th:include="include :: header"></head>
 <body class="white-bg">
@@ -16,7 +16,7 @@
             <th>播放时长</th>
             <th>备注</th>
         </tr>
-        <tr  th:each="list : ${listBySjid}">
+        <tr th:each="list : ${listBySjid}">
             <td th:text="${list.pid}"></td>
             <td th:text="${list.ptp}"></td>
             <td th:text="${list.fN}"></td>

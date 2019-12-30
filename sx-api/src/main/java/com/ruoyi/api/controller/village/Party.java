@@ -37,44 +37,45 @@ public class Party extends BaseController {
     private IPartyfupinService partyfupinService;
     @Autowired
     private IVareaService vareaService;
+
     /**
      * 返回所有党员活动信息
-     * @author 施景程 teavamc
-     * @date 2019/6/8
+     *
      * @param []
      * @return com.ruoyi.api.domain.RongApiRes
+     * @author 施景程 teavamc
+     * @date 2019/6/8
      */
     @GetMapping("/hdAll")
     @CrossOrigin
     @ApiOperation(value = "返回所有党员活动信息")
-    public RongApiRes searchAll(Huodong huodong)
-    {
+    public RongApiRes searchAll(Huodong huodong) {
         return RongApiService.get_list(huodongService.selectHuodongList(huodong));
     }
+
     @PostMapping("/insertHd")
     @CrossOrigin
     @ApiOperation(value = "新增党员活动信息")
-    public AjaxResult insertHd(Huodong huodong,@RequestParam(value = "files", required = false) MultipartFile[] files,
+    public AjaxResult insertHd(Huodong huodong, @RequestParam(value = "files", required = false) MultipartFile[] files,
                                @RequestParam(value = "filename", required = false) String[] fnames,
-                               @RequestParam(value = "flenth" ,required = false)String[] flenth, //时长
-                               @RequestParam(value = "fsize",required = false) String[] fsize )
-    {
+                               @RequestParam(value = "flenth", required = false) String[] flenth, //时长
+                               @RequestParam(value = "fsize", required = false) String[] fsize) {
         String year = DateUtil.getYear();
 
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
         System.out.println(dateFormat.format(date));
         String maxfileid = dateFormat.format(date); //获取文件上传时的时间参数字符串作为文件名
-        String address="";
+        String address = "";
         //判断file数组不能为空并且长度大于0
         if (files != null && files.length > 0) {
             //循环获取file数组中得文件
             for (int i = 0; i < files.length; i++) {
                 MultipartFile file = files[i];
-                try{
+                try {
                     //保存图片
                     Files g = bFileUtil1.uplodeFile(maxfileid, file, fnames[i], flenth[i], fsize[i], year);
-                    address +=g.getAddress()+";";
+                    address += g.getAddress() + ";";
 
                 } catch (Exception e) {
                     //return "上传图片失败";
@@ -91,44 +92,40 @@ public class Party extends BaseController {
     @GetMapping("/eduAll")
     @CrossOrigin
     @ApiOperation(value = "返回所有党员学习信息")
-    public RongApiRes searchEduAll(Partystudy partystudy)
-    {
+    public RongApiRes searchEduAll(Partystudy partystudy) {
         return RongApiService.get_list(partystudyService.selectPartystudyList(partystudy));
     }
 
     @GetMapping("/affairAll")
     @CrossOrigin
     @ApiOperation(value = "返回所有党务公开信息")
-    public RongApiRes searchAffairAll(Partyaffairs partyaffairs)
-    {
+    public RongApiRes searchAffairAll(Partyaffairs partyaffairs) {
         return RongApiService.get_list(partyaffairsService.selectPartyaffairsList(partyaffairs));
     }
 
     @GetMapping("/shishiAll")
     @CrossOrigin
     @ApiOperation(value = "返回所有党务公开信息")
-    public RongApiRes selectShishiList(Shishi shishi)
-    {
+    public RongApiRes selectShishiList(Shishi shishi) {
         return RongApiService.get_list(shishiService.selectShishiList(shishi));
     }
 
     @GetMapping("/listAll")
     @CrossOrigin
     @ApiOperation(value = "党建各栏目列表")
-    public RongApiRes selectPartyAllById(pubObjApi party)
-    {
-        party.setPageIndex((party.getPageIndex()-1)*party.getPageSize());
+    public RongApiRes selectPartyAllById(pubObjApi party) {
+        party.setPageIndex((party.getPageIndex() - 1) * party.getPageSize());
         List<String> allaid = vareaService.listNextAid(party.getAid());
-        if (allaid.isEmpty()){
+        if (allaid.isEmpty()) {
             allaid.add(party.getAid());
             party.setListaid(allaid);
-        }else {
+        } else {
             //获得所有的子 aid 放入 list
             List<String> temp;
             temp = vareaService.listNextAid(allaid.get(0));
-            for (int i = 1; i < allaid.size(); i++){
+            for (int i = 1; i < allaid.size(); i++) {
                 List<String> l = vareaService.listNextAid(allaid.get(i));
-                if (!l.isEmpty()){
+                if (!l.isEmpty()) {
                     temp.addAll(l);
                 }
             }
@@ -137,7 +134,7 @@ public class Party extends BaseController {
             party.setListaid(allaid);
 
         }
-        switch(party.getVtype()){
+        switch (party.getVtype()) {
             case "0":
                 return RongApiService.get_list(partynewService.selectpartynewListById(party));
             case "1":
@@ -154,27 +151,26 @@ public class Party extends BaseController {
     @PostMapping("/insertPNew")
     @CrossOrigin
     @ApiOperation(value = "新增党员新闻")
-    public AjaxResult insertPartyNew(Partynew partynew,@RequestParam(value = "files", required = false) MultipartFile[] files,
+    public AjaxResult insertPartyNew(Partynew partynew, @RequestParam(value = "files", required = false) MultipartFile[] files,
                                      @RequestParam(value = "filename", required = false) String[] fnames,
-                                     @RequestParam(value = "flenth" ,required = false)String[] flenth, //时长
-                                     @RequestParam(value = "fsize",required = false) String[] fsize )
-    {
+                                     @RequestParam(value = "flenth", required = false) String[] flenth, //时长
+                                     @RequestParam(value = "fsize", required = false) String[] fsize) {
         String year = DateUtil.getYear();
 
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
         System.out.println(dateFormat.format(date));
         String maxfileid = dateFormat.format(date); //获取文件上传时的时间参数字符串作为文件名
-        String address="";
+        String address = "";
         //判断file数组不能为空并且长度大于0
         if (files != null && files.length > 0) {
             //循环获取file数组中得文件
             for (int i = 0; i < files.length; i++) {
                 MultipartFile file = files[i];
-                try{
+                try {
                     //保存图片
                     Files g = bFileUtil1.uplodeFile(maxfileid, file, fnames[i], flenth[i], fsize[i], year);
-                    address +=g.getAddress()+";";
+                    address += g.getAddress() + ";";
 
                 } catch (Exception e) {
                     //return "上传图片失败";
@@ -191,27 +187,26 @@ public class Party extends BaseController {
     @PostMapping("/insertEducation")
     @CrossOrigin
     @ApiOperation(value = "新增党员学习")
-    public AjaxResult insertEducation(Partystudy partystudy,@RequestParam(value = "files", required = false) MultipartFile[] files,
+    public AjaxResult insertEducation(Partystudy partystudy, @RequestParam(value = "files", required = false) MultipartFile[] files,
                                       @RequestParam(value = "filename", required = false) String[] fnames,
-                                      @RequestParam(value = "flenth" ,required = false)String[] flenth, //时长
-                                      @RequestParam(value = "fsize",required = false) String[] fsize )
-    {
+                                      @RequestParam(value = "flenth", required = false) String[] flenth, //时长
+                                      @RequestParam(value = "fsize", required = false) String[] fsize) {
         String year = DateUtil.getYear();
 
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
         System.out.println(dateFormat.format(date));
         String maxfileid = dateFormat.format(date); //获取文件上传时的时间参数字符串作为文件名
-        String address="";
+        String address = "";
         //判断file数组不能为空并且长度大于0
         if (files != null && files.length > 0) {
             //循环获取file数组中得文件
             for (int i = 0; i < files.length; i++) {
                 MultipartFile file = files[i];
-                try{
+                try {
                     //保存图片
                     Files g = bFileUtil1.uplodeFile(maxfileid, file, fnames[i], flenth[i], fsize[i], year);
-                    address +=g.getAddress()+";";
+                    address += g.getAddress() + ";";
 
                 } catch (Exception e) {
                     //return "上传图片失败";
@@ -228,27 +223,26 @@ public class Party extends BaseController {
     @PostMapping("/insertFuPin")
     @CrossOrigin
     @ApiOperation(value = "新增扶贫工作")
-    public AjaxResult insertPartyfupin(Partyfupin partyfupin,@RequestParam(value = "files", required = false) MultipartFile[] files,
+    public AjaxResult insertPartyfupin(Partyfupin partyfupin, @RequestParam(value = "files", required = false) MultipartFile[] files,
                                        @RequestParam(value = "filename", required = false) String[] fnames,
-                                       @RequestParam(value = "flenth" ,required = false)String[] flenth, //时长
-                                       @RequestParam(value = "fsize",required = false) String[] fsize )
-    {
+                                       @RequestParam(value = "flenth", required = false) String[] flenth, //时长
+                                       @RequestParam(value = "fsize", required = false) String[] fsize) {
         String year = DateUtil.getYear();
 
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
         System.out.println(dateFormat.format(date));
         String maxfileid = dateFormat.format(date); //获取文件上传时的时间参数字符串作为文件名
-        String address="";
+        String address = "";
         //判断file数组不能为空并且长度大于0
         if (files != null && files.length > 0) {
             //循环获取file数组中得文件
             for (int i = 0; i < files.length; i++) {
                 MultipartFile file = files[i];
-                try{
+                try {
                     //保存图片
                     Files g = bFileUtil1.uplodeFile(maxfileid, file, fnames[i], flenth[i], fsize[i], year);
-                    address +=g.getAddress()+";";
+                    address += g.getAddress() + ";";
 
                 } catch (Exception e) {
                     //return "上传图片失败";

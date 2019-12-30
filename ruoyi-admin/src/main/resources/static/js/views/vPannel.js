@@ -18,23 +18,23 @@ function init_ec_mbygroup() {
             var mbygroup_data = data.data;
             var x_data = new Array();
             var y_data = new Array();
-            for( x in mbygroup_data){
-                if(mbygroup_data[x].marea == ''){
+            for (x in mbygroup_data) {
+                if (mbygroup_data[x].marea == '') {
                     x_data.push('未知');
-                }else {
+                } else {
                     x_data.push(mbygroup_data[x].marea);
                 }
             }
-            for (y in mbygroup_data){
+            for (y in mbygroup_data) {
                 y_data.push(mbygroup_data[y].msum);
             }
             var ec_mbygroup = echarts.init(document.getElementById('ec_mbygroup'));
             ec_mbygroup_option = {
                 color: ['#66fccc'],
-                tooltip : {
+                tooltip: {
                     trigger: 'axis',
-                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                        type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                     }
                 },
                 grid: {
@@ -44,26 +44,26 @@ function init_ec_mbygroup() {
                     bottom: '0%',
                     containLabel: true
                 },
-                xAxis : [
+                xAxis: [
                     {
-                        type : 'category',
-                        data : x_data,
+                        type: 'category',
+                        data: x_data,
                         axisTick: {
                             alignWithLabel: true
                         }
                     }
                 ],
-                yAxis : [
+                yAxis: [
                     {
-                        type : 'value'
+                        type: 'value'
                     }
                 ],
-                series : [
+                series: [
                     {
-                        name:'人口数量',
-                        type:'bar',
+                        name: '人口数量',
+                        type: 'bar',
                         barWidth: '60%',
-                        data:y_data
+                        data: y_data
                     }
                 ]
             };
@@ -81,23 +81,23 @@ function sort_ec_mbygroup() {
             var mbygroup_data = data.data;
             var x_data = new Array();
             var y_data = new Array();
-            for( x in mbygroup_data){
-                if(mbygroup_data[x].marea == ''){
+            for (x in mbygroup_data) {
+                if (mbygroup_data[x].marea == '') {
                     x_data.push('未知');
-                }else {
+                } else {
                     x_data.push(mbygroup_data[x].marea);
                 }
             }
-            for (y in mbygroup_data){
+            for (y in mbygroup_data) {
                 y_data.push(mbygroup_data[y].msum);
             }
             var ec_mbygroup = echarts.init(document.getElementById('ec_mbygroup'));
             ec_mbygroup_option = {
                 color: ['#66fccc'],
-                tooltip : {
+                tooltip: {
                     trigger: 'axis',
-                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                        type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                     }
                 },
                 grid: {
@@ -107,26 +107,26 @@ function sort_ec_mbygroup() {
                     bottom: '0%',
                     containLabel: true
                 },
-                xAxis : [
+                xAxis: [
                     {
-                        type : 'category',
-                        data : x_data,
+                        type: 'category',
+                        data: x_data,
                         axisTick: {
                             alignWithLabel: true
                         }
                     }
                 ],
-                yAxis : [
+                yAxis: [
                     {
-                        type : 'value'
+                        type: 'value'
                     }
                 ],
-                series : [
+                series: [
                     {
-                        name:'人口数量',
-                        type:'bar',
+                        name: '人口数量',
+                        type: 'bar',
                         barWidth: '60%',
-                        data:y_data
+                        data: y_data
                     }
                 ]
             };
@@ -144,24 +144,24 @@ function init_ec_pbygroup() {
             var mbygroup_data = data.data;
             var x_data = new Array();
             var y_data = new Array();
-            for( x in mbygroup_data){
-                if(mbygroup_data[x].parea == ''){
+            for (x in mbygroup_data) {
+                if (mbygroup_data[x].parea == '') {
                     x_data.push('未知');
-                }else {
+                } else {
                     x_data.push(mbygroup_data[x].parea);
                 }
             }
-            for (y in mbygroup_data){
+            for (y in mbygroup_data) {
                 y_data.push(mbygroup_data[y].psum);
             }
 
             var ec_pbygroup = echarts.init(document.getElementById('ec_pbygroup'));
             ec_pbygroup_option = {
                 color: ['#ff3399'],
-                tooltip : {
+                tooltip: {
                     trigger: 'axis',
-                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                        type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                     }
                 },
                 grid: {
@@ -171,26 +171,26 @@ function init_ec_pbygroup() {
                     bottom: '0%',
                     containLabel: true
                 },
-                xAxis : [
+                xAxis: [
                     {
-                        type : 'category',
-                        data : x_data,
+                        type: 'category',
+                        data: x_data,
                         axisTick: {
                             alignWithLabel: true
                         }
                     }
                 ],
-                yAxis : [
+                yAxis: [
                     {
-                        type : 'value'
+                        type: 'value'
                     }
                 ],
-                series : [
+                series: [
                     {
-                        name:'人口数量',
-                        type:'bar',
+                        name: '人口数量',
+                        type: 'bar',
                         barWidth: '60%',
-                        data:y_data
+                        data: y_data
                     }
                 ]
             };
@@ -209,24 +209,24 @@ function sort_ec_pbygroup() {
             var mbygroup_data = data.data;
             var x_data = new Array();
             var y_data = new Array();
-            for( x in mbygroup_data){
-                if(mbygroup_data[x].parea == ''){
+            for (x in mbygroup_data) {
+                if (mbygroup_data[x].parea == '') {
                     x_data.push('未知');
-                }else {
+                } else {
                     x_data.push(mbygroup_data[x].parea);
                 }
             }
-            for (y in mbygroup_data){
+            for (y in mbygroup_data) {
                 y_data.push(mbygroup_data[y].psum);
             }
 
             var ec_pbygroup = echarts.init(document.getElementById('ec_pbygroup'));
             ec_pbygroup_option = {
                 color: ['#ff3399'],
-                tooltip : {
+                tooltip: {
                     trigger: 'axis',
-                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                        type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                     }
                 },
                 grid: {
@@ -236,26 +236,26 @@ function sort_ec_pbygroup() {
                     bottom: '0%',
                     containLabel: true
                 },
-                xAxis : [
+                xAxis: [
                     {
-                        type : 'category',
-                        data : x_data,
+                        type: 'category',
+                        data: x_data,
                         axisTick: {
                             alignWithLabel: true
                         }
                     }
                 ],
-                yAxis : [
+                yAxis: [
                     {
-                        type : 'value'
+                        type: 'value'
                     }
                 ],
-                series : [
+                series: [
                     {
-                        name:'人口数量',
-                        type:'bar',
+                        name: '人口数量',
+                        type: 'bar',
                         barWidth: '60%',
-                        data:y_data
+                        data: y_data
                     }
                 ]
             };
@@ -279,61 +279,61 @@ function init_3d_v_pm() {
         success: function (data_pm) {
             pre_data = data_pm.data;
             var pg_temp = Object.keys(pre_data[0]);
-            pg_temp.splice(arrIndex(pg_temp,'area'),1);
+            pg_temp.splice(arrIndex(pg_temp, 'area'), 1);
             //重新确定人员分组的顺序(暂时写死）
-            pg_temp = ['pwoman','pman','psum','mwoman','mman','msum'];
+            pg_temp = ['pwoman', 'pman', 'psum', 'mwoman', 'mman', 'msum'];
 
 
             //确定area_group
-            for ( area_name in pre_data){
+            for (area_name in pre_data) {
                 area_group.push(pre_data[area_name].area);
             }
             //确定xyz_data
-            for( pg_name in pre_data){
+            for (pg_name in pre_data) {
                 var ag = area_group.indexOf(pre_data[pg_name].area);
                 var temp_data = pre_data[pg_name];
                 delete temp_data["area"];
                 var temp_keys = Object.keys(temp_data);
-                for(i=0;i<temp_keys.length;i++){
+                for (i = 0; i < temp_keys.length; i++) {
                     var this_key = temp_keys[i];
                     var pg = pg_temp.indexOf(temp_keys[i]);
                     var z_value = temp_data[this_key];
-                    xyz_data.push([pg,ag,z_value])
+                    xyz_data.push([pg, ag, z_value])
                 }
             }
             //确定people_group
             // 英文 - 中文替换
-            for ( item in pg_temp){
-                if(pg_temp[item].indexOf('p') == 0 ){
-                    pg_temp[item] = pg_temp[item].replace('p','党员');
-                    if(pg_temp[item].indexOf('sum') >= 0){
-                        pg_temp[item] = pg_temp[item].replace('sum','总数');
-                    }else if(pg_temp[item].indexOf('man') >= 0 && pg_temp[item].indexOf('wo') < 0){
-                        pg_temp[item] = pg_temp[item].replace('man','男性');
-                    }else if(pg_temp[item].indexOf('woman') >= 0 && pg_temp[item].indexOf('wo') >= 0){
-                        pg_temp[item] = pg_temp[item].replace('woman','女性');
+            for (item in pg_temp) {
+                if (pg_temp[item].indexOf('p') == 0) {
+                    pg_temp[item] = pg_temp[item].replace('p', '党员');
+                    if (pg_temp[item].indexOf('sum') >= 0) {
+                        pg_temp[item] = pg_temp[item].replace('sum', '总数');
+                    } else if (pg_temp[item].indexOf('man') >= 0 && pg_temp[item].indexOf('wo') < 0) {
+                        pg_temp[item] = pg_temp[item].replace('man', '男性');
+                    } else if (pg_temp[item].indexOf('woman') >= 0 && pg_temp[item].indexOf('wo') >= 0) {
+                        pg_temp[item] = pg_temp[item].replace('woman', '女性');
                     }
                 }
-                if(pg_temp[item].indexOf('m') == 0 ){
-                    pg_temp[item] = pg_temp[item].replace('m','村民');
-                    if(pg_temp[item].indexOf('sum') >= 0){
-                        pg_temp[item] = pg_temp[item].replace('sum','总数');
-                    }else if(pg_temp[item].indexOf('man') && pg_temp[item].indexOf('wo') < 0){
-                        pg_temp[item] = pg_temp[item].replace('man','男性');
-                    }else if(pg_temp[item].indexOf('woman') >= 0 && pg_temp[item].indexOf('wo') >= 0){
-                        pg_temp[item] = pg_temp[item].replace('woman','女性');
+                if (pg_temp[item].indexOf('m') == 0) {
+                    pg_temp[item] = pg_temp[item].replace('m', '村民');
+                    if (pg_temp[item].indexOf('sum') >= 0) {
+                        pg_temp[item] = pg_temp[item].replace('sum', '总数');
+                    } else if (pg_temp[item].indexOf('man') && pg_temp[item].indexOf('wo') < 0) {
+                        pg_temp[item] = pg_temp[item].replace('man', '男性');
+                    } else if (pg_temp[item].indexOf('woman') >= 0 && pg_temp[item].indexOf('wo') >= 0) {
+                        pg_temp[item] = pg_temp[item].replace('woman', '女性');
                     }
                 }
                 people_group = pg_temp;
             }
             //确定3D_EC 坐标系与数据
-            var g_cg =area_group;
+            var g_cg = area_group;
             var p_cg = people_group;
             var data = xyz_data;
             ec_3d_v_pm_option = {
                 tooltip: {
-                    axisPointer :{
-                        label:{
+                    axisPointer: {
+                        label: {
                             show: true
                         }
                     }
@@ -341,7 +341,7 @@ function init_3d_v_pm() {
                 visualMap: {
                     max: 260,
                     inRange: {
-                        color: ['#CD3333','#FF3030', '#FF7F50', '#FFB90F','#FFF68F','#FFFF00']
+                        color: ['#CD3333', '#FF3030', '#FF7F50', '#FFB90F', '#FFF68F', '#FFFF00']
                     }
                 },
                 xAxis3D: {

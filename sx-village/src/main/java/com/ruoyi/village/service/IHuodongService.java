@@ -23,30 +23,38 @@ public interface IHuodongService {
 
     /**
      * 根据hdid删除数据
+     *
      * @param id
      */
     int deleteHuodongByids(String id);
 
     /**
      * 添加公告信息数据
-     * @param  huodong
+     *
+     * @param huodong
      * @return
      */
     int inserthuodong(Huodong huodong);
+
     /**
      * 根据hdid选择数据
+     *
      * @param hdid
      * @return
      */
     Huodong selectByhdid(Integer hdid);
+
     /**
      * 保存用户修改
+     *
      * @param huodong
      * @return
      */
     int updateHuodong(Huodong huodong);
+
     /**
      * 删除公告信息
+     *
      * @param hdid
      * @return
      */

@@ -52,7 +52,7 @@ public class bConst {
     //节目文件夹
     public static final String FILEPATHPER = "profile/audiofile/";
 
-    public static final String[] LOGTYPE=new String[]{"登陆日志","操作日志"};
+    public static final String[] LOGTYPE = new String[]{"登陆日志", "操作日志"};
 
     public static final String SHOWTEXT = "SHOWTEXT";
 
@@ -67,7 +67,7 @@ public class bConst {
     // 流量清零日期路径
     public static final String TRAFFICRESEDATE = "config/TRAFFICRESEDATE.txt";
     // 分页条数配置路径
-    public static final String PAGE	= "config/PAGE.txt";
+    public static final String PAGE = "config/PAGE.txt";
     // 短信猫配置路径
     public static final String CONFIG = "config/config.properties";
     // 终端命令交互监听端口

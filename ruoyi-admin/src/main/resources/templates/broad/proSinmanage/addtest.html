@@ -24,43 +24,44 @@
                 </td>
                 <td style="padding-left:2px;text-align: right;">连续天数：</td>
                 <td style="padding-left:2px;">
-                    <input  name="continuenum" id="continuenum"  value="1" type="number" min="1" max="15" step="1" style="width:88px;"  placeholder="连续天数" title="节目单连续播出天数"/></td>
+                    <input name="continuenum" id="continuenum" value="1" type="number" min="1" max="15" step="1"
+                           style="width:88px;" placeholder="连续天数" title="节目单连续播出天数"/></td>
                 <td style="padding-left:10px">
-                    <a class="btn btn-success btn-xs" onclick="saves();"  title="保存" id="saves">
-                        <i  class="ace-icon fa fa-floppy-o bigger-110 white"></i>&nbsp;保存
+                    <a class="btn btn-success btn-xs" onclick="saves();" title="保存" id="saves">
+                        <i class="ace-icon fa fa-floppy-o bigger-110 white"></i>&nbsp;保存
                     </a>
                 </td>
             </tr>
             <tr style="padding-top:15px;">
                 <td style="vertical-align:top;padding-left:2px">
-                    <a id="appon" class="btn btn-white btn-sm" onclick="setPro('app-on');"  style="border: none;" >
-                        <i  class="ace-icon fa fa-play bigger-110 green"></i>&nbsp;开启功放
+                    <a id="appon" class="btn btn-white btn-sm" onclick="setPro('app-on');" style="border: none;">
+                        <i class="ace-icon fa fa-play bigger-110 green"></i>&nbsp;开启功放
                     </a>
                 </td>
                 <td style="vertical-align:top;padding-left:2px">
-                    <a class="btn btn-white btn-sm" onclick="doFile();" style="border: none;"  >
+                    <a class="btn btn-white btn-sm" onclick="doFile();" style="border: none;">
                         <i class="ace-icon fa fa-music bigger-110 green"></i>&nbsp;文件转播
                     </a>
                 </td>
                 <td style="vertical-align:top;padding-left:2px">
-                    <a class="btn btn-white btn-sm" onclick="doCham();"  style="border: none;" >
+                    <a class="btn btn-white btn-sm" onclick="doCham();" style="border: none;">
                         <i class="ace-icon fa fa-bullhorn bigger-110 green"></i>&nbsp;电台播音
                     </a>
                 </td>
                 <td style="vertical-align:top;padding-left:2px">
-                    <a id="appoff" class="btn btn-white btn-sm" onclick="setPro('app-off');"  style="border: none;" >
+                    <a id="appoff" class="btn btn-white btn-sm" onclick="setPro('app-off');" style="border: none;">
                         <i class="ace-icon fa fa-stop bigger-110 green"></i>&nbsp;关闭功放
                     </a>
                 </td>
                 <td style="vertical-align:top;padding-left:2px">
-                    <a id="appstop" class="btn btn-white btn-sm" onclick="setPro('stop');"  style="border: none;" >
+                    <a id="appstop" class="btn btn-white btn-sm" onclick="setPro('stop');" style="border: none;">
                         <i class="ace-icon fa fa-power-off bigger-110 green"></i>&nbsp;停止播放
                     </a>
                 </td>
             </tr>
         </table>
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <div class="ibox">
                     <div class="ibox-content">
                         <table id="simple-tables" class="table" style="margin-top:5px;">
@@ -81,11 +82,28 @@
                     </div>
                 </div>
             </div>
-           <div class="col-md-4">
-               <div class="ui-layout-content">
-                   <div id="tree" class="ztree treeselect"></div>
-               </div>
-           </div>
+            <div class="col-md-3">
+                <div class="ui-layout-content">
+                    <div id="tree" class="ztree treeselect"></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+
+
+
+                <div class="ui-layout-content">
+
+
+
+                    <div id="tree1" class="ztree treeselect"></div>
+
+
+
+                </div>
+
+
+
+            </div>
         </div>
     </div>
 </div>
@@ -93,39 +111,40 @@
 
 <script type="text/javascript">
     var userId = [[${user.userId}]];
+
     //使表格行上移，接收参数为链接对象
-    function moveUp(_a){
+    function moveUp(_a) {
         //通过链接对象获取表格行的引用
-        var _row=_a.parentNode.parentNode.parentNode;
+        var _row = _a.parentNode.parentNode.parentNode;
         //如果不是第一行，则与上一行交换顺序
-        if(_row.previousSibling)swapNode(_row,_row.previousSibling);
+        if (_row.previousSibling) swapNode(_row, _row.previousSibling);
         timeAuto(_a);
     }
 
     //使表格行下移，接收参数为链接对象
-    function moveDown(_a){
+    function moveDown(_a) {
         //通过链接对象获取表格行的引用
-        var _row=_a.parentNode.parentNode.parentNode;
+        var _row = _a.parentNode.parentNode.parentNode;
         //如果不是最后一行，则与下一行交换顺序
-        if(_row.nextSibling)swapNode(_row,_row.nextSibling);
+        if (_row.nextSibling) swapNode(_row, _row.nextSibling);
         timeAuto(_a);
     }
 
     //定义通用的函数交换两个结点的位置
-    function swapNode(node1,node2){
+    function swapNode(node1, node2) {
         //获取父结点
-        var _parent=node1.parentNode;
+        var _parent = node1.parentNode;
         //获取两个结点的相对位置
-        var _t1=node1.nextSibling;
-        var _t2=node2.nextSibling;
+        var _t1 = node1.nextSibling;
+        var _t2 = node2.nextSibling;
         //将node2插入到原来node1的位置
-        if(_t1)
-            _parent.insertBefore(node2,_t1);
+        if (_t1)
+            _parent.insertBefore(node2, _t1);
         else
             _parent.appendChild(node2);
         //将node1插入到原来node2的位置
-        if(_t2)
-            _parent.insertBefore(node1,_t2);
+        if (_t2)
+            _parent.insertBefore(node1, _t2);
         else
             _parent.appendChild(node1);
     }
@@ -138,29 +157,32 @@
 <!--时间插件-->
 <script th:inline="javascript">
     laydate({
-        elem:"#broaddate",
-        event:"focus"
+        elem: "#broaddate",
+        event: "focus"
     });
-    layui.use('laydate', function(){
+    layui.use('laydate', function () {
         var laydate = layui.laydate;
         laydate.render({
-            elem:"#broad",
+            elem: "#broad",
             type: 'time',
         });
     });
 </script>
 <script th:inline="javascript">
-    function queryAreaTree(){
+    function queryAreaTree() {
         var url = ctx + "broad/areaGrouping/treeData";
+
         function zTreeOnCheck(event, treeId, treeNode) {
             console.log(treeNode.tId + ", " + treeNode.name + "," + treeNode.checked);
             var treeObj = $.fn.zTree.getZTreeObj("tree");
             var nodes = treeObj.getCheckedNodes(true);
         }
+
         function zOnClick(event, treeId, treeNode) {
             $("#parentaid").val(treeNode.aid);
             $.table.search();
         }
+
         var options = {
             url: url,
             check: {
@@ -168,10 +190,45 @@
                 chkStyle: "checkbox"
             },
             onCheck: zTreeOnCheck,
+            onClick: zOnClick
+        };
+        var options1 = {
+
+
+
+            url: url,
+
+
+
+            check: {
+
+
+
+                enable: true,
+
+
+
+                chkStyle: "checkbox"
+
+
+
+            },
+
+
+
+            onCheck: zTreeOnCheck,
+
+
+
             onClick : zOnClick
+
+
+
         };
         $.tree.init(options);
+        $.tree.init(options1);
     }
+
     queryAreaTree()
 </script>
 </body>

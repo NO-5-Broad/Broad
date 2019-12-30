@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <meta charset="utf-8">
 <head th:include="include :: header"></head>
 <body class="white-bg">
@@ -14,7 +14,7 @@
             <th>故障现象</th>
             <th>维护时间</th>
         </tr>
-        <tr  th:each="list : ${listBySjid}">
+        <tr th:each="list : ${listBySjid}">
             <td th:text="${list.tname}"></td>
             <td th:text="${list.aname}"></td>
             <td th:text="${list.uname}"></td>

@@ -32,7 +32,7 @@ public class IotCount {
     @CrossOrigin
     @GetMapping("/countall")
     @ApiOperation(value = "统计所有山洪数据")
-    public RongApiRes countall(){
+    public RongApiRes countall() {
         return RongApiService.get_bean(torrentService.countall());
     }
 
@@ -40,14 +40,14 @@ public class IotCount {
     @CrossOrigin
     @GetMapping("/devicecount")
     @ApiOperation(value = "物联网挂载设备总数")
-    public RongApiRes devicecount(){
+    public RongApiRes devicecount() {
         return RongApiService.get_bean(torrentService.devicecount());
     }
 
     @CrossOrigin
     @GetMapping("/iotbyitl")
     @ApiOperation(value = "根据IMEI号和时间范围和查询条数统计物联网数据")
-    public RongApiRes iotbyitl(IotgetPa iotgetPa){
+    public RongApiRes iotbyitl(IotgetPa iotgetPa) {
         return RongApiService.get_list(torrentService.selectTorrentByitl(iotgetPa));
     }
 

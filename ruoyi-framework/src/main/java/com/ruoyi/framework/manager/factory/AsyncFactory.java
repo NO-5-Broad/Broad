@@ -23,10 +23,8 @@ import java.util.TimerTask;
  * 异步工厂（产生任务用）
  *
  * @author liuhulu
- *
  */
-public class AsyncFactory
-{
+public class AsyncFactory {
     private static final Logger sys_user_logger = LoggerFactory.getLogger("sys-user");
 
     /**
@@ -35,13 +33,10 @@ public class AsyncFactory
      * @param session 在线用户会话
      * @return 任务task
      */
-    public static TimerTask syncSessionToDb(final OnlineSession session)
-    {
-        return new TimerTask()
-        {
+    public static TimerTask syncSessionToDb(final OnlineSession session) {
+        return new TimerTask() {
             @Override
-            public void run()
-            {
+            public void run() {
                 SysUserOnline online = new SysUserOnline();
                 online.setSessionId(String.valueOf(session.getId()));
                 online.setDeptName(session.getDeptName());
@@ -66,13 +61,10 @@ public class AsyncFactory
      * @param operLog 操作日志信息
      * @return 任务task
      */
-    public static TimerTask recordOper(final SysOperLog operLog)
-    {
-        return new TimerTask()
-        {
+    public static TimerTask recordOper(final SysOperLog operLog) {
+        return new TimerTask() {
             @Override
-            public void run()
-            {
+            public void run() {
                 // 远程查询操作地点
                 operLog.setOperLocation(AddressUtils.getRealAddressByIP(operLog.getOperIp()));
                 SpringUtils.getBean(ISysOperLogService.class).insertOperlog(operLog);
@@ -84,20 +76,17 @@ public class AsyncFactory
      * 记录登陆信息
      *
      * @param username 用户名
-     * @param status 状态
-     * @param message 消息
-     * @param args 列表
+     * @param status   状态
+     * @param message  消息
+     * @param args     列表
      * @return 任务task
      */
-    public static TimerTask recordLogininfor(final String username, final String status, final String message, final Object... args)
-    {
+    public static TimerTask recordLogininfor(final String username, final String status, final String message, final Object... args) {
         final UserAgent userAgent = UserAgent.parseUserAgentString(ServletUtils.getRequest().getHeader("User-Agent"));
         final String ip = ShiroUtils.getIp();
-        return new TimerTask()
-        {
+        return new TimerTask() {
             @Override
-            public void run()
-            {
+            public void run() {
                 StringBuilder s = new StringBuilder();
                 s.append(LogUtils.getBlock(ip));
                 s.append(AddressUtils.getRealAddressByIP(ip));
@@ -119,12 +108,9 @@ public class AsyncFactory
                 logininfor.setOs(os);
                 logininfor.setMsg(message);
                 // 日志状态
-                if (Constants.LOGIN_SUCCESS.equals(status) || Constants.LOGOUT.equals(status))
-                {
+                if (Constants.LOGIN_SUCCESS.equals(status) || Constants.LOGOUT.equals(status)) {
                     logininfor.setStatus(Constants.SUCCESS);
-                }
-                else if (Constants.LOGIN_FAIL.equals(status))
-                {
+                } else if (Constants.LOGIN_FAIL.equals(status)) {
                     logininfor.setStatus(Constants.FAIL);
                 }
                 // 插入数据

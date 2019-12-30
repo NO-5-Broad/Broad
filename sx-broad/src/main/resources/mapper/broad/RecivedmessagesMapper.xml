@@ -5,12 +5,12 @@
 <mapper namespace="com.ruoyi.broad.mapper.RecivedmessagesMapper">
 
     <resultMap type="Recivedmessages" id="RecivedmessagesResult">
-        <result property="rmid"    column="rmid"    />
-        <result property="rmobile"    column="rmobile"    />
-        <result property="rcontent"    column="rcontent"    />
-        <result property="isread"    column="isread"    />
-        <result property="recivedtime"    column="recivedtime"    />
-        <result property="remark"    column="remark"    />
+        <result property="rmid" column="rmid"/>
+        <result property="rmobile" column="rmobile"/>
+        <result property="rcontent" column="rcontent"/>
+        <result property="isread" column="isread"/>
+        <result property="recivedtime" column="recivedtime"/>
+        <result property="remark" column="remark"/>
     </resultMap>
 
     <sql id="selectRecivedmessagesVo">
@@ -20,12 +20,13 @@
     <select id="selectRecivedmessagesList" parameterType="Recivedmessages" resultMap="RecivedmessagesResult">
         <include refid="selectRecivedmessagesVo"/>
         <where>
-            <if test="rmid != null "> and rmid like '%${rmid}%'</if>
-            <if test="rmobile != null  and rmobile != '' "> and rmobile like '%${rmobile}%'</if>
-            <if test="rcontent != null  and rcontent != '' "> and rcontent like '%${rcontent}%'</if>
-            <if test="isread != null "> and isread like '%${isread}%'</if>
-            <if test="recivedtime != null  and endtime != null"> and recivedtime between #{recivedtime} and #{endtime}</if>
-            <if test="remark != null  and remark != '' "> and remark like '%${remark}%'</if>
+            <if test="rmid != null ">and rmid like '%${rmid}%'</if>
+            <if test="rmobile != null  and rmobile != '' ">and rmobile like '%${rmobile}%'</if>
+            <if test="rcontent != null  and rcontent != '' ">and rcontent like '%${rcontent}%'</if>
+            <if test="isread != null ">and isread like '%${isread}%'</if>
+            <if test="recivedtime != null  and endtime != null">and recivedtime between #{recivedtime} and #{endtime}
+            </if>
+            <if test="remark != null  and remark != '' ">and remark like '%${remark}%'</if>
         </where>
         ORDER BY recivedtime DESC
     </select>

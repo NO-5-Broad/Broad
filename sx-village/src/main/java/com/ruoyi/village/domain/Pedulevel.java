@@ -3,10 +3,14 @@ package com.ruoyi.village.domain;
 public class Pedulevel {
     private static final long serialVersionUID = 1L;
 
-    /** 地区分组 */
+    /**
+     * 地区分组
+     */
     private String edulevel;
 
-    /** 各学历党员总数 */
+    /**
+     * 各学历党员总数
+     */
     private int psum;
 
     public String getEdulevel() {

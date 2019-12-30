@@ -11,7 +11,7 @@ import java.util.HashMap;
  *
  * @author 张超
  */
-public class RongApiRes extends HashMap<String, Object>{
+public class RongApiRes extends HashMap<String, Object> {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,10 +32,10 @@ public class RongApiRes extends HashMap<String, Object>{
     /**
      * 初始化一个新创建的 Message 对象，并初始化时间戳
      */
-    public RongApiRes(){
+    public RongApiRes() {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         String date = df.format(new Date());// new Date()为获取当前系统时间，也可使用当前时间戳
-        this.put("time",date);
+        this.put("time", date);
     }
 
 
@@ -44,8 +44,7 @@ public class RongApiRes extends HashMap<String, Object>{
      *
      * @return 错误消息
      */
-    public static RongApiRes error()
-    {
+    public static RongApiRes error() {
         return error(1, "接口调用失败");
     }
 
@@ -55,8 +54,7 @@ public class RongApiRes extends HashMap<String, Object>{
      * @param msg 内容
      * @return 错误消息
      */
-    public static RongApiRes error(String msg)
-    {
+    public static RongApiRes error(String msg) {
         return error(500, msg);
     }
 
@@ -64,11 +62,10 @@ public class RongApiRes extends HashMap<String, Object>{
      * 返回错误消息
      *
      * @param code 错误码
-     * @param msg 内容
+     * @param msg  内容
      * @return 错误消息
      */
-    public static RongApiRes error(int code, String msg)
-    {
+    public static RongApiRes error(int code, String msg) {
         RongApiRes json = new RongApiRes();
         json.put("code", code);
         json.put("msg", msg);
@@ -81,8 +78,7 @@ public class RongApiRes extends HashMap<String, Object>{
      * @param msg 内容
      * @return 成功消息
      */
-    public static RongApiRes success(String msg)
-    {
+    public static RongApiRes success(String msg) {
         RongApiRes json = new RongApiRes();
         json.put("msg", msg);
         json.put("code", 0);
@@ -94,21 +90,19 @@ public class RongApiRes extends HashMap<String, Object>{
      *
      * @return 成功消息
      */
-    public static RongApiRes success()
-    {
+    public static RongApiRes success() {
         return RongApiRes.success("接口调用成功");
     }
 
     /**
      * 返回成功消息
      *
-     * @param key 键值
+     * @param key   键值
      * @param value 内容
      * @return 成功消息
      */
     @Override
-    public RongApiRes put(String key, Object value)
-    {
+    public RongApiRes put(String key, Object value) {
         super.put(key, value);
         return this;
     }

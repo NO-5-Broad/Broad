@@ -9,16 +9,24 @@ package com.ruoyi.village.domain;
 public class Pmcount {
     private static final long serialVersionUID = 1L;
 
-    /** 地区分组 */
+    /**
+     * 地区分组
+     */
     private String parea;
 
-    /** 地区党员总数 */
+    /**
+     * 地区党员总数
+     */
     private int psum;
 
-    /** 男党员 */
+    /**
+     * 男党员
+     */
     private int man;
 
-    /** 女党员 */
+    /**
+     * 女党员
+     */
     private int woman;
 
     public String getParea() {

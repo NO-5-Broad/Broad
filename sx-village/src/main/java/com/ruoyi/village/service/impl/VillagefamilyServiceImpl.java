@@ -27,8 +27,8 @@ public class VillagefamilyServiceImpl implements IVillagefamilyService {
     @DataSource(value = DataSourceType.SXVILLAGE)
     public List<Villagefamily> selectvillagefamilylist(Villagefamily villagefamily) {
         List<Villagefamily> list = villagefamilyMapper.selectVillageFamilyList(villagefamily);
-        for(Villagefamily village : list){
-            if(village.getContent().length() > 0)
+        for (Villagefamily village : list) {
+            if (village.getContent().length() > 0)
                 village.setContent(FilterText.delHTMLTag(village.getContent())); //过滤html标签
         }
         return list;

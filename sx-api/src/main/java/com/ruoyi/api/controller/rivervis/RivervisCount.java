@@ -29,37 +29,39 @@ public class RivervisCount {
     private IEnvDataService envDataService;
 
     /**
-        * 按照时间顺序返回前二十条
-        * @author 张超 teavamc
-        * @date 2019/3/10
-        * @param []
-        * @return com.ruoyi.api.domain.RongApiRes
-        */
+     * 按照时间顺序返回前二十条
+     *
+     * @param []
+     * @return com.ruoyi.api.domain.RongApiRes
+     * @author 张超 teavamc
+     * @date 2019/3/10
+     */
     @CrossOrigin
     @GetMapping("/commentCount")
     @ApiOperation(value = "按照时间顺序返回前二十条")
-    public RongApiRes commentCount(){
+    public RongApiRes commentCount() {
         return RongApiService.get_list(envDataService.selectEnvDataListLimit());
     }
 
     /**
      * 统计所有山洪数据
-     * @author 张超 teavamc
-     * @date 2019/3/10
+     *
      * @param []
      * @return com.ruoyi.api.domain.RongApiRes
+     * @author 张超 teavamc
+     * @date 2019/3/10
      */
     @CrossOrigin
     @GetMapping("/countall")
     @ApiOperation(value = "统计所有山洪数据")
-    public RongApiRes countall(){
+    public RongApiRes countall() {
         return RongApiService.get_bean(envDataService.countall());
     }
 
     @CrossOrigin
     @GetMapping("/envbytl")
     @ApiOperation(value = "根据时间和查询条数统计环境数据")
-    public RongApiRes envbytl(Riverbytl riverbytl){
+    public RongApiRes envbytl(Riverbytl riverbytl) {
         return RongApiService.get_list(envDataService.selectEnvDataListbytl(riverbytl));
     }
 

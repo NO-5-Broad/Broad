@@ -24,30 +24,38 @@ public interface IPolicyinfoService {
 
     /**
      * 根据fbid删除数据
+     *
      * @param id
      */
     public int deletePolicyinfoByids(String id);
 
     /**
      * 添加公告信息数据
-     * @param  policyinfo
+     *
+     * @param policyinfo
      * @return
      */
     public int insertpolicyinfo(Policyinfo policyinfo);
+
     /**
      * 根据poinid选择数据
+     *
      * @param poinid
      * @return
      */
     public Policyinfo selectBypoinid(Integer poinid);
+
     /**
      * 保存用户修改
+     *
      * @param policyinfo
      * @return
      */
     public int updatePolicyinfo(Policyinfo policyinfo);
+
     /**
      * 删除公告信息
+     *
      * @param poinid
      * @return
      */
@@ -62,8 +70,10 @@ public interface IPolicyinfoService {
 
     //查询评论
     public List<Comment> selectinfocommentListlimit(pubObjApi info);
+
     //查询回复评论
     public List<Comment> selectinforecommentList(int coid);
+
     //新增评论
     public int insertInfoCM(Comment comment);
 }

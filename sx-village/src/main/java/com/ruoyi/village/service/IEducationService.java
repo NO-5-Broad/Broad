@@ -23,30 +23,38 @@ public interface IEducationService {
 
     /**
      * 根据shiid删除数据
+     *
      * @param id
      */
     int deleteEducationByids(String id);
 
     /**
      * 添加政策公告数据
-     * @param  education
+     *
+     * @param education
      * @return
      */
     int inserteducation(Education education);
+
     /**
      * 根据eid选择数据
+     *
      * @param eid
      * @return
      */
     Education selectByeid(Integer eid);
+
     /**
      * 保存用户修改
+     *
      * @param education
      * @return
      */
     int updateEducation(Education education);
+
     /**
      * 删除政策信息
+     *
      * @param eid
      * @return
      */

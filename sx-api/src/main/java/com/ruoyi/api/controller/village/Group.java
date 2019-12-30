@@ -35,38 +35,36 @@ public class Group {
     @GetMapping("/all")
     @CrossOrigin
     @ApiOperation(value = "党员信息")
-    public RongApiRes searchAll(PersonApi group)
-    {
-        group.setPageIndex((group.getPageIndex()-1)*group.getPageSize());
+    public RongApiRes searchAll(PersonApi group) {
+        group.setPageIndex((group.getPageIndex() - 1) * group.getPageSize());
         return RongApiService.get_list(villagerInfoService.selectvillagerInfoListBytype(group));
     }
 
     @GetMapping("/grouplist")
     @CrossOrigin
     @ApiOperation(value = "党员小组")
-    public RongApiRes selectGrouplist(PersonApi group)
-    {
-        group.setPageIndex((group.getPageIndex()-1)*group.getPageSize());
+    public RongApiRes selectGrouplist(PersonApi group) {
+        group.setPageIndex((group.getPageIndex() - 1) * group.getPageSize());
         List<VillagerInfo> res;
         List<String> allaid = vareaService.listNextAid(group.getAid());
-        if (allaid.isEmpty()){
+        if (allaid.isEmpty()) {
             allaid.add(group.getAid());
             group.setListaid(allaid);
             res = villagerInfoService.selectGrouplist(group);
-        }else {
+        } else {
             //获得所有的子 aid 放入 list
             List<String> temp;
             temp = vareaService.listNextAid(allaid.get(0));
-            for (int i = 1; i < allaid.size(); i++){
+            for (int i = 1; i < allaid.size(); i++) {
                 List<String> l = vareaService.listNextAid(allaid.get(i));
-                if (!l.isEmpty()){
+                if (!l.isEmpty()) {
                     temp.addAll(l);
                 }
             }
             allaid.addAll(temp);
             // 遍历所有的 aid 信息然后装入结果
             group.setListaid(allaid);
-            res =villagerInfoService.selectGrouplist(group);
+            res = villagerInfoService.selectGrouplist(group);
         }
         return RongApiService.get_list(res);
     }

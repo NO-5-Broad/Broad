@@ -38,7 +38,7 @@ public class StreamServer {
     //允许客户端数量
     private static int Socketbacklog = 1000;
     final static String UTF_8 = "utf-8";
-    public static ExecutorService executorService =  Executors.newCachedThreadPool();
+    public static ExecutorService executorService = Executors.newCachedThreadPool();
 
     // 消息的中止判断符
     public String EndChar = "cc";
@@ -52,7 +52,7 @@ public class StreamServer {
 
     public StreamServer() {
         //  8800
-        this.PORT= SX_SERVERPORT;
+        this.PORT = SX_SERVERPORT;
         //  2000
         StreamServer.Socketbacklog = SX_SERVERbacklog;
         // 实例化
@@ -80,22 +80,22 @@ public class StreamServer {
             bootstrap.option(ChannelOption.SO_REUSEADDR, true);
             //  启动类配置 childHandler 代表 客户端成功connect后才执行 NettyChannelHandler类的业务放阿飞
             bootstrap.childHandler(new NettyChannelHandler());
-    //  保存Channel异步操作的结果
-    ChannelFuture channelFuture = bootstrap.bind(PORT).sync();
+            //  保存Channel异步操作的结果
+            ChannelFuture channelFuture = bootstrap.bind(PORT).sync();
             if (channelFuture.isSuccess()) {
-        System.out.println("启动流媒体监听");
-        log.info("正常日志  信息： 开始启动流媒体监听，端口:" + PORT + "；" );
-    }
-    // 关闭连接
+                System.out.println("启动流媒体监听");
+                log.info("正常日志  信息： 开始启动流媒体监听，端口:" + PORT + "；");
+            }
+            // 关闭连接
             channelFuture.channel().closeFuture().sync();
 
-} catch (Exception e) {
-        log.info("启动流媒体服务异常，异常信息：" + e.getMessage());
+        } catch (Exception e) {
+            log.info("启动流媒体服务异常，异常信息：" + e.getMessage());
         } finally {
-        boss.shutdownGracefully();
-        worker.shutdownGracefully();
+            boss.shutdownGracefully();
+            worker.shutdownGracefully();
         }
-        }
+    }
 
     private class NettyChannelHandler extends ChannelInitializer<SocketChannel> {
 
@@ -103,7 +103,7 @@ public class StreamServer {
         protected void initChannel(SocketChannel socketChannel)
                 throws Exception {
             // 自己的逻辑Handler
-            socketChannel.pipeline().addLast(new NettyServerHandler(streamlist,terstreamlist));
+            socketChannel.pipeline().addLast(new NettyServerHandler(streamlist, terstreamlist));
         }
     }
 }

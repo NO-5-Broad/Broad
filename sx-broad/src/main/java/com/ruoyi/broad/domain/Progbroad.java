@@ -25,54 +25,71 @@ public class Progbroad {
     public String getSfid() {
         return sfid;
     }
+
     public void setSfid(String sfid) {
         this.sfid = sfid;
     }
+
     public String getScategory() {
         return scategory;
     }
+
     public void setScategory(String scategory) {
         this.scategory = scategory;
     }
+
     public String getCreatetime() {
         return createtime;
     }
+
     public void setCreatetime(String createtime) {
         this.createtime = createtime;
     }
+
     public String getUserid() {
         return userid;
     }
+
     public void setUserid(String userid) {
         this.userid = userid;
     }
+
     public String getRemark() {
         return remark;
     }
+
     public void setRemark(String remark) {
         this.remark = remark;
     }
+
     public String getBroaddate() {
         return broaddate;
     }
+
     public void setBroaddate(String broaddate) {
         this.broaddate = broaddate;
     }
+
     public List<Program_List> getProlist() {
         return prolist;
     }
+
     public void setProlist(List<Program_List> prolist) {
         this.prolist = prolist;
     }
+
     public String getBroadtimes() {
         return broadtimes;
     }
+
     public void setBroadtimes(String broadtimes) {
         this.broadtimes = broadtimes;
     }
+
     public String getUname() {
         return uname;
     }
+
     public void setUname(String uname) {
         this.uname = uname;
     }

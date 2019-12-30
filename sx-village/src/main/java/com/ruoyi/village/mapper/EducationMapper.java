@@ -13,7 +13,7 @@ import java.util.List;
  * @Date: $
  */
 public interface EducationMapper {
-       /**
+    /**
      * 政策记录列表
      *
      * @return
@@ -22,12 +22,14 @@ public interface EducationMapper {
 
     /**
      * 根据shiid删除数据
+     *
      * @param id
      */
     int deleteEducationByids(String[] id);
 
     /**
      * 添加公告信息
+     *
      * @param education
      * @return
      */
@@ -35,6 +37,7 @@ public interface EducationMapper {
 
     /**
      * 根据shiid选择数据
+     *
      * @param eid
      * @return
      */
@@ -42,6 +45,7 @@ public interface EducationMapper {
 
     /**
      * 保存用户修改
+     *
      * @param education
      * @return
      */
@@ -49,6 +53,7 @@ public interface EducationMapper {
 
     /**
      * 删除政策信息
+     *
      * @param eid
      * @return
      */

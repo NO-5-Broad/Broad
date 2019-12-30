@@ -10,23 +10,41 @@ import com.ruoyi.common.base.BaseEntity;
  **/
 public class SocialcircleComment extends BaseEntity {
     private static final long serialVersionUID = 1L;
-    /**评论表id*/
+    /**
+     * 评论表id
+     */
     private String coid;
-    /**暮云圈编号*/
+    /**
+     * 暮云圈编号
+     */
     private String pcid;
-    /**回复某评论的coid*/
+    /**
+     * 回复某评论的coid
+     */
     private String replyid;
-    /**评论人id*/
+    /**
+     * 评论人id
+     */
     private int uid;
-    /**评论内容*/
+    /**
+     * 评论内容
+     */
     private String ccontent;
-    /**是否为敏感评论 是为1 否为0*/
+    /**
+     * 是否为敏感评论 是为1 否为0
+     */
     private String issensitive;
-    /**评论日期*/
+    /**
+     * 评论日期
+     */
     private String cdate;
-    /**用户所属地区村社区 aid*/
+    /**
+     * 用户所属地区村社区 aid
+     */
     private String aid;
-    /**评论目标用户id*/
+    /**
+     * 评论目标用户id
+     */
     private String to_uid;
 
     @Override

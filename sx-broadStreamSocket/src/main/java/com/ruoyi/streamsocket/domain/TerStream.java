@@ -17,24 +17,31 @@ public class TerStream {
         this.terminalid = terminalid;
         this.status = status;
     }
+
     public String getStreamid() {
         return streamid;
     }
+
     public void setStreamid(String streamid) {
         this.streamid = streamid;
     }
+
     public Boolean getStatus() {
         return status;
     }
+
     public void setStatus(Boolean status) {
         this.status = status;
     }
+
     public String getTerminalid() {
         return terminalid;
     }
+
     public void setTerminalid(String terminalid) {
         this.terminalid = terminalid;
     }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -45,6 +52,7 @@ public class TerStream {
                 + ((terminalid == null) ? 0 : terminalid.hashCode());
         return result;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

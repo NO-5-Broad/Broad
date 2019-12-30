@@ -1,6 +1,7 @@
 package com.ruoyi.broad.service;
 
 import com.ruoyi.broad.domain.ProApplyUser;
+import com.ruoyi.broad.domain.ProList;
 import com.ruoyi.broad.domain.ProListen;
 import com.ruoyi.broad.domain.ProreApply;
 
@@ -60,4 +61,6 @@ public interface IProListenService {
      * @return java.util.List<com.ruoyi.broad.domain.ProApplyUser>
      */
     public List<ProApplyUser> selectProrApplyUserList(ProApplyUser proApplyUser);
+
+    int checkpass(String paid);
 }

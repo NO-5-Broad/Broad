@@ -1,6 +1,7 @@
 package com.ruoyi.village.domain;
 
 import com.ruoyi.common.base.BaseEntity;
+
 /**
  * @Description: 政策表$
  * @Param: dyq_RongSys$
@@ -8,33 +9,59 @@ import com.ruoyi.common.base.BaseEntity;
  * @Author: Mr.DYQ
  * @Date: $
  */
-public class Politics extends BaseEntity{
+public class Politics extends BaseEntity {
     private static final long serialVersionUID = 1L;
-    /**政策发布编号*/
+    /**
+     * 政策发布编号
+     */
     private String shiid;
-    /**文章标题*/
+    /**
+     * 文章标题
+     */
     private String title;
-    /**文章类型*/
+    /**
+     * 文章类型
+     */
     private String type;
-    /**添加日期*/
+    /**
+     * 添加日期
+     */
     private String adddate;
-    /**修改日期*/
+    /**
+     * 修改日期
+     */
     private String reldate;
-    /**文章内容*/
+    /**
+     * 文章内容
+     */
     private String content;
-    /**图片*/
+    /**
+     * 图片
+     */
     private String pic;
-    /**文章浏览数目*/
-    private  int courread;
-    /**添加人编号*/
+    /**
+     * 文章浏览数目
+     */
+    private int courread;
+    /**
+     * 添加人编号
+     */
     private int uid;
-    /**添加人姓名*/
+    /**
+     * 添加人姓名
+     */
     private String uname;
-    /**是否有效*/
+    /**
+     * 是否有效
+     */
     private String remark;
-    /**用户所属地区村社区 aid*/
+    /**
+     * 用户所属地区村社区 aid
+     */
     private String aid;
-    /**是否有效*/
+    /**
+     * 是否有效
+     */
     private String video;
 
     @Override

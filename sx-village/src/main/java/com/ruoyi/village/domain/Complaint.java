@@ -10,31 +10,57 @@ import com.ruoyi.common.base.BaseEntity;
  **/
 public class Complaint extends BaseEntity {
     private static final long serialVersionUID = 1L;
-    /**投诉数据编号*/
+    /**
+     * 投诉数据编号
+     */
     private String fbid;
-    /**投诉人编号*/
+    /**
+     * 投诉人编号
+     */
     private String fbuid;
-    /** 投诉标题*/
+    /**
+     * 投诉标题
+     */
     private String title;
-    /** 投诉类型*/
+    /**
+     * 投诉类型
+     */
     private String ftype;
-    /** 投诉内容*/
+    /**
+     * 投诉内容
+     */
     private String content;
-    /** 投诉时间*/
+    /**
+     * 投诉时间
+     */
     private String fbdatetime;
-    /** 管理员是否已读*/
+    /**
+     * 管理员是否已读
+     */
     private int isread;
-    /** 回复内容*/
+    /**
+     * 回复内容
+     */
     private String opinion;
-    /** 回复人编号*/
+    /**
+     * 回复人编号
+     */
     private int uid;
-    /** 回复人用户名*/
+    /**
+     * 回复人用户名
+     */
     private String uname;
-    /** 回复时间*/
+    /**
+     * 回复时间
+     */
     private String datetime;
-    /** 用户所属地区村社区 aid*/
+    /**
+     * 用户所属地区村社区 aid
+     */
     private String aid;
-    /** 是否有效*/
+    /**
+     * 是否有效
+     */
     private String remark;
 
     @Override

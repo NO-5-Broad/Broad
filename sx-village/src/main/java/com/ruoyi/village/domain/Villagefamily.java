@@ -10,29 +10,53 @@ import com.ruoyi.common.base.BaseEntity;
  **/
 public class Villagefamily extends BaseEntity {
     private static final long serialVersionUID = 1L;
-    /**小村家事数据编号*/
+    /**
+     * 小村家事数据编号
+     */
     private int jsid;
-    /**文章标题*/
+    /**
+     * 文章标题
+     */
     private String title;
-    /**文章类型*/
+    /**
+     * 文章类型
+     */
     private String type;
-    /**添加日期*/
+    /**
+     * 添加日期
+     */
     private String adddate;
-    /**修改日期*/
+    /**
+     * 修改日期
+     */
     private String reldate;
-    /**文章内容*/
+    /**
+     * 文章内容
+     */
     private String content;
-    /**添加人编号*/
+    /**
+     * 添加人编号
+     */
     private int adduid;
-    /**添加人姓名*/
+    /**
+     * 添加人姓名
+     */
     private String adduname;
-    /**发送人编号*/
+    /**
+     * 发送人编号
+     */
     private int uid;
-    /**发送人姓名*/
+    /**
+     * 发送人姓名
+     */
     private String uname;
-    /**用户所属地区村社区 aid*/
+    /**
+     * 用户所属地区村社区 aid
+     */
     private String aid;
-    /**是否有效*/
+    /**
+     * 是否有效
+     */
     private String remark;
 
     public Villagefamily() {

@@ -22,13 +22,13 @@
 
                         <li class="select-time">
                             <label>故障时间：</label><input class="laydate-icon  layer-date"
-                                   name="downtime"
-                                   id="recivedtime"
-                                   value=""
-                                   readonly="readonly"
-                                   style="width:120px;"
-                                   placeholder="开始日期"
-                                   title="开始日期"/>
+                                                       name="downtime"
+                                                       id="recivedtime"
+                                                       value=""
+                                                       readonly="readonly"
+                                                       style="width:120px;"
+                                                       placeholder="开始日期"
+                                                       title="开始日期"/>
                             <span>-</span>
 
                             <input class="laydate-icon  layer-date"
@@ -42,8 +42,10 @@
                         </li>
 
                         <li>
-                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
-                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i
+                                    class="fa fa-search"></i>&nbsp;搜索</a>
+                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i
+                                    class="fa fa-refresh"></i>&nbsp;重置</a>
                         </li>
                     </ul>
                 </div>
@@ -55,7 +57,8 @@
                 <i class="fa fa-plus"></i> 添加
             </a>
 
-            <a class="btn btn-primary btn-edit disabled" onclick="$.operate.edit()" shiro:hasPermission="broad:maintain:edit">
+            <a class="btn btn-primary btn-edit disabled" onclick="$.operate.edit()"
+               shiro:hasPermission="broad:maintain:edit">
                 <i class="fa fa-edit"></i> 编辑
             </a>
         </div>
@@ -73,15 +76,15 @@
 
     var prefix = ctx + "broad/maintainApply";
     var removeFlag = [[${@permission.hasPermi('broad:maintainApply:remove')}]];
-    $(function() {
-        $('body').layout({ west__size: 185 });
+    $(function () {
+        // $('body').layout({west__size: 185});
         queryAreaList();
     });
 
-    String.prototype.trim=function(){
+    String.prototype.trim = function () {
         return this.replace(/(^\s*)|(\s*$)/g, "");
     }
-    $("#maid").change(function(){
+    $("#maid").change(function () {
         $(this).val($(this).val().trim());
     });
 
@@ -101,57 +104,55 @@
                     checkbox: true
                 },
                 {
-                    field : 'maid',
-                    title : '终端序号',
+                    field: 'maid',
+                    title: '终端序号',
                     sortable: true
                 },
                 {
-                    field : 'teraddress',
-                    title : '终端安装地点',
+                    field: 'teraddress',
+                    title: '终端安装地点',
                     sortable: true
                 },
                 {
-                    field : 'linkman',
-                    title : '联系人',
+                    field: 'linkman',
+                    title: '联系人',
                     sortable: true
                 },
                 {
-                    field : 'linkphone',
-                    title : '联系电话',
+                    field: 'linkphone',
+                    title: '联系电话',
                     sortable: true
                 },
                 {
-                    field : 'downtime',
-                    title : '故障时间',
+                    field: 'downtime',
+                    title: '故障时间',
                     sortable: true
                 },
                 {
-                    field : 'applytime',
-                    title : '提交时间',
+                    field: 'applytime',
+                    title: '提交时间',
                     sortable: true
                 },
                 {
-                    field : 'remark',
-                    title : '故障原因',
+                    field: 'remark',
+                    title: '故障原因',
                     sortable: 'true',
                     formatter: function (value, row, index) {
                         var actions = [];
-                        if(value.length > 4)
-                        {
-                           return (value.slice(0,4) + '...');
-                        }else
+                        if (value.length > 4) {
+                            return (value.slice(0, 4) + '...');
+                        } else
                             return value;
                     }
                 },
                 {
-                    field : 'status',
-                    title : '维护状态',
+                    field: 'status',
+                    title: '维护状态',
                     sortable: 'true',
                     formatter: function (value, row, index) {
-                        if(value == 1)
-                        {
+                        if (value == 1) {
                             return "已维护";
-                        }else
+                        } else
                             return "未维护";
                     }
                 },
@@ -163,7 +164,7 @@
                         actions.push('<a class="btn btn-success btn-xs ' + '" href="#" onclick="$.operate.detail(\'' + row.maid + '\')"><i class="fa fa-edit"></i>详细</a> ');
                         actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="#" onclick="$.operate.remove(\'' + row.maid + '\')"><i class="fa fa-remove"></i>删除</a>');
                         return actions.join('');
-                }
+                    }
                 }]
         };
         $.table.init(options);
@@ -173,38 +174,38 @@
 <script th:src="@{/js/plugins/layer/layui-v2.4.5/layui/layui.js}"></script>
 <script>
     laydate({
-        elem:"#recivedtime",
-        event:"focus"
+        elem: "#recivedtime",
+        event: "focus"
     });
     laydate({
-        elem:"#recivedtime",
-        event:"focus"
+        elem: "#recivedtime",
+        event: "focus"
     });
-    layui.use('laydate', function(){
+    layui.use('laydate', function () {
         var laydate = layui.laydate;
 
         //执行一个laydate实例
         laydate.render({
-            elem:"#broad",
+            elem: "#broad",
             type: 'time',
         });
     });
 </script>
 <script>
     laydate({
-        elem:"#endtime",
-        event:"focus"
+        elem: "#endtime",
+        event: "focus"
     });
     laydate({
-        elem:"#endtime",
-        event:"focus"
+        elem: "#endtime",
+        event: "focus"
     });
-    layui.use('laydate', function(){
+    layui.use('laydate', function () {
         var laydate2 = layui.laydate;
 
         //执行一个laydate实例
         laydate2.render({
-            elem:"#broad",
+            elem: "#broad",
             type: 'time',
         });
     });

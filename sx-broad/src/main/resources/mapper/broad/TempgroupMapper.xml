@@ -114,6 +114,6 @@
             <if test="note != null  and note != '' ">note = #{note},</if>
             <if test="isuse != null  and isuse != '' ">isuse = #{isuse},</if>
         </trim>
-            where tgid=#{tgid}
+        where tgid=#{tgid}
     </update>
 </mapper>

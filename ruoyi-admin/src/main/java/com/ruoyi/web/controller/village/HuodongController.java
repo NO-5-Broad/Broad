@@ -33,27 +33,28 @@ public class HuodongController extends BaseController {
 
     @RequiresPermissions("village:huodong:view")
     @GetMapping()
-    public String Huodong(){
-        return prefix+"/huodong";
+    public String Huodong() {
+        return prefix + "/huodong";
     }
 
     /**
      * 公告信息列表
+     *
      * @param huodong
      * @return
      */
     //@RequiresPermissions("village:huodong:list")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(Huodong huodong){
+    public TableDataInfo list(Huodong huodong) {
         startPage();
         List<Huodong> list = huodongService.selectHuodongList(huodong);
         return getDataTable(list);
     }
 
     @GetMapping("/add")
-    public String add(){
-        return prefix+"/add";
+    public String add() {
+        return prefix + "/add";
     }
 
     /**
@@ -63,20 +64,20 @@ public class HuodongController extends BaseController {
     @Log(title = "公告信息", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
-    public AjaxResult addSave(Huodong huodong)
-    {
+    public AjaxResult addSave(Huodong huodong) {
         return toAjax(huodongService.inserthuodong(huodong));
     }
+
     /**
      * 修改党员活动信息
      */
     @GetMapping("/edit/{hdid}")
-    public String edit(@PathVariable("hdid") Integer hdid, ModelMap mmap)
-    {
+    public String edit(@PathVariable("hdid") Integer hdid, ModelMap mmap) {
         Huodong huodong = huodongService.selectByhdid(hdid);
         mmap.put("huodong", huodong);
         return prefix + "/edit";
     }
+
     /**
      * 修改保存党员活动
      */
@@ -84,20 +85,19 @@ public class HuodongController extends BaseController {
     @Log(title = "党员活动", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
-    public AjaxResult editSave(Huodong huodong)
-    {
+    public AjaxResult editSave(Huodong huodong) {
         return toAjax(huodongService.updateHuodong(huodong));
     }
+
     /**
      * 删除党员活动
      */
     @RequiresPermissions("village:huodong:remove")
     @Log(title = "删除党员活动", businessType = BusinessType.DELETE)
-    @PostMapping( "/remove/{hsid}")
+    @PostMapping("/remove/{hsid}")
     @ResponseBody
-    public AjaxResult remove(@PathVariable("hdid") String hdid)
-    {
-        System.out.println("*******"+hdid);
+    public AjaxResult remove(@PathVariable("hdid") String hdid) {
+        System.out.println("*******" + hdid);
         return toAjax(huodongService.deleteHuodongByIds(hdid));
     }
 }

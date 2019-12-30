@@ -15,12 +15,14 @@ public interface VillagefamilyMapper {
 
     /**
      * 获取小村家事数据
+     *
      * @return
      */
     List<Villagefamily> selectVillageFamilyList(Villagefamily villagefamily);
 
     /**
      * 新增小村家事 数据
+     *
      * @param villagefamily
      * @return
      */
@@ -28,6 +30,7 @@ public interface VillagefamilyMapper {
 
     /**
      * 修改小村家事数据
+     *
      * @param jsid
      * @return
      */
@@ -35,6 +38,7 @@ public interface VillagefamilyMapper {
 
     /**
      * 保存小村家事修改
+     *
      * @param villagefamily
      * @return
      */
@@ -42,6 +46,7 @@ public interface VillagefamilyMapper {
 
     /**
      * 根据 id 批量删除
+     *
      * @param id
      * @return
      */

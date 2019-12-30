@@ -6,161 +6,172 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * 党员值班表 tb_partywork
- * 
+ *
  * @author 张鸿权
  * @date 2019-01-20
  */
-public class Partywork extends BaseEntity
-{
-	private static final long serialVersionUID = 1L;
-	
-	/** 数据编号 */
-	private Integer id;
-	/** 党员小组 */
-	private String grouptype;
-	/** 党员姓名 */
-	private String uname;
-	/** 值班时间 */
-	private String worktime;
-	/** 值班地点 */
-	private String address;
-	/** 值班要求 */
-	private String content;
-	/** 排班人 */
-	private String admin;
-	/** 备注 */
-	private String note;
-	/** 添加时间 */
-	private String adddate;
-	/** 值班地点 */
-	private String phone;
-	/** 地域编号 */
-	private String aid;
-	/** 是否有效 */
-	private String remark;
+public class Partywork extends BaseEntity {
+    private static final long serialVersionUID = 1L;
 
-	public void setId(Integer id) 
-	{
-		this.id = id;
-	}
+    /**
+     * 数据编号
+     */
+    private Integer id;
+    /**
+     * 党员小组
+     */
+    private String grouptype;
+    /**
+     * 党员姓名
+     */
+    private String uname;
+    /**
+     * 值班时间
+     */
+    private String worktime;
+    /**
+     * 值班地点
+     */
+    private String address;
+    /**
+     * 值班要求
+     */
+    private String content;
+    /**
+     * 排班人
+     */
+    private String admin;
+    /**
+     * 备注
+     */
+    private String note;
+    /**
+     * 添加时间
+     */
+    private String adddate;
+    /**
+     * 值班地点
+     */
+    private String phone;
+    /**
+     * 地域编号
+     */
+    private String aid;
+    /**
+     * 是否有效
+     */
+    private String remark;
 
-	public Integer getId() 
-	{
-		return id;
-	}
-	public void setGrouptype(String grouptype) 
-	{
-		this.grouptype = grouptype;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public String getGrouptype() 
-	{
-		return grouptype;
-	}
-	public void setUname(String uname) 
-	{
-		this.uname = uname;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public String getUname() 
-	{
-		return uname;
-	}
-	public void setWorktime(String worktime) 
-	{
-		this.worktime = worktime;
-	}
+    public void setGrouptype(String grouptype) {
+        this.grouptype = grouptype;
+    }
 
-	public String getWorktime() 
-	{
-		return worktime;
-	}
-	public void setAddress(String address) 
-	{
-		this.address = address;
-	}
+    public String getGrouptype() {
+        return grouptype;
+    }
 
-	public String getAddress() 
-	{
-		return address;
-	}
-	public void setContent(String content) 
-	{
-		this.content = content;
-	}
+    public void setUname(String uname) {
+        this.uname = uname;
+    }
 
-	public String getContent() 
-	{
-		return content;
-	}
-	public void setAdmin(String admin) 
-	{
-		this.admin = admin;
-	}
+    public String getUname() {
+        return uname;
+    }
 
-	public String getAdmin() 
-	{
-		return admin;
-	}
-	public void setNote(String note) 
-	{
-		this.note = note;
-	}
+    public void setWorktime(String worktime) {
+        this.worktime = worktime;
+    }
 
-	public String getNote() 
-	{
-		return note;
-	}
-	public void setAdddate(String adddate)
-	{
-		this.adddate = adddate;
-	}
+    public String getWorktime() {
+        return worktime;
+    }
 
-	public String getAdddate()
-	{
-		return adddate;
-	}
-	public void setAid(String aid) 
-	{
-		this.aid = aid;
-	}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	public String getAid() 
-	{
-		return aid;
-	}
-	public void setRemark(String remark) 
-	{
-		this.remark = remark;
-	}
+    public String getAddress() {
+        return address;
+    }
 
-	public String getRemark() 
-	{
-		return remark;
-	}
+    public void setContent(String content) {
+        this.content = content;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public String getContent() {
+        return content;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public void setAdmin(String admin) {
+        this.admin = admin;
+    }
 
-	public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("id", getId())
-            .append("grouptype", getGrouptype())
-            .append("uname", getUname())
-            .append("worktime", getWorktime())
-            .append("address", getAddress())
-			.append("phone", getPhone())
-            .append("content", getContent())
-            .append("admin", getAdmin())
-            .append("note", getNote())
-            .append("adddate", getAdddate())
-            .append("aid", getAid())
-            .append("remark", getRemark())
-            .toString();
+    public String getAdmin() {
+        return admin;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setAdddate(String adddate) {
+        this.adddate = adddate;
+    }
+
+    public String getAdddate() {
+        return adddate;
+    }
+
+    public void setAid(String aid) {
+        this.aid = aid;
+    }
+
+    public String getAid() {
+        return aid;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String toString() {
+        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
+                .append("id", getId())
+                .append("grouptype", getGrouptype())
+                .append("uname", getUname())
+                .append("worktime", getWorktime())
+                .append("address", getAddress())
+                .append("phone", getPhone())
+                .append("content", getContent())
+                .append("admin", getAdmin())
+                .append("note", getNote())
+                .append("adddate", getAdddate())
+                .append("aid", getAid())
+                .append("remark", getRemark())
+                .toString();
     }
 }

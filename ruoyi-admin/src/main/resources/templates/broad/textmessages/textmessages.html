@@ -5,21 +5,21 @@
 <body class="gray-bg" onload="onload();selectTextMessages();$.table.search()">
 
 <div class="container-div">
-<!--TODO 后续改为Ajax局部刷新，参考暮云圈-->
+    <!--TODO 后续改为Ajax局部刷新，参考暮云圈-->
     <div class="wrapper wrapper-content">
-        <div class="row" >
+        <div class="row">
             <div class="col-sm-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>业务频率图</h5>
                     </div>
                     <div class="ibox-content">
-                        <div class="echarts" id="tel_freq" ></div>
+                        <div class="echarts" id="tel_freq"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row" >
+        <div class="row">
             <div class="col-sm-2" th:each="obj : ${typeNum}">
                 <div class="widget style1 blue-bg">
                     <div class="row vertical-align">
@@ -45,7 +45,7 @@
 <div th:include="include :: footer"></div>
 <script th:inline="javascript">
     //分页查询
-    $(function() {
+    $(function () {
         var options = {
             url: "/broad/textmessages/list",
             search: false,

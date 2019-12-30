@@ -4,6 +4,7 @@ import com.ruoyi.common.base.BaseEntity;
 
 /**
  * Created by ASUS on 2019/7/12.
+ *
  * @author 陈霞
  */
 public class MaintainApply extends BaseEntity {
@@ -28,7 +29,9 @@ public class MaintainApply extends BaseEntity {
     private Long userid;
     /*评论*/
     private String remark;
-    /** 操作（所属）用户编号 */
+    /**
+     * 操作（所属）用户编号
+     */
     private Long uid;
 
     public Long getUid() {

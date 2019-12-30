@@ -13,79 +13,73 @@ import com.ruoyi.common.support.Convert;
 
 /**
  * 村户 服务层实现
- * 
+ *
  * @author 张鸿权
  * @date 2019-05-02
  */
 @Service
-public class HouseMemberInfoServiceImpl implements IHouseMemberInfoService 
-{
-	@Autowired
-	private HouseMemberInfoMapper houseMemberInfoMapper;
+public class HouseMemberInfoServiceImpl implements IHouseMemberInfoService {
+    @Autowired
+    private HouseMemberInfoMapper houseMemberInfoMapper;
 
-	/**
+    /**
      * 查询村户信息
-     * 
+     *
      * @param hmid 村户ID
      * @return 村户信息
      */
     @Override
-	@DataSource(value = DataSourceType.SXBAODIAN)
-	public HouseMemberInfo selectHouseMemberInfoById(Integer hmid)
-	{
-	    return houseMemberInfoMapper.selectHouseMemberInfoById(hmid);
-	}
-	
-	/**
+    @DataSource(value = DataSourceType.SXBAODIAN)
+    public HouseMemberInfo selectHouseMemberInfoById(Integer hmid) {
+        return houseMemberInfoMapper.selectHouseMemberInfoById(hmid);
+    }
+
+    /**
      * 查询村户列表
-     * 
+     *
      * @param houseMemberInfo 村户信息
      * @return 村户集合
      */
-	@Override
-	@DataSource(value = DataSourceType.SXBAODIAN)
-	public List<HouseMemberInfo> selectHouseMemberInfoList(HouseMemberInfo houseMemberInfo)
-	{
-	    return houseMemberInfoMapper.selectHouseMemberInfoList(houseMemberInfo);
-	}
-	
+    @Override
+    @DataSource(value = DataSourceType.SXBAODIAN)
+    public List<HouseMemberInfo> selectHouseMemberInfoList(HouseMemberInfo houseMemberInfo) {
+        return houseMemberInfoMapper.selectHouseMemberInfoList(houseMemberInfo);
+    }
+
     /**
      * 新增村户
-     * 
+     *
      * @param houseMemberInfo 村户信息
      * @return 结果
      */
-	@Override
-	@DataSource(value = DataSourceType.SXBAODIAN)
-	public int insertHouseMemberInfo(HouseMemberInfo houseMemberInfo)
-	{
-	    return houseMemberInfoMapper.insertHouseMemberInfo(houseMemberInfo);
-	}
-	
-	/**
-     * 修改村户
-     * 
-     * @param houseMemberInfo 村户信息
-     * @return 结果
-     */
-	@Override
-	@DataSource(value = DataSourceType.SXBAODIAN)
-	public int updateHouseMemberInfo(HouseMemberInfo houseMemberInfo)
-	{
-	    return houseMemberInfoMapper.updateHouseMemberInfo(houseMemberInfo);
-	}
+    @Override
+    @DataSource(value = DataSourceType.SXBAODIAN)
+    public int insertHouseMemberInfo(HouseMemberInfo houseMemberInfo) {
+        return houseMemberInfoMapper.insertHouseMemberInfo(houseMemberInfo);
+    }
 
-	/**
+    /**
+     * 修改村户
+     *
+     * @param houseMemberInfo 村户信息
+     * @return 结果
+     */
+    @Override
+    @DataSource(value = DataSourceType.SXBAODIAN)
+    public int updateHouseMemberInfo(HouseMemberInfo houseMemberInfo) {
+        return houseMemberInfoMapper.updateHouseMemberInfo(houseMemberInfo);
+    }
+
+    /**
      * 删除村户对象
-     * 
+     *
      * @param ids 需要删除的数据ID
      * @return 结果
      */
-	@Override
-	@DataSource(value = DataSourceType.SXBAODIAN)
-	public int deleteHouseMemberInfoByIds(String ids)
-	{
-		return houseMemberInfoMapper.deleteHouseMemberInfoByIds(Convert.toStrArray(ids));
-	}
-	
+    @Override
+    @DataSource(value = DataSourceType.SXBAODIAN)
+    public int deleteHouseMemberInfoByIds(String ids) {
+        return houseMemberInfoMapper.deleteHouseMemberInfoByIds(Convert.toStrArray(ids));
+    }
+
 }

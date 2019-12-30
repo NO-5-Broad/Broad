@@ -1,6 +1,7 @@
 package com.ruoyi.village.mapper;
 
 import com.ruoyi.village.domain.Weatherdata;
+
 import java.util.List;
 
 /**

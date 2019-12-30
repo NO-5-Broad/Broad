@@ -2,6 +2,7 @@ package com.ruoyi.broad.domain;
 
 /**
  * Created by ASUS on 2019/3/20.
+ *
  * @author 陈霞
  * @function 统计终端故障时间与故障终端号的坐标关系
  */

@@ -39,8 +39,10 @@
                         <!--</li>-->
 
                         <li>
-                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
-                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i
+                                    class="fa fa-search"></i>&nbsp;搜索</a>
+                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i
+                                    class="fa fa-refresh"></i>&nbsp;重置</a>
                         </li>
                     </ul>
                 </div>
@@ -62,17 +64,18 @@
         <!--&lt;!&ndash;</a>&ndash;&gt;-->
         <!--</div>-->
         <div class="col-sm-12 select-table table-striped">
-            <table id="bootstrap-table" data-mobile-responsive="true" style="table-layout: fixed;word-break: break-all"></table>
+            <table id="bootstrap-table" data-mobile-responsive="true"
+                   style="table-layout: fixed;word-break: break-all"></table>
         </div>
     </div>
 </div>
 <div th:include="include :: footer"></div>
 <script th:inline="javascript">
-//    var editFlag = [[${@permission.hasPermi('broad:high:edit')}]];
-//    var removeFlag = [[${@permission.hasPermi('broad:high:remove')}]];
+    //    var editFlag = [[${@permission.hasPermi('broad:high:edit')}]];
+    //    var removeFlag = [[${@permission.hasPermi('broad:high:remove')}]];
     var prefix = ctx + "broad/manage";
 
-    $(function() {
+    $(function () {
         var options = {
             url: prefix + "/list",
             createUrl: prefix + "/add",
@@ -93,68 +96,68 @@
 //					visible: false
 //				},
                 {
-                    field : 'tid',
-                    title : '终端IEME',
+                    field: 'tid',
+                    title: '终端IEME',
                     sortable: true
                 },
                 {
-                    field : 'tname',
-                    title : '终端名称',
+                    field: 'tname',
+                    title: '终端名称',
                     sortable: true,
                 },
                 {
-                    field : 'aname',
-                    title : '所属区域',
+                    field: 'aname',
+                    title: '所属区域',
                     sortable: true,
                 },
                 {
-                    field : 'longitude',
-                    title : '安装点经度',
+                    field: 'longitude',
+                    title: '安装点经度',
                     sortable: true
                 },
                 {
-                    field : 'latitude',
-                    title : '安装点纬度',
+                    field: 'latitude',
+                    title: '安装点纬度',
                     sortable: true,
                 },
                 {
-                    field : 'families',
-                    title : '覆盖用户',
+                    field: 'families',
+                    title: '覆盖用户',
                     sortable: true,
                 },
                 {
-                    field : 'population',
-                    title : '覆盖人口数',
+                    field: 'population',
+                    title: '覆盖人口数',
                     sortable: true,
                 },
                 {
-                    field : 'TwoOverlayNumber',
-                    title : '二次覆盖终端数',
+                    field: 'TwoOverlayNumber',
+                    title: '二次覆盖终端数',
                     sortable: true,
                 },
                 {
-                    field : 'TwoOverlayFamiles',
-                    title : '二次覆盖用户数',
+                    field: 'TwoOverlayFamiles',
+                    title: '二次覆盖用户数',
                     sortable: true,
                 },
                 {
-                    field : 'TwoOverlayPopulations',
-                    title : '二次覆盖人口数',
+                    field: 'TwoOverlayPopulations',
+                    title: '二次覆盖人口数',
                     sortable: true,
                 },
                 {
-                    field : 'PowerConsumption',
-                    title : '耗电指数',
+                    field: 'PowerConsumption',
+                    title: '耗电指数',
                     sortable: true,
                 },
                 {
-                    field : 'MaintenanceFunds',
-                    title : '维护经费',
+                    field: 'MaintenanceFunds',
+                    title: '维护经费',
                     sortable: true,
                 },
                 {
-                    field : 'createdtime',
-                    title : '创建时间',
+                    field: 'createdtime',
+                    title: '创建时间',
                     sortable: true,
                 }
             ]

@@ -1,6 +1,7 @@
 package com.ruoyi.village.domain;
 
 import com.ruoyi.common.base.BaseEntity;
+
 /**
  * 三级页面图片表 tb_andrpic
  *
@@ -10,15 +11,25 @@ import com.ruoyi.common.base.BaseEntity;
 public class Andrpic extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
-    /** 页面主题编号 */
+    /**
+     * 页面主题编号
+     */
     private Integer aid;
-    /** 三级页面主题 */
+    /**
+     * 三级页面主题
+     */
     private String tname;
-    /** 图片*/
+    /**
+     * 图片
+     */
     private String pic;
-    /** 创建时间 */
+    /**
+     * 创建时间
+     */
     private String creadate;
-    /** 信息状态  */
+    /**
+     * 信息状态
+     */
     private String remark;
 
     public Integer getAid() {

@@ -8,15 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/river3d")
-public class River3DController extends BaseController
-{
+public class River3DController extends BaseController {
     private String prefix = "rivervis/sanwei";
 
     @RequestMapping("/scene1")
     @RequiresPermissions("river3d:scene1:view")
     @GetMapping()
-    public String envData()
-    {
+    public String envData() {
         return prefix + "/unity1";
     }
 }

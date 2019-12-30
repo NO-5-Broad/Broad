@@ -23,16 +23,17 @@ public class bConvert {
         String l = Integer.toHexString(519);
         byte[] lb = bConvert.hexStringToBytes(l);
         String aa = "862105022977619";
-        String dd =Long.toHexString(new Long(aa));
+        String dd = Long.toHexString(new Long(aa));
         byte[] db = bConvert.hexStringToBytes(dd);
         String ds = bConvert.bytesToHexString(db).substring(1);
-        Long x = Long.parseLong(ds,16);
+        Long x = Long.parseLong(ds, 16);
     }
+
     /* Convert byte[] to hex string.这里我们可以将byte转换成int，然后利用Integer.toHexString(int)来转换成16进制字符串。
      * @param src byte[] data
      * @return hex string
      */
-    public static String bytesToHexString(byte[] src){
+    public static String bytesToHexString(byte[] src) {
         StringBuilder stringBuilder = new StringBuilder("");
         if (src == null || src.length <= 0) {
             return null;
@@ -47,7 +48,8 @@ public class bConvert {
         }
         return stringBuilder.toString();
     }
-    public static String byteToHexString(byte src){
+
+    public static String byteToHexString(byte src) {
         StringBuilder stringBuilder = new StringBuilder("");
         int v = src & 0xFF;
         String hv = Integer.toHexString(v);
@@ -57,8 +59,10 @@ public class bConvert {
         stringBuilder.append(hv);
         return stringBuilder.toString();
     }
+
     /**
      * Convert hex string to byte[]
+     *
      * @param hexString the hex string
      * @return byte[]
      */
@@ -66,8 +70,8 @@ public class bConvert {
         if (hexString == null || hexString.equals("")) {
             return null;
         }
-        if(hexString.length()%2>0){
-            hexString="0"+hexString;
+        if (hexString.length() % 2 > 0) {
+            hexString = "0" + hexString;
         }
         hexString = hexString.toUpperCase();
         int length = hexString.length() / 2;
@@ -82,15 +86,17 @@ public class bConvert {
 
     /**
      * Convert char to byte
+     *
      * @param c char
      * @return byte
      */
     private static byte charToByte(char c) {
         return (byte) "0123456789ABCDEF".indexOf(c);
     }
+
     public static byte[] intToByteArray(int i) {
         byte[] result;
-        if(i > 255) {
+        if (i > 255) {
             result = new byte[4];
             result[3] = (byte) ((i >> 24) & 0xFF);
             //必须把我们要的值弄到最低位去，有人说不移位这样做也可以， result[0] = (byte)(i  & 0xFF000000);
@@ -99,52 +105,54 @@ public class bConvert {
             result[1] = (byte) ((i >> 8) & 0xFF);
             result[0] = (byte) (i & 0xFF);
             return result;
-        }else{
-            result= new byte[2];
+        } else {
+            result = new byte[2];
             result[1] = (byte) ((i >> 8) & 0xFF);
             result[0] = (byte) (i & 0xFF);//低字节在前
             return result;
         }
     }
+
     public static int byteToInt(byte b) {
         //Java 总是把 byte 当做有符处理；我们可以通过将其和 0xFF 进行二进制与得到它的无符值
         return b & 0xFF;
     }
-    public static byte[] unsignedInteger4ToByte(int data)
-    {
-        long value = data&0x0FFFFFFFF;//将int数据转换为0~4294967295 (0xFFFFFFFF即DWORD)。
+
+    public static byte[] unsignedInteger4ToByte(int data) {
+        long value = data & 0x0FFFFFFFF;//将int数据转换为0~4294967295 (0xFFFFFFFF即DWORD)。
         String hexString = Long.toHexString(value);
-        while(hexString.length()<2) //补齐8个16进制字符代表4个字节。
+        while (hexString.length() < 2) //补齐8个16进制字符代表4个字节。
         {
             hexString = "0" + hexString;
         }
         byte[] bytes = hexStringToBytes(hexString);
         return bytes;
     }
+
     /**
      * 计算字节数组的校验和
+     *
      * @param buf
      * @return
      */
     public static String checksum(byte[] buf) {
         try {
             CheckedInputStream cis = new CheckedInputStream(
-                    new ByteArrayInputStream(buf),new Adler32());
+                    new ByteArrayInputStream(buf), new Adler32());
             byte[] tempBuf = new byte[128];
-            while (cis.read(tempBuf) >= 0);
+            while (cis.read(tempBuf) >= 0) ;
             long value = cis.getChecksum().getValue();
             return Long.toHexString(value);
         } catch (IOException e) {
             return "-1";
         }
     }
+
     /**
-     *
      * @param src
      * @param begin
      * @param count
-     * @return
-     * TODO 在字节数组中截取指定长度数组
+     * @return TODO 在字节数组中截取指定长度数组
      * 时间：2019年7月14日
      */
     public static byte[] subBytes(byte[] src, int begin, int count) {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.broad.mapper.TextmessagesMapper">
 
     <!-- 通用查询映射结果 -->
@@ -31,13 +31,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		terminaltels
 	</sql>
     <select id="selectTextMessages" resultMap="TextMessagesMap">
-        select <include refid="Field"/>
-        from <include refid="tableName"/>
+        select
+        <include refid="Field"/>
+        from
+        <include refid="tableName"/>
         <where>
-            <if test="tid != null and tid != ''"> and tid like '%${tid}%'</if>
-            <if test="tel != null  and tel != ''"> and tel like '%${tel}%'</if>
-            <if test="telperson != null  and telperson != ''"> and telperson like '%${telperson}%'</if>
-            <if test="isuse != null  and isuse != ''"> and isuse like '%${isuse}%'</if>
+            <if test="tid != null and tid != ''">and tid like '%${tid}%'</if>
+            <if test="tel != null  and tel != ''">and tel like '%${tel}%'</if>
+            <if test="telperson != null  and telperson != ''">and telperson like '%${telperson}%'</if>
+            <if test="isuse != null  and isuse != ''">and isuse like '%${isuse}%'</if>
         </where>
         ORDER BY telid asc
     </select>

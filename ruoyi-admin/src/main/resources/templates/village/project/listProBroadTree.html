@@ -29,8 +29,8 @@
             </a>
         </div>
         <div>
-            <input id="org" name="org"  width="50%" placeholder=""  readonly="true">
-            <input id="tname" type="hidden" name="tname"  width="50%" placeholder="">
+            <input id="org" name="org" width="50%" placeholder="" readonly="true">
+            <input id="tname" type="hidden" name="tname" width="50%" placeholder="">
         </div>
         <div class="col-sm-12 select-table table-striped">
             <table id="bootstrap-table" data-mobile-responsive="true"></table>
@@ -44,8 +44,8 @@
 <script th:inline="javascript">
     var prefix = ctx + "village/project";
 
-    $(function() {
-        $('body').layout({ west__size: 185 });
+    $(function () {
+        $('body').layout({west__size: 185});
         queryAreaList();
         queryAreaTree();
     });
@@ -59,31 +59,30 @@
                 checkbox: true
             },
                 {
-                    field : 'userId',
-                    title : '用户编号',
+                    field: 'userId',
+                    title: '用户编号',
                     visible: false
                 },
                 {
-                    field : 'userName',
-                    title : '用户名称',
+                    field: 'userName',
+                    title: '用户名称',
                     sortable: true
                 },
                 {
-                    field : 'phonenumber',
-                    title : '手机号码',
+                    field: 'phonenumber',
+                    title: '手机号码',
                     sortable: true
                 }]
         };
         $.table.init(options);
     };
 
-    function queryAreaTree()
-    {
+    function queryAreaTree() {
         var url = ctx + "village/project/listProBroadTree";
         var options = {
             url: url,
             expandLevel: 2,
-            onClick : zOnClick
+            onClick: zOnClick
         };
         $.tree.init(options);
 
@@ -94,13 +93,13 @@
         }
     }
 
-    $('#btnExpand').click(function() {
+    $('#btnExpand').click(function () {
         $._tree.expandAll(true);
         $(this).hide();
         $('#btnCollapse').show();
     });
 
-    $('#btnCollapse').click(function() {
+    $('#btnCollapse').click(function () {
         $._tree.expandAll(false);
         $(this).hide();
         $('#btnExpand').show();
@@ -114,38 +113,39 @@
         /*通过选择框去获取终端的IMEI号*/
         var rows = $.common.isEmpty($.table._option.uniqueId) ? $.table.selectFirstColumns() : $.table.selectColumns($.table._option.uniqueId);
         var rowsName = $.table.selectColumns('userName');
-        var data = { "ids": rows.join() };
-         var dataName = { "idnames": rowsName.join() };
+        var data = {"ids": rows.join()};
+        var dataName = {"idnames": rowsName.join()};
         var test = data;
-         var testname = dataName;
-        var i,j;
+        var testname = dataName;
+        var i, j;
 
         /*传输的用户id*/
-        var userid ="";
-         var username ="";
+        var userid = "";
+        var username = "";
 
-        for(i in test){
+        for (i in test) {
             userid = userid + test[i];
             console.log(userid);
-            console.log("userid:",test[i]);/*这里test[i]是所选择用户的id的字符串ps：111,222*/
+            console.log("userid:", test[i]);/*这里test[i]是所选择用户的id的字符串ps：111,222*/
         }
 
-        for(j in testname){
+        for (j in testname) {
             username = username + testname[j];
             console.log(username);
-            console.log("username:",testname[j]);/!*这里testname[i]是所选择用户的名字的字符串ps：111,222*!/
+            console.log("username:", testname[j]);
+            /!*这里testname[i]是所选择用户的名字的字符串ps：111,222*!/
         }
 
         /*给文本框赋值*/
-            var selectValue = test[i] + "," + originalValue ;
+        var selectValue = test[i] + "," + originalValue;
         document.getElementById("org").value = selectValue;
-            var selectName = testname[j] + ',' + originalName;
+        var selectName = testname[j] + ',' + originalName;
         document.getElementById("tname").value = selectName;
 
         console.log("selectValue:" + selectValue);
 
         //这里在子页面通过调用父页面方法，将子页面的值传给父页面
-        parent.ccc(selectValue,selectName);
+        parent.ccc(selectValue, selectName);
     }
 
 

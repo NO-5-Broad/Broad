@@ -16,22 +16,18 @@ import com.ruoyi.framework.web.base.BaseController;
 
 /**
  * 首页 业务处理
- * 
+ *
  * @author ruoyi
  */
 @Controller
-public class SysIndexController extends BaseController
-{
+public class SysIndexController extends BaseController {
     @Autowired
     private ISysMenuService menuService;
 
 
-
-
     // 系统首页
     @GetMapping("/index")
-    public String index(ModelMap mmap)
-    {
+    public String index(ModelMap mmap) {
         // 取身份信息
         SysUser user = getSysUser();
         // 根据用户id取出菜单
@@ -44,8 +40,7 @@ public class SysIndexController extends BaseController
 
     // 系统介绍
     @GetMapping("/system/main")
-    public String main(ModelMap mmap)
-    {
+    public String main(ModelMap mmap) {
         mmap.put("version", Global.getVersion());
         return "main";
     }

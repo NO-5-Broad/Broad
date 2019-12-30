@@ -1,6 +1,7 @@
 package com.ruoyi.village.service;
 
 import com.ruoyi.village.domain.Weatherdata;
+
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ public interface IWeatherdataService {
     /**
      * 查询天气采集信息
      *
-     * @param  id 采集天气信息ID
+     * @param id 采集天气信息ID
      * @return 天气信息
      */
     public Weatherdata selectWeatherdataById(Integer id);

@@ -4,47 +4,47 @@
 <head th:include="include :: header">
 </head>
 <div class="gray-bg">
-<div class="container-div">
-    <div class="row">
-        <div class="col-sm-12 search-collapse">
-            <form id="formId">
-                <div class="select-list">
-                    <ul>
-                        <!--<li>-->
+    <div class="container-div">
+        <div class="row">
+            <div class="col-sm-12 search-collapse">
+                <form id="formId">
+                    <div class="select-list">
+                        <ul>
+                            <!--<li>-->
                             <!--请选择地域编号：<input type="text" name="aid" id="aid" onclick="selectAidTree()"/>-->
-                        <!--</li>-->
-                        <li>
-                            请选择所属村组：<input type="text" name="grouptype" id="grouptype" onclick="selectAidTree()"/>
-                        </li>
+                            <!--</li>-->
+                            <li>
+                                请选择所属村组：<input type="text" name="grouptype" id="grouptype" onclick="selectAidTree()"/>
+                            </li>
 
 
-
-                        <li>
-                            <a class="btn btn-primary btn-rounded btn-sm" onclick="countsearch()"><i class="fa fa-search"></i>&nbsp;查询</a>
-                        </li>
-                    </ul>
-                </div>
-            </form>
-        </div>
-
-        <div class="col-sm-12 select-table table-striped">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>性别比例统计</h5>
-                    <div class="ibox-tools">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-superpowers"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a onclick="init_sex_terminalstate()_terminalstate()">原始数据</a>
+                            <li>
+                                <a class="btn btn-primary btn-rounded btn-sm" onclick="countsearch()"><i
+                                        class="fa fa-search"></i>&nbsp;查询</a>
                             </li>
                         </ul>
                     </div>
-                </div>
-                <div class="ibox-content">
-                    <div class="echarts" id="sex_terminalstate"></div>
-                </div>
+                </form>
             </div>
+
+            <div class="col-sm-12 select-table table-striped">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>性别比例统计</h5>
+                        <div class="ibox-tools">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-superpowers"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a onclick="init_sex_terminalstate()_terminalstate()">原始数据</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="echarts" id="sex_terminalstate"></div>
+                    </div>
+                </div>
 
             </div>
             <!--<table id="bootstrap-table" data-mobile-responsive="true"></table>-->
@@ -61,21 +61,20 @@
 <script>
     var prefix = ctx + "village/analysis";
 
-    function countsearch()
-    {
+    function countsearch() {
         $.modal.loading("正在查询，请稍后...");
-           var grouptype=$("#grouptype").val();
+        var grouptype = $("#grouptype").val();
         $.ajax({
-            url:prefix + "/count",
-            data :{"grouptype":$("#grouptype").val()},
-            type : 'POST',
-            dataType : 'text',
-            success:function(data){
-                var count=data.split('|')[0];
-                var fnum=data.split('|')[1];  //男
-                var fmnun=data.split('|')[2]; //女
+            url: prefix + "/count",
+            data: {"grouptype": $("#grouptype").val()},
+            type: 'POST',
+            dataType: 'text',
+            success: function (data) {
+                var count = data.split('|')[0];
+                var fnum = data.split('|')[1];  //男
+                var fmnun = data.split('|')[2]; //女
                 $.modal.closeLoading();
-               init_sex_terminalstate(count,fnum,fmnun);
+                init_sex_terminalstate(count, fnum, fmnun);
 
             }
         })
@@ -85,7 +84,7 @@
 
 
     //男女比例样式
-    function init_sex_terminalstate(count,fnum,fmnum) {
+    function init_sex_terminalstate(count, fnum, fmnum) {
         var bd_terminalstate = echarts.init(document.getElementById('sex_terminalstate'));
         option = {
             tooltip: {
@@ -176,12 +175,12 @@
     }
 
     /*该模块是选择用户所属区域树的提交功能模块，body.find()方法中该使用框架固定的treeId、treeName*/
-    function doSubmitAid(index, layero){
+    function doSubmitAid(index, layero) {
         var tree = layero.find("iframe")[0].contentWindow.$._tree;
         if ($.tree.notAllowParents(tree)) {
             var body = layer.getChildFrame('body', index);
             // $("#aid").val(body.find('#treeId').val());
-            var groupname=(body.find('#treeName').val()).replace("组","");
+            var groupname = (body.find('#treeName').val()).replace("组", "");
             $("#grouptype").val(groupname);
             /*console.log(body.find('#treeId').val());
             console.log(body.find('#treeName').val());*/
@@ -189,7 +188,7 @@
         }
     }
 
-    function doSubmit(index, layero){
+    function doSubmit(index, layero) {
         var tree = layero.find("iframe")[0].contentWindow.$._tree;
         if ($.tree.notAllowParents(tree)) {
             var body = layer.getChildFrame('body', index);
@@ -201,5 +200,6 @@
 </script>
 
 </script>
-</body>
-</html>
+<
+/body>
+< /html>

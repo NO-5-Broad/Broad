@@ -1,6 +1,7 @@
 package com.ruoyi.broad.service.impl;
 
 import com.ruoyi.broad.domain.ProApplyUser;
+import com.ruoyi.broad.domain.ProList;
 import com.ruoyi.broad.domain.ProListen;
 import com.ruoyi.broad.domain.ProreApply;
 import com.ruoyi.broad.mapper.ProListenMapper;
@@ -98,6 +99,17 @@ public class ProListenServiceImpl implements IProListenService {
     @DataSource(value = DataSourceType.SLAVE)
     public List<ProApplyUser> selectProrApplyUserList(ProApplyUser proApplyUser){
         return proListenMapper.selectProrApplyUserList(proApplyUser);
+    }
+
+    /**
+     * 该方法设置节目审听通过
+     * @param paid
+     * @return java.util.List<com.ruoyi.broad.domain.ProApplyUser>
+     */
+    @Override
+    @DataSource(value = DataSourceType.SLAVE)
+    public int checkpass(String paid) {
+        return proListenMapper.checkpass(paid);
     }
 
 }

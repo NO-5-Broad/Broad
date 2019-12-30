@@ -14,7 +14,7 @@ import java.util.List;
  * @Date: $
  */
 public interface PolicyinfoMapper {
-       /**
+    /**
      * 政策记录列表
      *
      * @return
@@ -23,12 +23,14 @@ public interface PolicyinfoMapper {
 
     /**
      * 根据shiid删除数据
+     *
      * @param id
      */
     int deletePolicyinfoByids(String[] id);
 
     /**
      * 添加公告信息
+     *
      * @param policyinfo
      * @return
      */
@@ -36,6 +38,7 @@ public interface PolicyinfoMapper {
 
     /**
      * 根据shiid选择数据
+     *
      * @param shiid
      * @return
      */
@@ -43,6 +46,7 @@ public interface PolicyinfoMapper {
 
     /**
      * 保存用户修改
+     *
      * @param policyinfo
      * @return
      */
@@ -50,6 +54,7 @@ public interface PolicyinfoMapper {
 
     /**
      * 删除政策信息
+     *
      * @param poinid
      * @return
      */

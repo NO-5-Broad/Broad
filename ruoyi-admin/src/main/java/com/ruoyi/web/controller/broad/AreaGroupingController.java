@@ -25,12 +25,13 @@ import java.util.Map;
 
 /**
  * Created by ASUS on 2019/8/2.
+ *
  * @author cx
  * 分组管理 控制层
  */
 @Controller
 @RequestMapping("/broad/areaGrouping")
-public class AreaGroupingController extends BaseController{
+public class AreaGroupingController extends BaseController {
 
     private String prefix = "broad/areaGrouping";
 
@@ -42,8 +43,7 @@ public class AreaGroupingController extends BaseController{
 
     @RequiresPermissions("broad:areaGrouping:view")
     @GetMapping()
-    public String areaGrouping()
-    {
+    public String areaGrouping() {
         return prefix + "/areaGrouping";
     }
 
@@ -54,18 +54,16 @@ public class AreaGroupingController extends BaseController{
     @Log(title = "分组管理列表")
     @RequiresPermissions("broad:areaGrouping:list")
     @ResponseBody
-    public TableDataInfo list(AreaGrouping areaGrouping)
-    {
+    public TableDataInfo list(AreaGrouping areaGrouping) {
         SysUser currentUser = ShiroUtils.getSysUser();  //从session中获取当前登陆用户的userid
         Long userid = currentUser.getUserId();
         int returnid = new Long(userid).intValue();
         int roleid = iSysUserService.selectRoleid(returnid); //通过所获取的userid去广播用户表中查询用户所属区域的Roleid
-        if(roleid == 1)
-        {
+        if (roleid == 1) {
             startPage();
             List<AreaGrouping> list = iAreaGroupingService.listAreaGrouping(areaGrouping);
             return getDataTable(list);
-        }else {
+        } else {
             startPage();
             areaGrouping.setUid(userid);
             List<AreaGrouping> list = iAreaGroupingService.listAreaGrouping(areaGrouping);
@@ -84,31 +82,27 @@ public class AreaGroupingController extends BaseController{
     }
 
     /**
+     * @param ids 注意 这个地方的参数一定要写ids 和前端绑定的固定格式
      * @author cx
      * @Description 此删除方式可以批量删除，可以单独删除
-     * @param ids
-     * 注意 这个地方的参数一定要写ids 和前端绑定的固定格式
      */
     @PostMapping("/remove")
-    @Log(title = "分组管理删除",businessType = BusinessType.DELETE)
+    @Log(title = "分组管理删除", businessType = BusinessType.DELETE)
     @RequiresPermissions("broad:areagrouping:remove")
     @ResponseBody
-    public AjaxResult removeAreagrouping(String ids)
-    {
+    public AjaxResult removeAreagrouping(String ids) {
         return toAjax(iAreaGroupingService.deleteAreaGroupingByIds(ids));
     }
 
     @GetMapping("/add")
-    public String addareaGrouping()
-    {
+    public String addareaGrouping() {
         return prefix + "/add";
     }
 
     @Log(title = "新增分组管理", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
-    public AjaxResult addSave(AreaGrouping areaGrouping)
-    {
+    public AjaxResult addSave(AreaGrouping areaGrouping) {
         return toAjax(iAreaGroupingService.insertAreaGrouping(areaGrouping));
     }
 
@@ -116,8 +110,7 @@ public class AreaGroupingController extends BaseController{
      * 修改分组管理记录
      */
     @GetMapping("/edit/{aid}")
-    public String edit(@PathVariable("aid") String aid, ModelMap mmap)
-    {
+    public String edit(@PathVariable("aid") String aid, ModelMap mmap) {
         AreaGrouping areaGrouping = iAreaGroupingService.selectAreaGroupingByAid(aid);
         mmap.put("areaGrouping", areaGrouping);
         return prefix + "/edit";
@@ -129,8 +122,7 @@ public class AreaGroupingController extends BaseController{
     @Log(title = "分组管理记录保存", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
-    public AjaxResult editSave(AreaGrouping areaGrouping)
-    {
+    public AjaxResult editSave(AreaGrouping areaGrouping) {
         return toAjax(iAreaGroupingService.updateAreaGrouping(areaGrouping));
     }
 }

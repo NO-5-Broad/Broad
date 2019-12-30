@@ -9,15 +9,25 @@ package com.ruoyi.broad.domain;
 public class Tersga {
     private static final long serialVersionUID = 1L;
 
-    /** 分组名称 */
+    /**
+     * 分组名称
+     */
     private String aname;
-    /** 总数 */
+    /**
+     * 总数
+     */
     private int sum;
-    /** 运行数量 */
+    /**
+     * 运行数量
+     */
     private int run;
-    /** 停止数量 */
+    /**
+     * 停止数量
+     */
     private int down;
-    /** 维修数量 */
+    /**
+     * 维修数量
+     */
     private int req;
 
     public String getAname() {

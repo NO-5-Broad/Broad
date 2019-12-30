@@ -9,35 +9,61 @@ import com.ruoyi.common.base.BaseEntity;
  * @Author: Mr.DYQ
  * @Date: $
  */
-public class Huodong extends BaseEntity{
+public class Huodong extends BaseEntity {
     private static final long serialVersionUID = 1L;
-    /**活动编号*/
+    /**
+     * 活动编号
+     */
     private String hdid;
-    /**活动标题*/
+    /**
+     * 活动标题
+     */
     private String hdtitle;
-    /**活动类型*/
+    /**
+     * 活动类型
+     */
     private String hdtype;
-    /**活动地点*/
+    /**
+     * 活动地点
+     */
     private String hdloc;
-    /**活动人数*/
+    /**
+     * 活动人数
+     */
     private String hdnum;
-    /**活动开始日期*/
+    /**
+     * 活动开始日期
+     */
     private String hdbtime;
-    /**活动结束日期*/
+    /**
+     * 活动结束日期
+     */
     private String hdetime;
     /***活动图片*/
     private String hdpic;
-    /**活动简介*/
+    /**
+     * 活动简介
+     */
     private String hdsum;
-    /**活动添加日期*/
+    /**
+     * 活动添加日期
+     */
     private String hdadddate;
-    /**添加人编号*/
+    /**
+     * 添加人编号
+     */
     private int uid;
-    /**添加人姓名*/
+    /**
+     * 添加人姓名
+     */
     private String uname;
-    /**用户所属地区村社区 aid*/
+    /**
+     * 用户所属地区村社区 aid
+     */
     private String aid;
-    /**是否有效*/
+    /**
+     * 是否有效
+     */
     private String remark;
 
     @Override
@@ -80,8 +106,10 @@ public class Huodong extends BaseEntity{
         this.aid = aid;
         this.remark = remark;
     }
+
     public Huodong() {
-        super();}
+        super();
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;

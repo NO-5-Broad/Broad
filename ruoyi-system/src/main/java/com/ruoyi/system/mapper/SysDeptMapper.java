@@ -10,8 +10,7 @@ import java.util.List;
  *
  * @author ruoyi
  */
-public interface SysDeptMapper
-{
+public interface SysDeptMapper {
     /**
      * 查询部门人数
      *
@@ -79,6 +78,7 @@ public interface SysDeptMapper
     public SysDept selectDeptById(Long deptId);
 
     public SysDept selectDeptById2(Long deptId);
+
     /**
      * 校验部门名称是否唯一
      *
@@ -105,6 +105,7 @@ public interface SysDeptMapper
 
     /**
      * 根据ID查询所有子部门
+     *
      * @param deptId 部门ID
      * @return 部门列表
      */

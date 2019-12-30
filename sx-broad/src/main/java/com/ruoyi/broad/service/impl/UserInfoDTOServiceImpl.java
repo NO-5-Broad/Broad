@@ -18,14 +18,20 @@ public class UserInfoDTOServiceImpl implements IUserInfoDTOService {
 
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public List<UserInfoDTO> findAll(){
+    public List<UserInfoDTO> findAll() {
         return userInfoDTOMapper.findAll();
     }
 
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public UserInfoDTO findById(String userid){
+    public UserInfoDTO findById(String userid) {
         return userInfoDTOMapper.findById(userid);
+    }
+
+    @Override
+    @DataSource(value = DataSourceType.SLAVE)
+    public List<UserInfoDTO> findUserByName(String uname) {
+        return userInfoDTOMapper.findUserByName(uname);
     }
 
 }

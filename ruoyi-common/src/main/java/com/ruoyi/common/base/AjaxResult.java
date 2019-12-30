@@ -1,6 +1,7 @@
 package com.ruoyi.common.base;
 
 import java.util.HashMap;
+
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.utils.StringUtils;
@@ -10,8 +11,7 @@ import com.ruoyi.common.utils.StringUtils;
  *
  * @author ruoyi
  */
-public class AjaxResult extends HashMap<String, Object>
-{
+public class AjaxResult extends HashMap<String, Object> {
     private static final long serialVersionUID = 1L;
 
     public static final String CODE_TAG = "code";
@@ -23,54 +23,63 @@ public class AjaxResult extends HashMap<String, Object>
     /**
      * 状态类型
      */
-    public enum Type
-    {
-        /** 成功 */
+    public enum Type {
+        /**
+         * 成功
+         */
         SUCCESS(0),
-        /** 警告 */
+        /**
+         * 警告
+         */
         WARN(301),
-        /** 错误 */
+        /**
+         * 错误
+         */
         ERROR(500);
         private final int value;
 
-        Type(int value)
-        {
+        Type(int value) {
             this.value = value;
         }
 
-        public int value()
-        {
+        public int value() {
             return this.value;
         }
     }
 
-    /** 状态类型 */
+    /**
+     * 状态类型
+     */
     private Type type;
 
-    /** 状态码 */
+    /**
+     * 状态码
+     */
     private int code;
 
-    /** 返回内容 */
+    /**
+     * 返回内容
+     */
     private String msg;
 
-    /** 数据对象 */
+    /**
+     * 数据对象
+     */
     private Object data;
 
     /**
      * 初始化一个新创建的 AjaxResult 对象，使其表示一个空消息。
      */
-    public AjaxResult()
-    {
+    public AjaxResult() {
     }
 
     /**
      * 初始化一个新创建的 AjaxResult 对象
      *
      * @param type 状态类型
-     * @param msg 返回内容
+     * @param msg  返回内容
      */
-    public AjaxResult(Type type, String msg)
-    {
+    public AjaxResult(Type type, String msg) {
         super.put(CODE_TAG, type.value);
         super.put(MSG_TAG, msg);
     }
@@ -79,15 +88,13 @@ public class AjaxResult extends HashMap<String, Object>
      * 初始化一个新创建的 AjaxResult 对象
      *
      * @param type 状态类型
-     * @param msg 返回内容
+     * @param msg  返回内容
      * @param data 数据对象
      */
-    public AjaxResult(Type type, String msg, Object data)
-    {
+    public AjaxResult(Type type, String msg, Object data) {
         super.put(CODE_TAG, type.value);
         super.put(MSG_TAG, msg);
-        if (StringUtils.isNotNull(data))
-        {
+        if (StringUtils.isNotNull(data)) {
             super.put(DATA_TAG, data);
         }
     }
@@ -97,8 +104,7 @@ public class AjaxResult extends HashMap<String, Object>
      *
      * @return 成功消息
      */
-    public static AjaxResult success()
-    {
+    public static AjaxResult success() {
         return AjaxResult.success("操作成功");
     }
 
@@ -107,8 +113,7 @@ public class AjaxResult extends HashMap<String, Object>
      *
      * @return 成功消息
      */
-    public static AjaxResult success(Object data)
-    {
+    public static AjaxResult success(Object data) {
         return AjaxResult.success("操作成功", data);
     }
 
@@ -118,20 +123,18 @@ public class AjaxResult extends HashMap<String, Object>
      * @param msg 返回内容
      * @return 成功消息
      */
-    public static AjaxResult success(String msg)
-    {
+    public static AjaxResult success(String msg) {
         return AjaxResult.success(msg, null);
     }
 
     /**
      * 返回成功消息
      *
-     * @param msg 返回内容
+     * @param msg  返回内容
      * @param data 数据对象
      * @return 成功消息
      */
-    public static AjaxResult success(String msg, Object data)
-    {
+    public static AjaxResult success(String msg, Object data) {
         return new AjaxResult(Type.SUCCESS, msg, data);
     }
 
@@ -141,20 +144,18 @@ public class AjaxResult extends HashMap<String, Object>
      * @param msg 返回内容
      * @return 警告消息
      */
-    public static AjaxResult warn(String msg)
-    {
+    public static AjaxResult warn(String msg) {
         return AjaxResult.warn(msg, null);
     }
 
     /**
      * 返回警告消息
      *
-     * @param msg 返回内容
+     * @param msg  返回内容
      * @param data 数据对象
      * @return 警告消息
      */
-    public static AjaxResult warn(String msg, Object data)
-    {
+    public static AjaxResult warn(String msg, Object data) {
         return new AjaxResult(Type.WARN, msg, data);
     }
 
@@ -163,8 +164,7 @@ public class AjaxResult extends HashMap<String, Object>
      *
      * @return
      */
-    public static AjaxResult error()
-    {
+    public static AjaxResult error() {
         return AjaxResult.error("操作失败");
     }
 
@@ -174,66 +174,56 @@ public class AjaxResult extends HashMap<String, Object>
      * @param msg 返回内容
      * @return 警告消息
      */
-    public static AjaxResult error(String msg)
-    {
+    public static AjaxResult error(String msg) {
         return AjaxResult.error(msg, null);
     }
 
     /**
      * 返回错误消息
      *
-     * @param msg 返回内容
+     * @param msg  返回内容
      * @param data 数据对象
      * @return 警告消息
      */
-    public static AjaxResult error(String msg, Object data)
-    {
+    public static AjaxResult error(String msg, Object data) {
         return new AjaxResult(Type.ERROR, msg, data);
     }
 
-    public Type getType()
-    {
+    public Type getType() {
         return type;
     }
 
-    public void setType(Type type)
-    {
+    public void setType(Type type) {
         this.type = type;
     }
 
-    public int getCode()
-    {
+    public int getCode() {
         return code;
     }
 
-    public void setCode(int code)
-    {
+    public void setCode(int code) {
         this.code = code;
     }
 
-    public String getMsg()
-    {
+    public String getMsg() {
         return msg;
     }
 
-    public void setMsg(String msg)
-    {
+    public void setMsg(String msg) {
         this.msg = msg;
     }
 
-    public Object getData()
-    {
+    public Object getData() {
         return data;
     }
 
-    public void setData(Object data)
-    {
+    public void setData(Object data) {
         this.data = data;
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
+        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
                 .append("code", getCode())
                 .append("msg", getMsg())
                 .append("data", getData())

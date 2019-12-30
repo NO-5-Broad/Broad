@@ -5,17 +5,17 @@
 <mapper namespace="com.ruoyi.village.mapper.MemorialMapper">
 
     <resultMap type="Memorial" id="MemorialResult">
-        <result property="mid"    column="mid"    />
-        <result property="mtitle"    column="mtitle"    />
-        <result property="mpic"    column="mpic"    />
-        <result property="mcontent"    column="mcontent"    />
-        <result property="uid"    column="uid"    />
-        <result property="uname"    column="uname"    />
-        <result property="pushdate"    column="pushdate"    />
-        <result property="remintime"    column="remintime"    />
-        <result property="mtype"    column="mtype"    />
-        <result property="aid"    column="aid"    />
-        <result property="note"    column="note"    />
+        <result property="mid" column="mid"/>
+        <result property="mtitle" column="mtitle"/>
+        <result property="mpic" column="mpic"/>
+        <result property="mcontent" column="mcontent"/>
+        <result property="uid" column="uid"/>
+        <result property="uname" column="uname"/>
+        <result property="pushdate" column="pushdate"/>
+        <result property="remintime" column="remintime"/>
+        <result property="mtype" column="mtype"/>
+        <result property="aid" column="aid"/>
+        <result property="note" column="note"/>
     </resultMap>
 
     <sql id="selectMemorialVo">
@@ -25,17 +25,19 @@
     <select id="selectMemorialList" parameterType="Memorial" resultMap="MemorialResult">
         <include refid="selectMemorialVo"/>
         <where>
-            <if test="mid != null "> and mid = #{mid}</if>
-            <if test="mtitle != null  and mtitle != '' "> and mtitle LIKE CONCAT(CONCAT('%', #{mtitle}),'%')</if>
-            <if test="mpic != null  and mpic != '' "> and mpic = #{mpic}</if>
-            <if test="mcontent != null  and mcontent != '' "> and mcontent LIKE CONCAT(CONCAT('%', #{mcontent}),'%')</if>
-            <if test="uid != null "> and uid = #{uid}</if>
-            <if test="uname != null  and uname != '' "> and uname = #{uname}</if>
-            <if test="pushdate != null and pushdate != ''"> and pushdate LIKE CONCAT(CONCAT('%', #{pushdate}),'%')</if>
-            <if test="remintime != null  and remintime != '' "> and remintime LIKE CONCAT(CONCAT('%', #{remintime}),'%')</if>
-            <if test="mtype != null "> and mtype = #{mtype}</if>
-            <if test="aid != null  and aid != '' "> and aid = #{aid}</if>
-            <if test="note != null  and note != '' "> and note LIKE CONCAT(CONCAT('%', #{note}),'%')</if>
+            <if test="mid != null ">and mid = #{mid}</if>
+            <if test="mtitle != null  and mtitle != '' ">and mtitle LIKE CONCAT(CONCAT('%', #{mtitle}),'%')</if>
+            <if test="mpic != null  and mpic != '' ">and mpic = #{mpic}</if>
+            <if test="mcontent != null  and mcontent != '' ">and mcontent LIKE CONCAT(CONCAT('%', #{mcontent}),'%')</if>
+            <if test="uid != null ">and uid = #{uid}</if>
+            <if test="uname != null  and uname != '' ">and uname = #{uname}</if>
+            <if test="pushdate != null and pushdate != ''">and pushdate LIKE CONCAT(CONCAT('%', #{pushdate}),'%')</if>
+            <if test="remintime != null  and remintime != '' ">and remintime LIKE CONCAT(CONCAT('%',
+                #{remintime}),'%')
+            </if>
+            <if test="mtype != null ">and mtype = #{mtype}</if>
+            <if test="aid != null  and aid != '' ">and aid = #{aid}</if>
+            <if test="note != null  and note != '' ">and note LIKE CONCAT(CONCAT('%', #{note}),'%')</if>
         </where>
         ORDER BY pushdate DESC
     </select>
@@ -106,7 +108,7 @@
     <select id="selectMemorialListById" parameterType="pubObjApi" resultMap="MemorialResult">
         <include refid="selectMemorialVo"/>
         <where>
-            <if test="userid != null  and userid != '' "> uid = #{userid}</if>
+            <if test="userid != null  and userid != '' ">uid = #{userid}</if>
             <if test="title != null  and title != ''  ">and mtitle LIKE CONCAT(CONCAT('%', #{title}),'%')</if>
         </where>
         ORDER BY pushdate DESC

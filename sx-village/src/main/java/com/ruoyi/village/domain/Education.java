@@ -10,27 +10,49 @@ import com.ruoyi.common.base.BaseEntity;
  **/
 public class Education extends BaseEntity {
     private static final long serialVersionUID = 1L;
-    /**在线学习课程编号*/
+    /**
+     * 在线学习课程编号
+     */
     private String eid;
-    /**课程名称*/
+    /**
+     * 课程名称
+     */
     private String courtit;
-    /** 课程介绍*/
+    /**
+     * 课程介绍
+     */
     private String coursum;
-    /** 课程地址*/
+    /**
+     * 课程地址
+     */
     private String courass;
-    /** 添加时间*/
+    /**
+     * 添加时间
+     */
     private String adddate;
-    /** 回复人编号*/
+    /**
+     * 回复人编号
+     */
     private int uid;
-    /** 回复人用户名*/
+    /**
+     * 回复人用户名
+     */
     private String uname;
-    /** 浏览数*/
+    /**
+     * 浏览数
+     */
     private String courread;
-    /** 缩略图*/
+    /**
+     * 缩略图
+     */
     private String courpic;
-    /** 用户所属地区村社区 aid*/
+    /**
+     * 用户所属地区村社区 aid
+     */
     private String aid;
-    /** 是否有效*/
+    /**
+     * 是否有效
+     */
     private String remark;
 
     @Override
@@ -66,6 +88,7 @@ public class Education extends BaseEntity {
         this.aid = aid;
         this.remark = remark;
     }
+
     public Education() {
         super();
     }

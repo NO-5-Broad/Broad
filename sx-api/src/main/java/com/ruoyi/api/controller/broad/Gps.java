@@ -31,35 +31,35 @@ import java.util.List;
 @RequestMapping("/api/gps")
 @CrossOrigin
 @Api(value = "应急广播模块 - 终端设备GPS坐标API类")
-public class Gps extends BaseController
-{
+public class Gps extends BaseController {
     @Autowired
     private IManagementService managementService;
     @Autowired
     private ITermapService termapService;
+
     /**
      * 随机查询100台终端的地理位置
-     * @author 张超
+     *
      * @return RongApiRes
+     * @author 张超
      */
     @GetMapping("/random")
     @CrossOrigin
     @ApiOperation(value = "随机查询100台终端的地理位置")
-    public RongApiRes searchrandom()
-    {
+    public RongApiRes searchrandom() {
         return RongApiService.get_list(managementService.selectManagementByRandom());
     }
 
     /**
      * 查询全部的终端地理位置
-     * @author 张超
+     *
      * @return RongApiRes
+     * @author 张超
      */
     @GetMapping("/all")
     @CrossOrigin
     @ApiOperation(value = "查询全部的终端地理位置")
-    public RongApiRes searchall()
-    {
+    public RongApiRes searchall() {
         return RongApiService.get_list(managementService.selectManagementAll());
     }
 
@@ -67,8 +67,7 @@ public class Gps extends BaseController
     @GetMapping("/iotAll")
     @CrossOrigin
     @ApiOperation(value = "查询全部的终端地理位置")
-    public RongApiRes searchiotAll()
-    {
+    public RongApiRes searchiotAll() {
         return RongApiService.get_list(termapService.getAllMapInfoForIot());
     }
 

@@ -9,6 +9,7 @@ package com.ruoyi.broad.dao;
 public interface DAO {
     /**
      * 保存对象
+     *
      * @param str
      * @param obj
      * @return
@@ -18,6 +19,7 @@ public interface DAO {
 
     /**
      * 修改对象
+     *
      * @param str
      * @param obj
      * @return
@@ -27,6 +29,7 @@ public interface DAO {
 
     /**
      * 删除对象
+     *
      * @param str
      * @param obj
      * @return
@@ -36,6 +39,7 @@ public interface DAO {
 
     /**
      * 查找对象
+     *
      * @param str
      * @param obj
      * @return
@@ -45,6 +49,7 @@ public interface DAO {
 
     /**
      * 查找对象
+     *
      * @param str
      * @param obj
      * @return
@@ -54,11 +59,12 @@ public interface DAO {
 
     /**
      * 查找对象封装成Map
+     *
      * @param s
      * @param obj
      * @return
      * @throws Exception
      */
-    public Object findForMap(String sql, Object obj, String key , String value) throws Exception;
+    public Object findForMap(String sql, Object obj, String key, String value) throws Exception;
 
 }

@@ -24,7 +24,7 @@ public class CheckServer {
     public void run(InetSocketAddress address) {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workGroup = new NioEventLoopGroup();
-        try{
+        try {
             ServerBootstrap bootstrap = new ServerBootstrap();
             bootstrap.group(bossGroup, workGroup)
                     .channel(NioServerSocketChannel.class)

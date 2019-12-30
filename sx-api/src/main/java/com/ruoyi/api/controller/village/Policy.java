@@ -19,7 +19,7 @@ import java.util.List;
  * 村务模块中公告功能的接口
  *
  * @author 张超
-*/
+ */
 @RestController
 @RequestMapping("/api/policy")
 @CrossOrigin
@@ -33,49 +33,45 @@ public class Policy extends BaseController {
     private IPoliticsService politicsService;
 
     /**
-        * 返回最近的十条政策公告
-        * @author 张超 teavamc
-        * @date 2019/1/25
-        * @param []
-        * @return com.ruoyi.api.domain.RongApiRes
-        */
+     * 返回最近的十条政策公告
+     *
+     * @param []
+     * @return com.ruoyi.api.domain.RongApiRes
+     * @author 张超 teavamc
+     * @date 2019/1/25
+     */
     @GetMapping("/ten")
     @CrossOrigin
     @ApiOperation(value = "返回最近的十条公告")
-    public RongApiRes searchten()
-    {
+    public RongApiRes searchten() {
         return RongApiService.get_list(policyinfoService.selectpoliclimitten());
     }
 
     @GetMapping("/infoAll")
     @CrossOrigin
     @ApiOperation(value = "返回所有公告")
-    public RongApiRes searchAll(Policyinfo policyinfo)
-    {
+    public RongApiRes searchAll(Policyinfo policyinfo) {
         return RongApiService.get_list(policyinfoService.selectPolicyinfoList(policyinfo));
     }
 
     @PostMapping("/infoInsert")
     @CrossOrigin
     @ApiOperation(value = "新增公告")
-    public RongApiRes insertPolicy(Policyinfo policyinfo)
-    {
+    public RongApiRes insertPolicy(Policyinfo policyinfo) {
         return RongApiService.get_bean(policyinfoService.insertpolicyinfo(policyinfo));
     }
 
     @GetMapping("/PolAll")
     @CrossOrigin
     @ApiOperation(value = "返回所有政策")
-    public RongApiRes selectPoliticsList(Politics politics)
-    {
+    public RongApiRes selectPoliticsList(Politics politics) {
         return RongApiService.get_list(politicsService.selectPoliticsList(politics));
     }
 
     @PostMapping("/PolInsert")
     @CrossOrigin
     @ApiOperation(value = "新增政策")
-    public RongApiRes insertpolitics(Politics politics)
-    {
+    public RongApiRes insertpolitics(Politics politics) {
         return RongApiService.get_bean(politicsService.insertpolitics(politics));
     }
 }

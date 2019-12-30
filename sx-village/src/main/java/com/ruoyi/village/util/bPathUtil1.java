@@ -11,16 +11,14 @@ import java.io.File;
  * 说明：路径工具类
  * 创建人：FH Q313596790
  * 修改时间：2014年9月20日
- * @version
  */
 public class bPathUtil1 {
 
     /**
      * 图片访问路径
-     * @param pathType
-     *            图片类型 visit-访问；save-保存
-     * @param pathCategory
-     *            图片类别，如：话题图片-topic、话题回复图片-reply、商家图片
+     *
+     * @param pathType     图片类型 visit-访问；save-保存
+     * @param pathCategory 图片类别，如：话题图片-topic、话题回复图片-reply、商家图片
      * @return
      */
     public static String getPicturePath(String pathType, String pathCategory) {
@@ -49,12 +47,14 @@ public class bPathUtil1 {
         return result;
     }
 
-    /**获取classpath1
+    /**
+     * 获取classpath1
+     *
      * @return
      */
-    public static String getClasspath(){
+    public static String getClasspath() {
 //        String path = (String.valueOf(Thread.currentThread().getContextClassLoader().getResource(""))+"../../../").replaceAll("file:/", "").replaceAll("%20", " ").trim();
-       /*文件上传到本地用户路径底下*/
+        /*文件上传到本地用户路径底下*/
         //String path = System.getProperty("user.home");
         String path = Global.getProfile();
         /*if(path.indexOf(":") != 1){
@@ -64,19 +64,23 @@ public class bPathUtil1 {
 
     }
 
-    /**获取classpath2
+    /**
+     * 获取classpath2
+     *
      * @return
      */
-    public static String getClassResources(){
-        String path =  (String.valueOf(Thread.currentThread().getContextClassLoader().getResource(""))).replaceAll("file:/", "").replaceAll("%20", " ").trim();
-        if(path.indexOf(":") != 1){
+    public static String getClassResources() {
+        String path = (String.valueOf(Thread.currentThread().getContextClassLoader().getResource(""))).replaceAll("file:/", "").replaceAll("%20", " ").trim();
+        if (path.indexOf(":") != 1) {
             path = File.separator + path;
         }
         return path;
     }
+
     public static void main(String[] args) {
         System.out.println(getClassResources());
     }
+
     public static String PathAddress() {
         String strResult = "";
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder

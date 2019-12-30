@@ -24,22 +24,19 @@ public class AndrpicServiceImpl implements IAndrpicService {
 
     @Override
     @DataSource(value = DataSourceType.SXVILLAGE)
-    public Andrpic selectAndrpicById(Integer aid)
-    {
+    public Andrpic selectAndrpicById(Integer aid) {
         return andrpicMapper.selectAndrpicById(aid);
     }
 
     @Override
     @DataSource(value = DataSourceType.SXVILLAGE)
-    public List<Andrpic> selectAndrpicList(Andrpic andrpic)
-    {
+    public List<Andrpic> selectAndrpicList(Andrpic andrpic) {
         return andrpicMapper.selectAndrpicList(andrpic);
     }
 
     @Override
     @DataSource(value = DataSourceType.SXVILLAGE)
-    public List<Andrpic> selectAndrpicListById(pubObjApi andrpic)
-    {
+    public List<Andrpic> selectAndrpicListById(pubObjApi andrpic) {
         return andrpicMapper.selectAndrpicListById(andrpic);
     }
 }

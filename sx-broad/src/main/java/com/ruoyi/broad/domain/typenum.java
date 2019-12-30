@@ -8,13 +8,17 @@ package com.ruoyi.broad.domain;
  * @Date: $
  */
 public class typenum {
-/** 类型数量 */
+    /**
+     * 类型数量
+     */
     private String textnum;
-    /** 数量 */
-    private  String num;
+    /**
+     * 数量
+     */
+    private String num;
 
     /**
-     电话号码
+     * 电话号码
      */
     private String telnumber;
 

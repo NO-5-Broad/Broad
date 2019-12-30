@@ -6,102 +6,107 @@ import com.ruoyi.common.base.BaseEntity;
 
 /**
  * 村户表 house_member_info
- * 
+ *
  * @author 张鸿权
  * @date 2019-05-02
  */
-public class HouseMemberInfo extends BaseEntity
-{
-	private static final long serialVersionUID = 1L;
-	
-	/** 数据编号 */
-	private Integer hmid;
-	/** 地域编号 */
-	private String aid;
-	/** 家庭成员姓名 */
-	private String vname;
-	/** 户主姓名 */
-	private String housename;
-	/** 与户主关系 */
-	private String relation;
-	/** 性别 */
-	private String sex;
-	/** 身份证号码 */
-	private String idcard;
+public class HouseMemberInfo extends BaseEntity {
+    private static final long serialVersionUID = 1L;
 
-	public void setHmid(Integer hmid) 
-	{
-		this.hmid = hmid;
-	}
+    /**
+     * 数据编号
+     */
+    private Integer hmid;
+    /**
+     * 地域编号
+     */
+    private String aid;
+    /**
+     * 家庭成员姓名
+     */
+    private String vname;
+    /**
+     * 户主姓名
+     */
+    private String housename;
+    /**
+     * 与户主关系
+     */
+    private String relation;
+    /**
+     * 性别
+     */
+    private String sex;
+    /**
+     * 身份证号码
+     */
+    private String idcard;
 
-	public Integer getHmid() 
-	{
-		return hmid;
-	}
-	public void setAid(String aid) 
-	{
-		this.aid = aid;
-	}
+    public void setHmid(Integer hmid) {
+        this.hmid = hmid;
+    }
 
-	public String getAid() 
-	{
-		return aid;
-	}
-	public void setVname(String vname)
-	{
-		this.vname = vname;
-	}
+    public Integer getHmid() {
+        return hmid;
+    }
 
-	public String getVname()
-	{
-		return vname;
-	}
-	public void setHousename(String housename) 
-	{
-		this.housename = housename;
-	}
+    public void setAid(String aid) {
+        this.aid = aid;
+    }
 
-	public String getHousename() 
-	{
-		return housename;
-	}
-	public void setRelation(String relation) 
-	{
-		this.relation = relation;
-	}
+    public String getAid() {
+        return aid;
+    }
 
-	public String getRelation() 
-	{
-		return relation;
-	}
-	public void setSex(String sex) 
-	{
-		this.sex = sex;
-	}
+    public void setVname(String vname) {
+        this.vname = vname;
+    }
 
-	public String getSex() 
-	{
-		return sex;
-	}
-	public void setIdcard(String idcard) 
-	{
-		this.idcard = idcard;
-	}
+    public String getVname() {
+        return vname;
+    }
 
-	public String getIdcard() 
-	{
-		return idcard;
-	}
+    public void setHousename(String housename) {
+        this.housename = housename;
+    }
+
+    public String getHousename() {
+        return housename;
+    }
+
+    public void setRelation(String relation) {
+        this.relation = relation;
+    }
+
+    public String getRelation() {
+        return relation;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setIdcard(String idcard) {
+        this.idcard = idcard;
+    }
+
+    public String getIdcard() {
+        return idcard;
+    }
 
     public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("hmid", getHmid())
-            .append("aid", getAid())
-            .append("vname", getVname())
-            .append("housename", getHousename())
-            .append("relation", getRelation())
-            .append("sex", getSex())
-            .append("idcard", getIdcard())
-            .toString();
+        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
+                .append("hmid", getHmid())
+                .append("aid", getAid())
+                .append("vname", getVname())
+                .append("housename", getHousename())
+                .append("relation", getRelation())
+                .append("sex", getSex())
+                .append("idcard", getIdcard())
+                .toString();
     }
 }

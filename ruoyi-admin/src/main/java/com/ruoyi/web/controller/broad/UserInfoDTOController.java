@@ -15,12 +15,18 @@ public class UserInfoDTOController {
     private IUserInfoDTOService userInfoDTOService;
 
     @GetMapping("/userinfos")
-    public List<UserInfoDTO> findAll(){
+    public List<UserInfoDTO> findAll() {
         return userInfoDTOService.findAll();
     }
 
     @GetMapping("/userinfo/{userid}")
-    public UserInfoDTO findById(@PathVariable("userid") String userid){
+    public UserInfoDTO findById(@PathVariable("userid") String userid) {
         return userInfoDTOService.findById(userid);
     }
+
+    @GetMapping("/userinfo/{uname}")
+    public List<UserInfoDTO> findUserByName(@PathVariable("uname") String uname) {
+        return userInfoDTOService.findUserByName(uname);
+    }
+
 }

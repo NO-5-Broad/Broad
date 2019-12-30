@@ -16,14 +16,17 @@ public interface SocialcircleMapper {
 
     /**
      * 获取暮云圈 留言
+     *
      * @param index 结束行
      * @return
      */
-    public List<Socialcircle> selectSocialCircleList(@Param("in") int in , @Param("index") int index);
+    public List<Socialcircle> selectSocialCircleList(@Param("in") int in, @Param("index") int index);
+
     /**
      * 获取暮云圈 留言
-     * @param  index 结束行
+     *
+     * @param index 结束行
      * @return 热度榜
      */
-    public List<Socialcircle> selectSocialCircleList_Heat(@Param("in") int in , @Param("index") int index);
+    public List<Socialcircle> selectSocialCircleList_Heat(@Param("in") int in, @Param("index") int index);
 }

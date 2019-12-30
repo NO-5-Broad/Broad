@@ -14,6 +14,7 @@ public class PersonApi {
     private String state;//
     private Integer minage;
     private Integer maxage;
+
     public Integer getUserid() {
         return userid;
     }

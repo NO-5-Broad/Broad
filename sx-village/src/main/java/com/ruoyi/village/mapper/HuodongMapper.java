@@ -13,7 +13,7 @@ import java.util.List;
  * @Date: $
  */
 public interface HuodongMapper {
-       /**
+    /**
      * 政策记录列表
      *
      * @return
@@ -22,12 +22,14 @@ public interface HuodongMapper {
 
     /**
      * 根据hdid删除数据
+     *
      * @param id
      */
     int deleteHuodongByids(String[] id);
 
     /**
      * 添加党员活动信息
+     *
      * @param huodong
      * @return
      */
@@ -35,6 +37,7 @@ public interface HuodongMapper {
 
     /**
      * 根据hdid选择数据
+     *
      * @param hdid
      * @return
      */
@@ -42,6 +45,7 @@ public interface HuodongMapper {
 
     /**
      * 保存用户修改
+     *
      * @param huodong
      * @return
      */
@@ -49,6 +53,7 @@ public interface HuodongMapper {
 
     /**
      * 删除活动信息
+     *
      * @param hdid
      * @return
      */

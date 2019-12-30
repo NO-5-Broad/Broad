@@ -1,49 +1,77 @@
 package com.ruoyi.broad.domain;
+
 import com.ruoyi.common.base.BaseEntity;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+
 /**
  * 地图管理
  *
  * @author 张鸿权
  * @date 2019-01-18
  */
-public class Termap extends BaseEntity
-{
+public class Termap extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
-    /** 终端名称 */
+    /**
+     * 终端名称
+     */
     private String tname;
-    /** 终端编号 */
+    /**
+     * 终端编号
+     */
     private String tid;
-    /** 地址 */
+    /**
+     * 地址
+     */
     private String address;
-    /** 管理员姓名 */
+    /**
+     * 管理员姓名
+     */
     private String uname;
-    /** 所属区域 */
+    /**
+     * 所属区域
+     */
     private String aname;
-    /** 联系电话 */
+    /**
+     * 联系电话
+     */
     private String phone;
-    /** 基础设置 */
+    /**
+     * 基础设置
+     */
     private String basestation;
-    /** 经度 */
+    /**
+     * 经度
+     */
     private String latitude;
-    /** 纬度 */
+    /**
+     * 纬度
+     */
     private String longitude;
-    /** 更新时间 */
+    /**
+     * 更新时间
+     */
     private String receivetime;
-    /** 创建时间 */
+    /**
+     * 创建时间
+     */
     private String createdtime;
-    /** 终端管理员用户编号 */
+    /**
+     * 终端管理员用户编号
+     */
     private String manageruserid;
-    /** 终端管理员用户姓名 */
+    /**
+     * 终端管理员用户姓名
+     */
     private String managername;
 
-    /** 终端是否可用 */
+    /**
+     * 终端是否可用
+     */
     private Boolean isuse;
 
-    public void setTid(String tid)
-    {
+    public void setTid(String tid) {
         this.tid = tid;
     }
 
@@ -147,13 +175,17 @@ public class Termap extends BaseEntity
         this.managername = managername;
     }
 
-    public Boolean getIsuse() { return isuse; }
+    public Boolean getIsuse() {
+        return isuse;
+    }
 
-    public void setIsuse(Boolean isuse) { this.isuse = isuse; }
+    public void setIsuse(Boolean isuse) {
+        this.isuse = isuse;
+    }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
+        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
                 .append("tname", getTname())
                 .append("tid", getTid())
                 .append("address", getAddress())

@@ -22,24 +22,30 @@ public interface IComplaintService {
 
     /**
      * 根据fbid删除数据
+     *
      * @param fbid
      */
     public int deleteComplaintsByids(String fbid);
 
     /**
      * 添加投诉咨询数据
+     *
      * @param complaint
      * @return
      */
     public int insertcomplaintsmessages(Complaint complaint);
+
     /**
      * 根据fbid选择数据
+     *
      * @param fbid
      * @return
      */
     public Complaint selectByfbid(Integer fbid);
+
     /**
      * 保存用户修改
+     *
      * @param complaint
      * @return
      */

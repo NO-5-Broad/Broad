@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @date 2019/2/17 20:38
  **/
 @Controller
-@RequestMapping(value="/broad/prochan")
+@RequestMapping(value = "/broad/prochan")
 public class ProChanController {
     private String prefix = "broad/prochan";
 }

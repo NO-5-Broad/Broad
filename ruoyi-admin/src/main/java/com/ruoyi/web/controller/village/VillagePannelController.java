@@ -21,7 +21,7 @@ import java.util.List;
  **/
 @Controller
 @RequestMapping("/village/pannel")
-public class VillagePannelController  extends BaseController{
+public class VillagePannelController extends BaseController {
     private String prefix = "village/pannel";
 
     @GetMapping()

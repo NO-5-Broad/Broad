@@ -157,7 +157,7 @@ public class FilesController extends BaseController {
                 throw new BaseException("文件已被删除！");
             }
             PlaysOrder playsOrder = getOrderModel(files, channelId);
-            if (playsOrder != null ) {
+            if (playsOrder != null) {
                 playsOrder.setOrderBy(order);
                 rtn = playOrderService.insertOrder(playsOrder);
             }
@@ -252,8 +252,8 @@ public class FilesController extends BaseController {
 
     @RequestMapping("/show/{id}")
     public String show(@PathVariable("id") Long id, Model model) {
-        if (id != null && id > 0){
-            model.addAttribute("id",id);
+        if (id != null && id > 0) {
+            model.addAttribute("id", id);
         }
         return prefix + "/lunbo";
     }

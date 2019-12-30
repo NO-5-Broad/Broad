@@ -18,7 +18,9 @@ public class ProSpec {
     /*节目上传路径*/
     private String urls;
 
-    /** 操作（所属）用户编号 */
+    /**
+     * 操作（所属）用户编号
+     */
     private Long userid;
 
     public String getFid() {

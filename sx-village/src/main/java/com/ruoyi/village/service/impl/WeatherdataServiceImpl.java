@@ -10,6 +10,7 @@ import com.ruoyi.village.mapper.WeatherdataMapper;
 import com.ruoyi.village.domain.Weatherdata;
 import com.ruoyi.village.service.IWeatherdataService;
 import com.ruoyi.common.support.Convert;
+
 /**
  * 采集天气信息 服务层实现
  *
@@ -17,21 +18,19 @@ import com.ruoyi.common.support.Convert;
  * @date 2019-10-06
  */
 @Service
-public class WeatherdataServiceImpl implements IWeatherdataService
-{
+public class WeatherdataServiceImpl implements IWeatherdataService {
     @Autowired
     private WeatherdataMapper weatherdataMapper;
 
     /**
      * 查询采集天气信息
      *
-     * @param  id 采集天气信息ID
+     * @param id 采集天气信息ID
      * @return 采集天气信息
      */
     @Override
     @DataSource(value = DataSourceType.SXVILLAGE)
-    public Weatherdata selectWeatherdataById(Integer id)
-    {
+    public Weatherdata selectWeatherdataById(Integer id) {
         return weatherdataMapper.selectWeatherdataById(id);
     }
 
@@ -43,8 +42,7 @@ public class WeatherdataServiceImpl implements IWeatherdataService
      */
     @Override
     @DataSource(value = DataSourceType.SXVILLAGE)
-    public List<Weatherdata> selectWeatherdataList(Weatherdata weatherdata)
-    {
+    public List<Weatherdata> selectWeatherdataList(Weatherdata weatherdata) {
         return weatherdataMapper.selectWeatherdataList(weatherdata);
     }
 
@@ -56,8 +54,7 @@ public class WeatherdataServiceImpl implements IWeatherdataService
      */
     @Override
     @DataSource(value = DataSourceType.SXVILLAGE)
-    public int insertWeatherdata(Weatherdata weatherdata)
-    {
+    public int insertWeatherdata(Weatherdata weatherdata) {
         return weatherdataMapper.insertWeatherdata(weatherdata);
     }
 
@@ -69,8 +66,7 @@ public class WeatherdataServiceImpl implements IWeatherdataService
      */
     @Override
     @DataSource(value = DataSourceType.SXVILLAGE)
-    public int updateWeatherdata(Weatherdata weatherdata)
-    {
+    public int updateWeatherdata(Weatherdata weatherdata) {
         return weatherdataMapper.updateWeatherdata(weatherdata);
     }
 
@@ -82,8 +78,7 @@ public class WeatherdataServiceImpl implements IWeatherdataService
      */
     @Override
     @DataSource(value = DataSourceType.SXVILLAGE)
-    public int deleteWeatherdataByIds(String ids)
-    {
+    public int deleteWeatherdataByIds(String ids) {
         return weatherdataMapper.deleteWeatherdataByIds(Convert.toStrArray(ids));
     }
 

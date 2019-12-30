@@ -7,8 +7,7 @@ import com.ruoyi.common.utils.DateUtils;
 
 import java.util.Date;
 
-public class UserOperateModel extends BaseEntity
-{
+public class UserOperateModel extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     private int userId;
@@ -37,14 +36,12 @@ public class UserOperateModel extends BaseEntity
     @Excel(name = "创建时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss", type = Type.EXPORT)
     private Date createTime;
 
-    public UserOperateModel()
-    {
+    public UserOperateModel() {
 
     }
 
     public UserOperateModel(int userId, String userName, String userSex, String userPhone,
-                            String userEmail, double userBalance, String status)
-    {
+                            String userEmail, double userBalance, String status) {
         this.userId = userId;
         this.userName = userName;
         this.userSex = userSex;
@@ -55,83 +52,67 @@ public class UserOperateModel extends BaseEntity
         this.createTime = DateUtils.getNowDate();
     }
 
-    public int getUserId()
-    {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId)
-    {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
-    public String getUserName()
-    {
+    public String getUserName() {
         return userName;
     }
 
-    public void setUserName(String userName)
-    {
+    public void setUserName(String userName) {
         this.userName = userName;
     }
 
-    public String getUserSex()
-    {
+    public String getUserSex() {
         return userSex;
     }
 
-    public void setUserSex(String userSex)
-    {
+    public void setUserSex(String userSex) {
         this.userSex = userSex;
     }
 
-    public String getUserPhone()
-    {
+    public String getUserPhone() {
         return userPhone;
     }
 
-    public void setUserPhone(String userPhone)
-    {
+    public void setUserPhone(String userPhone) {
         this.userPhone = userPhone;
     }
 
-    public String getUserEmail()
-    {
+    public String getUserEmail() {
         return userEmail;
     }
 
-    public void setUserEmail(String userEmail)
-    {
+    public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
     }
 
-    public double getUserBalance()
-    {
+    public double getUserBalance() {
         return userBalance;
     }
 
-    public void setUserBalance(double userBalance)
-    {
+    public void setUserBalance(double userBalance) {
         this.userBalance = userBalance;
     }
 
-    public String getStatus()
-    {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(String status)
-    {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public Date getCreateTime()
-    {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime)
-    {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 }

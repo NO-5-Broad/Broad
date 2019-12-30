@@ -22,7 +22,7 @@ function init_rvis() {
 
             // 遍历服务器数据显示到页面
 
-            for (i in pre_data){
+            for (i in pre_data) {
                 rain.push(pre_data[i].rain);
                 flow.push(pre_data[i].flow);
                 wlevel.push(pre_data[i].wlevel);
@@ -43,10 +43,10 @@ function init_rvis() {
 
 
             ec_rvis_rain_option1 = {
-                tooltip : {
+                tooltip: {
                     trigger: 'axis'
                 },
-                calculable : true,
+                calculable: true,
                 grid: {
                     left: '0%',
                     right: '0%',
@@ -54,26 +54,26 @@ function init_rvis() {
                     bottom: '0%',
                     containLabel: true
                 },
-                xAxis : [
+                xAxis: [
                     {
-                        type : 'category',
-                        boundaryGap : false,
-                        data : common_time
+                        type: 'category',
+                        boundaryGap: false,
+                        data: common_time
                     }
                 ],
-                yAxis : [
+                yAxis: [
                     {
-                        type : 'value'
+                        type: 'value'
                     }
                 ],
-                series : [
+                series: [
                     {
-                        name:'雨量走势',
-                        type:'line',
-                        smooth:true,
+                        name: '雨量走势',
+                        type: 'line',
+                        smooth: true,
                         itemStyle: {
                             normal: {   //颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
-                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1,[{
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                                         offset: 0, color: '#d7f4f8' // 0% 处的颜色
                                     }, {
                                         offset: 0.5, color: '#eefcfd' // 100% 处的颜色
@@ -90,25 +90,25 @@ function init_rvis() {
                             emphasis: {
                                 color: '#cbd672',
                                 lineStyle: {        // 系列级个性化折线样式
-                                    width:2,
+                                    width: 2,
                                     type: 'dotted',
                                     color: "#cbd672" //折线的颜色
                                 }
                             }
                         },//线条样式
-                        symbolSize:5, //折线点的大小
+                        symbolSize: 5, //折线点的大小
                         areaStyle: {normal: {}},
-                        data:rain
+                        data: rain
                     }
                 ]
             };
             ec_rvis_rain.setOption(ec_rvis_rain_option1);
 
             ec_rvis_flow_option2 = {
-                tooltip : {
+                tooltip: {
                     trigger: 'axis'
                 },
-                calculable : true,
+                calculable: true,
                 grid: {
                     left: '0%',
                     right: '0%',
@@ -116,26 +116,26 @@ function init_rvis() {
                     bottom: '0%',
                     containLabel: true
                 },
-                xAxis : [
+                xAxis: [
                     {
-                        type : 'category',
-                        boundaryGap : false,
-                        data : common_time
+                        type: 'category',
+                        boundaryGap: false,
+                        data: common_time
                     }
                 ],
-                yAxis : [
+                yAxis: [
                     {
-                        type : 'value'
+                        type: 'value'
                     }
                 ],
-                series : [
+                series: [
                     {
-                        name:'河水流量走势',
-                        type:'line',
-                        smooth:true,
+                        name: '河水流量走势',
+                        type: 'line',
+                        smooth: true,
                         itemStyle: {
                             normal: {   //颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
-                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1,[{
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                                         offset: 0, color: '#d7f4f8' // 0% 处的颜色
                                     }, {
                                         offset: 0.5, color: '#eefcfd' // 100% 处的颜色
@@ -152,25 +152,25 @@ function init_rvis() {
                             emphasis: {
                                 color: '#D61A15',
                                 lineStyle: {        // 系列级个性化折线样式
-                                    width:2,
+                                    width: 2,
                                     type: 'dotted',
                                     color: "#d61a15" //折线的颜色
                                 }
                             }
                         },//线条样式
-                        symbolSize:5, //折线点的大小
+                        symbolSize: 5, //折线点的大小
                         areaStyle: {normal: {}},
-                        data:flow
+                        data: flow
                     }
                 ]
             };
             ec_rvis_flow.setOption(ec_rvis_flow_option2);
 
             ec_rvis_wlevel_option3 = {
-                tooltip : {
+                tooltip: {
                     trigger: 'axis'
                 },
-                calculable : true,
+                calculable: true,
                 grid: {
                     left: '0%',
                     right: '0%',
@@ -178,26 +178,26 @@ function init_rvis() {
                     bottom: '0%',
                     containLabel: true
                 },
-                xAxis : [
+                xAxis: [
                     {
-                        type : 'category',
-                        boundaryGap : false,
-                        data : common_time
+                        type: 'category',
+                        boundaryGap: false,
+                        data: common_time
                     }
                 ],
-                yAxis : [
+                yAxis: [
                     {
-                        type : 'value'
+                        type: 'value'
                     }
                 ],
-                series : [
+                series: [
                     {
-                        name:'河流水位走势',
-                        type:'line',
-                        smooth:true,
+                        name: '河流水位走势',
+                        type: 'line',
+                        smooth: true,
                         itemStyle: {
                             normal: {   //颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
-                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1,[{
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                                         offset: 0, color: '#d7f4f8' // 0% 处的颜色
                                     }, {
                                         offset: 0.5, color: '#eefcfd' // 100% 处的颜色
@@ -214,25 +214,25 @@ function init_rvis() {
                             emphasis: {
                                 color: '#d636d3',
                                 lineStyle: {        // 系列级个性化折线样式
-                                    width:2,
+                                    width: 2,
                                     type: 'dotted',
                                     color: "#d636d3" //折线的颜色
                                 }
                             }
                         },//线条样式
-                        symbolSize:5, //折线点的大小
+                        symbolSize: 5, //折线点的大小
                         areaStyle: {normal: {}},
-                        data:wlevel
+                        data: wlevel
                     }
                 ]
             };
             ec_rvis_wlevel.setOption(ec_rvis_wlevel_option3);
 
             ec_rvis_ph_option4 = {
-                tooltip : {
+                tooltip: {
                     trigger: 'axis'
                 },
-                calculable : true,
+                calculable: true,
                 grid: {
                     left: '0%',
                     right: '0%',
@@ -240,26 +240,26 @@ function init_rvis() {
                     bottom: '0%',
                     containLabel: true
                 },
-                xAxis : [
+                xAxis: [
                     {
-                        type : 'category',
-                        boundaryGap : false,
-                        data : common_time
+                        type: 'category',
+                        boundaryGap: false,
+                        data: common_time
                     }
                 ],
-                yAxis : [
+                yAxis: [
                     {
-                        type : 'value'
+                        type: 'value'
                     }
                 ],
-                series : [
+                series: [
                     {
-                        name:'河流酸碱度走势',
-                        type:'line',
-                        smooth:true,
+                        name: '河流酸碱度走势',
+                        type: 'line',
+                        smooth: true,
                         itemStyle: {
                             normal: {   //颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
-                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1,[{
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                                         offset: 0, color: '#d7f4f8' // 0% 处的颜色
                                     }, {
                                         offset: 0.5, color: '#eefcfd' // 100% 处的颜色
@@ -276,25 +276,25 @@ function init_rvis() {
                             emphasis: {
                                 color: '#d6742e',
                                 lineStyle: {        // 系列级个性化折线样式
-                                    width:2,
+                                    width: 2,
                                     type: 'dotted',
                                     color: "#d6742e" //折线的颜色
                                 }
                             }
                         },//线条样式
-                        symbolSize:5, //折线点的大小
+                        symbolSize: 5, //折线点的大小
                         areaStyle: {normal: {}},
-                        data:ph
+                        data: ph
                     }
                 ]
             };
             ec_rvis_ph.setOption(ec_rvis_ph_option4);
 
             ec_rvis_pm_option5 = {
-                tooltip : {
+                tooltip: {
                     trigger: 'axis'
                 },
-                calculable : true,
+                calculable: true,
                 grid: {
                     left: '0%',
                     right: '0%',
@@ -302,26 +302,26 @@ function init_rvis() {
                     bottom: '0%',
                     containLabel: true
                 },
-                xAxis : [
+                xAxis: [
                     {
-                        type : 'category',
-                        boundaryGap : false,
-                        data : common_time
+                        type: 'category',
+                        boundaryGap: false,
+                        data: common_time
                     }
                 ],
-                yAxis : [
+                yAxis: [
                     {
-                        type : 'value'
+                        type: 'value'
                     }
                 ],
-                series : [
+                series: [
                     {
-                        name:'PM2.5走势',
-                        type:'line',
-                        smooth:true,
+                        name: 'PM2.5走势',
+                        type: 'line',
+                        smooth: true,
                         itemStyle: {
                             normal: {   //颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
-                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1,[{
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                                         offset: 0, color: '#d7f4f8' // 0% 处的颜色
                                     }, {
                                         offset: 0.5, color: '#eefcfd' // 100% 处的颜色
@@ -338,25 +338,25 @@ function init_rvis() {
                             emphasis: {
                                 color: '#6DD623',
                                 lineStyle: {        // 系列级个性化折线样式
-                                    width:2,
+                                    width: 2,
                                     type: 'dotted',
                                     color: "#6dd623" //折线的颜色
                                 }
                             }
                         },//线条样式
-                        symbolSize:5, //折线点的大小
+                        symbolSize: 5, //折线点的大小
                         areaStyle: {normal: {}},
-                        data:pm
+                        data: pm
                     }
                 ]
             };
             ec_rvis_pm.setOption(ec_rvis_pm_option5);
 
             ec_rvis_temp_option6 = {
-                tooltip : {
+                tooltip: {
                     trigger: 'axis'
                 },
-                calculable : true,
+                calculable: true,
                 grid: {
                     left: '0%',
                     right: '0%',
@@ -364,26 +364,26 @@ function init_rvis() {
                     bottom: '0%',
                     containLabel: true
                 },
-                xAxis : [
+                xAxis: [
                     {
-                        type : 'category',
-                        boundaryGap : false,
-                        data : common_time
+                        type: 'category',
+                        boundaryGap: false,
+                        data: common_time
                     }
                 ],
-                yAxis : [
+                yAxis: [
                     {
-                        type : 'value'
+                        type: 'value'
                     }
                 ],
-                series : [
+                series: [
                     {
-                        name:'温度走势',
-                        type:'line',
-                        smooth:true,
+                        name: '温度走势',
+                        type: 'line',
+                        smooth: true,
                         itemStyle: {
                             normal: {   //颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
-                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1,[{
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                                         offset: 0, color: '#d7f4f8' // 0% 处的颜色
                                     }, {
                                         offset: 0.5, color: '#eefcfd' // 100% 处的颜色
@@ -400,25 +400,25 @@ function init_rvis() {
                             emphasis: {
                                 color: '#4fd6d2',
                                 lineStyle: {        // 系列级个性化折线样式
-                                    width:2,
+                                    width: 2,
                                     type: 'dotted',
                                     color: "#4fd6d2" //折线的颜色
                                 }
                             }
                         },//线条样式
-                        symbolSize:5, //折线点的大小
+                        symbolSize: 5, //折线点的大小
                         areaStyle: {normal: {}},
-                        data:temp
+                        data: temp
                     }
                 ]
             };
             ec_rvis_temp.setOption(ec_rvis_temp_option6);
 
             ec_rvis_hum_option7 = {
-                tooltip : {
+                tooltip: {
                     trigger: 'axis'
                 },
-                calculable : true,
+                calculable: true,
                 grid: {
                     left: '0%',
                     right: '0%',
@@ -426,26 +426,26 @@ function init_rvis() {
                     bottom: '0%',
                     containLabel: true
                 },
-                xAxis : [
+                xAxis: [
                     {
-                        type : 'category',
-                        boundaryGap : false,
-                        data : common_time
+                        type: 'category',
+                        boundaryGap: false,
+                        data: common_time
                     }
                 ],
-                yAxis : [
+                yAxis: [
                     {
-                        type : 'value'
+                        type: 'value'
                     }
                 ],
-                series : [
+                series: [
                     {
-                        name:'湿度走势',
-                        type:'line',
-                        smooth:true,
+                        name: '湿度走势',
+                        type: 'line',
+                        smooth: true,
                         itemStyle: {
                             normal: {   //颜色渐变函数 前四个参数分别表示四个位置依次为左、下、右、上
-                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1,[{
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                                         offset: 0, color: '#d7f4f8' // 0% 处的颜色
                                     }, {
                                         offset: 0.5, color: '#eefcfd' // 100% 处的颜色
@@ -462,25 +462,23 @@ function init_rvis() {
                             emphasis: {
                                 color: '#4fd6d2',
                                 lineStyle: {        // 系列级个性化折线样式
-                                    width:2,
+                                    width: 2,
                                     type: 'dotted',
                                     color: "#4fd6d2" //折线的颜色
                                 }
                             }
                         },//线条样式
-                        symbolSize:5, //折线点的大小
+                        symbolSize: 5, //折线点的大小
                         areaStyle: {normal: {}},
-                        data:hum
+                        data: hum
                     }
                 ]
             };
             ec_rvis_hum.setOption(ec_rvis_hum_option7);
 
 
-
         }
     })
-
 
 
 }

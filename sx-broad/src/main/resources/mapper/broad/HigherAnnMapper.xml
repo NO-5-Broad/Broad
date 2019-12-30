@@ -5,14 +5,14 @@
 <mapper namespace="com.ruoyi.broad.mapper.HigherAnnMapper">
 
     <resultMap type="HigherAnn" id="HigherAnnResult">
-        <result property="title"    column="title"    />
-        <result property="content"    column="content"    />
-        <result property="uname"    column="senduname"    />
-        <result property="sendtime"    column="sendtime"    />
-        <result property="isread"    column="isread"    />
-        <result property="mhid"    column="mhid"    />
-        <result property="aid"    column="aid"    />
-        <result property="senduserid"    column="senduserid"    />
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="uname" column="senduname"/>
+        <result property="sendtime" column="sendtime"/>
+        <result property="isread" column="isread"/>
+        <result property="mhid" column="mhid"/>
+        <result property="aid" column="aid"/>
+        <result property="senduserid" column="senduserid"/>
     </resultMap>
 
     <!--表名 -->
@@ -27,20 +27,28 @@
     </sql>
 
     <!-- 获取公告列表(分页) -->
-    <select id="selectHigherAnnList" parameterType="HigherAnn" resultMap="HigherAnnResult" >
+    <select id="selectHigherAnnList" parameterType="HigherAnn" resultMap="HigherAnnResult">
         SELECT
-            mhid,
-            title,
-            content,
-            senduserid,
-            su.uname as senduname,
-            an.aid as aid,
-            sendtime,
-            isread
-        from (<include refid="table"/> an
-        LEFT JOIN <include refid="areatable"/> a on an.aid = a.aid)
-        LEFT JOIN <include refid="usertable"/> u on an.userid = u.userid
-        LEFT JOIN <include refid="usertable"/> su on an.senduserid = su.userid
+        mhid,
+        title,
+        content,
+        senduserid,
+        su.uname as senduname,
+        an.aid as aid,
+        sendtime,
+        isread
+        from (
+        <include refid="table"/>
+        an
+        LEFT JOIN
+        <include refid="areatable"/>
+        a on an.aid = a.aid)
+        LEFT JOIN
+        <include refid="usertable"/>
+        u on an.userid = u.userid
+        LEFT JOIN
+        <include refid="usertable"/>
+        su on an.senduserid = su.userid
         <where>
             <if test="mhid != null  and mhid != '' ">and mhid like CONCAT('%',#{mhid},'%')</if>
             <if test="title != null  and title != '' ">and title like CONCAT('%',#{title},'%')</if>
@@ -48,14 +56,6 @@
         </where>
         order by sendtime asc
     </select>
-
-
-
-
-
-
-
-
 
 
 </mapper>

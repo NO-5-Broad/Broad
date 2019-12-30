@@ -75,7 +75,7 @@
                 }, 1000);
             },
             picEle: function (data = {}, index) {
-               // var urls = "/profile/" +  "${data.fileName}" +"." +"${data.suffix}";
+                // var urls = "/profile/" +  "${data.fileName}" +"." +"${data.suffix}";
                 return `<div class="swiper-slide" style="background: white"><img src="${data.ur}" alt=""></div>`;
             },
             videoEle: function (data = {}, index) {
@@ -108,7 +108,7 @@
             },
             getListData: function () {
                 $.ajax({
-                    url: prefix + "/listOrder?channelId="+2,
+                    url: prefix + "/listOrder?channelId=" + 2,
                     type: "get",
                     async: false,//同步
                     data: {},//传出的数据

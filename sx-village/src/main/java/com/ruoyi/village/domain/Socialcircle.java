@@ -13,23 +13,41 @@ import java.util.List;
 public class Socialcircle extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
-    /**暮云圈编号*/
+    /**
+     * 暮云圈编号
+     */
     private int pcid;
-    /**评论数目*/
+    /**
+     * 评论数目
+     */
     private int pcsennum;
-    /**用户所属地区村社区 aid*/
+    /**
+     * 用户所属地区村社区 aid
+     */
     private String aid;
-    /**上传视频地址*/
+    /**
+     * 上传视频地址
+     */
     private String videourl;
-    /**上传图片地址*/
+    /**
+     * 上传图片地址
+     */
     private String imgurl;
-    /**发布时间*/
+    /**
+     * 发布时间
+     */
     private String adddate;
-    /**发布内容*/
+    /**
+     * 发布内容
+     */
     private String pcontent;
-    /**发布人编号*/
+    /**
+     * 发布人编号
+     */
     private int uid;
-    /**子孩子*/
+    /**
+     * 子孩子
+     */
     private List<SocialcircleComment> child;
 
 
@@ -80,7 +98,6 @@ public class Socialcircle extends BaseEntity {
     public void setUid(int uid) {
         this.uid = uid;
     }
-
 
 
     public static long getSerialVersionUID() {

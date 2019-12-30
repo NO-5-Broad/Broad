@@ -10,15 +10,25 @@ import com.ruoyi.common.base.BaseEntity;
  **/
 public class Textmessages extends BaseEntity {
     private static final long serialVersionUID = 1L;
-    /**电话id*/
+    /**
+     * 电话id
+     */
     private String telid;
-    /**终端id*/
+    /**
+     * 终端id
+     */
     private String tid;
-    /** 电话号码*/
+    /**
+     * 电话号码
+     */
     private String tel;
-    /** 电话号码所属人*/
+    /**
+     * 电话号码所属人
+     */
     private String telperson;
-    /** 是否可用*/
+    /**
+     * 是否可用
+     */
     private int isuse;
 
 

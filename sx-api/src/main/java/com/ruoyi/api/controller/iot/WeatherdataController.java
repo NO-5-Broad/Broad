@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import com.ruoyi.village.domain.Weatherdata;
 import com.ruoyi.village.service.IWeatherdataService;
 import com.ruoyi.framework.web.base.BaseController;
+
 /**
  * 采集天气信息 控制层
  *
@@ -19,8 +20,7 @@ import com.ruoyi.framework.web.base.BaseController;
 @RequestMapping("/api/iot/weatherdata")
 @CrossOrigin
 @Api(value = "天气信息接口")
-public class WeatherdataController extends BaseController
-{
+public class WeatherdataController extends BaseController {
 
     @Autowired
     private IWeatherdataService weatherdataService;
@@ -32,13 +32,10 @@ public class WeatherdataController extends BaseController
     @CrossOrigin
     @GetMapping("/list")
     @ApiOperation(value = "查询天气信息采集列表")
-    public RongApiRes list(Weatherdata weatherdata)
-    {
+    public RongApiRes list(Weatherdata weatherdata) {
 
         return RongApiService.get_list(weatherdataService.selectWeatherdataList(weatherdata));
     }
-
-
 
 
 }

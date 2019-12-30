@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class BroadBaseController extends BaseController {
 
     @GetMapping("/broad/todo")
-    public String todo()
-    {
+    public String todo() {
         return "broad/todo";
     }
 

@@ -139,7 +139,7 @@ public class TempgroupController<addtemp> extends BaseController{
 //    }
 @PostMapping("/addtemp")
 @ResponseBody
-public String addTemp(Tempgroup tempgroup){
+public String addTemp(Tempgroup tempgroup) {
     Date d = new Date();
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     tempgroup.setCreatetime(sdf.format(d));

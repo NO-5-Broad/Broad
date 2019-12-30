@@ -12,25 +12,22 @@ import java.util.List;
 public interface ManageMapper {
 
     /**
-     * @author cx
      * @param manage
-     *
+     * @author cx
      * @Description 查询管理参数列表
      */
     public List<Manage> selectManagelist(Manage manage);
 
     /**
-     * @author cx
      * @param manage
-     *
+     * @author cx
      * @Description 更新参数列表
      */
     public int updateManage(Manage manage);
 
     /**
-     * @author cx
      * @param manage
-     *
+     * @author cx
      * @Description 插入参数列表
      */
     public int insertManage(Manage manage);

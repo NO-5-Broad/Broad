@@ -15,13 +15,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * Swagger2的接口配置
- * 
+ *
  * @author ruoyi
  */
 @Configuration
 @EnableSwagger2
-public class SwaggerConfig
-{
+public class SwaggerConfig {
 
     // 定义分隔符,配置Swagger多包
     private static final String splitor = ";";
@@ -30,14 +29,13 @@ public class SwaggerConfig
      * 创建API
      */
     @Bean
-    public Docket createRestApi()
-    {
+    public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 // 详细定制
                 .apiInfo(apiInfo())
                 .select()
                 // 指定当前包路径
-                .apis(basePackage("com.ruoyi.api.controller.broad"+splitor+"com.ruoyi.api.controller.village"+splitor+"com.ruoyi.api.controller.system"))
+                .apis(basePackage("com.ruoyi.api.controller.broad" + splitor + "com.ruoyi.api.controller.village" + splitor + "com.ruoyi.api.controller.system"))
                 // 扫描所有 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .build();
@@ -46,8 +44,7 @@ public class SwaggerConfig
     /**
      * 添加摘要信息
      */
-    private ApiInfo apiInfo()
-    {
+    private ApiInfo apiInfo() {
         // 用ApiInfoBuilder进行定制
         return new ApiInfoBuilder()
                 .title("融媒体管理系统_接口文档")
@@ -59,16 +56,17 @@ public class SwaggerConfig
 
 
     /**
-        * 重写basePackage方法，使能够实现多包访问
-        * @author 张超 teavamc
-        * @date 2019/1/26
-        * @return com.google.common.base.Predicate<springfox.documentation.RequestHandler>
-        */
+     * 重写basePackage方法，使能够实现多包访问
+     *
+     * @return com.google.common.base.Predicate<springfox.documentation.RequestHandler>
+     * @author 张超 teavamc
+     * @date 2019/1/26
+     */
     public static Predicate<RequestHandler> basePackage(final String basePackage) {
         return input -> declaringClass(input).transform(handlerPackage(basePackage)).or(true);
     }
 
-    private static Function<Class<?>, Boolean> handlerPackage(final String basePackage)     {
+    private static Function<Class<?>, Boolean> handlerPackage(final String basePackage) {
         return input -> {
             // 循环判断匹配
             for (String strPackage : basePackage.split(splitor)) {

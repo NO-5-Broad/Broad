@@ -7,27 +7,49 @@ import java.util.List;
 public class Comment extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
-    /**评论表id*/
+    /**
+     * 评论表id
+     */
     private int coid;
-    /**评论所属新闻编号*/
+    /**
+     * 评论所属新闻编号
+     */
     private String pcid;
-    /**回复某评论的coid*/
+    /**
+     * 回复某评论的coid
+     */
     private String replyid;
-    /**评论人id*/
+    /**
+     * 评论人id
+     */
     private int uid;
-    /**评论人姓名*/
+    /**
+     * 评论人姓名
+     */
     private String uname;
-    /**评论内容*/
+    /**
+     * 评论内容
+     */
     private String ccontent;
-    /**是否为敏感评论 是为1 否为0*/
+    /**
+     * 是否为敏感评论 是为1 否为0
+     */
     private String issensitive;
-    /**评论日期*/
+    /**
+     * 评论日期
+     */
     private String cdate;
-    /**用户所属地区村社区 aid*/
+    /**
+     * 用户所属地区村社区 aid
+     */
     private String aid;
-    /**评论目标用户id*/
+    /**
+     * 评论目标用户id
+     */
     private String to_uid;
-    /**评论目标人姓名*/
+    /**
+     * 评论目标人姓名
+     */
     private String to_name;
     //点赞
     private int good;

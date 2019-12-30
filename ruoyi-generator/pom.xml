@@ -10,17 +10,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>ruoyi-generator</artifactId>
-	
-	<description>
-	    generator代码生成
-	</description>
-	
-	<properties>
+
+    <description>
+        generator代码生成
+    </description>
+
+    <properties>
         <velocity.version>1.7</velocity.version>
     </properties>
 
     <dependencies>
-    
+
         <!--velocity代码生成使用模板 -->
         <dependency>
             <groupId>org.apache.velocity</groupId>
@@ -37,11 +37,11 @@
 
         <!-- 广播模块-->
         <!--<dependency>-->
-            <!--<groupId>com.ruoyi</groupId>-->
-            <!--<artifactId>sx-broad</artifactId>-->
-            <!--<version>${ruoyi.version}</version>-->
+        <!--<groupId>com.ruoyi</groupId>-->
+        <!--<artifactId>sx-broad</artifactId>-->
+        <!--<version>${ruoyi.version}</version>-->
         <!--</dependency>-->
 
     </dependencies>
-	
+
 </project>

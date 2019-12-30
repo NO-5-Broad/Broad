@@ -21,70 +21,68 @@ import java.util.List;
  **/
 @Service
 public class PolicyinfoServiceImpl implements IPolicyinfoService {
-        @Autowired
-        private PolicyinfoMapper policyinfoMapper;
+    @Autowired
+    private PolicyinfoMapper policyinfoMapper;
 
-        @Override
-        @DataSource(value = DataSourceType.SXVILLAGE)
-        public List<Policyinfo> selectPolicyinfoList(Policyinfo policyinfo) {
-            return policyinfoMapper.selectPolicyinfoList(policyinfo);
-        }
-
-        @Override
-        @DataSource(value = DataSourceType.SXVILLAGE)
-        public int deletePolicyinfoByids(String id) {
-            return policyinfoMapper.deletePolicyinfoByids(Convert.toStrArray(id));
-        }
-
-        @Override
-        @DataSource(value = DataSourceType.SXVILLAGE)
-        public int insertpolicyinfo(Policyinfo policyinfo) {
-            return policyinfoMapper.insertpolicyinfo(policyinfo);
-        }
-
-        @Override
-        @DataSource(value = DataSourceType.SXVILLAGE)
-        public Policyinfo selectBypoinid(Integer shiid) {
-            return policyinfoMapper.selectBypoinid(shiid);
-        }
-
-        @Override
-        @DataSource(value = DataSourceType.SXVILLAGE)
-        public int deletePolicyinfoByIds(String shiid) {
-            return policyinfoMapper.deletePolicyinfoByIds(shiid);
-        }
-
-        @Override
-        @DataSource(value = DataSourceType.SXVILLAGE)
-        public int updatePolicyinfo(Policyinfo politics) {
-            return policyinfoMapper.updatePolicyinfo(politics);
-        }
-
-        @Override
-        @DataSource(value = DataSourceType.SXVILLAGE)
-        public List<Policyinfo> selectpoliclimitten(){
-            return policyinfoMapper.selectpoliclimitten();
-        }
-
-
-
-        @Override
-        @DataSource(value = DataSourceType.SXVILLAGE)
-        public List<Comment> selectinfocommentListlimit(pubObjApi info){
-            return policyinfoMapper.selectinfocommentListlimit(info);
-        }
-
-
-
-        @Override
-        @DataSource(value = DataSourceType.SXVILLAGE)
-        public List<Comment> selectinforecommentList(int coid){
-            return policyinfoMapper.selectinforecommentList(coid);
-        }
-
-        @Override
-        @DataSource(value = DataSourceType.SXVILLAGE)
-        public int insertInfoCM(Comment comment) {
-            return policyinfoMapper.insertInfoCM(comment);
-        }
+    @Override
+    @DataSource(value = DataSourceType.SXVILLAGE)
+    public List<Policyinfo> selectPolicyinfoList(Policyinfo policyinfo) {
+        return policyinfoMapper.selectPolicyinfoList(policyinfo);
     }
+
+    @Override
+    @DataSource(value = DataSourceType.SXVILLAGE)
+    public int deletePolicyinfoByids(String id) {
+        return policyinfoMapper.deletePolicyinfoByids(Convert.toStrArray(id));
+    }
+
+    @Override
+    @DataSource(value = DataSourceType.SXVILLAGE)
+    public int insertpolicyinfo(Policyinfo policyinfo) {
+        return policyinfoMapper.insertpolicyinfo(policyinfo);
+    }
+
+    @Override
+    @DataSource(value = DataSourceType.SXVILLAGE)
+    public Policyinfo selectBypoinid(Integer shiid) {
+        return policyinfoMapper.selectBypoinid(shiid);
+    }
+
+    @Override
+    @DataSource(value = DataSourceType.SXVILLAGE)
+    public int deletePolicyinfoByIds(String shiid) {
+        return policyinfoMapper.deletePolicyinfoByIds(shiid);
+    }
+
+    @Override
+    @DataSource(value = DataSourceType.SXVILLAGE)
+    public int updatePolicyinfo(Policyinfo politics) {
+        return policyinfoMapper.updatePolicyinfo(politics);
+    }
+
+    @Override
+    @DataSource(value = DataSourceType.SXVILLAGE)
+    public List<Policyinfo> selectpoliclimitten() {
+        return policyinfoMapper.selectpoliclimitten();
+    }
+
+
+    @Override
+    @DataSource(value = DataSourceType.SXVILLAGE)
+    public List<Comment> selectinfocommentListlimit(pubObjApi info) {
+        return policyinfoMapper.selectinfocommentListlimit(info);
+    }
+
+
+    @Override
+    @DataSource(value = DataSourceType.SXVILLAGE)
+    public List<Comment> selectinforecommentList(int coid) {
+        return policyinfoMapper.selectinforecommentList(coid);
+    }
+
+    @Override
+    @DataSource(value = DataSourceType.SXVILLAGE)
+    public int insertInfoCM(Comment comment) {
+        return policyinfoMapper.insertInfoCM(comment);
+    }
+}

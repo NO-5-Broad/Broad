@@ -1,7 +1,6 @@
 package com.ruoyi.api.controller.system;
 
 
-
 import com.ruoyi.api.domain.RongApiRes;
 import com.ruoyi.api.service.RongApiService;
 import com.ruoyi.broad.service.IOrganizationService;
@@ -50,14 +49,13 @@ public class User extends BaseController {
     @PostMapping("/resetPwd")
     @CrossOrigin
     @ApiOperation(value = "修改用户密码信息")
-    public AjaxResult resetUserPwd(SysUser user,String new_pwd)
-    {
-        if(sysUserService.selectUserById(user.getUserId()).getPassword().equals(passwordService.encryptPassword(user.getLoginName(), user.getPassword(), user.getSalt()))){
+    public AjaxResult resetUserPwd(SysUser user, String new_pwd) {
+        if (sysUserService.selectUserById(user.getUserId()).getPassword().equals(passwordService.encryptPassword(user.getLoginName(), user.getPassword(), user.getSalt()))) {
 
             user.setSalt(ShiroUtils.randomSalt());
             user.setPassword(passwordService.encryptPassword(user.getLoginName(), new_pwd, user.getSalt()));
             return toAjax(sysUserService.resetUserPwd(user));
-        }else{
+        } else {
             String msg = "修改密码失败";
             return error(msg);
         }
@@ -67,43 +65,36 @@ public class User extends BaseController {
     @PostMapping("/upUser")
     @CrossOrigin
     @ApiOperation(value = "修改用户详细信息")
-    public AjaxResult updateUser(SysUser user)
-    {
+    public AjaxResult updateUser(SysUser user) {
         return toAjax(sysUserService.updateUserInfo(user));
     }
 
     @GetMapping("/selectById")
     @CrossOrigin
     @ApiOperation(value = "通过用户ID查询用户")
-    public RongApiRes selectUserById(Long userId)
-    {
+    public RongApiRes selectUserById(Long userId) {
         return RongApiService.get_bean(sysUserService.selectUserById(userId));
     }
+
     @GetMapping("/selectByName")
     @CrossOrigin
     @ApiOperation(value = "通过用户名查询用户")
-    public RongApiRes selectUserByLoginName(String userName)
-    {
+    public RongApiRes selectUserByLoginName(String userName) {
         return RongApiService.get_bean(sysUserService.selectUserByLoginName(userName));
     }
 
     @PostMapping("/login")
     @CrossOrigin
     @ApiOperation(value = "用户登录")
-    public AjaxResult ajaxLogin(String loginid, String pwd, Boolean rememberMe)
-    {
+    public AjaxResult ajaxLogin(String loginid, String pwd, Boolean rememberMe) {
         UsernamePasswordToken token = new UsernamePasswordToken(loginid, pwd, rememberMe);
         Subject subject = SecurityUtils.getSubject();
-        try
-        {
+        try {
             subject.login(token);
             return AjaxResult.success(sysUserService.selectUserForAppByLoginName(loginid));
-        }
-        catch (AuthenticationException e)
-        {
+        } catch (AuthenticationException e) {
             String msg = "用户名或密码错误";
-            if (StringUtils.isNotEmpty(e.getMessage()))
-            {
+            if (StringUtils.isNotEmpty(e.getMessage())) {
                 msg = e.getMessage();
             }
             return error(msg);
@@ -113,20 +104,18 @@ public class User extends BaseController {
     @GetMapping("/selectMenu")
     @CrossOrigin
     @ApiOperation(value = "通过用户名查询用户")
-    public RongApiRes selectMenuById(SysUser user)
-    {
+    public RongApiRes selectMenuById(SysUser user) {
         return RongApiService.get_list(menuService.selectMenusByUser(user));
     }
 
     @PostMapping("/insertHeadImg")
     @CrossOrigin
     @ApiOperation(value = "更换头像")
-    public AjaxResult insertheadimg(@RequestParam(value = "userid") Long userid,@RequestParam(value = "files", required = false) MultipartFile file,
+    public AjaxResult insertheadimg(@RequestParam(value = "userid") Long userid, @RequestParam(value = "files", required = false) MultipartFile file,
                                     @RequestParam(value = "filename", required = false) String fname,
-                                    @RequestParam(value = "flenth" ,required = false)String flenth, //时长
-                                    @RequestParam(value = "fsize",required = false) String fsize)
-    {
-        SysUser user =new SysUser();
+                                    @RequestParam(value = "flenth", required = false) String flenth, //时长
+                                    @RequestParam(value = "fsize", required = false) String fsize) {
+        SysUser user = new SysUser();
         user.setUserId(userid);
 
         String year = DateUtil.getYear();
@@ -134,7 +123,7 @@ public class User extends BaseController {
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
         String maxfileid = dateFormat.format(date); //获取文件上传时的时间参数字符串作为文件名
-        try{
+        try {
             //保存图片
             Files g = bFileUtil1.uplodeFile(maxfileid, file, fname, flenth, fsize, year);
             user.setAvatar(g.getAddress());
@@ -149,16 +138,15 @@ public class User extends BaseController {
     @GetMapping("/aidForCli")
     @CrossOrigin
     @ApiOperation(value = "获得登录用户所属区域及下属区域列表")
-    public RongApiRes aidForCli(@RequestParam(value = "aid", required = false) String aid)
-    {
+    public RongApiRes aidForCli(@RequestParam(value = "aid", required = false) String aid) {
         List<Varea> allaid = vareaService.listNextAidName(aid);
-        if (allaid.size()>1){
+        if (allaid.size() > 1) {
             //获得所有的子 aid 放入 list
             List<Varea> temp;
             temp = vareaService.listNextAidName(allaid.get(0).getAid());
-            for (int i = 1; i < allaid.size(); i++){
+            for (int i = 1; i < allaid.size(); i++) {
                 List<Varea> l = vareaService.listNextAidName(allaid.get(i).getAid());
-                if (!l.isEmpty()){
+                if (!l.isEmpty()) {
                     temp.addAll(l);
                 }
             }

@@ -26,6 +26,7 @@
         } else {
             alert("你的浏览器不支持 WebSocket！\n");
         }
+
         function send() {
             var str = $.trim($('#name1').val()) + ": " + $.trim($("#text1").val());
             socket.send(str);

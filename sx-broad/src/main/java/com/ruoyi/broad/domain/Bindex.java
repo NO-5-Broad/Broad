@@ -8,7 +8,7 @@ import com.ruoyi.common.base.BaseEntity;
  * @ClassName BindexMapper
  * @date 2019/1/26 13:06
  **/
-public class Bindex{
+public class Bindex {
 
     private static final long serialVersionUID = 1L;
 

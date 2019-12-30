@@ -36,21 +36,21 @@ public class BeaCountry extends BaseController {
     @GetMapping("/ListBeaCountry")
     @CrossOrigin
     @ApiOperation(value = "美丽乡村列表")
-    public RongApiRes selectBeaCountry(pubObjApi beavill){
-        beavill.setPageIndex((beavill.getPageIndex()-1)*beavill.getPageSize());
+    public RongApiRes selectBeaCountry(pubObjApi beavill) {
+        beavill.setPageIndex((beavill.getPageIndex() - 1) * beavill.getPageSize());
         List<Villageplan> res;
         List<String> allaid = vareaService.listNextAid(beavill.getAid());
-        if (allaid.isEmpty()){
+        if (allaid.isEmpty()) {
             allaid.add(beavill.getAid());
             beavill.setListaid(allaid);
             res = villageplanService.selectBeaCountryListByid(beavill);
-        }else {
+        } else {
             //获得所有的子 aid 放入 list
             List<String> temp;
             temp = vareaService.listNextAid(allaid.get(0));
-            for(int i = 1; i < allaid.size(); i++){
+            for (int i = 1; i < allaid.size(); i++) {
                 List<String> l = vareaService.listNextAid(allaid.get(i));
-                if (!l.isEmpty()){
+                if (!l.isEmpty()) {
                     temp.addAll(l);
                 }
             }
@@ -65,27 +65,26 @@ public class BeaCountry extends BaseController {
     @PostMapping("/insertBeaCountry")
     @CrossOrigin
     @ApiOperation(value = "新增美丽乡村")
-    public AjaxResult insertBeaCountry(Villageplan villageplan,@RequestParam(value = "files", required = false) MultipartFile[] files,
+    public AjaxResult insertBeaCountry(Villageplan villageplan, @RequestParam(value = "files", required = false) MultipartFile[] files,
                                        @RequestParam(value = "filename", required = false) String[] fnames,
-                                       @RequestParam(value = "flenth" ,required = false)String[] flenth, //时长
-                                       @RequestParam(value = "fsize",required = false) String[] fsize )
-    {
+                                       @RequestParam(value = "flenth", required = false) String[] flenth, //时长
+                                       @RequestParam(value = "fsize", required = false) String[] fsize) {
         String year = DateUtil.getYear();
 
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
         System.out.println(dateFormat.format(date));
         String maxfileid = dateFormat.format(date); //获取文件上传时的时间参数字符串作为文件名
-        String address="";
+        String address = "";
         //判断file数组不能为空并且长度大于0
         if (files != null && files.length > 0) {
             //循环获取file数组中得文件
             for (int i = 0; i < files.length; i++) {
                 MultipartFile file = files[i];
-                try{
+                try {
                     //保存图片
                     Files g = bFileUtil1.uplodeFile(maxfileid, file, fnames[i], flenth[i], fsize[i], year);
-                    address +=g.getAddress()+";";
+                    address += g.getAddress() + ";";
 
                 } catch (Exception e) {
                     //return "上传图片失败";
@@ -98,10 +97,11 @@ public class BeaCountry extends BaseController {
         villageplan.setMpic(address);//给project实体的“文件地址”赋值
         return toAjax(villageplanService.insertVillageplan(villageplan));
     }
+
     @GetMapping("/Link")
     @CrossOrigin
     @ApiOperation(value = "链接列表")
-    public RongApiRes selectLinkList(Link link){
+    public RongApiRes selectLinkList(Link link) {
         return RongApiService.get_list(linkService.selectLinkList(link));
     }
 }

@@ -15,6 +15,7 @@ public interface IVillagefamilyService {
 
     /**
      * 获取小村家事数据
+     *
      * @return
      */
     public List<Villagefamily> selectvillagefamilylist(Villagefamily villagefamily);
@@ -22,24 +23,31 @@ public interface IVillagefamilyService {
 
     /**
      * 新增小村家事 数据
+     *
      * @param villagefamily
      * @return
      */
     public int insertvillagefamily(Villagefamily villagefamily);
+
     /**
      * 修改小村家事数据
+     *
      * @param jsid
      * @return
      */
     public Villagefamily selectByfbid(Integer jsid);
+
     /**
      * 保存小村家事修改
+     *
      * @param villagefamily
      * @return
      */
     public int updatevillagefamily(Villagefamily villagefamily);
+
     /**
      * 根据 jsid 删除
+     *
      * @param jsid
      * @return
      */

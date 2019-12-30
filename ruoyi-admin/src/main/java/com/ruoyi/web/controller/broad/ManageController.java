@@ -22,7 +22,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/broad/manage")
-public class ManageController extends BaseController{
+public class ManageController extends BaseController {
 
     private String prefix = "broad/manage";
 
@@ -31,16 +31,14 @@ public class ManageController extends BaseController{
 
     @GetMapping()
     @RequiresPermissions("broad:manage:view")
-    public String manage()
-    {
+    public String manage() {
         return prefix + "/manage";
     }
 
     @PostMapping("/list")
     @RequiresPermissions("broad:manage:list")
     @ResponseBody
-    public TableDataInfo list(Manage manage)
-    {
+    public TableDataInfo list(Manage manage) {
         startPage();
         List<Manage> list = iManageService.selectManagelist(manage);
         return getDataTable(list);

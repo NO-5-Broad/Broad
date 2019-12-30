@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <meta charset="utf-8">
 <head th:include="include :: header"></head>
 <body class="white-bg">
@@ -17,13 +17,14 @@
         <div class="form-group">
             <label class="col-sm-3 control-label">所属分组：</label>
             <div class="col-xs-8">
-                <input class="form-control" name="aid" id="aid"  type="text" onclick="selectAidTree()" placeholder="请输入所属分组">
+                <input class="form-control" name="aid" id="aid" type="text" onclick="selectAidTree()"
+                       placeholder="请输入所属分组">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">所属用户：</label>
             <div class="col-sm-8">
-<!--                <select class="form-control" onclick="getUserInfo(this,'所属用户')" id="userinfo" name="userid">-->
+                <!--                <select class="form-control" onclick="getUserInfo(this,'所属用户')" id="userinfo" name="userid">-->
                 <select class="form-control" id="userinfo" name="userid">
                     <option value="">--请选择权限人--</option>
                 </select>
@@ -35,9 +36,9 @@
             <label class="col-sm-3 control-label">终端类型 ：</label>
             <div class="col-sm-8">
                 <select class="form-control" id="terminaltype" name="terminaltype" disabled>
-<!--                    <option value="yingji" id="yingjis">应急广播终端</option>-->
-<!--                    <option value="houbei" id="houbeis">后备能源型终端</option>-->
-<!--                    <option value="fashe" id="fashes">发射机型终端</option>-->
+                    <!--                    <option value="yingji" id="yingjis">应急广播终端</option>-->
+                    <!--                    <option value="houbei" id="houbeis">后备能源型终端</option>-->
+                    <!--                    <option value="fashe" id="fashes">发射机型终端</option>-->
 
                     <option value="1" id="yingjis">应急广播终端</option>
                     <option value="2" id="houbeis">后备能源型终端</option>
@@ -49,7 +50,8 @@
         <div class="form-group">
             <label class="col-sm-3 control-label">IMEI号：</label>
             <div class="col-sm-8">
-                <input id="tid" name="tid" class="form-control" required type="text"  maxlength="15" minlength="15" placeholder="请输入15位IMEI号">
+                <input id="tid" name="tid" class="form-control" required type="text" maxlength="15" minlength="15"
+                       placeholder="请输入15位IMEI号">
             </div>
         </div>
         <div class="form-group">
@@ -58,22 +60,24 @@
                 <input id="tname" name="tname" class="form-control" type="text" required placeholder="请输入终端设备名称">
             </div>
         </div>
-<!--        <div class="form-group">-->
-<!--            <label class="col-sm-3 control-label">设备编号：</label>-->
-<!--            <div class="col-sm-8">-->
-<!--                <input id="tid1" name="tid1" class="form-control" type="text" placeholder="请输入终端设备名称">-->
-<!--            </div>-->
-<!--        </div>-->
+        <!--        <div class="form-group">-->
+        <!--            <label class="col-sm-3 control-label">设备编号：</label>-->
+        <!--            <div class="col-sm-8">-->
+        <!--                <input id="tid1" name="tid1" class="form-control" type="text" placeholder="请输入终端设备名称">-->
+        <!--            </div>-->
+        <!--        </div>-->
         <div class="form-group">
             <label class="col-sm-3 control-label">终端交互时间：</label>
             <div class="col-sm-8">
-                <input id="intertime" name="intertime" class="form-control" type="time" value="23:00:00" placeholder="请输入交互时间">
+                <input id="intertime" name="intertime" class="form-control" type="time" value="23:00:00"
+                       placeholder="请输入交互时间">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">终端手机号码：</label>
             <div class="col-sm-8">
-                <input  class="form-control" type="text" id="phone" name="phone" minlength="11" maxlength="13" required placeholder="请输入终端手机号码">
+                <input class="form-control" type="text" id="phone" name="phone" minlength="11" maxlength="13" required
+                       placeholder="请输入终端手机号码">
             </div>
         </div>
         <div class="form-group">
@@ -85,34 +89,38 @@
         <div class="form-group">
             <label class="col-sm-3 control-label">最后访问日期：</label>
             <div class="col-sm-8">
-                <input id="lastaccesstime" name="lastaccesstime" type="date" class="form-control"   onclick=" " placeholder="请输入最后访问日期">
+                <input id="lastaccesstime" name="lastaccesstime" type="date" class="form-control" onclick=" "
+                       placeholder="请输入最后访问日期">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">年耗电量：</label>
             <div class="col-sm-8">
-                <input id="ypowerconsumption" name="ypowerconsumption" required class="form-control" type="text" placeholder="请输入年耗电量">
+                <input id="ypowerconsumption" name="ypowerconsumption" required class="form-control" type="text"
+                       placeholder="请输入年耗电量">
             </div>
         </div>
-<!--年维护经费-->
+        <!--年维护经费-->
         <div class="form-group">
             <label class="col-sm-3 control-label">年维护经费：</label>
             <div class="col-sm-8">
-                <input id="MaintenanceFunds" name="MaintenanceFunds" class="form-control" type="text" required placeholder="请输入年维护经费">
+                <input id="MaintenanceFunds" name="MaintenanceFunds" class="form-control" type="text" required
+                       placeholder="请输入年维护经费">
             </div>
         </div>
-<!--经纬度(自动/手动)-->
-<!--基站编码-->
+        <!--经纬度(自动/手动)-->
+        <!--基站编码-->
         <div class="form-group">
             <label class="col-sm-3 control-label">基站编码：</label>
             <div class="col-sm-8">
-                <input id="basestation" name="basestation" class="form-control" required type="text" placeholder="请输入基站编码">
+                <input id="basestation" name="basestation" class="form-control" required type="text"
+                       placeholder="请输入基站编码">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">现场照片：</label>
             <div class="col-sm-8">
-                <input id="poscene" name="`poscene" disabled class="form-control" type="text" placeholder="请输入现场照片">
+                <input id="poscene" name="poscene" accept=".jpg,.png,.jpeg " class="form-control" type="file" placeholder="请输入现场照片">
             </div>
         </div>
         <div class="form-group">
@@ -143,25 +151,29 @@
         <div class="form-group">
             <label class="col-sm-3 control-label">广播接收频率：</label>
             <div class="col-sm-8">
-                <input id="fmfrequency" name="fmfrequency" class="form-control" required type="text" placeholder="请输入广播接收频率">
+                <input id="fmfrequency" name="fmfrequency" class="form-control" required type="text"
+                       placeholder="请输入广播接收频率">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">RDS：</label>
             <div class="col-sm-8">
-                <input id="rds" name="rds" class="form-control" type="text" required placeholder="请输入3位RDS" minlength="3" maxlength="3" disabled>
+                <input id="rds" name="rds" class="form-control" type="text" required placeholder="请输入3位RDS"
+                       minlength="3" maxlength="3" disabled>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">发射频率：</label>
             <div class="col-sm-8">
-                <input id="transmitfrequency" name="transmitfrequency" class="form-control" required type="text" placeholder="请输入发射频率" disabled>
+                <input id="transmitfrequency" name="transmitfrequency" class="form-control" required type="text"
+                       placeholder="请输入发射频率" disabled>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">终端音量：</label>
             <div class="col-sm-8">
-                <input id="eovolume" name="eovolume" class="form-control" type="text" required placeholder="请输入终端音量" disabled>
+                <input id="eovolume" name="eovolume" class="form-control" type="text" required placeholder="请输入终端音量"
+                       disabled>
             </div>
         </div>
         <hr/>
@@ -174,16 +186,17 @@
         <div class="form-group">
             <label class="col-sm-3 control-label">管理员电话：</label>
             <div class="col-sm-8">
-                <input id="managertel" name="managertel" class="form-control" required type="text" minlength="7" maxlength="13" placeholder="请输入管理员电话">
+                <input id="managertel" name="managertel" class="form-control" required type="text" minlength="7"
+                       maxlength="15" placeholder="请输入管理员电话(15位)">
             </div>
         </div>
-        <div class="form-group">
-            <label class="col-sm-3 control-label">创建时间：</label>
-            <div class="col-sm-8">
-<!--                <input id="createdtime" name="createdtime" class="form-control" required type="text" disabled placeholder="请输入创建时间">-->
-                <input id="createdtime" name="createdtime" class="form-control" type="text" disabled>
-            </div>
-        </div>
+<!--        <div class="form-group">-->
+<!--            <label class="col-sm-3 control-label">创建时间：</label>-->
+<!--            <div class="col-sm-8">-->
+<!--                &lt;!&ndash;                <input id="createdtime" name="createdtime" class="form-control" required type="text" disabled placeholder="请输入创建时间">&ndash;&gt;-->
+<!--                <input id="createdtime" name="createdtime" class="form-control" type="text" disabled>-->
+<!--            </div>-->
+<!--        </div>-->
 
         <div class="form-group">
             <label class="col-sm-3 control-label">备注：</label>
@@ -207,27 +220,29 @@
 <script type="text/javascript">
     var prefix = ctx + "broad/organization"
     $("#form-tbOrganization-add").validate({
-        rules:{
-            xxxx:{
-                required:true,
+        rules: {
+            xxxx: {
+                required: true,
             },
         }
     });
 
     // 新增特殊分组弹窗人员下拉框调取人员信息组件
-    $(function getUserInfo(ele,msg) {
-        $.get("/broad/dto/userinfos",function getmsg(params1,params2) {
+    $(function getUserInfo(ele, msg) {
+        $.get("/broad/dto/userinfos", function getmsg(params1, params2) {
             for (let index = 0; index < params1.length; index++) {
                 let text = params1[index].uname;
                 let value = params1[index].userid;
-                $("#userinfo").append("<option value='"+value+"'>"+text+"</option>")
+                $("#userinfo").append("<option value='" + value + "'>" + text + "</option>")
             }
         });
     })
 
     function submitHandler() {
         if ($.validate.form()) {
+            console.log("哈哈")
             $.operate.save(prefix + "/add", $('#form-tbOrganization-add').serialize());
+            console.log("哈哈")
         }
     }
 
@@ -241,8 +256,9 @@
             callBack: doSubmitAid
         };
         $.modal.openOptions(options);
-}
-    function doSubmit(index, layero){
+    }
+
+    function doSubmit(index, layero) {
         var tree = layero.find("iframe")[0].contentWindow.$._tree;
         if ($.tree.notAllowParents(tree)) {
             var body = layer.getChildFrame('body', index);
@@ -253,7 +269,7 @@
     }
 
     /*该模块是选择用户所属区域树的提交功能模块，body.find()方法中该使用框架固定的treeId、treeName*/
-    function doSubmitAid(index, layero){
+    function doSubmitAid(index, layero) {
         var tree = layero.find("iframe")[0].contentWindow.$._tree;
         if ($.tree.notAllowParents(tree)) {
             var body = layer.getChildFrame('body', index);
@@ -261,30 +277,37 @@
             $("#aname").val(body.find('#treeName').val());
             layer.close(index);
         }
-}
+    }
 
-    $('input[type=radio][name=type]').change(function(val) {
+    $('input[type=radio][name=type]').change(function (val) {
 
         var terminaltype = $('input:radio:checked').val();
-        if(terminaltype == "fashe"){
-            $("#rds").attr("disabled",false);
-            $("#transmitfrequency").attr("disabled",false);
-            $("#eovolume").attr("disabled",false);
-        }else{
+        if (terminaltype == "fashe") {
+            $("#yingjis").removeAttr("selected");
+            $("#houbeis").removeAttr("selected");
+            $("#fashes").attr("selected",true);
+            $("#rds").attr("disabled", false);
+            $("#transmitfrequency").attr("disabled", false);
+            $("#eovolume").attr("disabled", false);
+        }else if(terminaltype == "houbei"){
+            $("#yingjis").removeAttr("selected");
+            $("#fashes").removeAttr("selected");
+            $("#houbeis").attr("selected",true);
+            $("#rds").attr("disabled", true);
+            $("#transmitfrequency").attr("disabled", true);
+            $("#eovolume").attr("disabled", true);
+
+        } else {
+            $("#fashes").removeAttr("selected");
+            $("#houbeis").removeAttr("selected");
+            $("#yingjis").attr("selected",true);
             $("#rds").attr("disabled",true);
             $("#transmitfrequency").attr("disabled",true);
             $("#eovolume").attr("disabled",true);
         }
-        if(terminaltype == "fashe"){
-            $("#fashes").attr("selected",true);
-        }else if(terminaltype == "houbei"){
-            $("#houbeis").attr("selected",true);
-        }else{
-            $("#yingjis").attr("selected",true);
-        }
     });
 
-    $(function CurrentTime(){
+    $(function CurrentTime() {
         var now = new Date();
         var year = now.getFullYear();       //年
         var month = now.getMonth() + 1;     //月
@@ -293,14 +316,14 @@
         var mm = now.getMinutes();          //分
         var ss = now.getSeconds();           //秒
         var clock = year + "-";
-        if(month < 10)
+        if (month < 10)
             clock += "0";
         clock += month + "-";
-        if(day < 10)
+        if (day < 10)
             clock += "0";
         clock += day + " ";
 
-        if(hh < 10)
+        if (hh < 10)
             clock += "0";
 
         clock += hh + ":";

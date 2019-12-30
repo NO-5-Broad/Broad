@@ -3,6 +3,7 @@ package com.ruoyi.system.service;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
 import com.ruoyi.common.base.Ztree;
 import com.ruoyi.system.domain.SysMenu;
 import com.ruoyi.system.domain.SysRole;
@@ -13,8 +14,7 @@ import com.ruoyi.system.domain.SysUser;
  *
  * @author ruoyi
  */
-public interface ISysMenuService
-{
+public interface ISysMenuService {
     /**
      * 根据用户ID查询菜单
      *
@@ -26,7 +26,7 @@ public interface ISysMenuService
     /**
      * 查询系统菜单列表
      *
-     * @param menu 菜单信息
+     * @param menu   菜单信息
      * @param userId 用户ID
      * @return 菜单列表
      */
@@ -51,7 +51,7 @@ public interface ISysMenuService
     /**
      * 根据角色ID查询菜单
      *
-     * @param role 角色对象
+     * @param role   角色对象
      * @param userId 用户ID
      * @return 菜单列表
      */

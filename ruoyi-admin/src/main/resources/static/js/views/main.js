@@ -35,6 +35,7 @@ function main_onload() {
     // //每30秒刷新登陆数据数据
     // setInterval(init_sys_loginlog, 30000);
 }
+
 // 系统说明
 function info_pop() {
     $('#pop').html('<div class="modal-dialog">' +
@@ -46,7 +47,7 @@ function info_pop() {
         '<div class="modal-body">' +
         '<p>' +
         '您现在访问的是《融媒体综合数据平台的后台管理系统》，此网站正处于开发阶段，所有功能均处于测试期。' +
-        '所有用户操作已进行行为记录，勿使用擅自进行任何增删改操作，若对系统的造成不良影响则会追究到个人，谢谢配合。'+
+        '所有用户操作已进行行为记录，勿使用擅自进行任何增删改操作，若对系统的造成不良影响则会追究到个人，谢谢配合。' +
         '</p>' +
         '</div>' +
         '<div class="modal-footer">' +
@@ -55,13 +56,14 @@ function info_pop() {
         '</div>' +
         '</div>')
 }
+
 // 广播信息
 function init_broad() {
     $.ajax({
         type: "GET",
         url: "/api/bcount/bindex",
         dataType: "json",
-        success: function(data){
+        success: function (data) {
             $("#fls_cb_time").html(data.time);
             $("#count_dev").html(data.data.dev);
             $("#count_run").html(data.data.run);
@@ -69,46 +71,50 @@ function init_broad() {
         }
     });
 }
+
 // 物联网信息
 function init_iotdatacount() {
     $.ajax({
         type: "GET",
         url: "/api/iot/countall",
         dataType: "json",
-        success: function(data){
+        success: function (data) {
             $("#iotcount").html(data.data);
         }
     });
 }
+
 // 山洪信息
 function init_rivisdatacount() {
     $.ajax({
         type: "GET",
         url: "/api/rivervis/countall",
         dataType: "json",
-        success: function(data){
+        success: function (data) {
             $("#riverviscount").html(data.data);
         }
     });
 }
+
 // 山洪预警信息
 function init_riotdevcount() {
     $.ajax({
         type: "GET",
         url: "/api/iot/devicecount",
         dataType: "json",
-        success: function(data){
+        success: function (data) {
             $("#iotdevcount").html(data.data);
         }
     });
 }
+
 // 村务初始化
 function init_village() {
     $.ajax({
-        type:"GET",
-        url:"/api/count/p_m",
-        dataType:"json",
-        success:function (data) {
+        type: "GET",
+        url: "/api/count/p_m",
+        dataType: "json",
+        success: function (data) {
             $("#fls_cv_time").html(data.time);
             $("#count_ms").html(data.data[0].msum);
             $("#count_mm").html(data.data[0].mman);
@@ -123,11 +129,11 @@ function init_village() {
 // 系统监控
 function init_sys_mon() {
     $.ajax({
-        type:"GET",
-        url:"/api/sys_mon/mi",
-        dataType:"json",
-        success:function (data) {
-            $("#mon_flush_time").html('<span>'+ data.time + ' 更新' +
+        type: "GET",
+        url: "/api/sys_mon/mi",
+        dataType: "json",
+        success: function (data) {
+            $("#mon_flush_time").html('<span>' + data.time + ' 更新' +
                 '</span>');
 
             $("#sys_mon_cpu").html('<table class="table table-hover">\n' +
@@ -174,7 +180,7 @@ function init_sys_mon() {
                 ' </small>' +
                 ' </div>' +
                 '<div class="progress progress-mini">' +
-                '<div style="width:' +  data.data.mem.usage + "%" +
+                '<div style="width:' + data.data.mem.usage + "%" +
                 '" class="progress-bar"></div>' +
                 '</div>' +
                 '<br>' +
@@ -204,9 +210,9 @@ function init_sys_mon() {
 
             var disk_data = data.data.sysFiles;
             var diskinfo = '';
-            for(diskname in disk_data){
+            for (diskname in disk_data) {
                 diskinfo += '<tr>' +
-                    '<td>' + disk_data[diskname].dirName  +
+                    '<td>' + disk_data[diskname].dirName +
                     '</td>' +
                     '<td>' + disk_data[diskname].usage + '%' +
                     '</td>' +
@@ -227,6 +233,7 @@ function init_sys_mon() {
         }
     })
 }
+
 // 系统登陆记录
 function init_sys_loginlog() {
     $.ajax({
@@ -239,7 +246,7 @@ function init_sys_loginlog() {
 
             var l_log = data.data;
             var log_info = '';
-            for (log in l_log){
+            for (log in l_log) {
                 log_info += '<tr>' +
                     '<td>' + l_log[log].user_name +
                     '</td>' +
@@ -283,6 +290,7 @@ function init_sys_loginlog() {
     })
 
 }
+
 // 系统操作记录
 function init_sys_operlog() {
     $.ajax({
@@ -292,7 +300,7 @@ function init_sys_operlog() {
         success: function (data) {
             var O_log = data.data;
             var log_info = '';
-            for (log in O_log){
+            for (log in O_log) {
                 log_info += '<tr>' +
                     '<td>' + O_log[log].user +
                     '</td>' +
@@ -346,7 +354,7 @@ function init_ranklogin() {
         success: function (data) {
             var predata = data.data;
             var log_info = '';
-            for (i in predata){
+            for (i in predata) {
                 log_info += '<tr>' +
                     '<td>' + predata[i].user +
                     '</td>' +
@@ -378,7 +386,7 @@ function init_rankoper() {
         success: function (data) {
             var predata = data.data;
             var log_info = '';
-            for (i in predata){
+            for (i in predata) {
                 log_info += '<tr>' +
                     '<td>' + predata[i].user +
                     '</td>' +
@@ -410,7 +418,7 @@ function init_rankloc() {
         success: function (data) {
             var predata = data.data;
             var log_info = '';
-            for (i in predata){
+            for (i in predata) {
                 log_info += '<tr>' +
                     '<td>' + predata[i].name +
                     '</td>' +
@@ -450,10 +458,10 @@ function init_all_loc() {
             }
             option = {
                 color: ['#676a6c'],
-                tooltip : {
+                tooltip: {
                     trigger: 'axis',
-                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                        type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                     }
                 },
                 grid: {
@@ -463,27 +471,27 @@ function init_all_loc() {
                     top: '5%',
                     containLabel: true
                 },
-                xAxis : [
+                xAxis: [
                     {
-                        type : 'category',
-                        data : x_data,
+                        type: 'category',
+                        data: x_data,
                         axisTick: {
                             alignWithLabel: true
                         }
                     }
                 ],
-                yAxis : [
+                yAxis: [
                     {
                         show: false,
-                        type : 'value'
+                        type: 'value'
                     }
                 ],
-                series : [
+                series: [
                     {
-                        name:'访问量',
-                        type:'bar',
+                        name: '访问量',
+                        type: 'bar',
                         barWidth: '60%',
-                        data:y_data
+                        data: y_data
                     }
                 ]
             };
@@ -503,7 +511,7 @@ function init_recentCreat() {
         success: function (data) {
             var predata = data.data;
             var log_info = '';
-            for (i in predata){
+            for (i in predata) {
                 log_info += '<tr>' +
                     '<td>' + predata[i].ct +
                     '</td>' +

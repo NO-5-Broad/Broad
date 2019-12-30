@@ -5,6 +5,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * Created by ASUS on 2019/8/11.
+ *
  * @author cx
  */
 public class ProListen {
@@ -12,54 +13,100 @@ public class ProListen {
     private String recunit;
 
 
-    /** 节目申请-节目ID */
+    /**
+     * 节目申请-节目ID
+     */
     private Integer paid;
-    /** 节目名称 */
+    /**
+     * 节目名称
+     */
     private String pname;
-    /** 用户ID */
+    /**
+     * 用户ID
+     */
     private String userid;
-    /** 录制要求 */
+    /**
+     * 录制要求
+     */
     private String requires;
-    /** 是否紧急 */
+    /**
+     * 是否紧急
+     */
     private Boolean isemergency;
-    /** 时间限制要求 */
+    /**
+     * 时间限制要求
+     */
     private String timelimit;
-    /** 要求文稿名 */
+    /**
+     * 要求文稿名
+     */
     private String filename;
-    /** 要求文稿路径 */
+    /**
+     * 要求文稿路径
+     */
     private String fileurl;
-    /** 申请提交时间 */
+    /**
+     * 申请提交时间
+     */
     private String submittime;
-    /** 是否撤回 */
+    /**
+     * 是否撤回
+     */
     private Boolean iscancel;
-    /** 管理员是否阅读 */
+    /**
+     * 管理员是否阅读
+     */
     private Boolean isread;
-    /** 是否回复 */
+    /**
+     * 是否回复
+     */
     private Boolean isreply;
-    /** 回复日期 */
+    /**
+     * 回复日期
+     */
     private String replytime;
-    /** 录音人员 */
+    /**
+     * 录音人员
+     */
     private String replyperson;
-    /** 回复上传的节目编号 */
+    /**
+     * 回复上传的节目编号
+     */
     private Integer replyprogramid;
-    /** 是否审听 */
+    /**
+     * 是否审听
+     */
     private Boolean islisten;
-    /** 审听不通过原因 */
+    /**
+     * 审听不通过原因
+     */
     private String nopassreason;
-    /** 是否审听通过 */
+    /**
+     * 是否审听通过
+     */
     private Boolean listenpass;
-    /** 审听未通过次数 */
+    /**
+     * 审听未通过次数
+     */
     private Integer nopasstimes;
-    /** 节目id */
+    /**
+     * 节目id
+     */
     private int fid;
-    /** 节目源 */
+    /**
+     * 节目源
+     */
     private String urls;
-    /** 文件名称 */
+    /**
+     * 文件名称
+     */
     private String fname;
 
     private String profilename;
 
-    /** 用户名称 */
+    /**
+     * 用户名称
+     */
     private String uname;
 
     public static long getSerialVersionUID() {

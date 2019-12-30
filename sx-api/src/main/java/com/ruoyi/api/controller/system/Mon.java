@@ -23,16 +23,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class Mon {
 
     /**
-        * 拿到服务器性能的各项参数
-        * @author 张超 teavamc
-        * @date 2019/1/31
-        * @param []
-        * @return com.ruoyi.api.domain.RongApiRes
-        */
+     * 拿到服务器性能的各项参数
+     *
+     * @param []
+     * @return com.ruoyi.api.domain.RongApiRes
+     * @author 张超 teavamc
+     * @date 2019/1/31
+     */
     @GetMapping("/mi")
     @ApiOperation(value = "拿到服务器性能的各项参数")
     @CrossOrigin
-    public RongApiRes mon_index(){
+    public RongApiRes mon_index() {
         Server server = new Server();
         try {
             server.copyTo();
