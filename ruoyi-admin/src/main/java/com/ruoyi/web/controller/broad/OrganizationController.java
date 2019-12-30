@@ -1,12 +1,7 @@
 package com.ruoyi.web.controller.broad;
 
-import com.ruoyi.broad.domain.Area;
-import com.ruoyi.broad.domain.BroadMessage;
-import com.ruoyi.broad.domain.Organization;
-import com.ruoyi.broad.domain.TerminalTels;
-import com.ruoyi.broad.service.IAreaService;
-import com.ruoyi.broad.service.IMessageService;
-import com.ruoyi.broad.service.IOrganizationService;
+import com.ruoyi.broad.domain.*;
+import com.ruoyi.broad.service.*;
 import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.base.AjaxResult;
 import com.ruoyi.common.enums.BusinessType;
@@ -50,6 +45,12 @@ public class OrganizationController extends BaseController {
     @Autowired
     private IAreaService areaService;
 
+    @Autowired
+    IAreaGroupingService iAreaGroupingService;
+
+    @Autowired
+    private IUserInfoDTOService userInfoDTOService;
+
 
     @RequiresPermissions("broad:organization:view")
     @GetMapping()
@@ -66,7 +67,25 @@ public class OrganizationController extends BaseController {
     @ResponseBody
     public TableDataInfo list(Organization organization) {
         startPage();
-        organization.setAid(organization.getAid() + "%");
+        String aid = null;
+        if (organization.getAname() != null && organization.getAname() != "") {
+            AreaGrouping areaGrouping = new AreaGrouping();
+            areaGrouping.setAname(organization.getAname());
+            List<AreaGrouping> list = iAreaGroupingService.listAreaGrouping(areaGrouping);
+            aid = list.get(0).getAid();
+            organization.setAid(aid);
+        } else {
+            organization.setAid(organization.getAid() + "%");
+        }
+
+        if (organization.getUsername() != null && organization.getUsername() != "") {
+            String uname = organization.getUsername();
+            List<UserInfoDTO> users = userInfoDTOService.findUserByName(uname);
+            if (users.size() > 0) {
+                organization.setUserid(users.get(0).getUserid());
+                organization.setUsername(null);
+            }
+        }
         List<Organization> list = organizationService.selectOrganizationList1(organization);
         return getDataTable(list);
     }

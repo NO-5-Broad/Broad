@@ -23,4 +23,10 @@ public class UserInfoDTOController {
     public UserInfoDTO findById(@PathVariable("userid") String userid) {
         return userInfoDTOService.findById(userid);
     }
+
+    @GetMapping("/userinfo/{uname}")
+    public List<UserInfoDTO> findUserByName(@PathVariable("uname") String uname) {
+        return userInfoDTOService.findUserByName(uname);
+    }
+
 }

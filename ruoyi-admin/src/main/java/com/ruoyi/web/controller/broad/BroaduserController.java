@@ -34,7 +34,7 @@ public class BroaduserController extends BaseController {
     @Autowired
     private IBroaduserService broaduserService;
 
-    private IBroaduserService broaduser1;
+    private IBroaduserService broaduser;
 
     @RequiresPermissions("broad:broaduser:view")
     @GetMapping()
@@ -82,6 +82,7 @@ public class BroaduserController extends BaseController {
      */
     @RequiresPermissions("broad:broaduser:edit")
     @Log(title = "广播用户", businessType = BusinessType.UPDATE)
+    //@GetMapping("/edit")
     @PostMapping("/edit")
     @ResponseBody
     public AjaxResult editSave(Broaduser broaduser) {
@@ -104,10 +105,15 @@ public class BroaduserController extends BaseController {
     @RequiresPermissions("broad:broaduser:add")
     @Log(title = "广播用户", businessType = BusinessType.INSERT)
     @GetMapping("/add")
-    //@PostMapping("/add")
-    @ResponseBody
-    public AjaxResult add(Broaduser broaduser1) {
-        return toAjax(broaduserService.insertBroaduser(broaduser1));
+    public String add(){
+        return prefix + "/add";
     }
+    @PostMapping("/add")
+    @ResponseBody
+    public AjaxResult add(Broaduser broaduser) {
+        return toAjax(broaduserService.insertBroaduser(broaduser));
+    }
+
+
 }
 

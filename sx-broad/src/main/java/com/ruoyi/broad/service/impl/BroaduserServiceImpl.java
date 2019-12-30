@@ -77,7 +77,7 @@ public class BroaduserServiceImpl implements IBroaduserService {
      */
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public int insertBroaduser(Broaduser broaduser1) {
-        return broaduserMapper.insertBroaduser(broaduser1);
+    public int insertBroaduser(Broaduser broaduser) {
+        return broaduserMapper.insertBroaduser(broaduser);
     }
 }
