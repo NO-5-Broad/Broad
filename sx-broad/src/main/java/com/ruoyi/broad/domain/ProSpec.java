@@ -21,7 +21,7 @@ public class ProSpec {
     /**
      * 操作（所属）用户编号
      */
-    private Long userid;
+    private String userid;
 
     public String getFid() {
         return fid;
@@ -87,11 +87,11 @@ public class ProSpec {
         this.urls = urls;
     }
 
-    public Long getUserid() {
+    public String getUserid() {
         return userid;
     }
 
-    public void setUserid(Long userid) {
+    public void setUserid(String userid) {
         this.userid = userid;
     }
 
