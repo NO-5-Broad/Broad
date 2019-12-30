@@ -7,43 +7,39 @@
 <!--<link th:href="@{/ajax/libs/jquery-ztree/3.5/css/metro/zTreeStyle.css}" rel="stylesheet"/>-->
 
 <!--<body class="gray-bg">-->
-<!--    <div class="ui-layout-west">-->
-<!--        <div class="main-content">-->
-<!--            <div class="box box-main" style="width: 3000px">-->
-<!--                <div class="box-header">-->
-<!--                    <div class="box-title">-->
-<!--                        <i class="fa icon-grid"></i> 终端列表-->
-<!--                    </div>-->
-<!--                    <div class="box-tools pull-right">-->
-<!--                        <button type="button" class="btn btn-box-tool" id="btnExpand" title="展开" style="display:none;">-->
-<!--                            <i class="fa fa-chevron-up"></i></button>-->
-<!--                        <button type="button" class="btn btn-box-tool" id="btnCollapse" title="折叠">-->
-<!--                            <i class="fa fa-chevron-down"></i></button>-->
-<!--                        <button type="button" class="btn btn-box-tool" id="btnRefresh" title="刷新">-->
-<!--                            <i class="fa fa-refresh"></i></button>-->
-<!--                    </div>-->
+<!--<div class="ui-layout-west">-->
+<!--    <div class="main-content">-->
+<!--        <div class="box box-main" style="width: 3000px">-->
+<!--            <div class="box-header">-->
+<!--                <div class="box-title">-->
+<!--                    <i class="fa icon-grid"></i> 终端列表-->
 <!--                </div>-->
-<!--                <div class="ui-layout-content">-->
-<!--                    <div id="tree" class="ztree" style="overflow: auto"></div>-->
+<!--                <div class="box-tools pull-right">-->
+<!--                    <button type="button" class="btn btn-box-tool" id="btnExpand" title="展开" style="display:none;">-->
+<!--                        <i class="fa fa-chevron-up"></i></button>-->
+<!--                    <button type="button" class="btn btn-box-tool" id="btnCollapse" title="折叠">-->
+<!--                        <i class="fa fa-chevron-down"></i></button>-->
+<!--                    <button type="button" class="btn btn-box-tool" id="btnRefresh" title="刷新">-->
+<!--                        <i class="fa fa-refresh"></i></button>-->
 <!--                </div>-->
+<!--            </div>-->
+<!--            <div class="ui-layout-content">-->
+<!--                <div id="tree" class="ztree" style="overflow: auto"></div>-->
 <!--            </div>-->
 <!--        </div>-->
 <!--    </div>-->
+<!--</div>-->
 
 
-
-<!--    <div class="container-div ui-layout-center">-->
+<!--<div class="container-div ui-layout-center">-->
 <!--    <div class="row">-->
 
 <!--        <div class="col-sm-12 search-collapse">-->
 <!--            <form id="formId">-->
 <!--                <div class="select-list">-->
 <!--                    <ul>-->
-<!--&lt;!&ndash;                        <li>&ndash;&gt;-->
-<!--&lt;!&ndash;                          <input type="hidden" name="aid" id="aid"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </li>&ndash;&gt;-->
 <!--                        <li>-->
-<!--                            分组编号：<input type="texte" name="aid" id="aid"/>-->
+<!--                            <input type="hidden" name="aid" id="aid"/>-->
 <!--                        </li>-->
 
 <!--                        <li>-->
@@ -55,8 +51,10 @@
 <!--                        </li>-->
 
 <!--                        <li>-->
-<!--                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>-->
-<!--                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>-->
+<!--                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i-->
+<!--                                    class="fa fa-search"></i>&nbsp;搜索</a>-->
+<!--                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i-->
+<!--                                    class="fa fa-refresh"></i>&nbsp;重置</a>-->
 <!--                        </li>-->
 <!--                    </ul>-->
 <!--                </div>-->
@@ -86,8 +84,8 @@
 <!--    var prefix = ctx + "broad/areaGrouping";-->
 <!--    var removeFlag = [[${@permission.hasPermi('broad:areagrouping:remove')}]];-->
 <!--    var editFlag = [[${@permission.hasPermi('broad:areaGrouping:edit')}]];-->
-<!--    $(function() {-->
-<!--        $('body').layout({ west__size: 185 });-->
+<!--    $(function () {-->
+<!--        $('body').layout({west__size: 185});-->
 <!--        queryAreaList();-->
 <!--        queryAreaTree();-->
 <!--    });-->
@@ -103,20 +101,20 @@
 <!--            showExport: true,-->
 <!--            columns: [{-->
 <!--                checkbox: true-->
-<!--                },-->
+<!--            },-->
 <!--                {-->
-<!--                    field : 'aid',-->
-<!--                    title : '分组编号',-->
+<!--                    field: 'aid',-->
+<!--                    title: '分组编号',-->
 <!--                    visible: true-->
 <!--                },-->
 <!--                {-->
-<!--                    field : 'parentaid',-->
-<!--                    title : '父编号',-->
+<!--                    field: 'parentaid',-->
+<!--                    title: '父编号',-->
 <!--                    visible: false-->
 <!--                },-->
 <!--                {-->
-<!--                    field : 'aname',-->
-<!--                    title : '地域名称',-->
+<!--                    field: 'aname',-->
+<!--                    title: '地域名称',-->
 <!--                    sortable: true-->
 <!--                },-->
 <!--                {-->
@@ -138,20 +136,21 @@
 <!--        $.table.init(options);-->
 <!--    };-->
 
-<!--    function queryAreaTree()-->
-<!--    {-->
+<!--    function queryAreaTree() {-->
 <!--        var url = ctx + "broad/area/treeData";-->
 <!--        var options = {-->
 <!--            url: url,-->
 <!--//            expandLevel: 2,-->
-<!--            onClick : zOnClick-->
+<!--            onClick: zOnClick-->
 <!--        };-->
+
 <!--//        $.tree.init(options);-->
 
 <!--        function zOnClick(event, treeId, treeNode) {-->
 <!--            $("#aid").val(treeNode.id);-->
 <!--            $.table.search();-->
 <!--        }-->
+
 <!--        $.tree.init(options);-->
 <!--    }-->
 
@@ -199,8 +198,11 @@
             <form id="formId">
                 <div class="select-list">
                     <ul>
+                        <!--                        <li>-->
+                        <!--                          <input type="hidden" name="aid" id="aid"/>-->
+                        <!--                        </li>-->
                         <li>
-                            <input type="hidden" name="aid" id="aid"/>
+                            分组编号：<input type="texte" name="aid" id="aid"/>
                         </li>
 
                         <li>
