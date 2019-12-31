@@ -51,6 +51,9 @@
             <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="broad:proSinmanage:export">
                 <i class="fa fa-download"></i> 导出
             </a>
+            <a class="btn btn-danger btn-del btn-del disabled" onclick="$.operate.removeAll()" shiro:hasPermission="system:user:remove">
+                <i class="fa fa-remove"></i> 删除
+            </a>
         </div>
         <div class="col-sm-12 select-table table-striped">
             <table id="bootstrap-table" data-mobile-responsive="true"></table>
@@ -72,7 +75,11 @@
             removeUrl: prefix + "/remove",
             search: false,
             showExport: true,
-            columns: [{
+            columns: [
+                {
+                    checkbox: true
+                },
+                {
                 field: 'sfid',
                 title: '播出单ID',
             },
