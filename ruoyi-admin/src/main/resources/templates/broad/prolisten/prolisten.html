@@ -140,7 +140,35 @@
                             return "已回复"
                         }
                     }
+                },
+                {
+                    field: 'islisten',
+                    title: '是否审听',
+                    sortable: true,
+                    formatter: function (value, row) {
+                        if (value == "false") {
+                            return "是"
+                        } else {
+                            return "否"
+                        }
+                    }
+                },
+                {
+                    field: 'listenpass',
+                    title: '操作',
+                    formatter: function (value, row, index) {
+                        if(row.isreply==false){
+                            return
+                        }else if(value==true){
+                            return "审听已通过";
+                        }else{
+                            var actions = '<a class=\"btn btn-xs btn-success\"  onclick=pass(\'' + row.paid + '\')>通过</a> &nbsp;<a class=\"btn btn-xs btn-success\"  onclick=nopass(\'' + row.paid +'\',\'' + row.pname + '\',\'' + row.nopassreason + '\')>不通过</a>';
+                            return actions;
+                        }
+
+                    }
                 }
+
             ]
         };
         $.table.init(options);
@@ -150,41 +178,108 @@
 <script th:src="@{/js/plugins/layer/layui-v2.4.5/layui/layui.js}"></script>
 <script>
     laydate({
-        elem: "#recivedtime",
-        event: "focus"
+        elem:"#recivedtime",
+        event:"focus"
     });
     laydate({
-        elem: "#recivedtime",
-        event: "focus"
+        elem:"#recivedtime",
+        event:"focus"
     });
-    layui.use('laydate', function () {
+    layui.use('laydate', function(){
         var laydate = layui.laydate;
 
         //执行一个laydate实例
         laydate.render({
-            elem: "#broad",
+            elem:"#broad",
             type: 'time',
         });
     });
-</script>
-<script>
     laydate({
-        elem: "#endtime",
-        event: "focus"
+        elem:"#endtime",
+        event:"focus"
     });
     laydate({
-        elem: "#endtime",
-        event: "focus"
+        elem:"#endtime",
+        event:"focus"
     });
-    layui.use('laydate', function () {
+    layui.use('laydate', function(){
         var laydate2 = layui.laydate;
 
         //执行一个laydate实例
         laydate2.render({
-            elem: "#broad",
+            elem:"#broad",
             type: 'time',
         });
     });
+    //试听按钮函数
+    function listenmusic(value) {
+        layer.open({
+            type: 2,
+            maxmin: false,
+            shade: 0.3,
+            title: '试听',
+            fix: true,
+            area: ["350px", "120px"],
+            content: "/broad/prolisten/play",
+            shadeClose: false,
+            success:function(layero, index){
+                $(layero).find("iframe")[0].contentWindow.$("audio").attr('src',value);
+                var fry_audio=$(layero).find("iframe")[0].contentWindow.$("audio").get('0');
+                fry_audio.load();
+            }
+        })
+    }
+    function pass(paid) {
+        $.get("/broad/prolisten/pass/"+paid, function(data){
+            if(data.code==0){
+                alert("修改成功");
+                $.table.refresh();
+            }
+        });
+    }
+    function nopass(paid,pname,nopassreason) {
+        layer.open({
+            type: 2,
+            maxmin: false,
+            shade: 0.3,
+            title: '试听',
+            fix: true,
+            area: ["800" + 'px', ($(window).height() - 50) + 'px'],
+            content: "/broad/prolisten/nopassreason",
+            shadeClose: false,
+            btn: ['<i class="fa fa-chat"></i> 确认', '<i class="fa fa-close"></i> 关闭'],
+            success:function(layero, index){
+                $(layero).find("iframe")[0].contentWindow.$("#paid").val(paid);
+                $(layero).find("iframe")[0].contentWindow.$("#pname").val(pname);
+                $(layero).find("iframe")[0].contentWindow.$("#nopassreason").val(nopassreason);
+            },
+            yes: function (index, layero) {
+                var selected = $(layero).find("iframe")[0].contentWindow.$("#form-proreApply-nopassreason");
+                var formData = new FormData(selected[0])
+                if ($.validate.form() && $(layero).find("iframe")[0].contentWindow.$("#nopassreason")) {
+                    $.ajax({
+                            type : "POST",
+                            url : "/broad/prolisten/nopassreason",
+                            data : formData,
+                            async: false,
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            success : function(data) {
+                                if(data.code==0){
+                                    alert('提交成功！');
+                                }
+                            }
+                        }
+                    );
+                }
+                layer.close(index);
+                $.table.refresh();
+            },
+            cancel: function () {return true;}
+        })
+    }
+
 </script>
 </body>
 </html>

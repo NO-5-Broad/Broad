@@ -5,27 +5,27 @@
 <mapper namespace="com.ruoyi.broad.mapper.ProListenMapper">
 
     <resultMap type="ProListen" id="ProListenResult">
-        <result property="paid" column="paid"/>
-        <result property="pname" column="pname"/>
-        <result property="userid" column="userid"/>
-        <result property="uname" column="uname"/>
-        <result property="requires" column="requires"/>
-        <result property="isemergency" column="isemergency"/>
-        <result property="timelimit" column="timelimit"/>
-        <result property="filename" column="filename"/>
-        <result property="fileurl" column="fileurl"/>
-        <result property="submittime" column="submittime"/>
-        <result property="iscancel" column="iscancel"/>
-        <result property="isread" column="isread"/>
-        <result property="isreply" column="isreply"/>
-        <result property="replytime" column="replytime"/>
-        <result property="replyperson" column="replyperson"/>
-        <result property="replyprogramid" column="replyprogramid"/>
-        <result property="islisten" column="islisten"/>
-        <result property="nopassreason" column="nopassreason"/>
-        <result property="listenpass" column="listenpass"/>
-        <result property="nopasstimes" column="nopasstimes"/>
-        <result property="fid" column="fid"/>
+        <result property="paid"    column="paid"    />
+        <result property="pname"    column="pname"    />
+        <result property="userid"    column="userid"    />
+        <result property="uname"     column="uname"     />
+        <result property="requires"    column="requires"    />
+        <result property="isemergency"    column="isemergency"    />
+        <result property="timelimit"    column="timelimit"    />
+        <result property="filename"    column="filename"    />
+        <result property="fileurl"    column="fileurl"    />
+        <result property="submittime"    column="submittime"    />
+        <result property="iscancel"    column="iscancel"    />
+        <result property="isread"    column="isread"    />
+        <result property="isreply"    column="isreply"    />
+        <result property="replytime"    column="replytime"    />
+        <result property="replyperson"    column="replyperson"    />
+        <result property="replyprogramid"    column="replyprogramid"    />
+        <result property="islisten"    column="islisten"    />
+        <result property="nopassreason"    column="nopassreason"    />
+        <result property="listenpass"    column="listenpass"    />
+        <result property="nopasstimes"    column="nopasstimes"    />
+        <result property="fid" column="fid"  />
         <result property="urls" column="urls"/>
         <result property="fname" column="fname"/>
         <result property="profilename" column="profilename"/>
@@ -69,8 +69,7 @@
         nopasstimes,
         isread,fid,urls,fname,p.filename as profilename
         from
-        (<include refid="tableName"></include> pa LEFT JOIN <include refid="userstable"></include> ui on
-        pa.userid=ui.userid)
+        (<include refid="tableName"></include> pa LEFT JOIN <include refid="userstable"></include> ui on pa.userid=ui.userid)
         left join <include refid="programtable"></include> p on pa.replyprogramid=p.fid
         <where>
             <if test="paid != null  and paid != '' ">and paid like CONCAT('%',#{paid},'%')</if>
@@ -78,15 +77,31 @@
             <if test="userid != null  and userid != '' ">and userid like CONCAT('%',#{userid},'%')</if>
             <if test="uname != null  and uname != '' ">and ui.uname like CONCAT('%',#{uname},'%')</if>
             <if test="requires != null  and requires != '' ">and requires like CONCAT('%',#{requires},'%')</if>
-            <if test="isemergency != null  and isemergency != '' ">and isemergency = like
-                CONCAT('%',#{isemergency},'%')
-            </if>
+            <if test="isemergency != null  and isemergency != '' ">and isemergency = like CONCAT('%',#{isemergency},'%')</if>
             <if test="timelimit != null  and timelimit != '' ">and timelimit = #{timelimit}</if>
             <if test="filename != null  and filename != '' ">and pa.filename like CONCAT('%',#{filename},'%')</if>
             <if test="fileurl != null  and fileurl != '' ">and fileurl like CONCAT('%',#{fileurl},'%')</if>
             <if test="submittime != null  and submittime != '' ">and submittime like CONCAT('%',#{submittime},'%')</if>
             <if test="iscancel != null  and iscancel != '' ">and iscancel like CONCAT('%',#{iscancel},'%')</if>
         </where>
+        order by paid desc
     </select>
+
+    <update id="checkpass" >
+        update prore_apply set listenpass=true where paid =#{paid}
+    </update>
+
+    <update id="updateProListen" parameterType="ProListen">
+        update prore_apply
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="nopassreason != null  and nopassreason != ''  ">nopassreason = #{nopassreason},</if>
+            <if test="replyperson != null  and replyperson != ''  ">replyperson = #{replyperson},</if>
+            <if test="islisten != islisten  ">islisten = #{islisten},</if>
+            <if test="listenpass != listenpass  and listenpass != ''  ">listenpass = #{listenpass},</if>
+            <if test="requires != null  and requires != ''  ">requires = #{requires},</if>
+            <if test="iscancel != null  and iscancel != ''  ">iscancel = #{iscancel},</if>
+        </trim>
+        where paid = #{paid}
+    </update>
 
 </mapper>

@@ -70,4 +70,5 @@ public interface ProreApplyMapper {
      */
     public List<ProApplyUser> selectProrApplyUserList(ProApplyUser proApplyUser);
 
+    int recall(String fid);
 }

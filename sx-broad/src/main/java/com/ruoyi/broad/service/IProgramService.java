@@ -15,15 +15,12 @@ public interface IProgramService {
 
     /**
      * 查询节目库数据
-     *
      * @param program 节目实体类
      * @return 结果
      */
     public List<Program> selectProList(Program program);
-
     /**
      * 得到当年文件最大编号
-     *
      * @param year
      * @return
      */
@@ -31,15 +28,12 @@ public interface IProgramService {
 
     /**
      * 上传节目单
-     *
      * @param program 节目单
      * @return
      */
     public int insertProgram(Program program);
-
     /**
      * 查询节目
-     *
      * @param fname 节目名称
      * @return 结果
      */
@@ -47,10 +41,15 @@ public interface IProgramService {
 
     /**
      * 删除节目
-     *
      * @param fname 节目名称
      * @return 结果
      */
 
     public int deleteProgram(String fid);
+
+
+    public List<Program> selectProgramListByids(List<String> sfids);
+
+    public int setIsPublic(String fid);
+
 }
