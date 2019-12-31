@@ -105,9 +105,18 @@ public class ProreApplyController extends BaseController {
         return prefix + "/add";
     }
 
+
+    @GetMapping("/reply")
+    public String reply(){
+        return prefix + "/reply";
+    }
+
     /**
-     * 新增保存节目申请
+     * 新增回复功能
+     *
      */
+
+
     @RequiresPermissions("broad:proreApply:add")
     @Log(title = "新增节目申请", businessType = BusinessType.INSERT)
     @PostMapping("/add")
@@ -137,6 +146,12 @@ public class ProreApplyController extends BaseController {
         return toAjax(proreApplyService.updateProreApply(proreApply));
     }
 
+    @Log(title = "节目撤回", businessType = BusinessType.UPDATE)
+    @GetMapping("/recall/{fid}")
+    @ResponseBody
+    public int recall(@PathVariable("fid") String fid) {
+        return proreApplyService.recall(fid);
+    }
     /**
      * 删除节目申请
      */
@@ -147,5 +162,7 @@ public class ProreApplyController extends BaseController {
     public AjaxResult remove(String ids) {
         return toAjax(proreApplyService.deleteProreApplyByIds(ids));
     }
+
+
 
 }

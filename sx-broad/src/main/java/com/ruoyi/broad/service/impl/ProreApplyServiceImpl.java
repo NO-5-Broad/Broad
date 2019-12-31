@@ -97,4 +97,9 @@ public class ProreApplyServiceImpl implements IProreApplyService {
         return proreApplyMapper.selectProrApplyUserList(proApplyUser);
     }
 
+    @Override
+    @DataSource(value = DataSourceType.SLAVE)
+    public int recall(String fid) {
+        return proreApplyMapper.recall(fid);
+    }
 }

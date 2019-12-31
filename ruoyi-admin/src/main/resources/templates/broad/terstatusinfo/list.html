@@ -10,10 +10,16 @@
                 <div class="select-list">
                     <ul>
                         <li>
-                            <input type="text" name="username" placeholder="所属用户"/>
+                            <input type="text" name="tid" placeholder="终端IMEI"/>
                         </li>
                         <li>
-                            <input type="text" name="tname" placeholder="终端编号"/>
+                            <input type="text" name="tname" placeholder="终端名称"/>
+                        </li>
+                        <li>
+                            <input type="text" name="aname" placeholder="所属分组"/>
+                        </li>
+                        <li>
+                            <input type="text" name="username" placeholder="所属用户"/>
                         </li>
                         <li>
                             <select name="status">
@@ -35,16 +41,16 @@
             <a class="btn btn-primary" onclick="timeedit()">
                 <i class="fa fa-edit"></i> 终端交互时间
             </a>
-            <a class="btn btn-primary" onclick="rdsedit()">
+            <a class="btn btn-danger btn-del btn-del disabled" onclick="rdsedit()">
                 <i class="fa fa-edit"></i> RDS设置
             </a>
-            <a class="btn btn-primary" onclick="frequencyedit()">
+            <a class="btn btn-warning btn-rounded btn-sm" onclick="frequencyedit()">
                 <i class="fa fa-edit"></i> 调频接收频率
             </a>
-            <a class="btn btn-primary" onclick="phoneedit()">
+            <a class="btn btn-success" onclick="phoneedit()">
                 <i class="fa fa-edit"></i> 添加授权号码
             </a>
-            <a class="btn btn-primary" onclick="phonedelete()">
+            <a class="btn btn-info" onclick="phonedelete()">
                 <i class="fa fa-edit"></i> 删除授权号码
             </a>
         </div>
@@ -136,7 +142,7 @@
             shade: 0.3,
             title: '批量设置终端交互时间',
             fix: false,
-            area: ["1000" + 'px', ($(window).height() - 30) + 'px'],
+            area: ["1100" + 'px', ($(window).height() - 50) + 'px'],
             content: "/broad/terstatusinfo/timeedit",
             shadeClose: false,
             btn: ['<i class="fa fa-chat"></i> 确认', '<i class="fa fa-close"></i> 关闭'],
@@ -179,7 +185,7 @@
             shade: 0.3,
             title: '批量设置RDS码',
             fix: false,
-            area: ["1000" + 'px', ($(window).height() - 30) + 'px'],
+            area: ["1100" + 'px', ($(window).height() - 50) + 'px'],
             content: "/broad/terstatusinfo/rdsedit",
             shadeClose: false,
             btn: ['<i class="fa fa-chat"></i> 确认', '<i class="fa fa-close"></i> 关闭'],
@@ -222,7 +228,7 @@
             shade: 0.3,
             title: '批量设置调频接收频率',
             fix: false,
-            area: ["1000" + 'px', ($(window).height() - 30) + 'px'],
+            area: ["1100" + 'px', ($(window).height() - 50) + 'px'],
             content: "/broad/terstatusinfo/frequencyedit",
             shadeClose: false,
             btn: ['<i class="fa fa-chat"></i> 确认', '<i class="fa fa-close"></i> 关闭'],
@@ -265,7 +271,7 @@
             shade: 0.3,
             title: '批量设置授权号码',
             fix: false,
-            area: ["1000" + 'px', ($(window).height() - 30) + 'px'],
+            area: ["1100" + 'px', ($(window).height() - 50) + 'px'],
             content: "/broad/terstatusinfo/phoneedit",
             shadeClose: false,
             btn: ['<i class="fa fa-chat"></i> 确认', '<i class="fa fa-close"></i> 关闭'],
@@ -310,7 +316,7 @@
             shade: 0.3,
             title: '批量删除授权号码',
             fix: false,
-            area: ["1000" + 'px', ($(window).height() - 30) + 'px'],
+            area: ["1100" + 'px', ($(window).height() - 50) + 'px'],
             content: "/broad/terstatusinfo/phonedelete",
             shadeClose: false,
             btn: ['<i class="fa fa-chat"></i> 确认', '<i class="fa fa-close"></i> 关闭'],

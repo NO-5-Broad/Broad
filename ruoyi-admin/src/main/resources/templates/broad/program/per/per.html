@@ -208,8 +208,8 @@
                     align: 'center',
                     visible: true,
                     formatter: function (value, row, index) {
-                        var msg = '<a class="btn btn-xs btn-primary" >设为公共</a> ';
-                        var actions = '<a class="btn btn-xs btn-success">设为非公共</a>';
+                        var msg = '<a class="btn btn-xs btn-primary" onclick=setIsPublic(\'' + row.fid + '\') >设为公共</a> ';
+                        var actions = '<a class="btn btn-xs btn-success" onclick=setIsPublic(\'' + row.fid + '\')>设为非公共</a>';
                         if (row.ispublic == 0) {
                             return msg;
                         } else {
@@ -233,7 +233,7 @@
                     align: 'center',
                     visible: true,
                     formatter: function (value, row, index) {
-                        var actions = '<a class=\"btn btn-xs btn-success\"  onclick=down(\'' + value + '\')>下载</a>';
+                        var actions = '<a class="btn btn-xs btn-success" href="https://7465-test-b37cdc-1258150595.tcb.qcloud.la/许嵩 - 南山忆.mp3?sign=7ff582dcd4a4ff735488469d36701a73&t=1553838083" download="南山忆.mp3">下载</a>';
                         return actions;
                     }
                 }]
@@ -268,6 +268,14 @@
         console.log(value);
     }
 
+    function setIsPublic(rowid) {
+        $.get("/broad/per/setispublic/"+rowid, function(data){
+            if(data==1){
+                alert("修改成功");
+                $.table.refresh();
+            }
+        });
+    }
 </script>
 
 <script th:src="@{/js/plugins/layer/laydate/laydate.js}"></script>

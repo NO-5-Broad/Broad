@@ -38,4 +38,21 @@ public class ProSpecServiceImpl implements IProSpecService {
     public List<ProSpec> selectAllProSpec() {
         return proSpecMapper.selectAllProSpec();
     }
+    @Override
+
+
+
+    @DataSource(value = DataSourceType.SLAVE)
+
+
+
+    public int updateprospec(ProSpec proSpec){
+
+
+
+        return proSpecMapper.updateprospec(proSpec);
+
+
+
+    }
 }

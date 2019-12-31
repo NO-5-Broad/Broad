@@ -192,4 +192,13 @@
             (#{item.programmeID},#{item.terminalID})
         </foreach>
     </insert>
+    <!--支持批量id查询-->
+    <select id="selectProSinmanageListByids" parameterType="java.util.List" resultMap="ProSinmanageResult">
+        select sfid, scategory, createtime, broaddate, userid, remark, broadtimes from pro_sinmanage
+        where
+        sfid in
+        <foreach collection="list" item="sfid" open="(" close=")" separator=",">
+            #{sfid}
+        </foreach>
+    </select>
 </mapper>

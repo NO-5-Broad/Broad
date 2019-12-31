@@ -73,7 +73,7 @@
 													紧急停止：urgent:stop<br>
 												</span>
                 <span id="smsbroad" class="col-xs-4">
-													提示：短信应急广播第一个字必须为汉字。 <br><br>
+													提示：短信应急广播第一个字可以不为为汉字。 <br><br>
 												</span>
             </div>
             <<!--div align="center">
@@ -88,7 +88,7 @@
     //保存
     function save() {
         var regExp1 = /^[a-zA-Z]{1}/;
-        var regExp2 = /^[\u4e00-\u9fa5]{1}/;
+        // var regExp2 = /^[\u4e00-\u9fa5]{1}/;
 
         if ($("#content").val() == null || $("#content").val() == "") {
             window.alert('请输入短信内容');
@@ -111,17 +111,17 @@
                  });*/
                 return false;
             }
-        } else {
-            if (!regExp2.test($("#content").val())) {
-                window.alert('首字必须为汉字');
-                /*$("#content").tips({
-                 side: 3,
-                 msg: '首字必须为汉字',
-                 bg: '#AE81FF',
-                 time: 3
-                 });*/
-                return false;
-            }
+        // } else {
+        //     if (!regExp2.test($("#content").val())) {
+        //         window.alert('首字必须为汉字');
+        //         /*$("#content").tips({
+        //          side: 3,
+        //          msg: '首字必须为汉字',
+        //          bg: '#AE81FF',
+        //          time: 3
+        //          });*/
+        //         return false;
+        //     }
         }
 
         //获取选择终端

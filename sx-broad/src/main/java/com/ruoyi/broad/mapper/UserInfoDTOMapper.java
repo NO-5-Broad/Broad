@@ -9,4 +9,6 @@ public interface UserInfoDTOMapper {
     List<UserInfoDTO> findAll();
 
     UserInfoDTO findById(String userid);
+
+    List<UserInfoDTO> findUserByName(String uanme);
 }

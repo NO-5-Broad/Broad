@@ -56,4 +56,61 @@
     <select id="selectAllProSpec" resultMap="ProSpecResult">
         <include refid="selectProSpecVo"/>
     </select>
+    <update id="updateprospec" parameterType="ProSpec">
+
+
+
+        update programs
+
+
+
+        <trim prefix="SET" suffixOverrides=",">
+
+
+
+            <if test="createdtime != null  and createdtime != ''  ">createdtime = #{createdtime},</if>
+
+
+
+            <if test="filename != null  and filename != ''  ">filename = #{filename},</if>
+
+
+
+            <if test="flenth != null  and flenth != ''  ">flenth = #{flenth},</if>
+
+
+
+            <if test="fname != null  and fname != ''  ">fname = #{fname},</if>
+
+
+
+            <if test="fsize != null  and fsize != ''  ">fsize = #{fsize},</if>
+
+
+
+            <if test="uname != null  and uname != ''  ">uname = #{uname},</if>
+
+
+
+            <if test="urls != null  and urls != ''  ">urls = #{urls},</if>
+
+
+
+            <if test="userid != null  and userid != ''  ">userid = #{userid},</if>
+
+
+
+        </trim>
+
+
+
+        where  fid =  #{fid}
+
+
+
+    </update>
+
+
+
+
 </mapper>

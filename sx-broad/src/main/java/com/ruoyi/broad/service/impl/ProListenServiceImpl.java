@@ -1,6 +1,7 @@
 package com.ruoyi.broad.service.impl;
 
 import com.ruoyi.broad.domain.ProApplyUser;
+import com.ruoyi.broad.domain.ProList;
 import com.ruoyi.broad.domain.ProListen;
 import com.ruoyi.broad.domain.ProreApply;
 import com.ruoyi.broad.mapper.ProListenMapper;
@@ -110,4 +111,5 @@ public class ProListenServiceImpl implements IProListenService {
     public int checkpass(String paid) {
         return proListenMapper.checkpass(paid);
     }
+
 }

@@ -41,8 +41,11 @@
             <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="system:user:add">
                 <i class="fa fa-plus"></i> 新增
             </a>
-            <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="broad:proSinmanage:export">
-                <i class="fa fa-download"></i> 导出
+            <a class="btn btn-success" onclick="$.operate.exportExcelBySingle()" shiro:hasPermission="system:user:add">
+                <i class="fa fa-plus"></i> 导出
+            </a>
+            <a class="btn btn-danger btn-del btn-del disabled" onclick="$.operate.removeAll()" shiro:hasPermission="system:user:remove">
+                <i class="fa fa-remove"></i> 删除
             </a>
         </div>
     </div>
@@ -60,11 +63,18 @@
             updateUrl: prefix + "/edit/{id}",
             removeUrl: prefix + "/remove",
             exportUrl: prefix + "/export",
+            exportBySingleUrl: prefix + "/exportbysingle",
             detailUrl: prefix + "/detail/{id}",
+            exportUrlDetial: prefix + "/export",
             modalName: "节目播出单",
+            uniqueId: "sfid",
             search: false,
             showExport: true,
-            columns: [{
+            columns: [
+                {
+                    checkbox: true
+                },
+                {
                 field: 'sfid',
                 title: '播出单ID',
             },
@@ -94,6 +104,7 @@
                     formatter: function (value, row, index) {
                         var actions = [];
                         actions.push('<a class="btn btn-success btn-xs ' + '"onclick="$.operate.detail(\'' + row.sfid + '\')"><i class="fa fa-edit"></i>查看详情</a> ');
+                        actions.push('<a class="btn btn-success btn-xs ' + '"onclick="$.operate.exportExcelDetial(\'' + row.sfid + '\')"><i class="fa fa-edit"></i>导出</a> ');
                         return actions.join('');
                     }
                 }]
