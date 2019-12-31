@@ -40,8 +40,6 @@ public class BroaduserServiceImpl implements IBroaduserService {
      * @param broaduser 广播用户信息
      * @return 广播用户集合
      */
-    @Override
-    @DataSource(value = DataSourceType.SLAVE)
     public List<Broaduser> selectBroaduserList(Broaduser broaduser) {
         return broaduserMapper.selectBroaduserList(broaduser);
     }

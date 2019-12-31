@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-terminaladmin-add">
+<!--        <div class="form-group">-->
+<!--            <label class="col-sm-3 control-label">终端类型：</label>-->
+<!--            <div class="col-sm-8">-->
+<!--                <input id="type" name="type" class="form-control" type="text">-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="form-group">
+            <label class="col-sm-3 control-label">终端编号：</label>
+            <div class="col-sm-8">
+                <input id="aid" name="aid" class="form-control" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">所属用户：</label>
+            <div class="col-sm-8">
+                <input id="uname" name="uname" class="form-control" type="text">
+            </div>
+        </div>
+<!--        <div class="form-group">-->
+<!--            <label class="col-sm-3 control-label">所属分组：</label>-->
+<!--            <div class="col-sm-8">-->
+<!--                <input id="group" name="group" class="form-control" type="text">-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="form-group">
+            <label class="col-sm-3 control-label">授权手机号码：</label>
+            <div class="col-sm-8">
+                <input id="uphone" name="uphone" class="form-control" type="text">
+            </div>
+        </div>
+<!--        <div class="form-group">-->
+<!--            <label class="col-sm-3 control-label">安装地址：</label>-->
+<!--            <div class="col-sm-8">-->
+<!--                <input id="address" name="address" class="form-control" type="text">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label class="col-sm-3 control-label">终端出厂编号：</label>-->
+<!--            <div class="col-sm-8">-->
+<!--                <input id="tnum" name="tnum" class="form-control" type="text">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label class="col-sm-3 control-label">用户编号：</label>-->
+<!--            <div class="col-sm-8">-->
+<!--                <input id="uerid" name="uerid" class="form-control" type="text">-->
+<!--            </div>-->
+<!--        </div>-->
+    </form>
+</div>
+<div th:include="include::footer"></div>
+<script type="text/javascript">
+    var prefix = ctx + "broad/terminaladmin";
+    $("#form-terminaladmin-add").validate({
+        rules: {
+            xxxx: {
+                required: true,
+            },
+        }
+    });
+
+    function submitHandler() {
+        if ($.validate.form()) {
+            $.operate.save(prefix + "/add", $('#form-terminaladmin-add').serialize());
+        }
+    }
+</script>
+</body>
+</html>
+
+
+
+

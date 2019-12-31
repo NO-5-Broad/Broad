@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+
+<div class="container-div">
+    <div class="row">
+        <div class="col-sm-12 search-collapse">
+            <form id="formId">
+                <div class="select-list">
+                    <ul>
+                        <li>
+                            终端用户姓名：<input type="text" name="uname"/>
+                        </li>
+                        <li>
+                            用户编号：<input type="text" name="uerid"/>
+                        </li>
+                        <li>
+                            终端编号：<input type="text" name="aid"/>
+                        </li>
+                        <li>
+                            终端类型：<input type="text" name="type"/>
+                        </li>
+                        <li>
+                            授权手机号码：<input type="text" name="uphone"/>
+                        </li>
+                        <li>
+                            创建时间：<input type="text" name="createtime"/>
+                        </li>
+                        <li>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i
+                                    class="fa fa-search"></i>&nbsp;搜索</a>
+                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i
+                                    class="fa fa-refresh"></i>&nbsp;重置</a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+
+        <div class="btn-group-sm hidden-xs" id="toolbar" role="group">
+            <a class="btn btn-primary btn-edit disabled" onclick="$.operate.edit()"
+               shiro:hasPermission="broad:broaduser:edit">
+                <i class="fa fa-edit"></i> 修改
+            </a>
+            <a class="btn btn-danger btn-del btn-del disabled" onclick="$.operate.removeAll()"
+               shiro:hasPermission="broad:broaduser:remove">
+                <i class="fa fa-remove"></i> 删除
+            </a>
+            <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="broad:broaduser:export">
+                <i class="fa fa-download"></i> 导出
+            </a>
+            <a class="btn btn-success" onclick="$.operate.add()"
+               shiro:hasPermission="broad:broaduser:add">
+                <i class="fa fa-plus"></i> 添加
+            </a>
+        </div>
+        <div class="col-sm-12 select-table table-striped">
+            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+        </div>
+    </div>
+</div>
+<div th:include="include :: footer"></div>
+<script th:inline="javascript">
+    var prefix = ctx + "broad/terminaladmin";
+
+    $(function () {
+        var options = {
+            url: prefix + "/list",
+            createUrl: prefix + "/add",
+            updateUrl: prefix + "/edit/{aid}",
+            removeUrl: prefix + "/remove",
+            exportUrl: prefix + "/export",
+            modalName: "终端管理员",
+            search: false,
+            showExport: true,
+            columns: [{
+                checkbox: true
+            },
+                {
+                    field: 'username',
+                    title: '所属用户',
+                    sortable: true
+                },
+                {
+                    field: 'aid',
+                    title: '终端编号',
+                    sortable: true
+                },
+                {
+                    field: 'type',
+                    title: '终端类型',
+                    sortable: true
+                },
+                {
+                    field: 'group',
+                    title: '所属分组',
+                    sortable: true
+                },
+                {
+                    field: 'uphone',
+                    title: '授权手机号',
+                    sortable: true
+                },
+                {
+                    field: 'address',
+                    title: '安装地址',
+                    sortable: true
+                },
+                {
+                    field: 'tnum',
+                    title: '终端出厂编号',
+                    sortable: true
+                },
+                {
+                    field: 'uerid',
+                    title: '用户编号',
+                    sortable: true
+                },
+                {
+                    field: 'tinternet',
+                    title: '接入通信网标准',
+                    sortable: true
+                },
+                {
+                    field: 'ginternet',
+                    title: '广播电视网标准',
+                    sortable: true
+                },
+                {
+                    field: 'enable',
+                    title: '是否启用',
+                    sortable: true
+                },
+                {
+                    field: 'createtime',
+                    title: '创建时间',
+                    sortable: true
+                },
+            ]
+        };
+        $.table.init(options);
+    });
+</script>
+</body>
+</html>

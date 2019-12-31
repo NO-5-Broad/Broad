@@ -34,7 +34,7 @@ public class BroaduserController extends BaseController {
     @Autowired
     private IBroaduserService broaduserService;
 
-    private IBroaduserService broaduser;
+    //private IBroaduserService broaduser;
 
     @RequiresPermissions("broad:broaduser:view")
     @GetMapping()
@@ -100,8 +100,9 @@ public class BroaduserController extends BaseController {
         return toAjax(broaduserService.deleteBroaduserByIds(ids));
     }
 
-
-    //	  新增广播用户
+    /**
+     * 新增广播用户
+     */
     @RequiresPermissions("broad:broaduser:add")
     @Log(title = "广播用户", businessType = BusinessType.INSERT)
     @GetMapping("/add")
