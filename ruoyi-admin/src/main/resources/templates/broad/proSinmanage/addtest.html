@@ -173,7 +173,7 @@
         var url = ctx + "broad/areaGrouping/treeData";
 
         function zTreeOnCheck(event, treeId, treeNode) {
-            console.log(treeNode.tId + ", " + treeNode.name + "," + treeNode.checked);
+            // console.log(treeNode.tId + ", " + treeNode.name + "," + treeNode.checked);
             var treeObj = $.fn.zTree.getZTreeObj("tree");
             var nodes = treeObj.getCheckedNodes(true);
         }

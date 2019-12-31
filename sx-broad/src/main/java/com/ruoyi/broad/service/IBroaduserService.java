@@ -1,6 +1,7 @@
 package com.ruoyi.broad.service;
 
 import com.ruoyi.broad.domain.Broaduser;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -10,7 +11,8 @@ import java.util.List;
  * @author 张鸿权
  * @date 2019-01-18
  */
-public interface IBroaduserService {
+public interface IBroaduserService
+{
     /**
      * 查询广播用户信息
      *
@@ -44,13 +46,13 @@ public interface IBroaduserService {
     public int deleteBroaduserByIds(String ids);
 
     /**
-     * @param aname
-     * @param uaddress
+     *
+     * @param user_id
+     * @param username
      * @param uname
      * @param uphone
      * @return
      */
-    public int insertBroaduser(Broaduser broaduser);
+    public void insertBroaduser(Broaduser broaduser1);
 
-    //void insertBroaduser(BroaduserServiceImpl.);
 }

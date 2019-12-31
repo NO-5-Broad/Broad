@@ -10,7 +10,8 @@ import java.util.List;
  * @author 张鸿权
  * @date 2019-01-18
  */
-public interface BroaduserMapper {
+public interface BroaduserMapper
+{
     /**
      * 查询广播用户信息
      *
@@ -54,7 +55,8 @@ public interface BroaduserMapper {
     /**
      * 新增广播用户
      *
+     *
      * @return 结果
      */
-    public int insertBroaduser(Broaduser broaduser);
+    public void insertBroaduser(Broaduser broaduser1);
 }

@@ -19,38 +19,38 @@ public class ReadClientInfo extends DefaultCommand {
     @Override
     public byte[] execute() {
         // TODO Auto-generated method stub
-        try {
+        try{
             //logger.info("终端主动请求获取");
-            String command = save(datainfo) ? "1" : "0";//保存信息
+            String command = save(datainfo)?"1":"0";//保存信息
 
             loggersession();//插入日志
 
-            return returnBytes(ProtocolsToClient.STATU, command, null, true);
-        } catch (Exception e) {
-            logger.error("解析信息出错", e);
+            return returnBytes(ProtocolsToClient.STATU, command, null,true);
+        }catch (Exception e){
+            logger.error("解析信息出错",e);
         }
-        return null;
+        return  null;
     }
 
     @Override
     public boolean save(Object obj) {
         // TODO Auto-generated method stub
         try {
-            if (Tid != null) {
+            if(Tid != null) {
                 Conditions conditions = conditionsService.selectConditionsById(Tid);
-                if (conditions != null) {
-                    dispose(conditions, obj);
+                if(conditions != null){
+                    dispose(conditions,obj);
                     conditionsService.updateConditions(conditions);
                     logger.info("更新终端配置信息");
-                } else {
-                    conditions = dispose(new Conditions(new Date(), Tid), obj);
+                }else{
+                    conditions =  dispose(new Conditions(new Date(),Tid),obj);
                     conditionsService.insertConditions(conditions);
                     logger.info("添加终端配置信息");
                 }
                 return true;
             }
         } catch (Exception e) {
-            logger.error("保存终端硬件信息出错：" + e);
+           logger.error("保存终端硬件信息出错："+e);
         }
         return false;
     }
@@ -60,14 +60,15 @@ public class ReadClientInfo extends DefaultCommand {
         // TODO Auto-generated method stub
         return null;
     }
-
-    private Conditions dispose(Conditions conditions, Object obj) {
+    private  Conditions dispose(Conditions conditions,Object obj){
         String[] mylist = obj.toString().split("，");
-        for (int i = 0; i < mylist.length; i++) {
+        for (int i = 0; i < mylist.length; i++)
+        {
             String[] myy = mylist[i].split("：");
-            switch (myy[0]) {
+            switch (myy[0])
+            {
                 case "硬件版本":
-                    conditions.setHversion(myy[1].trim());
+                    conditions.setHversion( myy[1].trim());
                     break;
                 case "软件版本":
                     conditions.setSversion(myy[1].trim());
@@ -85,13 +86,13 @@ public class ReadClientInfo extends DefaultCommand {
                     conditions.setSd(myy[1].trim());
                     break;
                 case "发射功率":
-                    conditions.setTransmitpower(myy[1] == null || myy[1].equals("") ? 0 : Integer.parseInt(myy[1].trim()));
+                    conditions.setTransmitpower(myy[1]==null||myy[1].equals("")?0:Integer.parseInt(myy[1].trim()));
                     break;
                 case "反射功率":
-                    conditions.setReflectedpower(myy[1] == null || myy[1].equals("") ? 0 : Integer.parseInt(myy[1].trim()));
+                    conditions.setReflectedpower(myy[1]==null||myy[1].equals("")?0:Integer.parseInt(myy[1].trim()));
                     break;
                 case "工作电压":
-                    conditions.setWorkvoltage(myy[1] == null || myy[1].equals("") ? 0 : Integer.parseInt(myy[1].trim()));
+                    conditions.setWorkvoltage(myy[1]==null||myy[1].equals("")?0:Integer.parseInt(myy[1].trim()));
                     break;
             }
         }

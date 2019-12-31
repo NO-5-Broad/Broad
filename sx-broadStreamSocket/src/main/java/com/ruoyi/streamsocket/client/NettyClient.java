@@ -28,23 +28,23 @@ public class NettyClient {
 //    private  String host = "110.53.162.164";
 //    private  String host = "114.67.88.76";
     private String host = "110.53.162.165";
-    //    交互端口
-    private int port = 8800;
+//    交互端口
+    private  int port = 8800;
 
 
-    //    声明一个 WebSocketSession 对象 conn
+
+//    声明一个 WebSocketSession 对象 conn
     public WebSocketSession conn;
     public String message;
 
     /**
-     * 初始化一个 NettyClient 对象
-     *
-     * @param [connection, message]
-     * @return
-     * @author 张超 teavamc
-     * @date 2019/2/16
-     */
-    public NettyClient(WebSocketSession connection, String message) {
+        * 初始化一个 NettyClient 对象
+        * @author 张超 teavamc
+        * @date 2019/2/16
+        * @param [connection, message]
+        * @return
+        */
+    public NettyClient(WebSocketSession connection,String message) {
         this.host = host;
         this.port = port;
         this.message = message;
@@ -52,13 +52,12 @@ public class NettyClient {
     }
 
     /**
-     * NettyClient 的线程执行体
-     *
-     * @param []
-     * @return void
-     * @author 张超 teavamc
-     * @date 2019/2/16
-     */
+        * NettyClient 的线程执行体
+        * @author 张超 teavamc
+        * @date 2019/2/16
+        * @param []
+        * @return void
+        */
     public void start() throws Exception {
         // 创建一个新的 EventLoopGroup 类型是 异步 UDP 对象
         EventLoopGroup group = new NioEventLoopGroup();
@@ -77,7 +76,7 @@ public class NettyClient {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
 //	                                     System.out.println(" connected...");
-                            ch.pipeline().addLast(new NettyClientHandler(conn, message));
+                            ch.pipeline().addLast(new NettyClientHandler(conn,message));
                         }
                     });
 //	             System.out.println(" created..");
@@ -87,7 +86,7 @@ public class NettyClient {
             // 异步等待关闭连接channel
             cf.channel().closeFuture().sync();
 //	             System.out.println(" closed.."); // 关闭完成
-            log.info("NettyClient对象host: " + this.host + "port: " + this.port);
+            log.info("NettyClient对象host: "+this.host+"port: "+this.port);
         } finally {
             // 释放线程池资源
             group.shutdownGracefully().sync();

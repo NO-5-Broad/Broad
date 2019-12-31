@@ -106,7 +106,7 @@
     // 新增特殊分组弹窗人员下拉框调取人员信息组件
     $(function getUserInfo(ele, msg) {
         $.get("/broad/dto/userinfos", function getmsg(params1, params2) {
-            console.log(params1)
+            // console.log(params1)
             for (let index = 0; index < params1.length; index++) {
                 let text = params1[index].uname;
                 let value1 = params1[index].userid;

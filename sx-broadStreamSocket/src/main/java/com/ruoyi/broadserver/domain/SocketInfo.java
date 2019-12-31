@@ -6,7 +6,6 @@ import java.net.InetAddress;
 import java.nio.ByteBuffer;
 import java.util.Calendar;
 import java.util.Date;
-
 /*终端通信缓存类*/
 public class SocketInfo {
     private String imei; //终端IMEI号
@@ -16,22 +15,21 @@ public class SocketInfo {
     private IoSession iotSession;//终端物联网信息连接对象 8900端口
     private IoSession commandSession;//终端命令连接对象信息 8600端口
 
-    private InetAddress ipAddress;//终端IP地址
+    private InetAddress  ipAddress;//终端IP地址
     private Date lastTime; //最后通信时间
 
 
     private ByteBuffer byteFile = null; //老终端发送的文件信息
 
-    //    private byte[] byteFile; //老终端发送的文件信息
+//    private byte[] byteFile; //老终端发送的文件信息
     private String channelAddress;
-    private Integer byteCount = 0;//标志当前文件发送到哪个位置
+    private Integer byteCount=0;//标志当前文件发送到哪个位置
     private String filelength; //设置当前发送文件的总字节数
 
 
     public String getImei() {
         return imei;
     }
-
     public void setImei(String imei) {
         this.imei = imei;
     }
@@ -120,10 +118,10 @@ public class SocketInfo {
     /*做等同判断*/
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
+        if (this == obj){
             return true;
         }
-        if (obj == null) {
+        if (obj == null){
             return false;
         }
         if (getClass() != obj.getClass()) {
@@ -131,24 +129,23 @@ public class SocketInfo {
         }
         SocketInfo other = (SocketInfo) obj;
         if (imei == null) {
-            if (other.imei != null) {
+            if (other.imei != null){
                 return false;
             }
-        } else if (!imei.equals(other.imei)) {
+        } else if (!imei.equals(other.imei)){
             return false;
         }
         return true;
     }
-
-    public IoSession getsession(IoSession session) {
-        if (heartioSession != null && heartioSession.equals(session)) {
+    public IoSession getsession(IoSession session){
+        if(heartioSession != null &&heartioSession.equals(session)){
             return heartioSession;
-        } else if (iotSession != null && iotSession.equals(session)) {
+        }else if(iotSession != null &&iotSession.equals(session)){
             return iotSession;
-        } else if (commandSession != null && commandSession.equals(session)) {
+        }else if(commandSession != null &&commandSession.equals(session)){
             return commandSession;
-        } else {
-            return null;
+        }else {
+            return  null;
         }
     }
 }
