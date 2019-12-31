@@ -10,27 +10,27 @@ import org.apache.mina.core.session.IoSession;
 public class ReadGPS extends DefaultCommand {
     //private ClientManager clientservice = (ClientService) SpringContextUtils.getBeanByClass(ClientService.class);
 
-    public ReadGPS(IoSession session, byte[] content) {
-        super(session, content);
-        // TODO Auto-generated constructor stub
-    }
+	public ReadGPS(IoSession session, byte[] content) {
+		super(session, content);
+		// TODO Auto-generated constructor stub
+	}
 
-    @Override
-    public byte[] execute() {
-        // TODO Auto-generated method stub
-        String[] infos = datainfo.split(",");
+	@Override
+	public byte[] execute() {
+		// TODO Auto-generated method stub
+		String[] infos = datainfo.split(",");
 
-        String command = save(infos) ? "1" : "0";//保存信息
+		String command = save(infos)?"1":"0";//保存信息
 
-        loggersession();//插入日志
+		loggersession();//插入日志
+		
+		return returnBytes(ProtocolsToClient.POSITION, command, null,false);
+	}
 
-        return returnBytes(ProtocolsToClient.POSITION, command, null, false);
-    }
-
-    @Override
-    public boolean save(Object obj) {
-        // TODO Auto-generated method stub
-        String[] datas = (String[]) obj;
+	@Override
+	public boolean save(Object obj) {
+		// TODO Auto-generated method stub
+		String[] datas = (String[]) obj;
 		/*try {
 			Client client = new Client();
 			client.setLongitude(datas[0]);
@@ -43,13 +43,13 @@ public class ReadGPS extends DefaultCommand {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 		}*/
-        return false;
-    }
+		return false;
+	}
 
-    @Override
-    public Object get(Object obj) {
-        // TODO Auto-generated method stub
-        return null;
-    }
+	@Override
+	public Object get(Object obj) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

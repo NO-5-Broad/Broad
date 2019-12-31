@@ -1,11 +1,11 @@
 <!DOCTYPE HTML>
-<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
 <meta charset="utf-8">
 <head th:include="include :: header"></head>
 <body class="white-bg">
 <div class="wrapper wrapper-content animated fadeInRight ibox-content">
     <form class="form-horizontal m" id="form-broaduser-edit" th:object="${broaduser}">
-        <input id="userid" name="userid" th:field="*{userid}" type="hidden">
+        <input id="userid" name="userid" th:field="*{userid}"  type="hidden">
         <div class="form-group">
             <label class="col-sm-3 control-label">广播用户姓名：</label>
             <div class="col-sm-8">
@@ -54,9 +54,9 @@
 <script type="text/javascript">
     var prefix = ctx + "broad/broaduser"
     $("#form-broaduser-edit").validate({
-        rules: {
-            xxxx: {
-                required: true,
+        rules:{
+            xxxx:{
+                required:true,
             },
         }
     });

@@ -40,7 +40,7 @@ public class MaintainController extends BaseController {
     @Autowired
     private IMessageService messageService;
 
-    @RequiresPermissions("broad:maintain:view")
+   @RequiresPermissions("broad:maintain:view")
     @GetMapping()
     public String maintain() {
         return prefix + "/maintain";
@@ -93,7 +93,7 @@ public class MaintainController extends BaseController {
     /**
      * 导出终端维护记录列表
      */
-    @RequiresPermissions("broad:maintain:export")
+   @RequiresPermissions("broad:maintain:export")
     @PostMapping("/export")
     @ResponseBody
     public AjaxResult export(Maintain maintain) {
@@ -114,7 +114,7 @@ public class MaintainController extends BaseController {
     /**
      * 新增保存终端维护记录
      */
-    @RequiresPermissions("broad:maintain:add")
+   @RequiresPermissions("broad:maintain:add")
     @Log(title = "终端维护记录", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
