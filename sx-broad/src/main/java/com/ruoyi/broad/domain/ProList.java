@@ -1,5 +1,6 @@
 package com.ruoyi.broad.domain;
 
+import com.ruoyi.common.annotation.Excel;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.base.BaseEntity;
@@ -10,42 +11,34 @@ import com.ruoyi.common.base.BaseEntity;
  * @author 张超
  * @date 2019-03-02
  */
-public class ProList extends BaseEntity {
+public class ProList extends BaseEntity
+{
     private static final long serialVersionUID = 1L;
 
     private String id;
-
-    /**
-     * 节目编号
-     */
+    @Excel(name="id")
+    /** 节目编号 */
     private String pid;
-    /**
-     * 操作记录
-     */
+    @Excel(name="pid")
+    /** 操作记录 */
     private String ptp;
-    /**
-     * 节目文件
-     */
+    @Excel(name="ptp")
+    /** 节目文件 */
     private String fN;
-    /**
-     * 文件编号
-     */
+    @Excel(name="fN")
+    /** 文件编号 */
     private String fid;
-    /**
-     * 播放时间
-     */
+    @Excel(name="fid")
+    /** 播放时间 */
     private String bt;
-    /**
-     * 播放时长，只有电台转播有
-     */
+    @Excel(name="bt")
+    /** 播放时长，只有电台转播有 */
     private String broadtime;
-    /**
-     * 备注
-     */
+    @Excel(name="broadtime")
+    /** 备注 */
     private String remark;
-    /**
-     * 节目文件路径
-     */
+    @Excel(name="remark")
+    /** 节目文件路径 */
     private String urls;
 
     public String getId() {
@@ -56,53 +49,60 @@ public class ProList extends BaseEntity {
         this.id = id;
     }
 
-    public void setPid(String pid) {
+    public void setPid(String pid)
+    {
         this.pid = pid;
     }
 
-    public String getPid() {
+    public String getPid()
+    {
         return pid;
     }
-
-    public void setPtp(String ptp) {
+    public void setPtp(String ptp)
+    {
         this.ptp = ptp;
     }
 
-    public String getPtp() {
+    public String getPtp()
+    {
         return ptp;
     }
-
-    public void setFid(String fid) {
+    public void setFid(String fid)
+    {
         this.fid = fid;
     }
 
-    public String getFid() {
+    public String getFid()
+    {
         return fid;
     }
-
-    public void setBt(String bt) {
+    public void setBt(String bt)
+    {
         this.bt = bt;
     }
 
-    public String getBt() {
+    public String getBt()
+    {
         return bt;
     }
-
-    public void setBroadtime(String broadtime) {
+    public void setBroadtime(String broadtime)
+    {
         this.broadtime = broadtime;
     }
 
-    public String getBroadtime() {
+    public String getBroadtime()
+    {
         return broadtime;
     }
-
     @Override
-    public void setRemark(String remark) {
+    public void setRemark(String remark)
+    {
         this.remark = remark;
     }
 
     @Override
-    public String getRemark() {
+    public String getRemark()
+    {
         return remark;
     }
 
@@ -124,7 +124,7 @@ public class ProList extends BaseEntity {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
+        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
                 .append("pid", getPid())
                 .append("ptp", getPtp())
                 .append("fN", getfN())

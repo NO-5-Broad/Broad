@@ -1,5 +1,6 @@
 package com.ruoyi.broad.domain;
 
+import com.ruoyi.common.annotation.Excel;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.base.BaseEntity;
@@ -10,118 +11,125 @@ import com.ruoyi.common.base.BaseEntity;
  * @author 张超
  * @date 2019-03-02
  */
-public class ProSinmanage extends BaseEntity {
+public class ProSinmanage extends BaseEntity
+{
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 节目播出单IDSin
-     */
+    /** 节目播出单IDSin */
     private String sfid;
-    /**
-     * 节目播出单类别
-     */
+    @Excel(name="sfid")
+    /** 节目播出单类别 */
     private String scategory;
+    @Excel(name="scategory")
     /*提交时间*/
     private String submittime;
+    @Excel(name="submittime")
     /*节目名称*/
     private String pname;
-
+    @Excel(name="pname")
     /*创建时间*/
     private String createtime;
-    /**
-     * 播出日期
-     */
+    @Excel(name="createtime")
+    /** 播出日期 */
     private String broaddate;
-    /**
-     * 操作（所属）用户
-     */
+    @Excel(name="broaddate")
+    /** 操作（所属）用户 */
     private String userid;
+    @Excel(name="userid")
     /*操作（所属）用户名*/
     private String username;
-    /**
-     * 操作（所属）用户
-     */
+    @Excel(name="username")
+    /** 操作（所属）用户 */
     private String uname;
-    /**
-     * 备注
-     */
+    @Excel(name="uname")
+    /** 备注 */
     private String remark;
-    /**
-     * 紧急播出单播放次数
-     */
+    @Excel(name="remark")
+    /** 紧急播出单播放次数 */
     private String broadtimes;
 
-    public void setSfid(String sfid) {
+
+    public void setSfid(String sfid)
+    {
         this.sfid = sfid;
     }
 
-    public String getSfid() {
+    public String getSfid()
+    {
         return sfid;
     }
-
-    public void setScategory(String scategory) {
+    public void setScategory(String scategory)
+    {
         this.scategory = scategory;
     }
 
-    public String getScategory() {
+    public String getScategory()
+    {
         return scategory;
     }
-
-    public void setCreatetime(String createtime) {
+    public void setCreatetime(String createtime)
+    {
         this.createtime = createtime;
     }
 
-    public String getCreatetime() {
+    public String getCreatetime()
+    {
         return createtime;
     }
-
-    public void setBroaddate(String broaddate) {
+    public void setBroaddate(String broaddate)
+    {
         this.broaddate = broaddate;
     }
 
     public String getUsername() {
         return username;
     }
-
     public void setUsername(String username) {
         this.username = username;
     }
 
-    public String getBroaddate() {
+    public String getBroaddate()
+    {
         return broaddate;
     }
-
-    public void setUserid(String userid) {
+    public void setUserid(String userid)
+    {
         this.userid = userid;
     }
 
-    public String getUserid() {
+    public String getUserid()
+    {
         return userid;
     }
-
-    public void setUname(String uname) {
+    public void setUname(String uname)
+    {
         this.uname = uname;
     }
 
-    public String getUname() {
+    public String getUname()
+    {
         return uname;
     }
 
     @Override
-    public void setRemark(String remark) {
+    public void setRemark(String remark)
+    {
         this.remark = remark;
     }
 
     @Override
-    public String getRemark() {
+    public String getRemark()
+    {
         return remark;
     }
 
-    public void setBroadtimes(String broadtimes) {
+    public void setBroadtimes(String broadtimes)
+    {
         this.broadtimes = broadtimes;
     }
 
-    public String getBroadtimes() {
+    public String getBroadtimes()
+    {
         return broadtimes;
     }
 
