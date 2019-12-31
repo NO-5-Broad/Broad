@@ -142,6 +142,18 @@
                     }
                 },
                 {
+                    field: 'filename',
+                    title: '试听',
+                    align: 'center',
+                    visible: true,
+                    formatter: function (value, row, index) {
+                        if(value !=""){
+                            var actions = '<a class=\"btn btn-xs btn-success\"  onclick=listenmusic(\'' + value + '\')>试听</a>';
+                            return actions;
+                        }
+                    }
+                },
+                {
                     field: 'islisten',
                     title: '是否审听',
                     sortable: true,

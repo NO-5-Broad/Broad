@@ -58,5 +58,5 @@ public interface BroaduserMapper
      *
      * @return 结果
      */
-    public void insertBroaduser(Broaduser broaduser1);
+    public int insertBroaduser(Broaduser broaduser);
 }

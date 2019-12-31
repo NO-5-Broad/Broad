@@ -53,6 +53,6 @@ public interface IBroaduserService
      * @param uphone
      * @return
      */
-    public void insertBroaduser(Broaduser broaduser1);
+    public int insertBroaduser(Broaduser broaduser);
 
 }
