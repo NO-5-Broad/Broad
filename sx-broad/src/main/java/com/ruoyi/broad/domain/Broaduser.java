@@ -57,6 +57,18 @@ public class Broaduser extends BaseEntity {
      * 用户所属地域编号
      */
     private String aid;
+    /**
+     * 用户编号
+     */
+    private String openid;
+
+    public String getOpenid() {
+        return openid;
+    }
+
+    public void setOpenid(String openid) {
+        this.openid = openid;
+    }
 
     public void setUserid(String userid) {
         this.userid = userid;
@@ -148,18 +160,19 @@ public class Broaduser extends BaseEntity {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
-                .append("userid", getUserid())
-                .append("sysuserId", getSysuserId())
-                .append("uname", getUname())
-                .append("userlevel", getUserlevel())
-                .append("uphone", getUphone())
-                .append("uaddress", getUaddress())
-                .append("isuse", getIsuse())
-                .append("lastdate", getLastdate())
-                .append("aname", getAname())
-                .append("username", getUsername())
-                .append("aid", getAid())
-                .toString();
+        return "Broaduser{" +
+                "userid='" + userid + '\'' +
+                ", sysuserId=" + sysuserId +
+                ", username='" + username + '\'' +
+                ", uname='" + uname + '\'' +
+                ", userlevel='" + userlevel + '\'' +
+                ", uphone='" + uphone + '\'' +
+                ", uaddress='" + uaddress + '\'' +
+                ", isuse='" + isuse + '\'' +
+                ", lastdate='" + lastdate + '\'' +
+                ", aname='" + aname + '\'' +
+                ", aid='" + aid + '\'' +
+                ", openid='" + openid + '\'' +
+                '}';
     }
 }
