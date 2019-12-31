@@ -44,8 +44,8 @@ public interface IBroaduserService {
     public int deleteBroaduserByIds(String ids);
 
     /**
-     * @param user_id
-     * @param username
+     * @param aname
+     * @param uaddress
      * @param uname
      * @param uphone
      * @return
