@@ -14,7 +14,7 @@
                             终端用户姓名：<input type="text" name="uname"/>
                         </li>
                         <li>
-                            用户编号：<input type="text" name="uerid"/>
+                            用户编号：<input type="text" name="userid"/>
                         </li>
                         <li>
                             终端编号：<input type="text" name="aid"/>
@@ -41,18 +41,18 @@
 
         <div class="btn-group-sm hidden-xs" id="toolbar" role="group">
             <a class="btn btn-primary btn-edit disabled" onclick="$.operate.edit()"
-               shiro:hasPermission="broad:broaduser:edit">
+               shiro:hasPermission="broad:terminaladmin:edit">
                 <i class="fa fa-edit"></i> 修改
             </a>
             <a class="btn btn-danger btn-del btn-del disabled" onclick="$.operate.removeAll()"
-               shiro:hasPermission="broad:broaduser:remove">
+               shiro:hasPermission="broad:terminaladmin:remove">
                 <i class="fa fa-remove"></i> 删除
             </a>
-            <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="broad:broaduser:export">
+            <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="broad:terminaladmin:export">
                 <i class="fa fa-download"></i> 导出
             </a>
             <a class="btn btn-success" onclick="$.operate.add()"
-               shiro:hasPermission="broad:broaduser:add">
+               shiro:hasPermission="broad:terminaladmin:add">
                 <i class="fa fa-plus"></i> 添加
             </a>
         </div>
@@ -69,7 +69,7 @@
         var options = {
             url: prefix + "/list",
             createUrl: prefix + "/add",
-            updateUrl: prefix + "/edit/{aid}",
+            updateUrl: prefix + "/edit/{id}",
             removeUrl: prefix + "/remove",
             exportUrl: prefix + "/export",
             modalName: "终端管理员",
@@ -79,13 +79,18 @@
                 checkbox: true
             },
                 {
-                    field: 'username',
-                    title: '所属用户',
+                    field: 'userid',
+                    title: '用户编号',
                     sortable: true
                 },
                 {
                     field: 'aid',
                     title: '终端编号',
+                    sortable: true
+                },
+                {
+                    field: 'username',
+                    title: '所属用户',
                     sortable: true
                 },
                 {
