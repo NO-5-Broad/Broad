@@ -18,7 +18,8 @@ import com.ruoyi.common.support.Convert;
  * @date 2019-01-18
  */
 @Service
-public class BroaduserServiceImpl implements IBroaduserService {
+public class BroaduserServiceImpl implements IBroaduserService
+{
     @Autowired
     private BroaduserMapper broaduserMapper;
 
@@ -30,7 +31,8 @@ public class BroaduserServiceImpl implements IBroaduserService {
      */
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public Broaduser selectBroaduserById(String userid) {
+    public Broaduser selectBroaduserById(String userid)
+    {
         return broaduserMapper.selectBroaduserById(userid);
     }
 
@@ -42,7 +44,8 @@ public class BroaduserServiceImpl implements IBroaduserService {
      */
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public List<Broaduser> selectBroaduserList(Broaduser broaduser) {
+    public List<Broaduser> selectBroaduserList(Broaduser broaduser)
+    {
         return broaduserMapper.selectBroaduserList(broaduser);
     }
 
@@ -54,7 +57,8 @@ public class BroaduserServiceImpl implements IBroaduserService {
      */
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public int updateBroaduser(Broaduser broaduser) {
+    public int updateBroaduser(Broaduser broaduser)
+    {
         return broaduserMapper.updateBroaduser(broaduser);
     }
 
@@ -66,7 +70,8 @@ public class BroaduserServiceImpl implements IBroaduserService {
      */
     @Override
     @DataSource(value = DataSourceType.SLAVE)
-    public int deleteBroaduserByIds(String ids) {
+    public int deleteBroaduserByIds(String ids)
+    {
         return broaduserMapper.deleteBroaduserByIds(Convert.toStrArray(ids));
     }
 
