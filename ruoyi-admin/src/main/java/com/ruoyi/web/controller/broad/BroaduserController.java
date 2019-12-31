@@ -113,4 +113,18 @@ public class BroaduserController extends BaseController
 //	{
 //		broaduserService.insertBroaduser();
 //	}
+    /**
+     * 新增广播用户
+     */
+    @RequiresPermissions("broad:broaduser:add")
+    @Log(title = "广播用户", businessType = BusinessType.INSERT)
+    @GetMapping("/add")
+    public String add(){
+        return prefix + "/add";
+    }
+    @PostMapping("/add")
+    @ResponseBody
+    public AjaxResult add(Broaduser broaduser) {
+        return toAjax(broaduserService.insertBroaduser(broaduser));
+    }
 }
