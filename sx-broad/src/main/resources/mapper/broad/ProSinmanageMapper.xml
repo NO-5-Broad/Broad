@@ -37,7 +37,7 @@
         # ,prore_apply as WS
         <where>
             # PS.userid = US.userid and
-            PS.scategory = "正常播出单"
+            (PS.scategory = "紧急播出单" or PS.scategory ="正常播出单")
             # and PS.userid = WS.paid
             <if test="sfid != null and sfid != ''">and sfid like '%${sfid}%'</if>
             <if test="pname != null and pname != ''">and pname like '%${pname}%'</if>
