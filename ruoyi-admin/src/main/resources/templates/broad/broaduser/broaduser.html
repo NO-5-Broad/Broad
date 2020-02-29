@@ -13,6 +13,7 @@
                         <li>
                             用户编号：<input type="text" name="openid"/>
                         </li>
+
                         <li>
                             用户姓名：<input type="text" name="uname"/>
                         </li>
@@ -61,7 +62,8 @@
                shiro:hasPermission="broad:broaduser:remove">
                 <i class="fa fa-remove"></i> 删除
             </a>
-            <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="broad:broaduser:export">
+            <a class="btn btn-warning" onclick="$.table.exportExcel()"
+               shiro:hasPermission="broad:broaduser:export">
                 <i class="fa fa-download"></i> 导出
             </a>
             <a class="btn btn-success" onclick="$.operate.add()"
