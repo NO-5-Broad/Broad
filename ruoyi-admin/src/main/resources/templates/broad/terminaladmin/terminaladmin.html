@@ -34,10 +34,6 @@
                         </li>
 
                         <li>
-                            首次批准时间：<input type="text" name="allowdate"/>
-                        </li>
-
-                        <li>
                             再次批准人编号：<input type="text" name="reallowid"/>
                         </li>
 
@@ -50,12 +46,24 @@
                         </li>
 
                         <li>
-                            备注：<input type="text" name="demo"/>
+                            <!--                            <div class="form-group">-->
+                            <!--                            <label class="col-sm-3 control-label"></label>-->
+                            <div class="col-sm-8">
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                                    首次批准时间：<input name="allowdate" class="time-input" placeholder="yyyy-MM-dd" type="text">
+                                </div>
+                            </div>
+                            <!--                            </div>-->
                         </li>
 
-                        <li>
-                            0-无效,1-有效：<input type="text" name="remark"/>
-                        </li>
+<!--                        <li>-->
+<!--                            备注：<input type="text" name="demo"/>-->
+<!--                        </li>-->
+
+<!--                        <li>-->
+<!--                            0-无效,1-有效：<input type="text" name="remark"/>-->
+<!--                        </li>-->
 
                         <li>
                             <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i
